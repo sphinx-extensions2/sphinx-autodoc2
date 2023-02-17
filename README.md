@@ -2,6 +2,9 @@
 
 `sphinx-autodoc2` is a Sphinx extension that automatically generates API documentation for your Python packages.
 
+[![GitHub Repo stars](https://img.shields.io/github/stars/chrisjsewell/sphinx-autodoc2?label=Like%20and%20Share%21&style=social)](https://github.com/chrisjsewell/sphinx-autodoc2)
+[![PyPI](https://img.shields.io/pypi/v/sphinx-autodoc2?label=PyPI&logo=pypi&style=social)](https://pypi.org/project/sphinx-autodoc2/)
+
 Static analysis of Python code
 
 : There is no need to install your package to generate the documentation, and `sphinx-autodoc2` will correctly handle `if TYPE_CHECKING` blocks and other typing only features.
