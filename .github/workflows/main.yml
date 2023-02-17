@@ -30,7 +30,7 @@ jobs:
         include:
           - python-version: "3.8"
             platform: "windows-latest"
-      
+
     runs-on: ${{ matrix.platform }}
 
     steps:
