@@ -36,6 +36,8 @@ html_theme_options = {
     "source_repository": "https://github.com/chrisjsewell/sphinx-autodoc2/",
     "source_branch": "main",
     "source_directory": "docs/",
+    "announcement": "<em>Just released 🎉, feedback welcomed at "
+    "<a href='https://github.com/chrisjsewell/sphinx-autodoc2/discussions'>sphinx-autodoc2</a></em>",
 }
 
 # --- Autodoc configuration ------
