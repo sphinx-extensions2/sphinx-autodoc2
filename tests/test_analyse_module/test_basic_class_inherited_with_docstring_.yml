@@ -1,0 +1,36 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- bases: []
+  doc: Docstring
+  full_name: test.A
+  range:
+  - 1
+  - 4
+  type: class
+- args: []
+  doc: ''
+  full_name: test.A.a
+  range:
+  - 4
+  - 4
+  return_annotation: str
+  type: method
+- bases:
+  - test.A
+  doc: Docstring
+  full_name: test.B
+  range:
+  - 5
+  - 5
+  type: class
+- args: []
+  doc: ''
+  full_name: test.B.a
+  inherited: true
+  range:
+  - 4
+  - 4
+  return_annotation: str
+  type: method

@@ -1,0 +1,19 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- bases: []
+  doc: ''
+  full_name: test.A
+  range:
+  - 1
+  - 2
+  type: class
+- args: []
+  doc: ''
+  full_name: test.A.a
+  range:
+  - 2
+  - 2
+  return_annotation: str
+  type: method

@@ -1,0 +1,52 @@
+package:
+  resolved:
+    a1: !!set
+      package.a.a1: null
+    alias: !!set
+      package.a.c.ac1: null
+    p: !!set
+      package.p: null
+  stars_no_all: !!set
+    package.b: null
+  stars_unknown: !!set
+    other: null
+  stars_unresolved: !!set
+    package.d: null
+  unresolved: !!set
+    unknown: null
+package.a:
+  resolved:
+    a1: !!set
+      package.a.a1: null
+    ac1: !!set
+      package.a.c.ac1: null
+  stars_no_all: !!set {}
+  stars_unknown: !!set
+    package.a.d: null
+  stars_unresolved: !!set {}
+  unresolved: !!set
+    ad1: null
+    ade1: null
+    adf1: null
+package.a.c:
+  resolved:
+    ac1: !!set
+      package.a.c.ac1: null
+  stars_no_all: !!set {}
+  stars_unknown: !!set {}
+  stars_unresolved: !!set {}
+  unresolved: !!set {}
+package.b:
+  resolved: {}
+  stars_no_all: !!set {}
+  stars_unknown: !!set {}
+  stars_unresolved: !!set {}
+  unresolved: !!set {}
+package.d:
+  resolved: {}
+  stars_no_all: !!set {}
+  stars_unknown: !!set {}
+  stars_unresolved: !!set
+    package: null
+  unresolved: !!set
+    p: null

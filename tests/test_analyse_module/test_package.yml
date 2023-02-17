@@ -1,0 +1,36 @@
+a:
+- all: null
+  doc: ''
+  full_name: test.a
+  type: module
+- annotation: str
+  doc: ''
+  full_name: test.a.a
+  range:
+  - 1
+  - 1
+  type: data
+  value: Hello World
+b:
+- all: null
+  doc: ''
+  full_name: test.b
+  imports:
+  - - test.a.a
+    - null
+  - - test.a.a
+    - x
+  type: module
+- annotation: str
+  doc: ''
+  full_name: test.b.b
+  range:
+  - 3
+  - 3
+  type: data
+  value: null
+init:
+- all: null
+  doc: Docstring
+  full_name: test
+  type: package

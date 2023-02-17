@@ -1,0 +1,11 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- bases: []
+  doc: Docstring
+  full_name: test.A
+  range:
+  - 1
+  - 2
+  type: class

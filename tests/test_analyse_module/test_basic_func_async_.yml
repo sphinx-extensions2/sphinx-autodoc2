@@ -1,0 +1,14 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- args: []
+  doc: ''
+  full_name: test.a
+  properties:
+  - async
+  range:
+  - 1
+  - 1
+  return_annotation: str
+  type: function

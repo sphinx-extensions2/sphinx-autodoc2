@@ -1,0 +1,21 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- bases: []
+  doc: ''
+  full_name: test.A
+  range:
+  - 3
+  - 5
+  type: class
+- args: []
+  doc: ''
+  full_name: test.A.a
+  properties:
+  - abstractmethod
+  range:
+  - 5
+  - 5
+  return_annotation: str
+  type: method

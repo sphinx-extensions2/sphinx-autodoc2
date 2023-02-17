@@ -1,0 +1,13 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- annotation: bytes
+  doc: ''
+  full_name: test.a
+  range:
+  - 1
+  - 1
+  type: data
+  value: !!binary |
+    SGVsbG8gV29ybGQ=

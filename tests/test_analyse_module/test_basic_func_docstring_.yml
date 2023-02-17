@@ -1,0 +1,12 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- args: []
+  doc: Docstring
+  full_name: test.a
+  range:
+  - 1
+  - 2
+  return_annotation: str
+  type: function

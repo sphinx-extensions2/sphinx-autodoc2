@@ -1,0 +1,27 @@
+- all: null
+  doc: ''
+  full_name: test
+  imports:
+  - - typing.overload
+    - null
+  type: module
+- args: []
+  doc: ''
+  full_name: test.a
+  range:
+  - 4
+  - 4
+  return_annotation: str
+  type: overload
+- args:
+  - - null
+    - b
+    - int
+    - null
+  doc: ''
+  full_name: test.a
+  range:
+  - 6
+  - 6
+  return_annotation: str
+  type: overload
