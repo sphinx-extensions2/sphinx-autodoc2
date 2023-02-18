@@ -93,6 +93,12 @@ nitpick_ignore = [
 ]
 ```
 
+```{tip}
+To find out what references an external project exposes to intersphinx,
+you can use the `myst-inv` command line tool.
+See [MyST cross-project links](https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html#cross-project-inventory-links).
+```
+
 ## Documenting only the public API (*via* `__all__`)
 
 By default, `sphinx-autodoc2` will document all objects within each package/module, and reference direct children of them.
