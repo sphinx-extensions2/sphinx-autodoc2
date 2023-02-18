@@ -41,9 +41,56 @@ which you can include in a `toctree` directive.
 
 If installed with the `cli` extra, `sphinx-autodoc2` will install the `autodoc2` command line tool.
 
-```{code-block} console
+```console
 $ pip install sphinx-autodoc2[cli]
 $ autodoc2 --help
+```
+
+## Ignoring autodoc2 warnings
+
+When running `autodoc2` in Sphinx, you may see warnings such as:
+
+```console
+WARNING: autodoc2_packages must not be empty [autodoc2.config_error]
+```
+
+All warnings emitted by `sphinx-autodoc2` will have the `autodoc2` type and a related subtype, so you can ignore them by adding them to the
+[Sphinx `suppress_warnings` configuration](https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-suppress_warnings)
+in your `conf.py`:
+
+```python
+suppress_warnings = [
+    "autodoc2.*",  # suppress all
+    "autodoc2.config_error",  # suppress specific
+]
+```
+
+## Ignoring `"reference target not found"` warnings
+
+When running `autodoc2` in Sphinx (in nitpick mode), you may see warnings such as:
+
+```console
+path/to/module.rst:62: WARNING: py:class reference target not found: package.module.MyClass
+```
+
+These are often from type annotations,
+for packages that you have not included in your
+[intersphinx configuration](https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html).
+
+If you cannot, or do not, wish to fix them,
+then you can suppress these warnings using the
+[`nitpick_ignore` or `nitpick_ignore_regex`](https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-nitpick_ignore) configurations.
+In your `conf.py`:
+
+```python
+# ignore all warnings from this package
+nitpick_ignore_regex = [
+    ("py:.*", r"package\..*"),
+]
+# ignore a specific warning
+nitpick_ignore = [
+    ("py:class", "package.module.MyClass"),
+]
 ```
 
 ## Documenting only the public API (*via* `__all__`)
