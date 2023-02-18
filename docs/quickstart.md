@@ -134,19 +134,11 @@ Then you should enable the [MyST `fieldlist` extension](https://myst-parser.read
 myst_enable_extensions = ["fieldlist"]
 ```
 
-**Important**: There is a current "gotcha" in this extensions, as to how the alignment of multi-line values is handled:
-The field body is aligned either by the start of the body on the first line or, if no body content is on the first line, by 2 spaces.
-
-```markdown
-:field1: This is the body of the field.
-         It is aligned by the start of the body on the first line.
-:field2: This is the body of the field.
-  It is aligned by 2 spaces.
+```{important}
+It is advised that you ensure the `mdit-py-plugins`, which `myst-parser` depends on, is pinned to `>0.3.4`,
+since this version introduces improvements to the `fieldlist` extension
+(see [`executablebooks/mdit-py-plugins#65`](https://github.com/executablebooks/mdit-py-plugins/pull/65))
 ```
-
-This is different to RsT, where the body is aligned by the start of the body on the first line.
-
-I hope to fix this at some point.
 
 ````
 
