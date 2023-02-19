@@ -37,6 +37,11 @@ which you can include in a `toctree` directive.
 {ref}`config:package` for more information on how to configure the packages to document.
 ```
 
+```{tip}
+If you don't want to include the `apidocs` directory in your repository,
+you may want to add a `.gitignore` in the `apidocs` folder with `*` in it.
+```
+
 ## Command Line Tool
 
 If installed with the `cli` extra, `sphinx-autodoc2` will install the `autodoc2` command line tool.
@@ -80,10 +85,13 @@ for packages that you have not included in your
 Alternatively, they may be from imports that are named differently in the external project's intersphinx inventory,
 For example, if you import `MyClass` from `package`,
 but the external project exposes it only as `package.module.MyClass`.
-In this case, you can use the {confval}`autodoc2_replace_annotations` configuration option to replace the annotation with the correct reference.
+In this case, you can use the {confval}`autodoc2_replace_annotations` and {confval}`autodoc2_replace_bases` configuration options to replace the annotation/class base with the correct reference.
 
 ```python
 autodoc2_replace_annotations = {
+    "package.MyClass": "package.module.MyClass",
+}
+autodoc2_replace_bases = {
     "package.MyClass": "package.module.MyClass",
 }
 ```
