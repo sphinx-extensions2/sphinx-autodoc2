@@ -175,6 +175,7 @@ class RendererBase(abc.ABC):
         if item["full_name"] in self._is_hidden_cache:
             return self._is_hidden_cache[item["full_name"]]
         # TODO also whether it is imported, but this is only when following __all__
+        short_name = item["full_name"].split(".")[-1]
         is_hidden = (
             any(p.fullmatch(item["full_name"]) for p in self.config.hidden_regexes)
             or (
@@ -191,13 +192,13 @@ class RendererBase(abc.ABC):
             )
             or (
                 "dunder" in self.config.hidden_objects
-                and item["full_name"].startswith("__")
-                and item["full_name"].endswith("__")
+                and short_name.startswith("__")
+                and short_name.endswith("__")
             )
             or (
                 "private" in self.config.hidden_objects
-                and item["full_name"].startswith("_")
-                and not item["full_name"].endswith("__")
+                and short_name.startswith("_")
+                and not short_name.endswith("__")
             )
         )
         self._is_hidden_cache[item["full_name"]] = is_hidden
