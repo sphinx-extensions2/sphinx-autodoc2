@@ -34,6 +34,7 @@ class RenderConfig:
     class_inheritance: bool
     annotations: bool
     sort_names: bool
+    replace_annotations: list[tuple[str, str]]
 
 
 @dc.dataclass
@@ -412,6 +413,16 @@ class Config:
         },
     )
 
+    replace_annotations: list[tuple[str, str]] = dc.field(
+        default_factory=list,
+        metadata={
+            "help": "List of (from, to) for annotation replacements",
+            "sphinx_type": list,
+            # TODO validation
+            "category": "render",
+        },
+    )
+
     index_template: str | None = dc.field(
         default=(
             "API Reference\n"
@@ -460,6 +471,7 @@ class Config:
                 annotations=self.annotations,
                 sort_names=self.sort_names,
                 module_all_regexes=self.module_all_regexes,
+                replace_annotations=self.replace_annotations,
             )
         pkg = self.packages[pkg_index]
         return RenderConfig(
@@ -488,4 +500,5 @@ class Config:
             module_all_regexes=self.module_all_regexes
             if pkg.module_all_regexes is None
             else pkg.module_all_regexes,
+            replace_annotations=self.replace_annotations,
         )

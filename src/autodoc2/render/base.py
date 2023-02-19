@@ -230,24 +230,40 @@ class RendererBase(abc.ABC):
     def render_item(self, full_name: str) -> t.Iterable[str]:
         """Yield the content for a single item."""
 
+    def format_args(
+        self,
+        args_info: ARGS_TYPE,
+        include_annotations: bool = True,
+        ignore_self: None | str = None,
+    ) -> str:
+        """Format the arguments of a function or method."""
+        result = []
 
-def format_args(
-    args_info: ARGS_TYPE,
-    include_annotations: bool = True,
-    ignore_self: None | str = None,
-) -> str:
-    """Format the arguments of a function or method."""
-    result = []
+        for i, (prefix, name, annotation, default) in enumerate(args_info):
+            if i == 0 and ignore_self is not None and name == ignore_self:
+                continue
+            annotation = self.format_annotation(annotation)
+            formatted = (
+                (prefix or "")
+                + (name or "")
+                + (f": {annotation}" if annotation and include_annotations else "")
+                + (
+                    (" = {}" if annotation else "={}").format(default)
+                    if default
+                    else ""
+                )
+            )
+            result.append(formatted)
 
-    for i, (prefix, name, annotation, default) in enumerate(args_info):
-        if i == 0 and ignore_self is not None and name == ignore_self:
-            continue
-        formatted = (
-            (prefix or "")
-            + (name or "")
-            + (f": {annotation}" if annotation and include_annotations else "")
-            + ((" = {}" if annotation else "={}").format(default) if default else "")
-        )
-        result.append(formatted)
+        return ", ".join(result)
 
-    return ", ".join(result)
+    def format_annotation(self, annotation: None | str) -> str:
+        """Format a single type annotation."""
+        if annotation:
+            # TODO can this be optimised?
+            # could do something like in init:
+            # rgx = re.compile("(" + "|".join(re.escape(i) for i in r) + ")")
+            # then here: rgx.sub(lambda x: r[x.group(1)], annotation)
+            for in_, out_ in self.config.replace_annotations:
+                annotation = annotation.replace(in_, out_)
+        return annotation or ""

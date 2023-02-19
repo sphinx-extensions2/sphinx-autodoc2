@@ -22,16 +22,6 @@ Classes
    * - :py:obj:`RendererBase <autodoc2.render.base.RendererBase>`
      - The base renderer.
 
-Functions
-~~~~~~~~~
-
-.. list-table::
-   :class: autosummary longtable
-   :align: left
-
-   * - :py:obj:`format_args <autodoc2.render.base.format_args>`
-     - Format the arguments of a function or method.
-
 API
 ~~~
 
@@ -137,7 +127,12 @@ API
 
       Yield the content for a single item.
 
-.. py:function:: format_args(args_info: autodoc2.utils.ARGS_TYPE, include_annotations: bool = True, ignore_self: None | str = None) -> str
-   :canonical: autodoc2.render.base.format_args
+   .. py:method:: format_args(args_info: autodoc2.utils.ARGS_TYPE, include_annotations: bool = True, ignore_self: None | str = None) -> str
+      :canonical: autodoc2.render.base.RendererBase.format_args
 
-   Format the arguments of a function or method.
+      Format the arguments of a function or method.
+
+   .. py:method:: format_annotation(annotation: None | str) -> str
+      :canonical: autodoc2.render.base.RendererBase.format_annotation
+
+      Format a single type annotation.

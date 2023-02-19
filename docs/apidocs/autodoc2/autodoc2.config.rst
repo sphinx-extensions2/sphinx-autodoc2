@@ -80,12 +80,12 @@ API
 
    .. py:attribute:: module_all_regexes
       :canonical: autodoc2.config.RenderConfig.module_all_regexes
-      :type: list[re.Pattern[str]]
+      :type: list[typing.Pattern[str]]
       :value: None
 
    .. py:attribute:: skip_module_regexes
       :canonical: autodoc2.config.RenderConfig.skip_module_regexes
-      :type: list[re.Pattern[str]]
+      :type: list[typing.Pattern[str]]
       :value: None
 
    .. py:attribute:: hidden_objects
@@ -95,12 +95,12 @@ API
 
    .. py:attribute:: hidden_regexes
       :canonical: autodoc2.config.RenderConfig.hidden_regexes
-      :type: list[re.Pattern[str]]
+      :type: list[typing.Pattern[str]]
       :value: None
 
    .. py:attribute:: deprecated_module_regexes
       :canonical: autodoc2.config.RenderConfig.deprecated_module_regexes
-      :type: list[re.Pattern[str]]
+      :type: list[typing.Pattern[str]]
       :value: None
 
    .. py:attribute:: module_summary
@@ -121,6 +121,11 @@ API
    .. py:attribute:: sort_names
       :canonical: autodoc2.config.RenderConfig.sort_names
       :type: bool
+      :value: None
+
+   .. py:attribute:: replace_annotations
+      :canonical: autodoc2.config.RenderConfig.replace_annotations
+      :type: list[tuple[str, str]]
       :value: None
 
 .. py:class:: PackageConfig
@@ -155,12 +160,12 @@ API
 
    .. py:attribute:: module_all_regexes
       :canonical: autodoc2.config.PackageConfig.module_all_regexes
-      :type: list[re.Pattern[str]] | None
+      :type: list[typing.Pattern[str]] | None
       :value: None
 
    .. py:attribute:: skip_module_regexes
       :canonical: autodoc2.config.PackageConfig.skip_module_regexes
-      :type: list[re.Pattern[str]] | None
+      :type: list[typing.Pattern[str]] | None
       :value: None
 
    .. py:attribute:: hidden_objects
@@ -170,12 +175,12 @@ API
 
    .. py:attribute:: hidden_regexes
       :canonical: autodoc2.config.PackageConfig.hidden_regexes
-      :type: list[re.Pattern[str]] | None
+      :type: list[typing.Pattern[str]] | None
       :value: None
 
    .. py:attribute:: deprecated_module_regexes
       :canonical: autodoc2.config.PackageConfig.deprecated_module_regexes
-      :type: list[re.Pattern[str]] | None
+      :type: list[typing.Pattern[str]] | None
       :value: None
 
    .. py:attribute:: module_summary
@@ -311,6 +316,11 @@ API
    .. py:attribute:: sort_names
       :canonical: autodoc2.config.Config.sort_names
       :type: bool
+      :value: None
+
+   .. py:attribute:: replace_annotations
+      :canonical: autodoc2.config.Config.replace_annotations
+      :type: list[tuple[str, str]]
       :value: None
 
    .. py:attribute:: index_template

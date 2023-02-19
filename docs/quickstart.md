@@ -65,7 +65,7 @@ suppress_warnings = [
 ]
 ```
 
-## Ignoring `"reference target not found"` warnings
+## Dealing with `"reference target not found"` warnings
 
 When running `autodoc2` in Sphinx (in nitpick mode), you may see warnings such as:
 
@@ -73,9 +73,20 @@ When running `autodoc2` in Sphinx (in nitpick mode), you may see warnings such a
 path/to/module.rst:62: WARNING: py:class reference target not found: package.module.MyClass
 ```
 
-These are often from type annotations,
+These are potentially from type annotations,
 for packages that you have not included in your
 [intersphinx configuration](https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html).
+
+Alternatively, they may be from imports that are named differently in the external project's intersphinx inventory,
+For example, if you import `MyClass` from `package`,
+but the external project exposes it only as `package.module.MyClass`.
+In this case, you can use the {confval}`autodoc2_replace_annotations` configuration option to replace the annotation with the correct reference.
+
+```python
+autodoc2_replace_annotations = {
+    "package.MyClass": "package.module.MyClass",
+}
+```
 
 If you cannot, or do not, wish to fix them,
 then you can suppress these warnings using the

@@ -67,10 +67,11 @@ autodoc2_packages = [
     },
 ]
 autodoc2_render_plugin_regexes = [(r"autodoc2\.db", "myst")]
-# autodoc2_sort_names = True
+autodoc2_replace_annotations = [
+    ("re.Pattern", "typing.Pattern"),
+]
 
 nitpick_ignore_regex = [
-    ("py:class", r"re\.Pattern"),
     (r"py:.*", r"typing_extensions.*"),
     (r"py:.*", r"astroid.*"),
     # TODO for some reason in:

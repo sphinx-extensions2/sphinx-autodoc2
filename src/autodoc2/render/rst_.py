@@ -5,7 +5,7 @@ import re
 from textwrap import indent
 import typing as t
 
-from autodoc2.render.base import RendererBase, format_args
+from autodoc2.render.base import RendererBase
 
 if t.TYPE_CHECKING:
     from autodoc2.utils import ItemData
@@ -166,9 +166,9 @@ class RstRenderer(RendererBase):
 
         short_name = item["full_name"].split(".")[-1]
         show_annotations = self.show_annotations(item)
-        sig = f"{short_name}({format_args(item['args'], show_annotations)})"
+        sig = f"{short_name}({self.format_args(item['args'], show_annotations)})"
         if show_annotations and item.get("return_annotation"):
-            sig += f" -> {item['return_annotation']}"
+            sig += f" -> {self.format_annotation(item['return_annotation'])}"
 
         yield f".. py:function:: {sig}"
         yield f"   :canonical: {item['full_name']}"
@@ -195,7 +195,10 @@ class RstRenderer(RendererBase):
         constructor = self.get_item(f"{item['full_name']}.__init__")
         sig = short_name
         if constructor and "args" in constructor:
-            sig += f"({format_args(constructor['args'], self.show_annotations(item), ignore_self='self')})"
+            args = self.format_args(
+                constructor["args"], self.show_annotations(item), ignore_self="self"
+            )
+            sig += f"({args})"
 
         yield f".. py:{item['type']}:: {sig}"
         yield f"   :canonical: {item['full_name']}"
@@ -233,7 +236,7 @@ class RstRenderer(RendererBase):
             if prop in item.get("properties", []):
                 yield f"   :{prop}:"
         if item.get("return_annotation"):
-            yield f"   :type: {item['return_annotation']}"
+            yield f"   :type: {self.format_annotation(item['return_annotation'])}"
         yield ""
 
         if item["doc"]:
@@ -247,9 +250,9 @@ class RstRenderer(RendererBase):
 
         short_name = item["full_name"].split(".")[-1]
         show_annotations = self.show_annotations(item)
-        sig = f"{short_name}({format_args(item['args'], show_annotations, ignore_self='self')})"
+        sig = f"{short_name}({self.format_args(item['args'], show_annotations, ignore_self='self')})"
         if show_annotations and item.get("return_annotation"):
-            sig += f" -> {item['return_annotation']}"
+            sig += f" -> {self.format_annotation(item['return_annotation'])}"
 
         yield f".. py:method:: {sig}"
         yield f"   :canonical: {item['full_name']}"
@@ -280,7 +283,7 @@ class RstRenderer(RendererBase):
             if prop in item.get("properties", []):
                 yield f"   :{prop}:"
         if item.get("annotation"):
-            yield f"   :type: {item['annotation']}"
+            yield f"   :type: {self.format_annotation(item['annotation'])}"
         value = item.get("value")
         if isinstance(value, str):
             if len(value.splitlines()) == 1:
