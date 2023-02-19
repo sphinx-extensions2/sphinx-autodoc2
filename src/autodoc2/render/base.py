@@ -267,3 +267,10 @@ class RendererBase(abc.ABC):
             for in_, out_ in self.config.replace_annotations:
                 annotation = annotation.replace(in_, out_)
         return annotation or ""
+
+    def format_base(self, base: None | str) -> str:
+        """Format a single class base type."""
+        if base:
+            for in_, out_ in self.config.replace_bases:
+                base = base.replace(in_, out_)
+        return base or ""

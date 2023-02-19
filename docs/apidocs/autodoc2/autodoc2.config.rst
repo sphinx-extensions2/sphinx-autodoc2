@@ -37,6 +37,8 @@ Functions
      - Coerce the packages config option to a set.
    * - :py:obj:`_validate_string_list <autodoc2.config._validate_string_list>`
      - Validate that an item is a string.
+   * - :py:obj:`_validate_replace_list <autodoc2.config._validate_replace_list>`
+     - Validate that an item is a list of tuples.
    * - :py:obj:`_validate_hidden_objects <autodoc2.config._validate_hidden_objects>`
      - Validate that the hidden objects config option is a set.
    * - :py:obj:`_validate_regex_list <autodoc2.config._validate_regex_list>`
@@ -125,6 +127,11 @@ API
 
    .. py:attribute:: replace_annotations
       :canonical: autodoc2.config.RenderConfig.replace_annotations
+      :type: list[tuple[str, str]]
+      :value: None
+
+   .. py:attribute:: replace_bases
+      :canonical: autodoc2.config.RenderConfig.replace_bases
       :type: list[tuple[str, str]]
       :value: None
 
@@ -217,6 +224,11 @@ API
    :canonical: autodoc2.config._validate_string_list
 
    Validate that an item is a string.
+
+.. py:function:: _validate_replace_list(name: str, item: typing.Any) -> list[typing.Tuple[str, str]]
+   :canonical: autodoc2.config._validate_replace_list
+
+   Validate that an item is a list of tuples.
 
 .. py:function:: _validate_hidden_objects(name: str, item: typing.Any) -> set[str]
    :canonical: autodoc2.config._validate_hidden_objects
@@ -320,6 +332,11 @@ API
 
    .. py:attribute:: replace_annotations
       :canonical: autodoc2.config.Config.replace_annotations
+      :type: list[tuple[str, str]]
+      :value: None
+
+   .. py:attribute:: replace_bases
+      :canonical: autodoc2.config.Config.replace_bases
       :type: list[tuple[str, str]]
       :value: None
 

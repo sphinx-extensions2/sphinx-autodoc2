@@ -136,3 +136,8 @@ API
       :canonical: autodoc2.render.base.RendererBase.format_annotation
 
       Format a single type annotation.
+
+   .. py:method:: format_base(base: None | str) -> str
+      :canonical: autodoc2.render.base.RendererBase.format_base
+
+      Format a single class base type.

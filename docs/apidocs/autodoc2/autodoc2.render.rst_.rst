@@ -22,16 +22,6 @@ Classes
    * - :py:obj:`RstRenderer <autodoc2.render.rst_.RstRenderer>`
      - Render the documentation as reStructuredText.
 
-Functions
-~~~~~~~~~
-
-.. list-table::
-   :class: autosummary longtable
-   :align: left
-
-   * - :py:obj:`_reformat_cls_base_rst <autodoc2.render.rst_._reformat_cls_base_rst>`
-     - Reformat the base of a class for RST.
-
 Data
 ~~~~
 
@@ -44,6 +34,10 @@ Data
 
 API
 ~~~
+
+.. py:data:: _RE_DELIMS
+   :canonical: autodoc2.render.rst_._RE_DELIMS
+   :value: None
 
 .. py:class:: RstRenderer(db: autodoc2.db.Database, config: autodoc2.config.RenderConfig, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
    :canonical: autodoc2.render.rst_.RstRenderer
@@ -111,23 +105,19 @@ API
 
       Create the content for a data item.
 
-.. py:data:: _RE_DELIMS
-   :canonical: autodoc2.render.rst_._RE_DELIMS
-   :value: None
+   .. py:method:: _reformat_cls_base_rst(value: str) -> str
+      :canonical: autodoc2.render.rst_.RstRenderer._reformat_cls_base_rst
 
-.. py:function:: _reformat_cls_base_rst(value: str) -> str
-   :canonical: autodoc2.render.rst_._reformat_cls_base_rst
+      Reformat the base of a class for RST.
 
-   Reformat the base of a class for RST.
+      Base annotations can come in the form::
 
-   Base annotations can come in the form::
+          A[B, C, D]
 
-       A[B, C, D]
+      which we want to reformat as::
 
-   which we want to reformat as::
+          :py:obj:`A`\ [\ :py:obj:`B`\ , :py:obj:`C`\ , :py:obj:`D`\ ]
 
-       :py:obj:`A`\ [\ :py:obj:`B`\ , :py:obj:`C`\ , :py:obj:`D`\ ]
-
-   The backslash escapes are needed because of:
-   https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#character-level-inline-markup-1
+      The backslash escapes are needed because of:
+      https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#character-level-inline-markup-1
 

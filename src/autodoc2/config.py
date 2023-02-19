@@ -35,6 +35,7 @@ class RenderConfig:
     annotations: bool
     sort_names: bool
     replace_annotations: list[tuple[str, str]]
+    replace_bases: list[tuple[str, str]]
 
 
 @dc.dataclass
@@ -157,6 +158,15 @@ def _validate_string_list(name: str, item: t.Any) -> list[str]:
     if not isinstance(item, list) or not all(isinstance(x, str) for x in item):
         raise ValidationError(f"{name!r} must be a list of string")
     return item
+
+
+def _validate_replace_list(name: str, item: t.Any) -> list[t.Tuple[str, str]]:
+    """Validate that an item is a list of tuples."""
+    if not isinstance(item, list) or not all(
+        isinstance(x, (list, tuple)) and len(x) == 2 for x in item
+    ):
+        raise ValidationError(f"{name!r} must be a list of (string, string) tuples")
+    return [(str(x[0]), str(x[1])) for x in item]
 
 
 def _validate_hidden_objects(name: str, item: t.Any) -> set[str]:
@@ -418,7 +428,17 @@ class Config:
         metadata={
             "help": "List of (from, to) for annotation replacements",
             "sphinx_type": list,
-            # TODO validation
+            "sphinx_validate": _validate_replace_list,
+            "category": "render",
+        },
+    )
+
+    replace_bases: list[tuple[str, str]] = dc.field(
+        default_factory=list,
+        metadata={
+            "help": "List of (from, to) for class base replacements",
+            "sphinx_type": list,
+            "sphinx_validate": _validate_replace_list,
             "category": "render",
         },
     )
@@ -459,7 +479,7 @@ class Config:
 
     def to_render_config(self, pkg_index: int | None) -> RenderConfig:
         """Convert a module level render config."""
-        # TODO config could also be specific to the module
+        # TODO config could also be specific to the module?
         if pkg_index is None:
             return RenderConfig(
                 skip_module_regexes=self.skip_module_regexes,
@@ -472,6 +492,7 @@ class Config:
                 sort_names=self.sort_names,
                 module_all_regexes=self.module_all_regexes,
                 replace_annotations=self.replace_annotations,
+                replace_bases=self.replace_bases,
             )
         pkg = self.packages[pkg_index]
         return RenderConfig(
@@ -501,4 +522,5 @@ class Config:
             if pkg.module_all_regexes is None
             else pkg.module_all_regexes,
             replace_annotations=self.replace_annotations,
+            replace_bases=self.replace_bases,
         )

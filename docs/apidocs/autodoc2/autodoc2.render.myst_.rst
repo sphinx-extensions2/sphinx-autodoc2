@@ -22,16 +22,6 @@ Classes
    * - :py:obj:`MystRenderer <autodoc2.render.myst_.MystRenderer>`
      - Render the documentation as MyST.
 
-Functions
-~~~~~~~~~
-
-.. list-table::
-   :class: autosummary longtable
-   :align: left
-
-   * - :py:obj:`_reformat_cls_base_myst <autodoc2.render.myst_._reformat_cls_base_myst>`
-     - Reformat the base of a class for RST.
-
 Data
 ~~~~
 
@@ -46,6 +36,14 @@ Data
 
 API
 ~~~
+
+.. py:data:: _MD_HEAD_RE
+   :canonical: autodoc2.render.myst_._MD_HEAD_RE
+   :value: None
+
+.. py:data:: _RE_DELIMS
+   :canonical: autodoc2.render.myst_._RE_DELIMS
+   :value: None
 
 .. py:class:: MystRenderer(db: autodoc2.db.Database, config: autodoc2.config.RenderConfig, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
    :canonical: autodoc2.render.myst_.MystRenderer
@@ -119,25 +117,17 @@ API
 
       Create the content for a data item.
 
-.. py:data:: _MD_HEAD_RE
-   :canonical: autodoc2.render.myst_._MD_HEAD_RE
-   :value: None
+   .. py:method:: _reformat_cls_base_myst(value: str) -> str
+      :canonical: autodoc2.render.myst_.MystRenderer._reformat_cls_base_myst
 
-.. py:data:: _RE_DELIMS
-   :canonical: autodoc2.render.myst_._RE_DELIMS
-   :value: None
+      Reformat the base of a class for RST.
 
-.. py:function:: _reformat_cls_base_myst(value: str) -> str
-   :canonical: autodoc2.render.myst_._reformat_cls_base_myst
+      Base annotations can come in the form::
 
-   Reformat the base of a class for RST.
+          A[B, C, D]
 
-   Base annotations can come in the form::
+      which we want to reformat as::
 
-       A[B, C, D]
-
-   which we want to reformat as::
-
-       {py:obj}`A`\[{py:obj}`B`, {py:obj}`C`, {py:obj}`D`\]
+          {py:obj}`A`\[{py:obj}`B`, {py:obj}`C`, {py:obj}`D`\]
 
 

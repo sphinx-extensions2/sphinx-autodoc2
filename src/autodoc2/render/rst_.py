@@ -11,6 +11,9 @@ if t.TYPE_CHECKING:
     from autodoc2.utils import ItemData
 
 
+_RE_DELIMS = re.compile(r"(\s*[\[\]\(\),]\s*)")
+
+
 class RstRenderer(RendererBase):
     """Render the documentation as reStructuredText."""
 
@@ -208,7 +211,7 @@ class RstRenderer(RendererBase):
 
         if item.get("bases") and self.show_class_inheritance(item):
             yield "   Bases: " + ", ".join(
-                [_reformat_cls_base_rst(b) for b in item.get("bases", [])]
+                [self._reformat_cls_base_rst(b) for b in item.get("bases", [])]
             )
             yield ""
 
@@ -304,35 +307,31 @@ class RstRenderer(RendererBase):
             yield indent(item["doc"], "   ")
             yield ""
 
+    def _reformat_cls_base_rst(self, value: str) -> str:
+        """Reformat the base of a class for RST.
 
-_RE_DELIMS = re.compile(r"(\s*[\[\]\(\),]\s*)")
+        Base annotations can come in the form::
 
+            A[B, C, D]
 
-def _reformat_cls_base_rst(value: str) -> str:
-    """Reformat the base of a class for RST.
+        which we want to reformat as::
 
-    Base annotations can come in the form::
+            :py:obj:`A`\\ [\\ :py:obj:`B`\\ , :py:obj:`C`\\ , :py:obj:`D`\\ ]
 
-        A[B, C, D]
+        The backslash escapes are needed because of:
+        https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#character-level-inline-markup-1
+        """
+        result = ""
+        for sub_target in _RE_DELIMS.split(value.strip()):
+            sub_target = sub_target.strip()
+            if _RE_DELIMS.match(sub_target):
+                result += f"{sub_target}"
+                if sub_target.endswith(","):
+                    result += " "
+                else:
+                    result += "\\ "
+            elif sub_target:
+                result += f":py:obj:`{self.format_base(sub_target)}`\\ "
 
-    which we want to reformat as::
-
-        :py:obj:`A`\\ [\\ :py:obj:`B`\\ , :py:obj:`C`\\ , :py:obj:`D`\\ ]
-
-    The backslash escapes are needed because of:
-    https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#character-level-inline-markup-1
-    """
-    result = ""
-    for sub_target in _RE_DELIMS.split(value.strip()):
-        sub_target = sub_target.strip()
-        if _RE_DELIMS.match(sub_target):
-            result += f"{sub_target}"
-            if sub_target.endswith(","):
-                result += " "
-            else:
-                result += "\\ "
-        elif sub_target:
-            result += f":py:obj:`{sub_target}`\\ "
-
-    # Strip off the extra "\ "
-    return result[:-2]
+        # Strip off the extra "\ "
+        return result[:-2]
