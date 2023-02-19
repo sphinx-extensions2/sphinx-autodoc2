@@ -61,7 +61,7 @@ API
 
 .. py:data:: __version__
    :canonical: autodoc2.__version__
-   :value: '0.2.3'
+   :value: '0.3.0'
 
 .. py:function:: setup(app)
    :canonical: autodoc2.setup
