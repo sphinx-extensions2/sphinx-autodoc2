@@ -262,7 +262,7 @@ class Config:
                 "or it can be a dictionary with more fine-grained control "
                 "(see {ref}`config:package`))."
             ),
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _coerce_packages,
             "category": "required",
         },
@@ -275,7 +275,7 @@ class Config:
                 "The root output directory for the documentation, "
                 "relative to the source directory (in POSIX format)."
             ),
-            "sphinx_type": str,
+            "sphinx_type": (str,),
             "category": "render",
         },
     )
@@ -284,7 +284,7 @@ class Config:
         default_factory=lambda: ["__pycache__"],
         metadata={
             "help": "Directories to exclude from module analysis (matched by fnmatch).",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_string_list,
             "category": "analysis",
         },
@@ -294,7 +294,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": "Files to exclude from module gathering (matched by fnmatch).",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_string_list,
             "category": "analysis",
         },
@@ -310,7 +310,7 @@ class Config:
                 "or a string pointing to a class that inherits from `RendererBase`, "
                 "such as `mypackage.mymodule.MyRenderer`."
             ),
-            "sphinx_type": str,
+            "sphinx_type": (str,),
             "sphinx_default": "rst",
             "sphinx_validate": _load_renderer,
             "category": "render",
@@ -321,7 +321,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": "A list of (regex, renderer) to use for specific modules",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _load_regex_renderers,
             "category": "render",
         },
@@ -332,7 +332,7 @@ class Config:
         metadata={
             "help": "Whether to use the `__all__` in a module, "
             "to determine what children to document",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_regex_list,
             "category": "render",
         },
@@ -342,7 +342,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": "Regexes which match against module/package names, to skip them",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_regex_list,
             "category": "render",
         },
@@ -361,7 +361,7 @@ class Config:
                 "- `private`: single-underscore methods, e.g. `_private`\n"
                 "- `inherited`: inherited class methods\n"
             ),
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_hidden_objects,
             "category": "render",
         },
@@ -371,7 +371,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": "Regexes which match against object names, to mark them as hidden",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_regex_list,
             "category": "render",
         },
@@ -381,7 +381,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": "Regexes which match against module names, to mark them as deprecated",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_regex_list,
             "category": "render",
         },
@@ -391,7 +391,7 @@ class Config:
         default=True,
         metadata={
             "help": "Whether to include a per-module summary.",
-            "sphinx_type": bool,
+            "sphinx_type": (bool,),
             "category": "render",
         },
     )
@@ -400,7 +400,7 @@ class Config:
         default=True,
         metadata={
             "help": "Whether to document class inheritance.",
-            "sphinx_type": bool,
+            "sphinx_type": (bool,),
             "category": "render",
         },
     )
@@ -409,7 +409,7 @@ class Config:
         default=True,
         metadata={
             "help": "Whether to include annotations.",
-            "sphinx_type": bool,
+            "sphinx_type": (bool,),
             "category": "render",
         },
     )
@@ -418,7 +418,7 @@ class Config:
         default=False,
         metadata={
             "help": "Whether to sort by name, when documenting, otherwise order by source",
-            "sphinx_type": bool,
+            "sphinx_type": (bool,),
             "category": "render",
         },
     )
@@ -427,7 +427,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": "List of (from, to) for annotation replacements",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_replace_list,
             "category": "render",
         },
@@ -437,7 +437,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": "List of (from, to) for class base replacements",
-            "sphinx_type": list,
+            "sphinx_type": (list,),
             "sphinx_validate": _validate_replace_list,
             "category": "render",
         },
