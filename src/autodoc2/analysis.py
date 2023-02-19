@@ -69,12 +69,15 @@ def _get_parent_name(name: str) -> str:
     return ".".join(name.split(".")[:-1])
 
 
-def clean_docstring(s: None | str, tabsize: int = 8) -> str:
+def fix_docstring_indent(s: None | str, tabsize: int = 8) -> str:
     """Remove common leading indentation,
     where the indentation of the first line is ignored.
     """
     if s is None:
         return ""
+    # TODO improve docstring indentation;
+    # it would be better if we could use the indentation of the docstring,
+    # i.e. `<indent>"""...`
     lines = s.expandtabs(tabsize).splitlines()
     # Find minimum indentation of any non-blank lines after ignored lines.
     margin = sys.maxsize
@@ -110,7 +113,7 @@ def yield_module(node: nodes.Module, state: State) -> t.Iterable[ItemData]:
     parent: ItemData = {
         "type": "package" if node.package else "module",
         "full_name": node.name,
-        "doc": clean_docstring(node.doc),
+        "doc": fix_docstring_indent(node.doc),
         "file_path": path,
         "encoding": node.file_encoding,
         "all": astroid_utils.get_module_all(node),
@@ -187,7 +190,7 @@ def _yield_assign(
     data: ItemData = {
         "type": type_,
         "full_name": _get_full_name(target, state.name_stack),
-        "doc": clean_docstring(doc),
+        "doc": fix_docstring_indent(doc),
         "value": value,
         "annotation": annotation,
     }
@@ -238,7 +241,7 @@ def yield_function_def(
     data: ItemData = {
         "type": type_,
         "full_name": _get_full_name(node.name, state.name_stack),
-        "doc": clean_docstring(astroid_utils.get_func_docstring(node)),
+        "doc": fix_docstring_indent(astroid_utils.get_func_docstring(node)),
         "args": astroid_utils.get_args_info(node.args),
         "return_annotation": astroid_utils.get_return_annotation(node),
     }
@@ -270,7 +273,7 @@ def yield_class_def(node: nodes.ClassDef, state: State) -> t.Iterable[ItemData]:
         "type": type_,
         "full_name": _get_full_name(node.name, state.name_stack),
         "bases": basenames,
-        "doc": clean_docstring(astroid_utils.get_class_docstring(node)),
+        "doc": fix_docstring_indent(astroid_utils.get_class_docstring(node)),
     }
     if node.fromlineno is not None and node.tolineno is not None:
         parent["range"] = (node.fromlineno, node.tolineno)

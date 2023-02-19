@@ -52,6 +52,10 @@ API
 
    Render the documentation as MyST.
 
+   .. rubric:: Initialization
+
+   Initialise the renderer.
+
    .. py:attribute:: EXTENSION
       :canonical: autodoc2.render.myst_.MystRenderer.EXTENSION
       :value: '.md'

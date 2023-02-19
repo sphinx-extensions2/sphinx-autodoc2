@@ -68,6 +68,10 @@ API
 
    An error validating a config value.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:data:: CONFIG_PREFIX
    :canonical: autodoc2.config.CONFIG_PREFIX
    :value: 'autodoc2_'
@@ -107,6 +111,11 @@ API
    .. py:attribute:: module_summary
       :canonical: autodoc2.config.RenderConfig.module_summary
       :type: bool
+      :value: None
+
+   .. py:attribute:: class_docstring
+      :canonical: autodoc2.config.RenderConfig.class_docstring
+      :type: typing.Literal[merge, both]
       :value: None
 
    .. py:attribute:: class_inheritance
@@ -197,6 +206,11 @@ API
    .. py:attribute:: class_inheritance
       :canonical: autodoc2.config.PackageConfig.class_inheritance
       :type: bool | None
+      :value: None
+
+   .. py:attribute:: class_docstring
+      :canonical: autodoc2.config.PackageConfig.class_docstring
+      :type: typing.Literal[merge, both] | None
       :value: None
 
    .. py:attribute:: annotations
@@ -312,6 +326,11 @@ API
    .. py:attribute:: module_summary
       :canonical: autodoc2.config.Config.module_summary
       :type: bool
+      :value: None
+
+   .. py:attribute:: class_docstring
+      :canonical: autodoc2.config.Config.class_docstring
+      :type: typing.Literal[merge, both]
       :value: None
 
    .. py:attribute:: class_inheritance

@@ -33,14 +33,19 @@ A database interface for storing and querying the analysis items.
 
 ### API
 
-```{py:exception} UniqueError()
+````{py:exception} UniqueError()
 :canonical: autodoc2.db.UniqueError
 
 Bases: {py:obj}`KeyError`
 
 An error raised when a unique constraint is violated.
 
+```{rubric} Initialization
 ```
+
+Initialize self.  See help(type(self)) for accurate signature.
+
+````
 
 ````{py:class} Database
 :canonical: autodoc2.db.Database
@@ -141,12 +146,10 @@ Bases: {py:obj}`autodoc2.db.Database`
 
 A simple in-memory database for storing and querying the analysis items.
 
-```{py:method} __init__() -> None
-:canonical: autodoc2.db.InMemoryDb.__init__
+```{rubric} Initialization
+```
 
 Create the database.
-
-```
 
 ```{py:method} add(item: autodoc2.utils.ItemData) -> None
 :canonical: autodoc2.db.InMemoryDb.add

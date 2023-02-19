@@ -152,9 +152,6 @@ API
 
    Utility class that determines version information about a given plugin resource.
 
-   .. py:method:: __init__()
-      :canonical: aiida.plugins.utils.PluginVersionProvider.__init__
-
    .. py:property:: logger
       :canonical: aiida.plugins.utils.PluginVersionProvider.logger
       :type: logging.Logger

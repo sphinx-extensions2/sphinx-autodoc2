@@ -126,6 +126,16 @@ API
 
    Object that represents the configuration file of an AiiDA instance.
 
+   .. rubric:: Initialization
+
+   Instantiate a configuration object from a configuration dictionary and its filepath.
+
+   If an empty dictionary is passed, the constructor will create the skeleton configuration dictionary.
+
+   :param filepath: the absolute filepath of the configuration file
+   :param config: the content of the configuration file in dictionary form
+   :param validate: validate the dictionary against the schema
+
    .. py:attribute:: KEY_VERSION
       :canonical: aiida.manage.configuration.config.Config.KEY_VERSION
       :value: 'CONFIG_VERSION'
@@ -181,17 +191,6 @@ API
       :staticmethod:
 
       Validate a configuration dictionary.
-
-   .. py:method:: __init__(filepath: str, config: dict, validate: bool = True)
-      :canonical: aiida.manage.configuration.config.Config.__init__
-
-      Instantiate a configuration object from a configuration dictionary and its filepath.
-
-      If an empty dictionary is passed, the constructor will create the skeleton configuration dictionary.
-
-      :param filepath: the absolute filepath of the configuration file
-      :param config: the content of the configuration file in dictionary form
-      :param validate: validate the dictionary against the schema
 
    .. py:method:: __eq__(other)
       :canonical: aiida.manage.configuration.config.Config.__eq__
@@ -387,10 +386,9 @@ API
 
    Configuration error raised when the file contents fails validation.
 
-   .. py:method:: __init__(message: str, keypath: typing.Sequence[typing.Any] = (), schema: typing.Optional[dict] = None, filepath: typing.Optional[str] = None)
-      :canonical: aiida.manage.configuration.config.ConfigValidationError.__init__
+   .. rubric:: Initialization
 
-      Initialize self.  See help(type(self)) for accurate signature.
+   Initialize self.  See help(type(self)) for accurate signature.
 
    .. py:method:: __str__() -> str
       :canonical: aiida.manage.configuration.config.ConfigValidationError.__str__
@@ -408,6 +406,10 @@ API
 
    Raised when no connection can be made to the management HTTP API.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:data:: OLDEST_COMPATIBLE_CONFIG_VERSION
    :canonical: aiida.manage.configuration.migrations.migrations.OLDEST_COMPATIBLE_CONFIG_VERSION
    :value: 9
@@ -416,9 +418,6 @@ API
    :canonical: aiida.manage.configuration.options.Option
 
    Represent a configuration option schema.
-
-   .. py:method:: __init__(name: str, schema: typing.Dict[str, typing.Any])
-      :canonical: aiida.manage.configuration.options.Option.__init__
 
    .. py:method:: __str__() -> str
       :canonical: aiida.manage.configuration.options.Option.__str__
@@ -481,10 +480,9 @@ API
        if not postgres.db_exists('dbname'):
            postgres.create_db('username', 'dbname')
 
-   .. py:method:: __init__(dbinfo=None, **kwargs)
-      :canonical: aiida.manage.external.postgres.Postgres.__init__
+   .. rubric:: Initialization
 
-      See documentation of :py:meth:`pgsu.PGSU.__init__`.
+   See documentation of :py:meth:`pgsu.PGSU.__init__`.
 
    .. py:method:: from_profile(profile: aiida.manage.configuration.Profile, **kwargs)
       :canonical: aiida.manage.external.postgres.Postgres.from_profile
@@ -635,6 +633,10 @@ API
 
    Class that models a profile as it is stored in the configuration file of an AiiDA instance.
 
+   .. rubric:: Initialization
+
+   Load a profile with the profile configuration.
+
    .. py:attribute:: KEY_UUID
       :canonical: aiida.manage.configuration.profile.Profile.KEY_UUID
       :value: 'PROFILE_UUID'
@@ -678,11 +680,6 @@ API
    .. py:attribute:: REQUIRED_KEYS
       :canonical: aiida.manage.configuration.profile.Profile.REQUIRED_KEYS
       :value: ()
-
-   .. py:method:: __init__(name: str, config: typing.Mapping[str, typing.Any], validate=True)
-      :canonical: aiida.manage.configuration.profile.Profile.__init__
-
-      Load a profile with the profile configuration.
 
    .. py:method:: __repr__() -> str
       :canonical: aiida.manage.configuration.profile.Profile.__repr__
@@ -835,15 +832,14 @@ API
    This requires the ``rabbitmq_management`` plugin (https://www.rabbitmq.com/management.html) to be enabled. Typically
    this is enabled by running ``rabbitmq-plugins enable rabbitmq_management``.
 
-   .. py:method:: __init__(username: str, password: str, hostname: str, virtual_host: str)
-      :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient.__init__
+   .. rubric:: Initialization
 
-      Construct a new instance.
+   Construct a new instance.
 
-      :param username: The username to authenticate with.
-      :param password: The password to authenticate with.
-      :param hostname: The hostname of the RabbitMQ server.
-      :param virtual_host: The virtual host.
+   :param username: The username to authenticate with.
+   :param password: The password to authenticate with.
+   :param hostname: The hostname of the RabbitMQ server.
+   :param virtual_host: The virtual host.
 
    .. py:method:: format_url(url: str, url_params: dict[str, str] | None = None) -> str
       :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient.format_url

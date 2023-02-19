@@ -241,9 +241,21 @@ class MystRenderer(RendererBase):
             lines += item["doc"].splitlines()
             lines.append("")
 
+        if self.config.class_docstring == "merge":
+            init_item = self.get_item(f"{item['full_name']}.__init__")
+            if init_item and init_item["doc"]:
+                lines.extend(["```{rubric} Initialization", "```", ""])
+                lines.extend(init_item["doc"].splitlines())
+                lines.append("")
+
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
         ):
+            if (
+                child["full_name"].endswith(".__init__")
+                and self.config.class_docstring == "merge"
+            ):
+                continue
             for line in self.render_item(child["full_name"]):
                 lines.append(line)
 

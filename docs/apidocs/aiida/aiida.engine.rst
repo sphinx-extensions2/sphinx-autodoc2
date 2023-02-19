@@ -290,6 +290,10 @@ API
    The `process_handler` and `ProcessHandlerReport` support various arguments to control the flow of the logic of the
    `inspect_process`. Refer to their respective documentation for details.
 
+   .. rubric:: Initialization
+
+   Construct the instance.
+
    .. py:attribute:: _process_class
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain._process_class
       :type: typing.Optional[typing.Type[aiida.engine.processes.Process]]
@@ -366,11 +370,6 @@ API
 
       Attach the outputs specified in the output specification from the last completed process.
 
-   .. py:method:: __init__(*args, **kwargs) -> None
-      :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.__init__
-
-      Construct the instance.
-
    .. py:method:: is_process_handler(process_handler_name: typing.Union[str, types.FunctionType]) -> bool
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.is_process_handler
       :classmethod:
@@ -410,6 +409,14 @@ API
 
    Implementation of the CalcJob process.
 
+   .. rubric:: Initialization
+
+   Construct a CalcJob instance.
+
+   Construct the instance only if it is a sub class of `CalcJob`, otherwise raise `InvalidOperation`.
+
+   See documentation of :class:`aiida.engine.Process`.
+
    .. py:attribute:: _node_class
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob._node_class
       :value: None
@@ -422,15 +429,6 @@ API
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.link_label_retrieved
       :type: str
       :value: 'retrieved'
-
-   .. py:method:: __init__(*args, **kwargs) -> None
-      :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.__init__
-
-      Construct a CalcJob instance.
-
-      Construct the instance only if it is a sub class of `CalcJob`, otherwise raise `InvalidOperation`.
-
-      See documentation of :class:`aiida.engine.Process`.
 
    .. py:method:: define(spec: aiida.engine.processes.process_spec.CalcJobProcessSpec) -> None
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.define
@@ -625,9 +623,6 @@ API
 
    Sub class of plumpy.OutputPort which adds the `_pass_to_parser` attribute.
 
-   .. py:method:: __init__(*args, **kwargs) -> None
-      :canonical: aiida.engine.processes.ports.CalcJobOutputPort.__init__
-
    .. py:property:: pass_to_parser
       :canonical: aiida.engine.processes.ports.CalcJobOutputPort.pass_to_parser
       :type: bool
@@ -643,9 +638,6 @@ API
       :canonical: aiida.engine.processes.process_spec.CalcJobProcessSpec.OUTPUT_PORT_TYPE
       :value: None
 
-   .. py:method:: __init__() -> None
-      :canonical: aiida.engine.processes.process_spec.CalcJobProcessSpec.__init__
-
    .. py:property:: default_output_node
       :canonical: aiida.engine.processes.process_spec.CalcJobProcessSpec.default_output_node
       :type: typing.Optional[str]
@@ -654,6 +646,12 @@ API
    :canonical: aiida.engine.daemon.client.DaemonClient
 
    Client to interact with the daemon.
+
+   .. rubric:: Initialization
+
+   Construct an instance for a given profile.
+
+   :param profile: The profile instance.
 
    .. py:attribute:: DAEMON_ERROR_NOT_RUNNING
       :canonical: aiida.engine.daemon.client.DaemonClient.DAEMON_ERROR_NOT_RUNNING
@@ -670,13 +668,6 @@ API
    .. py:attribute:: _ENDPOINT_PROTOCOL
       :canonical: aiida.engine.daemon.client.DaemonClient._ENDPOINT_PROTOCOL
       :value: None
-
-   .. py:method:: __init__(profile: aiida.manage.configuration.profile.Profile)
-      :canonical: aiida.engine.daemon.client.DaemonClient.__init__
-
-      Construct an instance for a given profile.
-
-      :param profile: The profile instance.
 
    .. py:property:: profile
       :canonical: aiida.engine.daemon.client.DaemonClient.profile
@@ -1035,6 +1026,10 @@ API
    Additionally, the collection can be called with an identifier, that can either reference the integer `status` of the
    `ExitCode` that needs to be retrieved or the key in the collection.
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:method:: __call__(identifier: typing.Union[int, str]) -> aiida.engine.processes.exit_code.ExitCode
       :canonical: aiida.engine.processes.exit_code.ExitCodesNamespace.__call__
 
@@ -1111,9 +1106,6 @@ API
       :canonical: aiida.engine.processes.functions.FunctionProcess.get_or_create_db_record
       :classmethod:
 
-   .. py:method:: __init__(*args, **kwargs) -> None
-      :canonical: aiida.engine.processes.functions.FunctionProcess.__init__
-
    .. py:property:: process_class
       :canonical: aiida.engine.processes.functions.FunctionProcess.process_class
       :type: typing.Callable[..., typing.Any]
@@ -1150,10 +1142,9 @@ API
    Sub class of plumpy.InputPort which mixes in the WithSerialize and WithNonDb mixins to support automatic
    value serialization to database storable types and support non database storable input types as well.
 
-   .. py:method:: __init__(*args, **kwargs) -> None
-      :canonical: aiida.engine.processes.ports.InputPort.__init__
+   .. rubric:: Initialization
 
-      Override the constructor to check the type of the default if set and warn if not immutable.
+   Override the constructor to check the type of the default if set and warn if not immutable.
 
    .. py:method:: get_description() -> typing.Dict[str, str]
       :canonical: aiida.engine.processes.ports.InputPort.get_description
@@ -1168,6 +1159,14 @@ API
    Bases: :py:obj:`asyncio.Future`
 
    A future that can be interrupted by calling `interrupt`.
+
+   .. rubric:: Initialization
+
+   Initialize the future.
+
+   The optional event_loop argument allows explicitly setting the event
+   loop object used by the future. If it's not provided, the future uses
+   the default event loop.
 
    .. py:method:: interrupt(reason: Exception) -> None
       :canonical: aiida.engine.utils.InterruptableFuture.interrupt
@@ -1208,9 +1207,6 @@ API
    will be maintained. Note, however, that since each ``Runner`` will create its own job manager, these guarantees
    only hold per runner.
 
-   .. py:method:: __init__(transport_queue: aiida.engine.transports.TransportQueue) -> None
-      :canonical: aiida.engine.processes.calcjobs.manager.JobManager.__init__
-
    .. py:method:: get_jobs_list(authinfo: aiida.orm.AuthInfo) -> aiida.engine.processes.calcjobs.manager.JobsList
       :canonical: aiida.engine.processes.calcjobs.manager.JobManager.get_jobs_list
 
@@ -1245,14 +1241,13 @@ API
    these limitations are not respected between them, since there is no communication between ``JobsList`` instances.
    See the :py:class:`~aiida.engine.processes.calcjobs.manager.JobManager` for example usage.
 
-   .. py:method:: __init__(authinfo: aiida.orm.AuthInfo, transport_queue: aiida.engine.transports.TransportQueue, last_updated: typing.Optional[float] = None)
-      :canonical: aiida.engine.processes.calcjobs.manager.JobsList.__init__
+   .. rubric:: Initialization
 
-      Construct an instance for the given authinfo and transport queue.
+   Construct an instance for the given authinfo and transport queue.
 
-      :param authinfo: The authinfo used to check the jobs list
-      :param transport_queue: A transport queue
-      :param last_updated: initialize the last updated timestamp
+   :param authinfo: The authinfo used to check the jobs list
+   :param transport_queue: A transport queue
+   :param last_updated: initialize the last updated timestamp
 
 
    .. py:property:: logger
@@ -1380,6 +1375,10 @@ API
 
    Raised when an attempt is made to continue a Process that has already excepted before.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:class:: PortNamespace(*args, **kwargs)
    :canonical: aiida.engine.processes.ports.PortNamespace
 
@@ -1439,6 +1438,17 @@ API
    This class represents an AiiDA process which can be executed and will
    have full provenance saved in the database.
 
+   .. rubric:: Initialization
+
+   Process constructor.
+
+   :param inputs: process inputs
+   :param logger: aiida logger
+   :param runner: process runner
+   :param parent_pid: id of parent process
+   :param enable_persistence: whether to persist this process
+
+
    .. py:attribute:: _node_class
       :canonical: aiida.engine.processes.process.Process._node_class
       :value: None
@@ -1488,18 +1498,6 @@ API
       Create a process node that represents what happened in this process.
 
       :return: A process node
-
-   .. py:method:: __init__(inputs: typing.Optional[typing.Dict[str, typing.Any]] = None, logger: typing.Optional[logging.Logger] = None, runner: typing.Optional[aiida.engine.runners.Runner] = None, parent_pid: typing.Optional[int] = None, enable_persistence: bool = True) -> None
-      :canonical: aiida.engine.processes.process.Process.__init__
-
-      Process constructor.
-
-      :param inputs: process inputs
-      :param logger: aiida logger
-      :param runner: process runner
-      :param parent_pid: id of parent process
-      :param enable_persistence: whether to persist this process
-
 
    .. py:method:: init() -> None
       :canonical: aiida.engine.processes.process.Process.init
@@ -1898,12 +1896,11 @@ API
 
    A process builder that helps setting up the inputs for creating a new process.
 
-   .. py:method:: __init__(process_class: typing.Type[aiida.engine.processes.process.Process])
-      :canonical: aiida.engine.processes.builder.ProcessBuilder.__init__
+   .. rubric:: Initialization
 
-      Construct a `ProcessBuilder` instance for the given `Process` class.
+   Construct a `ProcessBuilder` instance for the given `Process` class.
 
-      :param process_class: the `Process` subclass
+   :param process_class: the `Process` subclass
 
    .. py:property:: process_class
       :canonical: aiida.engine.processes.builder.ProcessBuilder.process_class
@@ -1925,16 +1922,15 @@ API
 
    Dynamically generates the getters and setters for the input ports of a given PortNamespace
 
-   .. py:method:: __init__(port_namespace: aiida.engine.processes.ports.PortNamespace) -> None
-      :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace.__init__
+   .. rubric:: Initialization
 
-      Dynamically construct the get and set properties for the ports of the given port namespace.
+   Dynamically construct the get and set properties for the ports of the given port namespace.
 
-      For each port in the given port namespace a get and set property will be constructed dynamically
-      and added to the ProcessBuilderNamespace. The docstring for these properties will be defined
-      by calling str() on the Port, which should return the description of the Port.
+   For each port in the given port namespace a get and set property will be constructed dynamically
+   and added to the ProcessBuilderNamespace. The docstring for these properties will be defined
+   by calling str() on the Port, which should return the description of the Port.
 
-      :param port_namespace: the inputs PortNamespace for which to construct the builder
+   :param port_namespace: the inputs PortNamespace for which to construct the builder
 
 
    .. py:method:: __setattr__(attr: str, value: typing.Any) -> None
@@ -2032,22 +2028,21 @@ API
 
    Future that waits for a process to complete using both polling and listening for broadcast events if possible.
 
+   .. rubric:: Initialization
+
+   Construct a future for a process node being finished.
+
+   If a None poll_interval is supplied polling will not be used.
+   If a communicator is supplied it will be used to listen for broadcast messages.
+
+   :param pk: process pk
+   :param loop: An event loop
+   :param poll_interval: optional polling interval, if None, polling is not activated.
+   :param communicator: optional communicator, if None, will not subscribe to broadcasts.
+
    .. py:attribute:: _filtered
       :canonical: aiida.engine.processes.futures.ProcessFuture._filtered
       :value: None
-
-   .. py:method:: __init__(pk: int, loop: typing.Optional[asyncio.AbstractEventLoop] = None, poll_interval: typing.Union[None, int, float] = None, communicator: typing.Optional[kiwipy.Communicator] = None)
-      :canonical: aiida.engine.processes.futures.ProcessFuture.__init__
-
-      Construct a future for a process node being finished.
-
-      If a None poll_interval is supplied polling will not be used.
-      If a communicator is supplied it will be used to listen for broadcast messages.
-
-      :param pk: process pk
-      :param loop: An event loop
-      :param poll_interval: optional polling interval, if None, polling is not activated.
-      :param communicator: optional communicator, if None, will not subscribe to broadcasts.
 
    .. py:method:: cleanup() -> None
       :canonical: aiida.engine.processes.futures.ProcessFuture.cleanup
@@ -2119,9 +2114,6 @@ API
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.PORT_NAMESPACE_TYPE
       :value: None
 
-   .. py:method:: __init__() -> None
-      :canonical: aiida.engine.processes.process_spec.ProcessSpec.__init__
-
    .. py:property:: metadata_key
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.metadata_key
       :type: str
@@ -2166,6 +2158,17 @@ API
 
    Class that can launch processes by running in the current interpreter or by submitting them to the daemon.
 
+   .. rubric:: Initialization
+
+   Construct a new runner.
+
+   :param poll_interval: interval in seconds between polling for status of active sub processes
+   :param loop: an asyncio event loop, if none is suppled a new one will be created
+   :param communicator: the communicator to use
+   :param rmq_submit: if True, processes will be submitted to RabbitMQ, otherwise they will be scheduled here
+   :param persister: the persister to use to persist processes
+
+
    .. py:attribute:: _persister
       :canonical: aiida.engine.runners.Runner._persister
       :type: typing.Optional[plumpy.persistence.Persister]
@@ -2185,18 +2188,6 @@ API
       :canonical: aiida.engine.runners.Runner._closed
       :type: bool
       :value: False
-
-   .. py:method:: __init__(poll_interval: typing.Union[int, float] = 0, loop: typing.Optional[asyncio.AbstractEventLoop] = None, communicator: typing.Optional[kiwipy.Communicator] = None, rmq_submit: bool = False, persister: typing.Optional[plumpy.persistence.Persister] = None)
-      :canonical: aiida.engine.runners.Runner.__init__
-
-      Construct a new runner.
-
-      :param poll_interval: interval in seconds between polling for status of active sub processes
-      :param loop: an asyncio event loop, if none is suppled a new one will be created
-      :param communicator: the communicator to use
-      :param rmq_submit: if True, processes will be submitted to RabbitMQ, otherwise they will be scheduled here
-      :param persister: the persister to use to persist processes
-
 
    .. py:method:: __enter__() -> aiida.engine.runners.Runner
       :canonical: aiida.engine.runners.Runner.__enter__
@@ -2375,9 +2366,6 @@ API
    The mixins have to go before the main port class in the superclass order
    to make sure the mixin has the chance to strip out the non_db keyword.
 
-   .. py:method:: __init__(*args, **kwargs) -> None
-      :canonical: aiida.engine.processes.ports.WithNonDb.__init__
-
    .. py:property:: non_db_explicitly_set
       :canonical: aiida.engine.processes.ports.WithNonDb.non_db_explicitly_set
       :type: bool
@@ -2400,9 +2388,6 @@ API
    A mixin that adds support for a serialization function which is automatically applied on inputs
    that are not AiiDA data types.
 
-   .. py:method:: __init__(*args, **kwargs) -> None
-      :canonical: aiida.engine.processes.ports.WithSerialize.__init__
-
    .. py:method:: serialize(value: typing.Any) -> aiida.orm.Data
       :canonical: aiida.engine.processes.ports.WithSerialize.serialize
 
@@ -2417,6 +2402,18 @@ API
    Bases: :py:obj:`aiida.engine.processes.process.Process`
 
    The `WorkChain` class is the principle component to implement workflows in AiiDA.
+
+   .. rubric:: Initialization
+
+   Construct a WorkChain instance.
+
+   Construct the instance only if it is a sub class of `WorkChain`, otherwise raise `InvalidOperation`.
+
+   :param inputs: work chain inputs
+   :param logger: aiida logger
+   :param runner: work chain runner
+   :param enable_persistence: whether to persist this work chain
+
 
    .. py:attribute:: _node_class
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain._node_class
@@ -2433,19 +2430,6 @@ API
    .. py:attribute:: _CONTEXT
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain._CONTEXT
       :value: 'CONTEXT'
-
-   .. py:method:: __init__(inputs: dict | None = None, logger: logging.Logger | None = None, runner: aiida.engine.runners.Runner | None = None, enable_persistence: bool = True) -> None
-      :canonical: aiida.engine.processes.workchains.workchain.WorkChain.__init__
-
-      Construct a WorkChain instance.
-
-      Construct the instance only if it is a sub class of `WorkChain`, otherwise raise `InvalidOperation`.
-
-      :param inputs: work chain inputs
-      :param logger: aiida logger
-      :param runner: work chain runner
-      :param enable_persistence: whether to persist this work chain
-
 
    .. py:method:: spec() -> aiida.engine.processes.workchains.workchain.WorkChainSpec
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.spec

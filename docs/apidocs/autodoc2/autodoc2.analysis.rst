@@ -38,7 +38,7 @@ Functions
      - Get the full name of a node.
    * - :py:obj:`_get_parent_name <autodoc2.analysis._get_parent_name>`
      - Get the parent name of a node.
-   * - :py:obj:`clean_docstring <autodoc2.analysis.clean_docstring>`
+   * - :py:obj:`fix_docstring_indent <autodoc2.analysis.fix_docstring_indent>`
      - Remove common leading indentation, where the indentation of the first line is ignored.
    * - :py:obj:`walk_node <autodoc2.analysis.walk_node>`
      - 
@@ -127,8 +127,8 @@ API
 
    Get the parent name of a node.
 
-.. py:function:: clean_docstring(s: None | str, tabsize: int = 8) -> str
-   :canonical: autodoc2.analysis.clean_docstring
+.. py:function:: fix_docstring_indent(s: None | str, tabsize: int = 8) -> str
+   :canonical: autodoc2.analysis.fix_docstring_indent
 
    Remove common leading indentation,
    where the indentation of the first line is ignored.

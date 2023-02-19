@@ -225,9 +225,25 @@ class RstRenderer(RendererBase):
                     yield line
             yield ""
 
+        if self.config.class_docstring == "merge":
+            init_item = self.get_item(f"{item['full_name']}.__init__")
+            if init_item and init_item["doc"]:
+                yield from ["   .. rubric:: Initialization", ""]
+                for line in init_item["doc"].splitlines():
+                    if line.strip():
+                        yield f"   {line}"
+                    else:
+                        yield line
+                yield ""
+
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
         ):
+            if (
+                child["full_name"].endswith(".__init__")
+                and self.config.class_docstring == "merge"
+            ):
+                continue
             for line in self.render_item(child["full_name"]):
                 yield indent(line, "   ")
 

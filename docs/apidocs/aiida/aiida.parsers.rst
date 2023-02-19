@@ -32,12 +32,11 @@ API
 
    Base class for a Parser that can parse the outputs produced by a CalcJob process.
 
-   .. py:method:: __init__(node: aiida.orm.CalcJobNode)
-      :canonical: aiida.parsers.parser.Parser.__init__
+   .. rubric:: Initialization
 
-      Construct the Parser instance.
+   Construct the Parser instance.
 
-      :param node: the `CalcJobNode` that contains the results of the executed `CalcJob` process.
+   :param node: the `CalcJobNode` that contains the results of the executed `CalcJob` process.
 
    .. py:property:: logger
       :canonical: aiida.parsers.parser.Parser.logger

@@ -95,6 +95,10 @@ API
    Each module will have its own subclass, inherited from this
    (e.g. ExecManagerException, TransportException, ...)
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:class:: AttributeDict(dictionary=None)
    :canonical: aiida.common.extendeddicts.AttributeDict
 
@@ -108,10 +112,9 @@ API
    while the usual KeyError if the key does not exist and the dictionary syntax is
    used.
 
-   .. py:method:: __init__(dictionary=None)
-      :canonical: aiida.common.extendeddicts.AttributeDict.__init__
+   .. rubric:: Initialization
 
-      Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
 
    .. py:method:: __repr__()
       :canonical: aiida.common.extendeddicts.AttributeDict.__repr__
@@ -213,6 +216,10 @@ API
    * skip_submit: a flag that, when set to True, orders the engine to skip the submit/update steps (so no code will
        run, it will only upload the files and then retrieve/parse).
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:attribute:: _default_fields
       :canonical: aiida.common.datastructures.CalcInfo._default_fields
       :value: ('job_environment', 'email', 'email_on_started', 'email_on_terminated', 'uuid', 'prepend_text', 'app...
@@ -254,6 +261,10 @@ API
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when trying to access data from a closed storage backend.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:class:: CodeInfo(dictionary=None)
    :canonical: aiida.common.datastructures.CodeInfo
@@ -302,6 +313,10 @@ API
      on the remote computer)
    * ``code_uuid``: the uuid of the code associated to the CodeInfo
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:attribute:: _default_fields
       :canonical: aiida.common.datastructures.CodeInfo._default_fields
       :value: ('cmdline_params', 'stdin_name', 'stdout_name', 'stderr_name', 'join_files', 'withmpi', 'code_uuid')
@@ -323,6 +338,10 @@ API
        code1.x
        code2.x
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
    .. py:attribute:: SERIAL
       :canonical: aiida.common.datastructures.CodeRunMode.SERIAL
       :value: 0
@@ -338,6 +357,10 @@ API
 
    Error raised when there is a configuration error in AiiDA.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: ConfigurationVersionError()
    :canonical: aiida.common.exceptions.ConfigurationVersionError
 
@@ -345,6 +368,10 @@ API
 
    Configuration error raised when the configuration file version is not
    compatible with the current version.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: ContentNotExistent()
    :canonical: aiida.common.exceptions.ContentNotExistent
@@ -354,12 +381,20 @@ API
    Raised when trying to access an attribute, a key or a file in the result
    nodes that is not present
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: CorruptStorage()
    :canonical: aiida.common.exceptions.CorruptStorage
 
    Bases: :py:obj:`aiida.common.exceptions.ConfigurationError`
 
    Raised when the storage is not found to be internally consistent on validation.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: DbContentError()
    :canonical: aiida.common.exceptions.DbContentError
@@ -369,6 +404,10 @@ API
    Raised when the content of the DB is not valid.
    This should never happen if the user does not play directly
    with the DB.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:class:: DefaultFieldsAttributeDict(dictionary=None)
    :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict
@@ -426,6 +465,10 @@ API
 
        See if we want that setting a default field to None means deleting it.
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:attribute:: _default_fields
       :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict._default_fields
       :value: None
@@ -469,12 +512,20 @@ API
 
    Raised when an entry point cannot be uniquely resolved and imported.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: FailedError()
    :canonical: aiida.common.exceptions.FailedError
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when accessing a calculation that is in the FAILED status
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: FeatureDisabled()
    :canonical: aiida.common.exceptions.FeatureDisabled
@@ -484,12 +535,20 @@ API
    Raised when a feature is requested, but the user has chosen to disable
    it (e.g., for submissions on disabled computers).
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: FeatureNotAvailable()
    :canonical: aiida.common.exceptions.FeatureNotAvailable
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when a feature is requested from a plugin, that is not available.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:class:: FixedFieldsAttributeDict(init=None)
    :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict
@@ -505,14 +564,13 @@ API
        class TestExample(FixedFieldsAttributeDict):
            _valid_fields = ('a','b','c')
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:attribute:: _valid_fields
       :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict._valid_fields
       :value: None
-
-   .. py:method:: __init__(init=None)
-      :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict.__init__
-
-      Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
 
    .. py:method:: __setitem__(item, value)
       :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict.__setitem__
@@ -577,12 +635,20 @@ API
 
    Raised when an attempt to hash an object fails via a known failure mode
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: IncompatibleStorageSchema()
    :canonical: aiida.common.exceptions.IncompatibleStorageSchema
 
    Bases: :py:obj:`aiida.common.exceptions.IncompatibleDatabaseSchema`
 
    Raised when the storage schema is incompatible with that of the code.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: InputValidationError()
    :canonical: aiida.common.exceptions.InputValidationError
@@ -591,6 +657,10 @@ API
 
    The input data for a calculation did not validate (e.g., missing
    required input data, wrong data, ...)
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: IntegrityError()
    :canonical: aiida.common.exceptions.IntegrityError
@@ -601,6 +671,10 @@ API
    or a general data integrity error.  This can happen if, e.g., a foreign key check fails.
    See PEP 249 for details.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: InternalError()
    :canonical: aiida.common.exceptions.InternalError
 
@@ -608,12 +682,20 @@ API
 
    Error raised when there is an internal error of AiiDA.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: InvalidEntryPointTypeError()
    :canonical: aiida.common.exceptions.InvalidEntryPointTypeError
 
    Bases: :py:obj:`aiida.common.exceptions.EntryPointError`
 
    Raised when a loaded entry point has a type that is not supported by the corresponding entry point group.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: InvalidOperation()
    :canonical: aiida.common.exceptions.InvalidOperation
@@ -624,12 +706,20 @@ API
    before saving the entry), or deleting an entry that is protected (e.g.,
    because it is referenced by foreign keys)
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: LicensingException()
    :canonical: aiida.common.exceptions.LicensingException
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when requirements for data licensing are not met.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:class:: LinkType
    :canonical: aiida.common.links.LinkType
@@ -669,12 +759,20 @@ API
 
    Raised when the resource corresponding to requested entry point cannot be imported.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: LockedProfileError()
    :canonical: aiida.common.exceptions.LockedProfileError
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised if attempting to access a locked profile
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: LockingProfileError()
    :canonical: aiida.common.exceptions.LockingProfileError
@@ -683,6 +781,10 @@ API
 
    Raised if the profile can`t be locked
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: MissingConfigurationError()
    :canonical: aiida.common.exceptions.MissingConfigurationError
 
@@ -690,12 +792,20 @@ API
 
    Configuration error raised when the configuration file is missing.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: MissingEntryPointError()
    :canonical: aiida.common.exceptions.MissingEntryPointError
 
    Bases: :py:obj:`aiida.common.exceptions.EntryPointError`
 
    Raised when the requested entry point is not registered with the entry point manager.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: ModificationNotAllowed()
    :canonical: aiida.common.exceptions.ModificationNotAllowed
@@ -705,12 +815,20 @@ API
    Raised when the user tries to modify a field, object, property, ... that should not
    be modified.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: MultipleEntryPointError()
    :canonical: aiida.common.exceptions.MultipleEntryPointError
 
    Bases: :py:obj:`aiida.common.exceptions.EntryPointError`
 
    Raised when the requested entry point cannot uniquely be resolved by the entry point manager.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: MultipleObjectsError()
    :canonical: aiida.common.exceptions.MultipleObjectsError
@@ -720,12 +838,20 @@ API
    Raised when more than one entity is found in the DB, but only one was
    expected.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: NotExistent()
    :canonical: aiida.common.exceptions.NotExistent
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when the required entity does not exist.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: NotExistentAttributeError()
    :canonical: aiida.common.exceptions.NotExistentAttributeError
@@ -734,12 +860,20 @@ API
 
    Raised when the required entity does not exist, when fetched as an attribute.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: NotExistentKeyError()
    :canonical: aiida.common.exceptions.NotExistentKeyError
 
    Bases: :py:obj:`KeyError`, :py:obj:`aiida.common.exceptions.NotExistent`
 
    Raised when the required entity does not exist, when fetched as a dictionary key.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: OutputParsingError()
    :canonical: aiida.common.exceptions.OutputParsingError
@@ -748,12 +882,20 @@ API
 
    Can be raised by a Parser when it fails to parse the output generated by a `CalcJob` process.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: ParsingError()
    :canonical: aiida.common.exceptions.ParsingError
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Generic error raised when there is a parsing error
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: PluginInternalError()
    :canonical: aiida.common.exceptions.PluginInternalError
@@ -763,12 +905,20 @@ API
    Error raised when there is an internal error which is due to a plugin
    and not to the AiiDA infrastructure.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: ProfileConfigurationError()
    :canonical: aiida.common.exceptions.ProfileConfigurationError
 
    Bases: :py:obj:`aiida.common.exceptions.ConfigurationError`
 
    Configuration error raised when a wrong/inexistent profile is requested.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:class:: ProgressReporterAbstract(*, total: int, desc: typing.Optional[str] = None, **kwargs: typing.Any)
    :canonical: aiida.common.progress_reporter.ProgressReporterAbstract
@@ -785,13 +935,12 @@ API
                progress.update()
 
 
-   .. py:method:: __init__(*, total: int, desc: typing.Optional[str] = None, **kwargs: typing.Any)
-      :canonical: aiida.common.progress_reporter.ProgressReporterAbstract.__init__
+   .. rubric:: Initialization
 
-      Initialise the progress reporting contextmanager.
+   Initialise the progress reporting contextmanager.
 
-      :param total: The number of expected iterations.
-      :param desc: A description of the process
+   :param total: The number of expected iterations.
+   :param desc: A description of the process
 
 
    .. py:property:: total
@@ -855,6 +1004,10 @@ API
    Raised when an error in a remote operation occurs, as in a failed kill()
    of a scheduler job.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:class:: StashMode
    :canonical: aiida.common.datastructures.StashMode
 
@@ -873,12 +1026,20 @@ API
 
    Raised if a critical error is encountered during a storage migration.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: StoringNotAllowed()
    :canonical: aiida.common.exceptions.StoringNotAllowed
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when the user tries to store an unstorable node (e.g. a base Node class)
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:data:: TQDM_BAR_FORMAT
    :canonical: aiida.common.progress_reporter.TQDM_BAR_FORMAT
@@ -893,12 +1054,20 @@ API
 
    This is to prevent data loss.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: TransportTaskException()
    :canonical: aiida.common.exceptions.TransportTaskException
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when a TransportTask, an task to be completed by the engine that requires transport, fails
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: UniquenessError()
    :canonical: aiida.common.exceptions.UniquenessError
@@ -908,12 +1077,20 @@ API
    Raised when the user tries to violate a uniqueness constraint (on the
    DB, for instance).
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: UnsupportedSpeciesError()
    :canonical: aiida.common.exceptions.UnsupportedSpeciesError
 
    Bases: :py:obj:`ValueError`
 
    Raised when StructureData operations are fed species that are not supported by AiiDA such as Deuterium
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: ValidationError()
    :canonical: aiida.common.exceptions.ValidationError
@@ -922,6 +1099,10 @@ API
 
    Error raised when there is an error during the validation phase
    of a property.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:function:: create_callback(progress_reporter: aiida.common.progress_reporter.ProgressReporterAbstract) -> typing.Callable[[str, typing.Any], None]
    :canonical: aiida.common.progress_reporter.create_callback

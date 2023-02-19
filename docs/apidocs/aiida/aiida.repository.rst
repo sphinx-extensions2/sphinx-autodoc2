@@ -251,9 +251,6 @@ API
        the ``close`` method is essentially a no-op.
 
 
-   .. py:method:: __init__(container: disk_objectstore.Container)
-      :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.__init__
-
    .. py:method:: __str__() -> str
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.__str__
 
@@ -389,18 +386,17 @@ API
 
    Data class representing a file object.
 
-   .. py:method:: __init__(name: str = '', file_type: aiida.repository.common.FileType = FileType.DIRECTORY, key: typing.Union[str, None] = None, objects: typing.Optional[typing.Dict[str, aiida.repository.common.File]] = None) -> None
-      :canonical: aiida.repository.common.File.__init__
+   .. rubric:: Initialization
 
-      Construct a new instance.
+   Construct a new instance.
 
-      :param name: The final element of the file path
-      :param file_type: Identifies whether the File is a file or a directory
-      :param key: A key to map the file to its contents in the backend repository (file only)
-      :param objects: Mapping of child names to child Files (directory only)
+   :param name: The final element of the file path
+   :param file_type: Identifies whether the File is a file or a directory
+   :param key: A key to map the file to its contents in the backend repository (file only)
+   :param objects: Mapping of child names to child Files (directory only)
 
-      :raises ValueError: If a key is defined for a directory,
-          or objects are defined for a file
+   :raises ValueError: If a key is defined for a directory,
+       or objects are defined for a file
 
    .. py:method:: from_serialized(serialized: dict, name='') -> aiida.repository.common.File
       :canonical: aiida.repository.common.File.from_serialized
@@ -494,17 +490,16 @@ API
    removed from the internal virtual hierarchy, but not in the actual backend. This is because those objects can be
    referenced by other instances.
 
+   .. rubric:: Initialization
+
+   Construct a new instance with empty metadata.
+
+   :param backend: instance of repository backend to use to actually store the file objects. By default, an
+       instance of the ``SandboxRepositoryBackend`` will be created.
+
    .. py:attribute:: _file_cls
       :canonical: aiida.repository.repository.Repository._file_cls
       :value: None
-
-   .. py:method:: __init__(backend: typing.Optional[aiida.repository.backend.AbstractRepositoryBackend] = None)
-      :canonical: aiida.repository.repository.Repository.__init__
-
-      Construct a new instance with empty metadata.
-
-      :param backend: instance of repository backend to use to actually store the file objects. By default, an
-          instance of the ``SandboxRepositoryBackend`` will be created.
 
    .. py:method:: __str__() -> str
       :canonical: aiida.repository.repository.Repository.__str__
@@ -819,12 +814,11 @@ API
 
    Implementation of the ``AbstractRepositoryBackend`` using a sandbox folder on disk as the backend.
 
-   .. py:method:: __init__(filepath: str | None = None)
-      :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.__init__
+   .. rubric:: Initialization
 
-      Construct a new instance.
+   Construct a new instance.
 
-      :param filepath: The path to the directory in which the sandbox folder should be created.
+   :param filepath: The path to the directory in which the sandbox folder should be created.
 
    .. py:method:: __str__() -> str
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.__str__

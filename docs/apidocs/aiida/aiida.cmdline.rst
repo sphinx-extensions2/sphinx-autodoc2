@@ -152,17 +152,16 @@ API
 
    The ParamType for identifying Code entities or its subclasses
 
+   .. rubric:: Initialization
+
+   Construct the param type
+
+   :param sub_classes: specify a tuple of Code sub classes to narrow the query set
+   :param entry_point: specify an optional calculation entry point that the Code's input plugin should match
+
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.code.CodeParamType.name
       :value: 'Code'
-
-   .. py:method:: __init__(sub_classes=None, entry_point=None)
-      :canonical: aiida.cmdline.params.types.code.CodeParamType.__init__
-
-      Construct the param type
-
-      :param sub_classes: specify a tuple of Code sub classes to narrow the query set
-      :param entry_point: specify an optional calculation entry point that the Code's input plugin should match
 
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.code.CodeParamType.orm_class_loader
@@ -236,6 +235,22 @@ API
 
    The ParamType for identifying Data entities or its subclasses
 
+   .. rubric:: Initialization
+
+   Construct the parameter type, optionally specifying a tuple of entry points that reference classes
+   that should be a sub class of the base orm class of the orm class loader. The classes pointed to by
+   these entry points will be passed to the OrmEntityLoader when converting an identifier and they will
+   restrict the query set by demanding that the class of the corresponding entity matches these sub classes.
+
+   To prevent having to load the database environment at import time, the actual loading of the entry points
+   is deferred until the call to `convert` is made. This is to keep the command line autocompletion light
+   and responsive. The entry point strings will be validated, however, to see if the correspond to known
+   entry points.
+
+   :param sub_classes: a tuple of entry point strings that can narrow the set of orm classes that values
+       will be mapped upon. These classes have to be strict sub classes of the base orm class defined
+       by the orm class loader
+
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.data.DataParamType.name
       :value: 'Data'
@@ -273,9 +288,6 @@ API
        def cmd_create():
            pass
 
-
-   .. py:method:: __init__(command, entry_point_group: str, entry_point_name_filter='.*', **kwargs)
-      :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.__init__
 
    .. py:method:: list_commands(ctx) -> list[str]
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.list_commands
@@ -372,9 +384,6 @@ API
       :canonical: aiida.cmdline.params.types.path.FileOrUrl.name
       :value: 'FileOrUrl'
 
-   .. py:method:: __init__(timeout_seconds=URL_TIMEOUT_SECONDS, **kwargs)
-      :canonical: aiida.cmdline.params.types.path.FileOrUrl.__init__
-
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.path.FileOrUrl.convert
 
@@ -392,27 +401,26 @@ API
 
    The ParamType for identifying Group entities or its subclasses.
 
+   .. rubric:: Initialization
+
+   Construct the parameter type.
+
+   The `sub_classes` argument can be used to narrow the set of subclasses of `Group` that should be matched. By
+   default all subclasses of `Group` will be matched, otherwise it is restricted to the subclasses that correspond
+   to the entry point names in the tuple of `sub_classes`.
+
+   To prevent having to load the database environment at import time, the actual loading of the entry points is
+   deferred until the call to `convert` is made. This is to keep the command line autocompletion light and
+   responsive. The entry point strings will be validated, however, to see if they correspond to known entry points.
+
+   :param create_if_not_exist: boolean, if True, will create the group if it does not yet exist. By default the
+       group created will be of class `Group`, unless another subclass is specified through `sub_classes`. Note
+       that in this case, only a single entry point name can be specified
+   :param sub_classes: a tuple of entry point strings from the `aiida.groups` entry point group.
+
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.group.GroupParamType.name
       :value: 'Group'
-
-   .. py:method:: __init__(create_if_not_exist=False, sub_classes=('aiida.groups:core', ))
-      :canonical: aiida.cmdline.params.types.group.GroupParamType.__init__
-
-      Construct the parameter type.
-
-      The `sub_classes` argument can be used to narrow the set of subclasses of `Group` that should be matched. By
-      default all subclasses of `Group` will be matched, otherwise it is restricted to the subclasses that correspond
-      to the entry point names in the tuple of `sub_classes`.
-
-      To prevent having to load the database environment at import time, the actual loading of the entry points is
-      deferred until the call to `convert` is made. This is to keep the command line autocompletion light and
-      responsive. The entry point strings will be validated, however, to see if they correspond to known entry points.
-
-      :param create_if_not_exist: boolean, if True, will create the group if it does not yet exist. By default the
-          group created will be of class `Group`, unless another subclass is specified through `sub_classes`. Note
-          that in this case, only a single entry point name can be specified
-      :param sub_classes: a tuple of entry point strings from the `aiida.groups` entry point group.
 
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.group.GroupParamType.orm_class_loader
@@ -464,22 +472,21 @@ API
    parameter type should implement the `orm_class_loader` method to return the appropriate orm class loader,
    which should be a subclass of `aiida.orm.utils.loaders.OrmEntityLoader` for the corresponding orm class.
 
-   .. py:method:: __init__(sub_classes=None)
-      :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.__init__
+   .. rubric:: Initialization
 
-      Construct the parameter type, optionally specifying a tuple of entry points that reference classes
-      that should be a sub class of the base orm class of the orm class loader. The classes pointed to by
-      these entry points will be passed to the OrmEntityLoader when converting an identifier and they will
-      restrict the query set by demanding that the class of the corresponding entity matches these sub classes.
+   Construct the parameter type, optionally specifying a tuple of entry points that reference classes
+   that should be a sub class of the base orm class of the orm class loader. The classes pointed to by
+   these entry points will be passed to the OrmEntityLoader when converting an identifier and they will
+   restrict the query set by demanding that the class of the corresponding entity matches these sub classes.
 
-      To prevent having to load the database environment at import time, the actual loading of the entry points
-      is deferred until the call to `convert` is made. This is to keep the command line autocompletion light
-      and responsive. The entry point strings will be validated, however, to see if the correspond to known
-      entry points.
+   To prevent having to load the database environment at import time, the actual loading of the entry points
+   is deferred until the call to `convert` is made. This is to keep the command line autocompletion light
+   and responsive. The entry point strings will be validated, however, to see if the correspond to known
+   entry points.
 
-      :param sub_classes: a tuple of entry point strings that can narrow the set of orm classes that values
-          will be mapped upon. These classes have to be strict sub classes of the base orm class defined
-          by the orm class loader
+   :param sub_classes: a tuple of entry point strings that can narrow the set of orm classes that values
+       will be mapped upon. These classes have to be strict sub classes of the base orm class defined
+       by the orm class loader
 
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.orm_class_loader
@@ -540,9 +547,6 @@ API
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.name
       :value: 'choice'
 
-   .. py:method:: __init__(get_choices)
-      :canonical: aiida.cmdline.params.types.choice.LazyChoice.__init__
-
    .. py:property:: _click_choice
       :canonical: aiida.cmdline.params.types.choice.LazyChoice._click_choice
 
@@ -598,9 +602,6 @@ API
    Bases: :py:obj:`click.ParamType`
 
    An extension of click.ParamType that can parse multiple values for a given ParamType
-
-   .. py:method:: __init__(param_type)
-      :canonical: aiida.cmdline.params.types.multiple.MultipleValueParamType.__init__
 
    .. py:method:: get_metavar(param)
       :canonical: aiida.cmdline.params.types.multiple.MultipleValueParamType.get_metavar
@@ -660,9 +661,6 @@ API
       :canonical: aiida.cmdline.params.types.path.PathOrUrl.name
       :value: 'PathOrUrl'
 
-   .. py:method:: __init__(timeout_seconds=URL_TIMEOUT_SECONDS, **kwargs)
-      :canonical: aiida.cmdline.params.types.path.PathOrUrl.__init__
-
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.path.PathOrUrl.convert
 
@@ -693,6 +691,11 @@ API
        click.option(... type=PluginParamType(group=('calculations', 'data'))
 
 
+   .. rubric:: Initialization
+
+   Validate that group is either a string or a tuple of valid entry point groups, or if it
+   is not specified use the tuple of all recognized entry point groups.
+
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.name
       :value: 'plugin'
@@ -700,12 +703,6 @@ API
    .. py:attribute:: _factory_mapping
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType._factory_mapping
       :value: None
-
-   .. py:method:: __init__(group=None, load=False, *args, **kwargs)
-      :canonical: aiida.cmdline.params.types.plugin.PluginParamType.__init__
-
-      Validate that group is either a string or a tuple of valid entry point groups, or if it
-      is not specified use the tuple of all recognized entry point groups.
 
    .. py:method:: _init_entry_points()
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType._init_entry_points
@@ -800,9 +797,6 @@ API
       :canonical: aiida.cmdline.params.types.profile.ProfileParamType.name
       :value: 'profile'
 
-   .. py:method:: __init__(*args, **kwargs)
-      :canonical: aiida.cmdline.params.types.profile.ProfileParamType.__init__
-
    .. py:method:: deconvert_default(value)
       :canonical: aiida.cmdline.params.types.profile.ProfileParamType.deconvert_default
       :staticmethod:
@@ -843,14 +837,13 @@ API
 
    The user parameter type for click.   Can get or create a user.
 
+   .. rubric:: Initialization
+
+   :param create: If the user does not exist, create a new instance (unstored).
+
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.user.UserParamType.name
       :value: 'user'
-
-   .. py:method:: __init__(create=False)
-      :canonical: aiida.cmdline.params.types.user.UserParamType.__init__
-
-      :param create: If the user does not exist, create a new instance (unstored).
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.user.UserParamType.convert

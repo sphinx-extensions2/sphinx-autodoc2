@@ -84,9 +84,6 @@ API
 
    Base class for CalculationTools.
 
-   .. py:method:: __init__(node)
-      :canonical: aiida.tools.calculations.base.CalculationTools.__init__
-
 .. py:data:: DELETE_LOGGER
    :canonical: aiida.tools.graph.deletions.DELETE_LOGGER
    :value: None
@@ -96,33 +93,32 @@ API
 
    a class to create graphviz graphs of the AiiDA node provenance
 
-   .. py:method:: __init__(engine=None, graph_attr=None, global_node_style=None, global_edge_style=None, include_sublabels=True, link_style_fn=None, node_style_fn=None, node_sublabel_fn=None, node_id_type='pk', backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
-      :canonical: aiida.tools.visualization.graph.Graph.__init__
+   .. rubric:: Initialization
 
-      a class to create graphviz graphs of the AiiDA node provenance
+   a class to create graphviz graphs of the AiiDA node provenance
 
-      Nodes and edges, are cached, so that they are only created once
+   Nodes and edges, are cached, so that they are only created once
 
-      :param engine: the graphviz engine, e.g. dot, circo (Default value = None)
-      :type engine: str or None
-      :param graph_attr: attributes for the graphviz graph (Default value = None)
-      :type graph_attr: dict or None
-      :param global_node_style: styles which will be added to all nodes.
-          Note this will override any builtin attributes (Default value = None)
-      :type global_node_style: dict or None
-      :param global_edge_style: styles which will be added to all edges.
-          Note this will override any builtin attributes (Default value = None)
-      :type global_edge_style: dict or None
-      :param include_sublabels: if True, the note text will include node dependant sub-labels (Default value = True)
-      :type include_sublabels: bool
-      :param link_style_fn: callable mapping LinkType to graphviz style dict;
-          link_style_fn(link_type) -> dict (Default value = None)
-      :param node_sublabel_fn: callable mapping nodes to a graphviz style dict;
-          node_sublabel_fn(node) -> dict (Default value = None)
-      :param node_sublabel_fn: callable mapping data node to a sublabel (e.g. specifying some attribute values)
-          node_sublabel_fn(node) -> str (Default value = None)
-      :param node_id_type: the type of identifier to within the node text ('pk', 'uuid' or 'label')
-      :type node_id_type: str
+   :param engine: the graphviz engine, e.g. dot, circo (Default value = None)
+   :type engine: str or None
+   :param graph_attr: attributes for the graphviz graph (Default value = None)
+   :type graph_attr: dict or None
+   :param global_node_style: styles which will be added to all nodes.
+       Note this will override any builtin attributes (Default value = None)
+   :type global_node_style: dict or None
+   :param global_edge_style: styles which will be added to all edges.
+       Note this will override any builtin attributes (Default value = None)
+   :type global_edge_style: dict or None
+   :param include_sublabels: if True, the note text will include node dependant sub-labels (Default value = True)
+   :type include_sublabels: bool
+   :param link_style_fn: callable mapping LinkType to graphviz style dict;
+       link_style_fn(link_type) -> dict (Default value = None)
+   :param node_sublabel_fn: callable mapping nodes to a graphviz style dict;
+       node_sublabel_fn(node) -> dict (Default value = None)
+   :param node_sublabel_fn: callable mapping data node to a sublabel (e.g. specifying some attribute values)
+       node_sublabel_fn(node) -> str (Default value = None)
+   :param node_id_type: the type of identifier to within the node text ('pk', 'uuid' or 'label')
+   :type node_id_type: str
 
    .. py:property:: backend
       :canonical: aiida.tools.visualization.graph.Graph.backend
@@ -317,10 +313,9 @@ API
 
    An exception raised when a path does not have an associated group.
 
-   .. py:method:: __init__(grouppath)
-      :canonical: aiida.tools.groups.paths.GroupNotFoundError.__init__
+   .. rubric:: Initialization
 
-      Initialize self.  See help(type(self)) for accurate signature.
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:exception:: GroupNotUniqueError(grouppath)
    :canonical: aiida.tools.groups.paths.GroupNotUniqueError
@@ -329,10 +324,9 @@ API
 
    An exception raised when a path has multiple associated groups.
 
-   .. py:method:: __init__(grouppath)
-      :canonical: aiida.tools.groups.paths.GroupNotUniqueError.__init__
+   .. rubric:: Initialization
 
-      Initialize self.  See help(type(self)) for accurate signature.
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:class:: GroupPath(path: str = '', cls: aiida.orm.groups.GroupMeta = orm.Group, warn_invalid_child: bool = True)
    :canonical: aiida.tools.groups.paths.GroupPath
@@ -341,14 +335,13 @@ API
 
    See tests for usage examples.
 
-   .. py:method:: __init__(path: str = '', cls: aiida.orm.groups.GroupMeta = orm.Group, warn_invalid_child: bool = True) -> None
-      :canonical: aiida.tools.groups.paths.GroupPath.__init__
+   .. rubric:: Initialization
 
-      Instantiate the class.
+   Instantiate the class.
 
-      :param path: The initial path of the group.
-      :param cls: The subclass of `Group` to operate on.
-      :param warn_invalid_child: Issue a warning, when iterating children, if a child path is invalid.
+   :param path: The initial path of the group.
+   :param cls: The subclass of `Group` to operate on.
+   :param warn_invalid_child: Issue a warning, when iterating children, if a child path is invalid.
 
 
    .. py:method:: _validate_path(path)
@@ -501,6 +494,10 @@ API
 
    An exception to indicate that a path is not valid.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
 .. py:exception:: NoGroupsInPathError(grouppath)
    :canonical: aiida.tools.groups.paths.NoGroupsInPathError
 
@@ -508,10 +505,9 @@ API
 
    An exception raised when a path has multiple associated groups.
 
-   .. py:method:: __init__(grouppath)
-      :canonical: aiida.tools.groups.paths.NoGroupsInPathError.__init__
+   .. rubric:: Initialization
 
-      Initialize self.  See help(type(self)) for accurate signature.
+   Initialize self.  See help(type(self)) for accurate signature.
 
 .. py:class:: Orbital(**kwargs)
    :canonical: aiida.tools.data.orbital.orbital.Orbital
@@ -537,9 +533,6 @@ API
    .. py:attribute:: _base_fields_optional
       :canonical: aiida.tools.data.orbital.orbital.Orbital._base_fields_optional
       :value: None
-
-   .. py:method:: __init__(**kwargs)
-      :canonical: aiida.tools.data.orbital.orbital.Orbital.__init__
 
    .. py:method:: __repr__()
       :canonical: aiida.tools.data.orbital.orbital.Orbital.__repr__

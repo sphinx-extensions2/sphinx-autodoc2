@@ -32,17 +32,16 @@ API
 
    The base renderer.
 
+   .. rubric:: Initialization
+
+   Initialise the renderer.
+
    .. py:attribute:: EXTENSION
       :canonical: autodoc2.render.base.RendererBase.EXTENSION
       :type: typing.ClassVar[str]
       :value: '.txt'
 
       The extension for the output files.
-
-   .. py:method:: __init__(db: autodoc2.db.Database, config: autodoc2.config.RenderConfig, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None) -> None
-      :canonical: autodoc2.render.base.RendererBase.__init__
-
-      Initialise the renderer.
 
    .. py:attribute:: _resolve_all_warned
       :canonical: autodoc2.render.base.RendererBase._resolve_all_warned

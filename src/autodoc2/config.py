@@ -31,6 +31,7 @@ class RenderConfig:
     hidden_regexes: list[re.Pattern[str]]
     deprecated_module_regexes: list[re.Pattern[str]]
     module_summary: bool
+    class_docstring: t.Literal["merge", "both"]
     class_inheritance: bool
     annotations: bool
     sort_names: bool
@@ -76,6 +77,7 @@ class PackageConfig:
     deprecated_module_regexes: list[re.Pattern[str]] | None = None
     module_summary: bool | None = None
     class_inheritance: bool | None = None
+    class_docstring: t.Literal["merge", "both"] | None = None
     annotations: bool | None = None
     sort_names: bool | None = None
 
@@ -135,6 +137,13 @@ def _coerce_packages(name: str, item: t.Any) -> list[PackageConfig]:
         ):
             if key in package and not isinstance(package[key], bool):
                 raise ValidationError(f"{name}[{i}][{key!r}] must be a boolean")
+        if "class_docstring" in package and package["class_docstring"] not in (
+            "merge",
+            "both",
+        ):
+            raise ValidationError(
+                f"{name}[{i}]['class_docstring'] must be 'merge' or 'both'"
+            )
         for key in (
             "skip_module_regexes",
             "hidden_regexes",
@@ -396,6 +405,20 @@ class Config:
         },
     )
 
+    class_docstring: t.Literal["merge", "both"] = dc.field(
+        default="merge",
+        metadata={
+            "help": (
+                "How to handle documenting of classes. "
+                "If `merge`, the `__init__` docstring is appended to the class docstring "
+                "and the `__init__` method is omitted."
+                "If `both`, then the `__init__` method is included separately."
+            ),
+            "sphinx_type": (str,),
+            "category": "render",
+        },
+    )
+
     class_inheritance: bool = dc.field(
         default=True,
         metadata={
@@ -487,6 +510,7 @@ class Config:
                 hidden_regexes=self.hidden_regexes,
                 deprecated_module_regexes=self.deprecated_module_regexes,
                 module_summary=self.module_summary,
+                class_docstring=self.class_docstring,
                 class_inheritance=self.class_inheritance,
                 annotations=self.annotations,
                 sort_names=self.sort_names,
@@ -511,6 +535,9 @@ class Config:
             module_summary=self.module_summary
             if pkg.module_summary is None
             else pkg.module_summary,
+            class_docstring=self.class_docstring
+            if pkg.class_docstring is None
+            else pkg.class_docstring,
             class_inheritance=self.class_inheritance
             if pkg.class_inheritance is None
             else pkg.class_inheritance,

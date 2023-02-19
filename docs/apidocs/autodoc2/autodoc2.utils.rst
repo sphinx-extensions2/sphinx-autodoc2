@@ -68,6 +68,10 @@ API
 
    A data item, for the results of the analysis.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
    .. py:attribute:: type
       :canonical: autodoc2.utils.ItemData.type
       :type: typing_extensions.Required[str]
@@ -212,6 +216,10 @@ API
    Bases: :py:obj:`typing.TypedDict`
 
    The outcome of resolving a packages's __all__ attributes.
+
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
 
    .. py:attribute:: resolved
       :canonical: autodoc2.utils.ResolvedDict.resolved

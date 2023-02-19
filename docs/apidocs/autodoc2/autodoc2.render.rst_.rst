@@ -46,6 +46,10 @@ API
 
    Render the documentation as reStructuredText.
 
+   .. rubric:: Initialization
+
+   Initialise the renderer.
+
    .. py:attribute:: EXTENSION
       :canonical: autodoc2.render.rst_.RstRenderer.EXTENSION
       :value: '.rst'

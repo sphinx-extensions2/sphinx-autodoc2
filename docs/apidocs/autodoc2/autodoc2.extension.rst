@@ -91,6 +91,10 @@ API
 
    Cache for the environment.
 
+   .. rubric:: Initialization
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
    .. py:attribute:: hash
       :canonical: autodoc2.extension.EnvCache.hash
       :type: str

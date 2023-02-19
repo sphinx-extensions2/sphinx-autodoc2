@@ -96,6 +96,10 @@ API
       * ``finish_time``: the absolute time at which the job first entered the
         'finished' state, of type datetime.datetime
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.JobInfo._default_fields
       :value: ('job_id', 'title', 'exit_status', 'terminating_signal', 'annotation', 'job_state', 'job_substate', ...
@@ -203,6 +207,10 @@ API
 
    The constructor should take care of checking the values.
    The init should raise only ValueError or TypeError on invalid parameters.
+
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
 
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.JobResource._default_fields
@@ -373,6 +381,10 @@ API
        The serial execution would be without the &'s.
        Values are given by aiida.common.datastructures.CodeRunMode.
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.JobTemplate._default_fields
       :value: ('shebang', 'submit_as_hold', 'rerunnable', 'job_environment', 'environment_variables_double_quotes'...
@@ -391,6 +403,10 @@ API
    * ``num_cpus``: number of cores used by the job on this machine
    * ``num_mpiprocs``: number of MPI processes used by the job on this machine
 
+   .. rubric:: Initialization
+
+   Recursively turn the `dict` and all its nested dictionaries into `AttributeDict` instance.
+
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.MachineInfo._default_fields
       :value: ('name', 'num_mpiprocs', 'num_cpus')
@@ -401,6 +417,12 @@ API
    Bases: :py:obj:`aiida.schedulers.datastructures.JobResource`
 
    `JobResource` for schedulers that support the specification of a number of nodes and cpus per node.
+
+   .. rubric:: Initialization
+
+   Initialize the job resources from the passed arguments.
+
+   :raises ValueError: if the resources are invalid or incomplete
 
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.NodeNumberJobResource._default_fields
@@ -414,13 +436,6 @@ API
 
       :param kwargs: dictionary of values to define the job resources
       :return: attribute dictionary with the parsed parameters populated
-      :raises ValueError: if the resources are invalid or incomplete
-
-   .. py:method:: __init__(**kwargs)
-      :canonical: aiida.schedulers.datastructures.NodeNumberJobResource.__init__
-
-      Initialize the job resources from the passed arguments.
-
       :raises ValueError: if the resources are invalid or incomplete
 
    .. py:method:: get_valid_keys()
@@ -447,6 +462,13 @@ API
 
    `JobResource` for schedulers that support the specification of a parallel environment and number of MPI procs.
 
+   .. rubric:: Initialization
+
+   Initialize the job resources from the passed arguments (the valid keys can be
+   obtained with the function self.get_valid_keys()).
+
+   :raises ValueError: if the resources are invalid or incomplete
+
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.ParEnvJobResource._default_fields
       :value: ('parallel_env', 'tot_num_mpiprocs')
@@ -459,14 +481,6 @@ API
 
       :param kwargs: dictionary of values to define the job resources
       :return: attribute dictionary with the parsed parameters populated
-      :raises ValueError: if the resources are invalid or incomplete
-
-   .. py:method:: __init__(**kwargs)
-      :canonical: aiida.schedulers.datastructures.ParEnvJobResource.__init__
-
-      Initialize the job resources from the passed arguments (the valid keys can be
-      obtained with the function self.get_valid_keys()).
-
       :raises ValueError: if the resources are invalid or incomplete
 
    .. py:method:: accepts_default_mpiprocs_per_machine()
@@ -523,9 +537,6 @@ API
 
       :param resources: keyword arguments to define the job resources
       :raises ValueError: if the resources are invalid or incomplete
-
-   .. py:method:: __init__()
-      :canonical: aiida.schedulers.scheduler.Scheduler.__init__
 
    .. py:method:: get_short_doc()
       :canonical: aiida.schedulers.scheduler.Scheduler.get_short_doc

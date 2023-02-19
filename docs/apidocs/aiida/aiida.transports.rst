@@ -46,6 +46,21 @@ API
 
    Support connection, command execution and data transfer to remote computers via SSH+SFTP.
 
+   .. rubric:: Initialization
+
+   Initialize the SshTransport class.
+
+   :param machine: the machine to connect to
+   :param load_system_host_keys: (optional, default False)
+      if False, do not load the system host keys
+   :param key_policy: (optional, default = paramiko.RejectPolicy())
+      the policy to use for unknown keys
+
+   Other parameters valid for the ssh connect function (see the
+   self._valid_connect_params list) are passed to the connect
+   function (as port, username, password, ...); taken from the
+   accepted paramiko.SSHClient.connect() params.
+
    .. py:attribute:: _valid_connect_options
       :canonical: aiida.transports.plugins.ssh.SshTransport._valid_connect_options
       :value: [('username',), ('port',), ('look_for_keys',), ('key_filename',), ('timeout',), ('allow_agent',), ('...
@@ -153,22 +168,6 @@ API
       :classmethod:
 
       Return a suggestion for the specific field.
-
-   .. py:method:: __init__(*args, **kwargs)
-      :canonical: aiida.transports.plugins.ssh.SshTransport.__init__
-
-      Initialize the SshTransport class.
-
-      :param machine: the machine to connect to
-      :param load_system_host_keys: (optional, default False)
-         if False, do not load the system host keys
-      :param key_policy: (optional, default = paramiko.RejectPolicy())
-         the policy to use for unknown keys
-
-      Other parameters valid for the ssh connect function (see the
-      self._valid_connect_params list) are passed to the connect
-      function (as port, username, password, ...); taken from the
-      accepted paramiko.SSHClient.connect() params.
 
    .. py:method:: open()
       :canonical: aiida.transports.plugins.ssh.SshTransport.open
@@ -588,6 +587,15 @@ API
 
    Abstract class for a generic transport (ssh, local, ...) contains the set of minimal methods.
 
+   .. rubric:: Initialization
+
+   __init__ method of the Transport base class.
+
+   :param safe_interval: (optional, default self._DEFAULT_SAFE_OPEN_INTERVAL)
+      Minimum time interval in seconds between opening new connections.
+   :param use_login_shell: (optional, default True)
+      if False, do not use a login shell when executing command
+
    .. py:attribute:: DEFAULT_MINIMUM_JOB_POLL_INTERVAL
       :canonical: aiida.transports.transport.Transport.DEFAULT_MINIMUM_JOB_POLL_INTERVAL
       :value: 10
@@ -612,16 +620,6 @@ API
    .. py:attribute:: _common_auth_options
       :canonical: aiida.transports.transport.Transport._common_auth_options
       :value: [('use_login_shell',), ('safe_interval',)]
-
-   .. py:method:: __init__(*args, **kwargs)
-      :canonical: aiida.transports.transport.Transport.__init__
-
-      __init__ method of the Transport base class.
-
-      :param safe_interval: (optional, default self._DEFAULT_SAFE_OPEN_INTERVAL)
-         Minimum time interval in seconds between opening new connections.
-      :param use_login_shell: (optional, default True)
-         if False, do not use a login shell when executing command
 
    .. py:method:: __enter__()
       :canonical: aiida.transports.transport.Transport.__enter__

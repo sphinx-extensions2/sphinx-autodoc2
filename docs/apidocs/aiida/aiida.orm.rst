@@ -226,6 +226,16 @@ API
 
    Abstract data plugin representing an executable code.
 
+   .. rubric:: Initialization
+
+   Construct a new instance.
+
+   :param default_calc_job_plugin: The entry point name of the default ``CalcJob`` plugin to use.
+   :param append_text: The text that should be appended to the run line in the job script.
+   :param prepend_text: The text that should be prepended to the run line in the job script.
+   :param use_double_quotes: Whether the command line invocation of this code should be escaped with double quotes.
+   :param is_hidden: Whether the code is hidden.
+
    .. py:attribute:: _KEY_ATTRIBUTE_DEFAULT_CALC_JOB_PLUGIN
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode._KEY_ATTRIBUTE_DEFAULT_CALC_JOB_PLUGIN
       :type: str
@@ -250,17 +260,6 @@ API
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode._KEY_EXTRA_IS_HIDDEN
       :type: str
       :value: 'hidden'
-
-   .. py:method:: __init__(default_calc_job_plugin: str | None = None, append_text: str = '', prepend_text: str = '', use_double_quotes: bool = False, is_hidden: bool = False, **kwargs)
-      :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.__init__
-
-      Construct a new instance.
-
-      :param default_calc_job_plugin: The entry point name of the default ``CalcJob`` plugin to use.
-      :param append_text: The text that should be appended to the run line in the job script.
-      :param prepend_text: The text that should be prepended to the run line in the job script.
-      :param use_double_quotes: Whether the command line invocation of this code should be escaped with double quotes.
-      :param is_hidden: Whether the code is hidden.
 
    .. py:method:: can_run_on_computer(computer: aiida.orm.Computer) -> bool
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.can_run_on_computer
@@ -432,6 +431,10 @@ API
      If too much RAM memory is used, you can clear the
      cache with the :py:meth:`.clear_internal_cache` method.
 
+   .. rubric:: Initialization
+
+   Construct a new instance, setting the ``source`` attribute if provided as a keyword argument.
+
    .. py:attribute:: array_prefix
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.array_prefix
       :value: 'array|'
@@ -552,10 +555,9 @@ API
    :note: Important! It cannot be used to change variables, just to read
      them. To change values (of unstored nodes), use the proper Node methods.
 
-   .. py:method:: __init__(node)
-      :canonical: aiida.orm.utils.managers.AttributeManager.__init__
+   .. rubric:: Initialization
 
-      :param node: the node object.
+   :param node: the node object.
 
    .. py:method:: __dir__()
       :canonical: aiida.orm.utils.managers.AttributeManager.__dir__
@@ -601,6 +603,14 @@ API
 
    ORM class that models the authorization information that allows a `User` to connect to a `Computer`.
 
+   .. rubric:: Initialization
+
+   Create an `AuthInfo` instance for the given computer and user.
+
+   :param computer: a `Computer` instance
+   :param user: a `User` instance
+   :param backend: the backend to use for the instance, or use the default backend if None
+
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.authinfos.AuthInfo._CLS_COLLECTION
       :value: None
@@ -608,15 +618,6 @@ API
    .. py:attribute:: PROPERTY_WORKDIR
       :canonical: aiida.orm.authinfos.AuthInfo.PROPERTY_WORKDIR
       :value: 'workdir'
-
-   .. py:method:: __init__(computer: aiida.orm.Computer, user: aiida.orm.User, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None) -> None
-      :canonical: aiida.orm.authinfos.AuthInfo.__init__
-
-      Create an `AuthInfo` instance for the given computer and user.
-
-      :param computer: a `Computer` instance
-      :param user: a `User` instance
-      :param backend: the backend to use for the instance, or use the default backend if None
 
    .. py:method:: __str__() -> str
       :canonical: aiida.orm.authinfos.AuthInfo.__str__
@@ -689,6 +690,18 @@ API
    Bases: :py:obj:`aiida.orm.groups.Group`
 
    Group to be used to contain selected nodes generated, whilst autogrouping is enabled.
+
+   .. rubric:: Initialization
+
+   Create a new group. Either pass a dbgroup parameter, to reload
+   a group from the DB (and then, no further parameters are allowed),
+   or pass the parameters for the Group creation.
+
+   :param label: The group label, required on creation
+   :param description: The group description (by default, an empty string)
+   :param user: The owner of the group (by default, the automatic user)
+   :param type_string: a string identifying the type of group (by default,
+       an empty string, indicating an user-defined group.
 
 .. py:class:: BandsData
    :canonical: aiida.orm.nodes.data.array.bands.BandsData
@@ -948,9 +961,6 @@ API
    Bases: :py:obj:`aiida.orm.nodes.data.data.Data`
 
    `Data` sub class to be used as a base for data containers that represent base python data types.
-
-   .. py:method:: __init__(value=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.base.BaseType.__init__
 
    .. py:property:: value
       :canonical: aiida.orm.nodes.data.base.BaseType.value
@@ -1350,12 +1360,11 @@ API
    If both these conditions are met, the results are defined as the dictionary contained within the default
    output node.
 
-   .. py:method:: __init__(node)
-      :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.__init__
+   .. rubric:: Initialization
 
-      Construct an instance of the `CalcJobResultManager`.
+   Construct an instance of the `CalcJobResultManager`.
 
-      :param calc: the `CalcJobNode` instance.
+   :param calc: the `CalcJobNode` instance.
 
    .. py:property:: node
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.node
@@ -1444,6 +1453,10 @@ API
 
    Base class for all nodes representing the execution of a calculation process.
 
+   .. rubric:: Initialization
+
+   :param backend_entity: the backend model supporting this entity
+
    .. py:attribute:: _storable
       :canonical: aiida.orm.nodes.process.calculation.calculation.CalculationNode._storable
       :value: True
@@ -1490,6 +1503,18 @@ API
        when setting ``ase`` or ``values``, a physical CIF file is generated
        first, the values are updated from the physical CIF file.
 
+   .. rubric:: Initialization
+
+   Construct a new instance and set the contents to that of the file.
+
+   :param file: an absolute filepath or filelike object for CIF.
+       Hint: Pass io.BytesIO(b"my string") to construct the SinglefileData directly from a string.
+   :param filename: specify filename to use (defaults to name of provided file).
+   :param ase: ASE Atoms object to construct the CifData instance from.
+   :param values: PyCifRW CifFile object to construct the CifData instance from.
+   :param scan_type: scan type string for parsing with PyCIFRW ('standard' or 'flex'). See CifFile.ReadCif
+   :param parse_policy: 'eager' (parse CIF file on set_file) or 'lazy' (defer parsing until needed)
+
    .. py:attribute:: _SET_INCOMPATIBILITIES
       :canonical: aiida.orm.nodes.data.cif.CifData._SET_INCOMPATIBILITIES
       :value: [('ase', 'file'), ('ase', 'values'), ('file', 'values')]
@@ -1517,19 +1542,6 @@ API
    .. py:attribute:: _ase
       :canonical: aiida.orm.nodes.data.cif.CifData._ase
       :value: None
-
-   .. py:method:: __init__(ase=None, file=None, filename=None, values=None, scan_type=None, parse_policy=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.cif.CifData.__init__
-
-      Construct a new instance and set the contents to that of the file.
-
-      :param file: an absolute filepath or filelike object for CIF.
-          Hint: Pass io.BytesIO(b"my string") to construct the SinglefileData directly from a string.
-      :param filename: specify filename to use (defaults to name of provided file).
-      :param ase: ASE Atoms object to construct the CifData instance from.
-      :param values: PyCifRW CifFile object to construct the CifData instance from.
-      :param scan_type: scan type string for parsing with PyCIFRW ('standard' or 'flex'). See CifFile.ReadCif
-      :param parse_policy: 'eager' (parse CIF file on set_file) or 'lazy' (defer parsing until needed)
 
    .. py:method:: read_cif(fileobj, index=-1, **kwargs)
       :canonical: aiida.orm.nodes.data.cif.CifData.read_cif
@@ -1788,16 +1800,15 @@ API
    methods (e.g., the set_preexec_code() can be used to load specific modules required
    for the code to be run).
 
-   .. py:method:: __init__(remote_computer_exec=None, local_executable=None, input_plugin_name=None, files=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.code.legacy.Code.__init__
+   .. rubric:: Initialization
 
-      Construct a new instance.
+   Construct a new instance.
 
-      :param default_calc_job_plugin: The entry point name of the default ``CalcJob`` plugin to use.
-      :param append_text: The text that should be appended to the run line in the job script.
-      :param prepend_text: The text that should be prepended to the run line in the job script.
-      :param use_double_quotes: Whether the command line invocation of this code should be escaped with double quotes.
-      :param is_hidden: Whether the code is hidden.
+   :param default_calc_job_plugin: The entry point name of the default ``CalcJob`` plugin to use.
+   :param append_text: The text that should be appended to the run line in the job script.
+   :param prepend_text: The text that should be prepended to the run line in the job script.
+   :param use_double_quotes: Whether the command line invocation of this code should be escaped with double quotes.
+   :param is_hidden: Whether the code is hidden.
 
    .. py:attribute:: HIDDEN_KEY
       :canonical: aiida.orm.nodes.data.code.legacy.Code.HIDDEN_KEY
@@ -2113,6 +2124,13 @@ API
 
    Container class that represents the collection of objects of a particular entity type.
 
+   .. rubric:: Initialization
+
+   Construct a new entity collection.
+
+   :param entity_class: the entity type e.g. User, Computer, etc
+   :param backend: the backend instance to get the collection for, or use the default
+
    .. py:method:: _entity_base_cls() -> typing.Type[aiida.orm.entities.EntityType]
       :canonical: aiida.orm.entities.Collection._entity_base_cls
       :abstractmethod:
@@ -2127,14 +2145,6 @@ API
       Get the cached collection instance for the given entity class and backend.
 
       :param backend: the backend instance to get the collection for
-
-   .. py:method:: __init__(entity_class: typing.Type[aiida.orm.entities.EntityType], backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None) -> None
-      :canonical: aiida.orm.entities.Collection.__init__
-
-      Construct a new entity collection.
-
-      :param entity_class: the entity type e.g. User, Computer, etc
-      :param backend: the backend instance to get the collection for, or use the default
 
    .. py:method:: __call__(backend: aiida.orm.implementation.StorageBackend) -> aiida.orm.entities.CollectionType
       :canonical: aiida.orm.entities.Collection.__call__
@@ -2206,21 +2216,20 @@ API
 
    Base class to map a DbComment that represents a comment attached to a certain Node.
 
+   .. rubric:: Initialization
+
+   Create a Comment for a given node and user
+
+   :param node: a Node instance
+   :param user: a User instance
+   :param content: the comment content
+   :param backend: the backend to use for the instance, or use the default backend if None
+
+   :return: a Comment object associated to the given node and user
+
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.comments.Comment._CLS_COLLECTION
       :value: None
-
-   .. py:method:: __init__(node: aiida.orm.Node, user: aiida.orm.User, content: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
-      :canonical: aiida.orm.comments.Comment.__init__
-
-      Create a Comment for a given node and user
-
-      :param node: a Node instance
-      :param user: a User instance
-      :param content: the comment content
-      :param backend: the backend to use for the instance, or use the default backend if None
-
-      :return: a Comment object associated to the given node and user
 
    .. py:method:: __str__() -> str
       :canonical: aiida.orm.comments.Comment.__str__
@@ -2271,6 +2280,10 @@ API
 
    Computer entity.
 
+   .. rubric:: Initialization
+
+   Construct a new computer.
+
    .. py:attribute:: _logger
       :canonical: aiida.orm.computers.Computer._logger
       :value: None
@@ -2294,11 +2307,6 @@ API
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.computers.Computer._CLS_COLLECTION
       :value: None
-
-   .. py:method:: __init__(label: typing.Optional[str] = None, hostname: str = '', description: str = '', transport_type: str = '', scheduler_type: str = '', workdir: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None) -> None
-      :canonical: aiida.orm.computers.Computer.__init__
-
-      Construct a new computer.
 
    .. py:method:: __repr__()
       :canonical: aiida.orm.computers.Computer.__repr__
@@ -2716,9 +2724,6 @@ API
       :type: str
       :value: 'image_name'
 
-   .. py:method:: __init__(engine_command: str, image_name: str, **kwargs)
-      :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.__init__
-
    .. py:property:: filepath_executable
       :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.filepath_executable
       :type: pathlib.PurePosixPath
@@ -2775,6 +2780,10 @@ API
    Calculation plugins are responsible for converting raw output data from simulation codes to Data nodes.
    Nodes are responsible for validating their content (see _validate method).
 
+   .. rubric:: Initialization
+
+   Construct a new instance, setting the ``source`` attribute if provided as a keyword argument.
+
    .. py:attribute:: _source_attributes
       :canonical: aiida.orm.nodes.data.data.Data._source_attributes
       :value: ['db_name', 'db_uri', 'uri', 'id', 'version', 'extras', 'source_md5', 'description', 'license']
@@ -2791,11 +2800,6 @@ API
    .. py:attribute:: _unstorable_message
       :canonical: aiida.orm.nodes.data.data.Data._unstorable_message
       :value: 'storing for this node has been disabled'
-
-   .. py:method:: __init__(*args, source=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.data.Data.__init__
-
-      Construct a new instance, setting the ``source`` attribute if provided as a keyword argument.
 
    .. py:method:: __copy__()
       :canonical: aiida.orm.nodes.data.data.Data.__copy__
@@ -2965,17 +2969,16 @@ API
 
    Finally, all dictionary mutations will be forbidden once the node is stored.
 
-   .. py:method:: __init__(value=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.dict.Dict.__init__
+   .. rubric:: Initialization
 
-      Initialise a ``Dict`` node instance.
+   Initialise a ``Dict`` node instance.
 
-      Usual rules for attribute names apply, in particular, keys cannot start with an underscore, or a ``ValueError``
-      will be raised.
+   Usual rules for attribute names apply, in particular, keys cannot start with an underscore, or a ``ValueError``
+   will be raised.
 
-      Initial attributes can be changed, deleted or added as long as the node is not stored.
+   Initial attributes can be changed, deleted or added as long as the node is not stored.
 
-      :param value: dictionary to initialise the ``Dict`` node from
+   :param value: dictionary to initialise the ``Dict`` node from
 
    .. py:method:: __getitem__(key)
       :canonical: aiida.orm.nodes.data.dict.Dict.__getitem__
@@ -3042,6 +3045,10 @@ API
 
    An AiiDA entity
 
+   .. rubric:: Initialization
+
+   :param backend_entity: the backend model supporting this entity
+
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.entities.Entity._CLS_COLLECTION
       :type: typing.Type[aiida.orm.entities.CollectionType]
@@ -3081,11 +3088,6 @@ API
       :param backend_entity: the backend entity
 
       :return: an AiiDA entity instance
-
-   .. py:method:: __init__(backend_entity: aiida.orm.entities.BackendEntityType) -> None
-      :canonical: aiida.orm.entities.Entity.__init__
-
-      :param backend_entity: the backend model supporting this entity
 
    .. py:method:: __getstate__()
       :canonical: aiida.orm.entities.Entity.__getstate__
@@ -3155,10 +3157,9 @@ API
    Extras are mutable, even after storing the entity,
    and as such are not deemed a core part of the provenance graph.
 
-   .. py:method:: __init__(entity: typing.Union[aiida.orm.nodes.node.Node, aiida.orm.groups.Group]) -> None
-      :canonical: aiida.orm.extras.EntityExtras.__init__
+   .. rubric:: Initialization
 
-      Initialize the interface.
+   Initialize the interface.
 
    .. py:method:: __contains__(key: str) -> bool
       :canonical: aiida.orm.extras.EntityExtras.__contains__
@@ -3334,6 +3335,10 @@ API
    itself can be retrieved from the ``get_enum`` method. Like a normal enum member, the ``EnumData`` plugin provides
    the ``name`` and ``value`` properties which return the name and value of the enum member, respectively.
 
+   .. rubric:: Initialization
+
+   Construct the node for the to enum member that is to be wrapped.
+
    .. py:attribute:: KEY_NAME
       :canonical: aiida.orm.nodes.data.enum.EnumData.KEY_NAME
       :value: 'name'
@@ -3345,11 +3350,6 @@ API
    .. py:attribute:: KEY_IDENTIFIER
       :canonical: aiida.orm.nodes.data.enum.EnumData.KEY_IDENTIFIER
       :value: 'identifier'
-
-   .. py:method:: __init__(member: enum.Enum, *args, **kwargs)
-      :canonical: aiida.orm.nodes.data.enum.EnumData.__init__
-
-      Construct the node for the to enum member that is to be wrapped.
 
    .. py:property:: name
       :canonical: aiida.orm.nodes.data.enum.EnumData.name
@@ -3405,24 +3405,23 @@ API
 
    `Data` sub class to represent a folder on a file system.
 
-   .. py:method:: __init__(**kwargs)
-      :canonical: aiida.orm.nodes.data.folder.FolderData.__init__
+   .. rubric:: Initialization
 
-      Construct a new `FolderData` to which any files and folders can be added.
+   Construct a new `FolderData` to which any files and folders can be added.
 
-      Use the `tree` keyword to simply wrap a directory:
+   Use the `tree` keyword to simply wrap a directory:
 
-          folder = FolderData(tree='/absolute/path/to/directory')
+       folder = FolderData(tree='/absolute/path/to/directory')
 
-      Alternatively, one can construct the node first and then use the various repository methods to add objects:
+   Alternatively, one can construct the node first and then use the various repository methods to add objects:
 
-          folder = FolderData()
-          folder.put_object_from_tree('/absolute/path/to/directory')
-          folder.put_object_from_filepath('/absolute/path/to/file.txt')
-          folder.put_object_from_filelike(filelike_object)
+       folder = FolderData()
+       folder.put_object_from_tree('/absolute/path/to/directory')
+       folder.put_object_from_filepath('/absolute/path/to/file.txt')
+       folder.put_object_from_filelike(filelike_object)
 
-      :param tree: absolute path to a folder to wrap
-      :type tree: str
+   :param tree: absolute path to a folder to wrap
+   :type tree: str
 
 .. py:class:: Group(label: typing.Optional[str] = None, user: typing.Optional[aiida.orm.User] = None, description: str = '', type_string: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.groups.Group
@@ -3430,6 +3429,18 @@ API
    Bases: :py:obj:`aiida.orm.entities.Entity`\ [\ :py:obj:`aiida.orm.implementation.BackendGroup`\ , :py:obj:`aiida.orm.groups.GroupCollection`\ ]
 
    An AiiDA ORM implementation of group of nodes.
+
+   .. rubric:: Initialization
+
+   Create a new group. Either pass a dbgroup parameter, to reload
+   a group from the DB (and then, no further parameters are allowed),
+   or pass the parameters for the Group creation.
+
+   :param label: The group label, required on creation
+   :param description: The group description (by default, an empty string)
+   :param user: The owner of the group (by default, the automatic user)
+   :param type_string: a string identifying the type of group (by default,
+       an empty string, indicating an user-defined group.
 
    .. py:attribute:: _type_string
       :canonical: aiida.orm.groups.Group._type_string
@@ -3439,19 +3450,6 @@ API
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.groups.Group._CLS_COLLECTION
       :value: None
-
-   .. py:method:: __init__(label: typing.Optional[str] = None, user: typing.Optional[aiida.orm.User] = None, description: str = '', type_string: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
-      :canonical: aiida.orm.groups.Group.__init__
-
-      Create a new group. Either pass a dbgroup parameter, to reload
-      a group from the DB (and then, no further parameters are allowed),
-      or pass the parameters for the Group creation.
-
-      :param label: The group label, required on creation
-      :param description: The group description (by default, an empty string)
-      :param user: The owner of the group (by default, the automatic user)
-      :param type_string: a string identifying the type of group (by default,
-          an empty string, indicating an user-defined group.
 
    .. py:method:: base() -> aiida.orm.groups.GroupBase
       :canonical: aiida.orm.groups.Group.base
@@ -3610,6 +3608,18 @@ API
 
    Group to be used to contain all nodes from an export archive that has been imported.
 
+   .. rubric:: Initialization
+
+   Create a new group. Either pass a dbgroup parameter, to reload
+   a group from the DB (and then, no further parameters are allowed),
+   or pass the parameters for the Group creation.
+
+   :param label: The group label, required on creation
+   :param description: The group description (by default, an empty string)
+   :param user: The owner of the group (by default, the automatic user)
+   :param type_string: a string identifying the type of group (by default,
+       an empty string, indicating an user-defined group.
+
 .. py:class:: InstalledCode(computer: aiida.orm.Computer, filepath_executable: str, **kwargs)
    :canonical: aiida.orm.nodes.data.code.installed.InstalledCode
 
@@ -3617,18 +3627,17 @@ API
 
    Data plugin representing an executable code on a remote computer.
 
+   .. rubric:: Initialization
+
+   Construct a new instance.
+
+   :param computer: The remote computer on which the executable is located.
+   :param filepath_executable: The absolute filepath of the executable on the remote computer.
+
    .. py:attribute:: _KEY_ATTRIBUTE_FILEPATH_EXECUTABLE
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode._KEY_ATTRIBUTE_FILEPATH_EXECUTABLE
       :type: str
       :value: 'filepath_executable'
-
-   .. py:method:: __init__(computer: aiida.orm.Computer, filepath_executable: str, **kwargs)
-      :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.__init__
-
-      Construct a new instance.
-
-      :param computer: The remote computer on which the executable is located.
-      :param filepath_executable: The absolute filepath of the executable on the remote computer.
 
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode._validate
@@ -3747,10 +3756,9 @@ API
    Of course, this requires that the class of the originally wrapped instance can be imported in the current
    environment, or an ``ImportError`` will be raised.
 
-   .. py:method:: __init__(obj: aiida.orm.nodes.data.jsonable.JsonSerializableProtocol, *args, **kwargs)
-      :canonical: aiida.orm.nodes.data.jsonable.JsonableData.__init__
+   .. rubric:: Initialization
 
-      Construct the node for the to be wrapped object.
+   Construct the node for the to be wrapped object.
 
    .. py:method:: _deserialize_float_constants(data: typing.Any)
       :canonical: aiida.orm.nodes.data.jsonable.JsonableData._deserialize_float_constants
@@ -3794,30 +3802,29 @@ API
 
    It can be a single atom, or an alloy, or even contain vacancies.
 
-   .. py:method:: __init__(**kwargs)
-      :canonical: aiida.orm.nodes.data.structure.Kind.__init__
+   .. rubric:: Initialization
 
-      Create a site.
-      One can either pass:
+   Create a site.
+   One can either pass:
 
-      :param raw: the raw python dictionary that will be converted to a
-             Kind object.
-      :param ase: an ase Atom object
-      :param kind: a Kind object (to get a copy)
+   :param raw: the raw python dictionary that will be converted to a
+          Kind object.
+   :param ase: an ase Atom object
+   :param kind: a Kind object (to get a copy)
 
-      Or alternatively the following parameters:
+   Or alternatively the following parameters:
 
-      :param symbols: a single string for the symbol of this site, or a list
-                 of symbol strings
-      :param weights: (optional) the weights for each atomic species of
-                 this site.
-                 If only a single symbol is provided, then this value is
-                 optional and the weight is set to 1.
-      :param mass: (optional) the mass for this site in atomic mass units.
-                 If not provided, the mass is set by the
-                 self.reset_mass() function.
-      :param name: a string that uniquely identifies the kind, and that
-                 is used to identify the sites.
+   :param symbols: a single string for the symbol of this site, or a list
+              of symbol strings
+   :param weights: (optional) the weights for each atomic species of
+              this site.
+              If only a single symbol is provided, then this value is
+              optional and the weight is set to 1.
+   :param mass: (optional) the mass for this site in atomic mass units.
+              If not provided, the mass is set by the
+              self.reset_mass() function.
+   :param name: a string that uniquely identifies the kind, and that
+              is used to identify the sites.
 
    .. py:method:: get_raw()
       :canonical: aiida.orm.nodes.data.structure.Kind.get_raw
@@ -4170,10 +4177,9 @@ API
    The methods `all_nodes` and `all_link_labels` are syntactic sugar wrappers around `all` to get a list of only the
    incoming nodes or link labels, respectively.
 
-   .. py:method:: __init__(link_triples: typing.List[aiida.orm.utils.links.LinkTriple])
-      :canonical: aiida.orm.utils.links.LinkManager.__init__
+   .. rubric:: Initialization
 
-      Initialise the collection.
+   Initialise the collection.
 
    .. py:method:: __iter__() -> typing.Iterator[aiida.orm.utils.links.LinkTriple]
       :canonical: aiida.orm.utils.links.LinkManager.__iter__
@@ -4305,16 +4311,15 @@ API
 
    `Data` sub class to represent a list.
 
+   .. rubric:: Initialization
+
+   Initialise a ``List`` node instance.
+
+   :param value: list to initialise the ``List`` node from
+
    .. py:attribute:: _LIST_KEY
       :canonical: aiida.orm.nodes.data.list.List._LIST_KEY
       :value: 'list'
-
-   .. py:method:: __init__(value=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.list.List.__init__
-
-      Initialise a ``List`` node instance.
-
-      :param value: list to initialise the ``List`` node from
 
    .. py:method:: __getitem__(item)
       :canonical: aiida.orm.nodes.data.list.List.__getitem__
@@ -4418,22 +4423,21 @@ API
 
    An AiiDA Log entity.  Corresponds to a logged message against a particular AiiDA node.
 
+   .. rubric:: Initialization
+
+   Construct a new log
+
+   :param time: time
+   :param loggername: name of logger
+   :param levelname: name of log level
+   :param dbnode_id: id of database node
+   :param message: log message
+   :param metadata: metadata
+   :param backend: database backend
+
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.logs.Log._CLS_COLLECTION
       :value: None
-
-   .. py:method:: __init__(time: datetime.datetime, loggername: str, levelname: str, dbnode_id: int, message: str = '', metadata: typing.Optional[typing.Dict[str, typing.Any]] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
-      :canonical: aiida.orm.logs.Log.__init__
-
-      Construct a new log
-
-      :param time: time
-      :param loggername: name of logger
-      :param levelname: name of log level
-      :param dbnode_id: id of database node
-      :param message: log message
-      :param metadata: metadata
-      :param backend: database backend
 
    .. py:property:: uuid
       :canonical: aiida.orm.logs.Log.uuid
@@ -4511,6 +4515,10 @@ API
    In the plugin, also set the _plugin_type_string, to be set in the DB in
    the 'type' field.
 
+   .. rubric:: Initialization
+
+   :param backend_entity: the backend model supporting this entity
+
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.nodes.node.Node._CLS_COLLECTION
       :value: None
@@ -4559,11 +4567,6 @@ API
    .. py:attribute:: _unstorable_message
       :canonical: aiida.orm.nodes.node.Node._unstorable_message
       :value: 'only Data, WorkflowNode, CalculationNode or their subclasses can be stored'
-
-   .. py:method:: __init__(backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None, user: typing.Optional[aiida.orm.users.User] = None, computer: typing.Optional[aiida.orm.computers.Computer] = None, **kwargs: typing.Any) -> None
-      :canonical: aiida.orm.nodes.node.Node.__init__
-
-      :param backend_entity: the backend model supporting this entity
 
    .. py:method:: base() -> aiida.orm.nodes.node.NodeBase
       :canonical: aiida.orm.nodes.node.Node.base
@@ -4839,10 +4842,9 @@ API
    Once the node is stored, the attributes are generally deemed immutable
    (except for some updatable keys on process nodes, which can be mutated whilst the node is not "sealed").
 
-   .. py:method:: __init__(node: aiida.orm.nodes.node.Node) -> None
-      :canonical: aiida.orm.nodes.attributes.NodeAttributes.__init__
+   .. rubric:: Initialization
 
-      Initialize the interface.
+   Initialize the interface.
 
    .. py:method:: __contains__(key: str) -> bool
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.__contains__
@@ -5004,19 +5006,18 @@ API
    A manager that allows to inspect, with tab-completion, nodes linked to a given one.
    See an example of its use in `CalculationNode.inputs`.
 
+   .. rubric:: Initialization
+
+   Initialise the link manager.
+
+   :param node: the reference node object
+   :param link_type: the link_type to inspect
+   :param incoming: if True, inspect incoming links, otherwise inspect
+       outgoing links
+
    .. py:attribute:: _namespace_separator
       :canonical: aiida.orm.utils.managers.NodeLinksManager._namespace_separator
       :value: '__'
-
-   .. py:method:: __init__(node, link_type, incoming)
-      :canonical: aiida.orm.utils.managers.NodeLinksManager.__init__
-
-      Initialise the link manager.
-
-      :param node: the reference node object
-      :param link_type: the link_type to inspect
-      :param incoming: if True, inspect incoming links, otherwise inspect
-          outgoing links
 
    .. py:method:: _construct_attribute_dict(incoming)
       :canonical: aiida.orm.utils.managers.NodeLinksManager._construct_attribute_dict
@@ -5108,10 +5109,9 @@ API
    Note that this does mean that ``repository_metadata`` does not give accurate information,
    as long as the node is not yet stored.
 
-   .. py:method:: __init__(node: aiida.orm.nodes.node.Node) -> None
-      :canonical: aiida.orm.nodes.repository.NodeRepository.__init__
+   .. rubric:: Initialization
 
-      Construct a new instance of the repository interface.
+   Construct a new instance of the repository interface.
 
    .. py:property:: metadata
       :canonical: aiida.orm.nodes.repository.NodeRepository.metadata
@@ -5581,28 +5581,27 @@ API
 
    Data plugin representing an executable code stored in AiiDA's storage.
 
+   .. rubric:: Initialization
+
+   Construct a new instance.
+
+   .. note:: If the files necessary for this code are not all located in a single directory or the directory
+       contains files that should not be uploaded, and so the ``filepath_files`` cannot be used. One can use the
+       methods of the :class:`aiida.orm.nodes.repository.NodeRepository` class. This can be accessed through the
+       ``base.repository`` attribute of the instance after it has been constructed. For example::
+
+           code = PortableCode(filepath_executable='some_name.exe')
+           code.put_object_from_file()
+           code.put_object_from_filelike()
+           code.put_object_from_tree()
+
+   :param filepath_executable: The relative filepath of the executable within the directory of uploaded files.
+   :param filepath_files: The filepath to the directory containing all the files of the code.
+
    .. py:attribute:: _KEY_ATTRIBUTE_FILEPATH_EXECUTABLE
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode._KEY_ATTRIBUTE_FILEPATH_EXECUTABLE
       :type: str
       :value: 'filepath_executable'
-
-   .. py:method:: __init__(filepath_executable: str, filepath_files: pathlib.Path, **kwargs)
-      :canonical: aiida.orm.nodes.data.code.portable.PortableCode.__init__
-
-      Construct a new instance.
-
-      .. note:: If the files necessary for this code are not all located in a single directory or the directory
-          contains files that should not be uploaded, and so the ``filepath_files`` cannot be used. One can use the
-          methods of the :class:`aiida.orm.nodes.repository.NodeRepository` class. This can be accessed through the
-          ``base.repository`` attribute of the instance after it has been constructed. For example::
-
-              code = PortableCode(filepath_executable='some_name.exe')
-              code.put_object_from_file()
-              code.put_object_from_filelike()
-              code.put_object_from_tree()
-
-      :param filepath_executable: The relative filepath of the executable within the directory of uploaded files.
-      :param filepath_files: The filepath to the directory containing all the files of the code.
 
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode._validate
@@ -5680,6 +5679,10 @@ API
    of `Process`) to persist important information of its state to the database. This serves as a way for the user to
    inspect the state of the `Process` during its execution as well as a permanent record of its execution in the
    provenance graph, after the execution has terminated.
+
+   .. rubric:: Initialization
+
+   :param backend_entity: the backend model supporting this entity
 
    .. py:attribute:: _CLS_NODE_LINKS
       :canonical: aiida.orm.nodes.process.process.ProcessNode._CLS_NODE_LINKS
@@ -6011,6 +6014,10 @@ API
    s, n, and k. E.g. the elements are the projections described as
    < orbital | Bloch wavefunction (s,n,k) >
 
+   .. rubric:: Initialization
+
+   Construct a new instance, setting the ``source`` attribute if provided as a keyword argument.
+
    .. py:method:: _check_projections_bands(projection_array)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData._check_projections_bands
 
@@ -6134,6 +6141,38 @@ API
        results = qb.all()
 
 
+   .. rubric:: Initialization
+
+   Instantiates a QueryBuilder instance.
+
+   Which backend is used decided here based on backend-settings (taken from the user profile).
+   This cannot be overridden so far by the user.
+
+   :param debug:
+       Turn on debug mode. This feature prints information on the screen about the stages
+       of the QueryBuilder. Does not affect results.
+   :param path:
+       A list of the vertices to traverse. Leave empty if you plan on using the method
+       :func:`QueryBuilder.append`.
+   :param filters:
+       The filters to apply. You can specify the filters here, when appending to the query
+       using :func:`QueryBuilder.append` or even later using :func:`QueryBuilder.add_filter`.
+       Check latter gives API-details.
+   :param project:
+       The projections to apply. You can specify the projections here, when appending to the query
+       using :func:`QueryBuilder.append` or even later using :func:`QueryBuilder.add_projection`.
+       Latter gives you API-details.
+   :param limit:
+       Limit the number of rows to this number. Check :func:`QueryBuilder.limit`
+       for more information.
+   :param offset:
+       Set an offset for the results returned. Details in :func:`QueryBuilder.offset`.
+   :param order_by:
+       How to order the results. As the 2 above, can be set also at later stage,
+       check :func:`QueryBuilder.order_by` for more information.
+   :param distinct: Whether to return de-duplicated rows
+
+
    .. py:attribute:: _EDGE_TAG_DELIM
       :canonical: aiida.orm.querybuilder.QueryBuilder._EDGE_TAG_DELIM
       :value: '--'
@@ -6141,39 +6180,6 @@ API
    .. py:attribute:: _VALID_PROJECTION_KEYS
       :canonical: aiida.orm.querybuilder.QueryBuilder._VALID_PROJECTION_KEYS
       :value: ('func', 'cast')
-
-   .. py:method:: __init__(backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None, *, debug: bool = False, path: typing.Optional[typing.Sequence[typing.Union[str, typing.Dict[str, typing.Any], aiida.orm.querybuilder.EntityClsType]]] = (), filters: typing.Optional[typing.Dict[str, aiida.orm.querybuilder.FilterType]] = None, project: typing.Optional[typing.Dict[str, aiida.orm.querybuilder.ProjectType]] = None, limit: typing.Optional[int] = None, offset: typing.Optional[int] = None, order_by: typing.Optional[aiida.orm.querybuilder.OrderByType] = None, distinct: bool = False) -> None
-      :canonical: aiida.orm.querybuilder.QueryBuilder.__init__
-
-      Instantiates a QueryBuilder instance.
-
-      Which backend is used decided here based on backend-settings (taken from the user profile).
-      This cannot be overridden so far by the user.
-
-      :param debug:
-          Turn on debug mode. This feature prints information on the screen about the stages
-          of the QueryBuilder. Does not affect results.
-      :param path:
-          A list of the vertices to traverse. Leave empty if you plan on using the method
-          :func:`QueryBuilder.append`.
-      :param filters:
-          The filters to apply. You can specify the filters here, when appending to the query
-          using :func:`QueryBuilder.append` or even later using :func:`QueryBuilder.add_filter`.
-          Check latter gives API-details.
-      :param project:
-          The projections to apply. You can specify the projections here, when appending to the query
-          using :func:`QueryBuilder.append` or even later using :func:`QueryBuilder.add_projection`.
-          Latter gives you API-details.
-      :param limit:
-          Limit the number of rows to this number. Check :func:`QueryBuilder.limit`
-          for more information.
-      :param offset:
-          Set an offset for the results returned. Details in :func:`QueryBuilder.offset`.
-      :param order_by:
-          How to order the results. As the 2 above, can be set also at later stage,
-          check :func:`QueryBuilder.order_by` for more information.
-      :param distinct: Whether to return de-duplicated rows
-
 
    .. py:property:: backend
       :canonical: aiida.orm.querybuilder.QueryBuilder.backend
@@ -6681,14 +6687,13 @@ API
 
    Remember to pass a computer!
 
+   .. rubric:: Initialization
+
+   Construct a new instance, setting the ``source`` attribute if provided as a keyword argument.
+
    .. py:attribute:: KEY_EXTRA_CLEANED
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.KEY_EXTRA_CLEANED
       :value: 'cleaned'
-
-   .. py:method:: __init__(remote_path=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.remote.base.RemoteData.__init__
-
-      Construct a new instance, setting the ``source`` attribute if provided as a keyword argument.
 
    .. py:method:: get_remote_path()
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.get_remote_path
@@ -6774,16 +6779,15 @@ API
    implementing all these variants in the same class will lead to an unintuitive interface where certain properties or
    methods of the class will only be available or function properly based on the ``stash_mode``.
 
+   .. rubric:: Initialization
+
+   Construct a new instance
+
+   :param stash_mode: the stashing mode with which the data was stashed on the remote.
+
    .. py:attribute:: _storable
       :canonical: aiida.orm.nodes.data.remote.stash.base.RemoteStashData._storable
       :value: False
-
-   .. py:method:: __init__(stash_mode: aiida.common.datastructures.StashMode, **kwargs)
-      :canonical: aiida.orm.nodes.data.remote.stash.base.RemoteStashData.__init__
-
-      Construct a new instance
-
-      :param stash_mode: the stashing mode with which the data was stashed on the remote.
 
    .. py:property:: stash_mode
       :canonical: aiida.orm.nodes.data.remote.stash.base.RemoteStashData.stash_mode
@@ -6802,18 +6806,17 @@ API
 
    This data plugin can and should be used to stash files if and only if the stash mode is `StashMode.COPY`.
 
+   .. rubric:: Initialization
+
+   Construct a new instance
+
+   :param stash_mode: the stashing mode with which the data was stashed on the remote.
+   :param target_basepath: the target basepath.
+   :param source_list: the list of source files.
+
    .. py:attribute:: _storable
       :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData._storable
       :value: True
-
-   .. py:method:: __init__(stash_mode: aiida.common.datastructures.StashMode, target_basepath: str, source_list: typing.List, **kwargs)
-      :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData.__init__
-
-      Construct a new instance
-
-      :param stash_mode: the stashing mode with which the data was stashed on the remote.
-      :param target_basepath: the target basepath.
-      :param source_list: the list of source files.
 
    .. py:property:: target_basepath
       :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData.target_basepath
@@ -6838,18 +6841,17 @@ API
 
    Data class that can be used to store a single file in its repository.
 
+   .. rubric:: Initialization
+
+   Construct a new instance and set the contents to that of the file.
+
+   :param file: an absolute filepath or filelike object whose contents to copy.
+       Hint: Pass io.BytesIO(b"my string") to construct the SinglefileData directly from a string.
+   :param filename: specify filename to use (defaults to name of provided file).
+
    .. py:attribute:: DEFAULT_FILENAME
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.DEFAULT_FILENAME
       :value: 'file.txt'
-
-   .. py:method:: __init__(file, filename=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.__init__
-
-      Construct a new instance and set the contents to that of the file.
-
-      :param file: an absolute filepath or filelike object whose contents to copy.
-          Hint: Pass io.BytesIO(b"my string") to construct the SinglefileData directly from a string.
-      :param filename: specify filename to use (defaults to name of provided file).
 
    .. py:property:: filename
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.filename
@@ -6895,16 +6897,15 @@ API
 
    It can be a single atom, or an alloy, or even contain vacancies.
 
-   .. py:method:: __init__(**kwargs)
-      :canonical: aiida.orm.nodes.data.structure.Site.__init__
+   .. rubric:: Initialization
 
-      Create a site.
+   Create a site.
 
-      :param kind_name: a string that identifies the kind (species) of this site.
-              This has to be found in the list of kinds of the StructureData
-              object.
-              Validation will be done at the StructureData level.
-      :param position: the absolute position (three floats) in angstrom
+   :param kind_name: a string that identifies the kind (species) of this site.
+           This has to be found in the list of kinds of the StructureData
+           object.
+           Validation will be done at the StructureData level.
+   :param position: the absolute position (three floats) in angstrom
 
    .. py:method:: get_raw()
       :canonical: aiida.orm.nodes.data.structure.Site.get_raw
@@ -6981,9 +6982,6 @@ API
    .. py:attribute:: _internal_kind_tags
       :canonical: aiida.orm.nodes.data.structure.StructureData._internal_kind_tags
       :value: None
-
-   .. py:method:: __init__(cell=None, pbc=None, ase=None, pymatgen=None, pymatgen_structure=None, pymatgen_molecule=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.structure.StructureData.__init__
 
    .. py:method:: get_dimensionality()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_dimensionality
@@ -7499,9 +7497,6 @@ API
    Stores a trajectory (a sequence of crystal structures with timestamps, and
    possibly with velocities).
 
-   .. py:method:: __init__(structurelist=None, **kwargs)
-      :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.__init__
-
    .. py:method:: _internal_validate(stepids, cells, symbols, positions, times, velocities)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData._internal_validate
 
@@ -7810,6 +7805,14 @@ API
 
    `Data` sub class to represent a pseudopotential single file in UPF format.
 
+   .. rubric:: Initialization
+
+   Construct a new instance and set the contents to that of the file.
+
+   :param file: an absolute filepath or filelike object whose contents to copy.
+       Hint: Pass io.BytesIO(b"my string") to construct the SinglefileData directly from a string.
+   :param filename: specify filename to use (defaults to name of provided file).
+
    .. py:method:: get_or_create(filepath, use_first=False, store_upf=True)
       :canonical: aiida.orm.nodes.data.upf.UpfData.get_or_create
       :classmethod:
@@ -7910,6 +7913,18 @@ API
 
    Group that represents a pseudo potential family containing `UpfData` nodes.
 
+   .. rubric:: Initialization
+
+   Create a new group. Either pass a dbgroup parameter, to reload
+   a group from the DB (and then, no further parameters are allowed),
+   or pass the parameters for the Group creation.
+
+   :param label: The group label, required on creation
+   :param description: The group description (by default, an empty string)
+   :param user: The owner of the group (by default, the automatic user)
+   :param type_string: a string identifying the type of group (by default,
+       an empty string, indicating an user-defined group.
+
 .. py:class:: User(email: str, first_name: str = '', last_name: str = '', institution: str = '', backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.users.User
 
@@ -7917,14 +7932,13 @@ API
 
    AiiDA User
 
+   .. rubric:: Initialization
+
+   Create a new `User`.
+
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.users.User._CLS_COLLECTION
       :value: None
-
-   .. py:method:: __init__(email: str, first_name: str = '', last_name: str = '', institution: str = '', backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
-      :canonical: aiida.orm.users.User.__init__
-
-      Create a new `User`.
 
    .. py:method:: __str__() -> str
       :canonical: aiida.orm.users.User.__str__
@@ -8017,6 +8031,10 @@ API
    Bases: :py:obj:`aiida.orm.nodes.process.process.ProcessNode`
 
    Base class for all nodes representing the execution of a workflow process.
+
+   .. rubric:: Initialization
+
+   :param backend_entity: the backend model supporting this entity
 
    .. py:attribute:: _CLS_NODE_LINKS
       :canonical: aiida.orm.nodes.process.workflow.workflow.WorkflowNode._CLS_NODE_LINKS
