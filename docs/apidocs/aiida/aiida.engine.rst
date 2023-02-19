@@ -161,7 +161,6 @@ API
       :param tag: optional checkpoint identifier to allow distinguishing multiple checkpoints for the same process
       :raises: :class:`PersistenceError` Raised if there was a problem saving the checkpoint
 
-
    .. py:method:: load_checkpoint(pid: typing.Hashable, tag: typing.Optional[str] = None) -> plumpy.persistence.Bundle
       :canonical: aiida.engine.persistence.AiiDAPersister.load_checkpoint
 
@@ -173,14 +172,12 @@ API
       :rtype: :class:`plumpy.Bundle`
       :raises: :class:`PersistenceError` Raised if there was a problem loading the checkpoint
 
-
    .. py:method:: get_checkpoints()
       :canonical: aiida.engine.persistence.AiiDAPersister.get_checkpoints
 
       Return a list of all the current persisted process checkpoints
 
       :return: list of PersistedCheckpoint tuples with element containing the process id and optional checkpoint tag.
-
 
    .. py:method:: get_process_checkpoints(pid: typing.Hashable)
       :canonical: aiida.engine.persistence.AiiDAPersister.get_process_checkpoints
@@ -190,7 +187,6 @@ API
       :param pid: the process pid
       :return: list of PersistedCheckpoint tuples with element containing the process id and optional checkpoint tag.
 
-
    .. py:method:: delete_checkpoint(pid: typing.Hashable, tag: typing.Optional[str] = None) -> None
       :canonical: aiida.engine.persistence.AiiDAPersister.delete_checkpoint
 
@@ -199,14 +195,12 @@ API
       :param pid: the process id of the :class:`plumpy.Process`
       :param tag: optional checkpoint identifier to allow retrieving a specific sub checkpoint
 
-
    .. py:method:: delete_process_checkpoints(pid: typing.Hashable)
       :canonical: aiida.engine.persistence.AiiDAPersister.delete_process_checkpoints
 
       Delete all persisted checkpoints related to the given process id.
 
       :param pid: the process id of the :class:`aiida.engine.processes.process.Process`
-
 
 .. py:class:: Awaitable
    :canonical: aiida.engine.processes.workchains.awaitable.Awaitable
@@ -296,7 +290,6 @@ API
    The `process_handler` and `ProcessHandlerReport` support various arguments to control the flow of the logic of the
    `inspect_process`. Refer to their respective documentation for details.
 
-
    .. py:attribute:: _process_class
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain._process_class
       :type: typing.Optional[typing.Type[aiida.engine.processes.Process]]
@@ -331,7 +324,6 @@ API
       This is the case as long as the last process has not finished successfully and the maximum number of restarts
       has not yet been exceeded.
 
-
    .. py:method:: run_process() -> aiida.engine.processes.workchains.context.ToContext
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.run_process
 
@@ -360,7 +352,6 @@ API
       and it will move on to the next step that directly follows the `while` conditional, if there is one defined in
       the outline.
 
-
    .. py:method:: get_outputs(node) -> typing.Mapping[str, aiida.orm.Node]
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.get_outputs
 
@@ -369,7 +360,6 @@ API
       By default this method returns the outputs of the last completed calculation job. This method can be overridden
       if the implementation wants to update those outputs before attaching them. Make sure that if the content of an
       output node is modified that this is done through a calcfunction in order to not lose the provenance.
-
 
    .. py:method:: results() -> typing.Optional[aiida.engine.processes.ExitCode]
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.results
@@ -389,7 +379,6 @@ API
 
       :param process_handler_name: string name of the instance method
       :return: boolean, True if corresponds to process handler, False otherwise
-
 
    .. py:method:: get_process_handlers() -> typing.List[types.FunctionType]
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.get_process_handlers
@@ -413,7 +402,6 @@ API
       :param port_namespace: a `PortNamespace`
       :param inputs: a dictionary of inputs intended for submission of the process
       :return: an attribute dictionary with all bare dictionaries wrapped in `Dict` if dictated by the port namespace
-
 
 .. py:class:: CalcJob(*args, **kwargs)
    :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob
@@ -444,7 +432,6 @@ API
 
       See documentation of :class:`aiida.engine.Process`.
 
-
    .. py:method:: define(spec: aiida.engine.processes.process_spec.CalcJobProcessSpec) -> None
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.define
       :classmethod:
@@ -457,7 +444,6 @@ API
 
       :param spec: the calculation job process spec to define.
 
-
    .. py:method:: spec_options()
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.spec_options
 
@@ -465,7 +451,6 @@ API
 
       :return: options dictionary
       :rtype: dict
-
 
    .. py:method:: get_importer(entry_point_name: str | None = None) -> aiida.engine.processes.calcjobs.importer.CalcJobImporter
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.get_importer
@@ -480,7 +465,6 @@ API
       :return: the loaded ``CalcJobImporter``.
       :raises: if no importer class could be loaded.
 
-
    .. py:property:: options
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.options
       :type: aiida.common.AttributeDict
@@ -488,7 +472,6 @@ API
       Return the options of the metadata that were specified when this process instance was launched.
 
       :return: options dictionary
-
 
 
    .. py:method:: get_state_classes() -> typing.Dict[typing.Hashable, typing.Type[plumpy.process_states.State]]
@@ -499,7 +482,6 @@ API
 
       Overrides the waiting state with the Calcjob specific version.
 
-
    .. py:property:: node
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.node
       :type: aiida.orm.CalcJobNode
@@ -508,14 +490,12 @@ API
 
       :return: instance of sub class of ProcessNode
 
-
    .. py:method:: on_terminated() -> None
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.on_terminated
 
       Cleanup the node by deleting the calulation job state.
 
       .. note:: This has to be done before calling the super because that will seal the node after we cannot change it
-
 
    .. py:method:: run() -> typing.Union[plumpy.process_states.Stop, int, plumpy.process_states.Wait]
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.run
@@ -527,7 +507,6 @@ API
 
       :returns: the `Stop` command if a dry run, int if the process has an exit status,
           `Wait` command if the calcjob is to be uploaded
-
 
 
    .. py:method:: prepare_for_submission(folder: aiida.common.folders.Folder) -> aiida.common.datastructures.CalcInfo
@@ -543,7 +522,6 @@ API
 
       :param folder: a temporary folder on the local file system.
       :returns: the `CalcInfo` instance
-
 
    .. py:method:: _setup_metadata(metadata: dict) -> None
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob._setup_metadata
@@ -566,7 +544,6 @@ API
       input script and the absolute path to the sandbox folder are stored in the `dry_run_info` attribute of the node
       of this process.
 
-
    .. py:method:: _perform_import()
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob._perform_import
 
@@ -576,7 +553,6 @@ API
       as a normal calculation job, but rather the results are already computed outside of AiiDA and merely need to be
       imported.
 
-
    .. py:method:: parse(retrieved_temporary_folder: typing.Optional[str] = None, existing_exit_code: aiida.engine.processes.exit_code.ExitCode | None = None) -> aiida.engine.processes.exit_code.ExitCode
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.parse
 
@@ -585,7 +561,6 @@ API
       This is called once it's finished waiting for the calculation to be finished and the data has been retrieved.
 
       :param retrieved_temporary_folder: The path to the temporary folder
-
 
 
    .. py:method:: terminate(exit_code: aiida.engine.processes.exit_code.ExitCode) -> aiida.engine.processes.exit_code.ExitCode
@@ -600,7 +575,6 @@ API
 
       :param exit_code: The exit code to return.
       :returns: The provided exit code.
-
 
    .. py:method:: parse_scheduler_output(retrieved: aiida.orm.Node) -> typing.Optional[aiida.engine.processes.exit_code.ExitCode]
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.parse_scheduler_output
@@ -622,7 +596,6 @@ API
       :return calcinfo: the CalcInfo object containing the information needed by the daemon to handle operations.
 
 
-
 .. py:class:: CalcJobImporter
    :canonical: aiida.engine.processes.calcjobs.importer.CalcJobImporter
 
@@ -634,7 +607,6 @@ API
    The importer is responsible for parsing the output files of the calculation and creating the
    corresponding AiiDA nodes.
 
-
    .. py:method:: parse_remote_data(remote_data: aiida.orm.RemoteData, **kwargs) -> typing.Dict[str, typing.Union[aiida.orm.Node, typing.Dict]]
       :canonical: aiida.engine.processes.calcjobs.importer.CalcJobImporter.parse_remote_data
       :abstractmethod:
@@ -645,7 +617,6 @@ API
       :param remote_data: the remote data node containing the raw input files.
       :param kwargs: additional keyword arguments to control the parsing process.
       :returns: a dictionary with the parsed inputs nodes that match the input spec of the associated ``CalcJob``.
-
 
 .. py:class:: CalcJobOutputPort(*args, **kwargs)
    :canonical: aiida.engine.processes.ports.CalcJobOutputPort
@@ -707,7 +678,6 @@ API
 
       :param profile: The profile instance.
 
-
    .. py:property:: profile
       :canonical: aiida.engine.daemon.client.DaemonClient.profile
       :type: aiida.manage.configuration.profile.Profile
@@ -726,7 +696,6 @@ API
 
       :raises ConfigurationError: If the path to ``verdi`` could not be found
 
-
    .. py:method:: cmd_start_daemon(number_workers: int = 1, foreground: bool = False) -> list[str]
       :canonical: aiida.engine.daemon.client.DaemonClient.cmd_start_daemon
 
@@ -734,7 +703,6 @@ API
 
       :param number_workers: Number of daemon workers to start.
       :param foreground: Whether to launch the subprocess in the background or not.
-
 
    .. py:property:: cmd_start_daemon_worker
       :canonical: aiida.engine.daemon.client.DaemonClient.cmd_start_daemon_worker
@@ -789,7 +757,6 @@ API
 
       :return: The port for the circus controller.
 
-
    .. py:method:: get_env() -> dict[str, str]
       :canonical: aiida.engine.daemon.client.DaemonClient.get_env
       :staticmethod:
@@ -803,7 +770,6 @@ API
       variable ensures that all Python modules that can be imported by the parent process, are also importable by
       the subprocess. The ``AIIDA_PATH`` variable ensures that the subprocess will use the same AiiDA configuration
       directory as used by the current process.
-
 
    .. py:method:: get_circus_socket_directory() -> str
       :canonical: aiida.engine.daemon.client.DaemonClient.get_circus_socket_directory
@@ -823,14 +789,12 @@ API
 
       :return: The absolute path of directory to write the sockets to.
 
-
    .. py:method:: get_daemon_pid() -> int | None
       :canonical: aiida.engine.daemon.client.DaemonClient.get_daemon_pid
 
       Get the daemon pid which should be written in the daemon pid file specific to the profile.
 
       :return: The pid of the circus daemon process or None if not found.
-
 
    .. py:property:: is_daemon_running
       :canonical: aiida.engine.daemon.client.DaemonClient.is_daemon_running
@@ -840,14 +804,12 @@ API
 
       :return: True if daemon is running, False otherwise.
 
-
    .. py:method:: delete_circus_socket_directory() -> None
       :canonical: aiida.engine.daemon.client.DaemonClient.delete_circus_socket_directory
 
       Attempt to delete the directory used to store the circus endpoint sockets.
 
       Will not raise if the directory does not exist.
-
 
    .. py:method:: get_available_port()
       :canonical: aiida.engine.daemon.client.DaemonClient.get_available_port
@@ -856,7 +818,6 @@ API
       Get an available port from the operating system.
 
       :return: A currently available port.
-
 
    .. py:method:: get_controller_endpoint()
       :canonical: aiida.engine.daemon.client.DaemonClient.get_controller_endpoint
@@ -868,7 +829,6 @@ API
 
       :return: The endpoint string.
 
-
    .. py:method:: get_pubsub_endpoint()
       :canonical: aiida.engine.daemon.client.DaemonClient.get_pubsub_endpoint
 
@@ -878,7 +838,6 @@ API
       will be used.
 
       :return: The endpoint string.
-
 
    .. py:method:: get_stats_endpoint()
       :canonical: aiida.engine.daemon.client.DaemonClient.get_stats_endpoint
@@ -890,7 +849,6 @@ API
 
       :return: The endpoint string.
 
-
    .. py:method:: get_ipc_endpoint(endpoint)
       :canonical: aiida.engine.daemon.client.DaemonClient.get_ipc_endpoint
 
@@ -898,7 +856,6 @@ API
 
       :param endpoint: The circus endpoint for which to return a socket.
       :return: The ipc endpoint string.
-
 
    .. py:method:: get_tcp_endpoint(port=None)
       :canonical: aiida.engine.daemon.client.DaemonClient.get_tcp_endpoint
@@ -910,7 +867,6 @@ API
       :param port: A port to use for the endpoint.
       :return: The tcp endpoint string.
 
-
    .. py:method:: get_client() -> circus.client.CircusClient
       :canonical: aiida.engine.daemon.client.DaemonClient.get_client
 
@@ -920,7 +876,6 @@ API
       starting of the daemon.
 
       :return: CircusClient instance
-
 
    .. py:method:: call_client(command: aiida.engine.daemon.client.JsonDictType) -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.call_client
@@ -934,14 +889,12 @@ API
       :param command: Command to call the circus client with.
       :return: The result of the circus client call.
 
-
    .. py:method:: get_status() -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.get_status
 
       Get the daemon running status.
 
       :return: The client call response. If successful, will will contain 'status' key.
-
 
    .. py:method:: get_numprocesses() -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.get_numprocesses
@@ -950,7 +903,6 @@ API
 
       :return: The client call response. If successful, will contain 'numprocesses' key.
 
-
    .. py:method:: get_worker_info() -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.get_worker_info
 
@@ -958,14 +910,12 @@ API
 
       :return: The client call response. If successful, will contain 'info' key.
 
-
    .. py:method:: get_daemon_info() -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.get_daemon_info
 
       Get statistics about this daemon itself.
 
       :return: The client call response. If successful, will contain 'info' key.
-
 
    .. py:method:: increase_workers(number: int) -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.increase_workers
@@ -975,7 +925,6 @@ API
       :param number: The number of workers to add.
       :return: The client call response.
 
-
    .. py:method:: decrease_workers(number: int) -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.decrease_workers
 
@@ -983,7 +932,6 @@ API
 
       :param number: The number of workers to remove.
       :return: The client call response.
-
 
    .. py:method:: stop_daemon(wait: bool = True, timeout: int = 5) -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.stop_daemon
@@ -995,7 +943,6 @@ API
       :return: The client call response.
       :raises DaemonException: If ``is_daemon_running`` returns ``True`` after the ``timeout`` has passed.
 
-
    .. py:method:: restart_daemon(wait: bool) -> aiida.engine.daemon.client.JsonDictType
       :canonical: aiida.engine.daemon.client.DaemonClient.restart_daemon
 
@@ -1003,7 +950,6 @@ API
 
       :param wait: Boolean to indicate whether to wait for the result of the command.
       :return: The client call response.
-
 
    .. py:method:: start_daemon(number_workers: int = 1, foreground: bool = False, timeout: int = 5) -> None
       :canonical: aiida.engine.daemon.client.DaemonClient.start_daemon
@@ -1017,7 +963,6 @@ API
       :raises DaemonException: If the daemon starts but then is unresponsive or in an unexpected state.
       :raises DaemonException: If ``is_daemon_running`` returns ``False`` after the ``timeout`` has passed.
 
-
    .. py:method:: _await_condition(condition: typing.Callable, exception: Exception, timeout: int = 5, interval: float = 0.1)
       :canonical: aiida.engine.daemon.client.DaemonClient._await_condition
       :staticmethod:
@@ -1030,7 +975,6 @@ API
       :param interval: The time in seconds to wait between invocations of ``condition``.
       :raises: The exception provided by ``exception`` if timeout is reached.
 
-
    .. py:method:: _start_daemon(number_workers: int = 1, foreground: bool = False) -> None
       :canonical: aiida.engine.daemon.client.DaemonClient._start_daemon
 
@@ -1042,7 +986,6 @@ API
 
       :param number_workers: Number of daemon workers to start.
       :param foreground: Whether to launch the subprocess in the background or not.
-
 
 .. py:class:: ExitCode
    :canonical: aiida.engine.processes.exit_code.ExitCode
@@ -1058,7 +1001,6 @@ API
    :param status: positive integer exit status, where a non-zero value indicated the process failed, default is `0`
    :param message: optional message with more details about the failure mode
    :param invalidates_cache: optional flag, indicating that a process should not be used in caching
-
 
    .. py:attribute:: status
       :canonical: aiida.engine.processes.exit_code.ExitCode.status
@@ -1083,7 +1025,6 @@ API
       :param kwargs: replacement parameters for the template message
 
 
-
 .. py:class:: ExitCodesNamespace(dictionary=None)
    :canonical: aiida.engine.processes.exit_code.ExitCodesNamespace
 
@@ -1093,7 +1034,6 @@ API
 
    Additionally, the collection can be called with an identifier, that can either reference the integer `status` of the
    `ExitCode` that needs to be retrieved or the key in the collection.
-
 
    .. py:method:: __call__(identifier: typing.Union[int, str]) -> aiida.engine.processes.exit_code.ExitCode
       :canonical: aiida.engine.processes.exit_code.ExitCodesNamespace.__call__
@@ -1106,7 +1046,6 @@ API
       :returns: an `ExitCode` instance
 
       :raises ValueError: if no exit code with the given label is defined for this process
-
 
 .. py:class:: FunctionProcess(*args, **kwargs)
    :canonical: aiida.engine.processes.functions.FunctionProcess
@@ -1127,7 +1066,6 @@ API
       This is used internally to store the actual function that is being
       wrapped and will be replaced by the build method.
 
-
    .. py:method:: build(func: typing.Callable[..., typing.Any], node_class: typing.Type[aiida.orm.ProcessNode]) -> typing.Type[aiida.engine.processes.functions.FunctionProcess]
       :canonical: aiida.engine.processes.functions.FunctionProcess.build
       :staticmethod:
@@ -1144,7 +1082,6 @@ API
       :return: A Process class that represents the function
 
 
-
    .. py:method:: validate_inputs(*args: typing.Any, **kwargs: typing.Any) -> None
       :canonical: aiida.engine.processes.functions.FunctionProcess.validate_inputs
       :classmethod:
@@ -1152,7 +1089,6 @@ API
       Validate the positional and keyword arguments passed in the function call.
 
       :raises TypeError: if more positional arguments are passed than the function defines
-
 
    .. py:method:: create_inputs(*args: typing.Any, **kwargs: typing.Any) -> typing.Dict[str, typing.Any]
       :canonical: aiida.engine.processes.functions.FunctionProcess.create_inputs
@@ -1169,7 +1105,6 @@ API
       :param args: The values to use for the dictionary
 
       :return: A label -> value dictionary
-
 
 
    .. py:method:: get_or_create_db_record() -> aiida.orm.ProcessNode
@@ -1190,7 +1125,6 @@ API
       class that really represents what was being executed.
 
       :return: A Process class that represents the function
-
 
 
    .. py:method:: execute() -> typing.Optional[typing.Dict[str, typing.Any]]
@@ -1216,7 +1150,6 @@ API
    Sub class of plumpy.InputPort which mixes in the WithSerialize and WithNonDb mixins to support automatic
    value serialization to database storable types and support non database storable input types as well.
 
-
    .. py:method:: __init__(*args, **kwargs) -> None
       :canonical: aiida.engine.processes.ports.InputPort.__init__
 
@@ -1228,7 +1161,6 @@ API
       Return a description of the InputPort, which will be a dictionary of its attributes
 
       :returns: a dictionary of the stringified InputPort attributes
-
 
 .. py:class:: InterruptableFuture(*, loop=None)
    :canonical: aiida.engine.utils.InterruptableFuture
@@ -1260,7 +1192,6 @@ API
       :param coro: The coroutine that can be interrupted
       :return: The result of the coroutine
 
-
 .. py:class:: JobManager(transport_queue: aiida.engine.transports.TransportQueue)
    :canonical: aiida.engine.processes.calcjobs.manager.JobManager
 
@@ -1277,7 +1208,6 @@ API
    will be maintained. Note, however, that since each ``Runner`` will create its own job manager, these guarantees
    only hold per runner.
 
-
    .. py:method:: __init__(transport_queue: aiida.engine.transports.TransportQueue) -> None
       :canonical: aiida.engine.processes.calcjobs.manager.JobManager.__init__
 
@@ -1289,14 +1219,12 @@ API
       :param authinfo: the `AuthInfo`
       :return: a `JobsList` instance
 
-
    .. py:method:: request_job_info_update(authinfo: aiida.orm.AuthInfo, job_id: typing.Hashable) -> typing.Iterator[asyncio.Future[JobInfo]]
       :canonical: aiida.engine.processes.calcjobs.manager.JobManager.request_job_info_update
 
       Get a future that will resolve to information about a given job.
 
       This is a context manager so that if the user leaves the context the request is automatically cancelled.
-
 
 
 .. py:class:: JobsList(authinfo: aiida.orm.AuthInfo, transport_queue: aiida.engine.transports.TransportQueue, last_updated: typing.Optional[float] = None)
@@ -1317,7 +1245,6 @@ API
    these limitations are not respected between them, since there is no communication between ``JobsList`` instances.
    See the :py:class:`~aiida.engine.processes.calcjobs.manager.JobManager` for example usage.
 
-
    .. py:method:: __init__(authinfo: aiida.orm.AuthInfo, transport_queue: aiida.engine.transports.TransportQueue, last_updated: typing.Optional[float] = None)
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList.__init__
 
@@ -1328,7 +1255,6 @@ API
       :param last_updated: initialize the last updated timestamp
 
 
-
    .. py:property:: logger
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList.logger
       :type: logging.Logger
@@ -1337,14 +1263,12 @@ API
 
       :return: the logger
 
-
    .. py:method:: get_minimum_update_interval() -> float
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList.get_minimum_update_interval
 
       Get the minimum interval that should be respected between updates of the list.
 
       :return: the minimum interval
-
 
 
    .. py:property:: last_updated
@@ -1356,7 +1280,6 @@ API
       :return: The last update point
 
 
-
    .. py:method:: _get_jobs_from_scheduler() -> typing.Dict[typing.Hashable, aiida.schedulers.datastructures.JobInfo]
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList._get_jobs_from_scheduler
       :async:
@@ -1364,7 +1287,6 @@ API
       Get the current jobs list from the scheduler.
 
       :return: a mapping of job ids to :py:class:`~aiida.schedulers.datastructures.JobInfo` instances
-
 
 
    .. py:method:: _update_job_info() -> None
@@ -1376,7 +1298,6 @@ API
       This will set the futures for all pending update requests where the corresponding job has a new status compared
       to the last update.
 
-
    .. py:method:: request_job_info_update(job_id: typing.Hashable) -> typing.Iterator[asyncio.Future[JobInfo]]
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList.request_job_info_update
 
@@ -1387,14 +1308,12 @@ API
       :param job_id: job identifier
       :return: future that will resolve to a `JobInfo` object when the job changes state
 
-
    .. py:method:: _ensure_updating() -> None
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList._ensure_updating
 
       Ensure that we are updating the job list from the remote resource.
 
       This will automatically stop if there are no outstanding requests.
-
 
    .. py:method:: _has_job_state_changed(old: typing.Optional[aiida.schedulers.datastructures.JobInfo], new: typing.Optional[aiida.schedulers.datastructures.JobInfo]) -> bool
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList._has_job_state_changed
@@ -1416,7 +1335,6 @@ API
       :return: delay (in seconds) after which the scheduler may be polled again
 
 
-
    .. py:method:: _update_requests_outstanding() -> bool
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList._update_requests_outstanding
 
@@ -1427,7 +1345,6 @@ API
 
       :return: the list of jobs with the scheduler
       :rtype: list
-
 
 .. py:class:: ObjectLoader
    :canonical: aiida.engine.persistence.ObjectLoader
@@ -1447,7 +1364,6 @@ API
       :param identifier: concatenation of module and resource name
       :return: loaded object
       :raises ImportError: if the object cannot be loaded
-
 
 .. py:data:: OutputPort
    :canonical: aiida.engine.processes.ports.OutputPort
@@ -1472,7 +1388,6 @@ API
    Sub class of plumpy.PortNamespace which implements the serialize method to support automatic recursive
    serialization of a given mapping onto the ports of the PortNamespace.
 
-
    .. py:method:: __setitem__(key: str, port: plumpy.ports.Port) -> None
       :canonical: aiida.engine.processes.ports.PortNamespace.__setitem__
 
@@ -1483,7 +1398,6 @@ API
       we overload the value here, unless it was specifically set during construction.
 
       Note that the `non_db` attribute is not present for all `Port` sub classes so we have to check for it first.
-
 
    .. py:method:: validate_port_name(port_name: str) -> None
       :canonical: aiida.engine.processes.ports.PortNamespace.validate_port_name
@@ -1506,7 +1420,6 @@ API
       :raise TypeError: if the port name is not a string type
       :raise ValueError: if the port name is invalid
 
-
    .. py:method:: serialize(mapping: typing.Optional[typing.Dict[str, typing.Any]], breadcrumbs: typing.Sequence[str] = ()) -> typing.Optional[typing.Dict[str, typing.Any]]
       :canonical: aiida.engine.processes.ports.PortNamespace.serialize
 
@@ -1518,7 +1431,6 @@ API
       :param breadcrumbs: a tuple with the namespaces of parent namespaces
       :returns: the serialized mapping
 
-
 .. py:class:: Process(inputs: typing.Optional[typing.Dict[str, typing.Any]] = None, logger: typing.Optional[logging.Logger] = None, runner: typing.Optional[aiida.engine.runners.Runner] = None, parent_pid: typing.Optional[int] = None, enable_persistence: bool = True)
    :canonical: aiida.engine.processes.process.Process
 
@@ -1526,7 +1438,6 @@ API
 
    This class represents an AiiDA process which can be executed and will
    have full provenance saved in the database.
-
 
    .. py:attribute:: _node_class
       :canonical: aiida.engine.processes.process.Process._node_class
@@ -1548,7 +1459,6 @@ API
 
       Keys used to identify things in the saved instance state bundle.
 
-
       .. py:attribute:: CALC_ID
          :canonical: aiida.engine.processes.process.Process.SaveKeys.CALC_ID
          :type: str
@@ -1567,7 +1477,6 @@ API
       A `metadata` input namespace is defined, with optional ports that are not stored in the database.
 
 
-
    .. py:method:: get_builder() -> aiida.engine.processes.builder.ProcessBuilder
       :canonical: aiida.engine.processes.process.Process.get_builder
       :classmethod:
@@ -1580,7 +1489,6 @@ API
 
       :return: A process node
 
-
    .. py:method:: __init__(inputs: typing.Optional[typing.Dict[str, typing.Any]] = None, logger: typing.Optional[logging.Logger] = None, runner: typing.Optional[aiida.engine.runners.Runner] = None, parent_pid: typing.Optional[int] = None, enable_persistence: bool = True) -> None
       :canonical: aiida.engine.processes.process.Process.__init__
 
@@ -1591,7 +1499,6 @@ API
       :param runner: process runner
       :param parent_pid: id of parent process
       :param enable_persistence: whether to persist this process
-
 
 
    .. py:method:: init() -> None
@@ -1607,7 +1514,6 @@ API
       :return: list of exit status integers that correspond to the given exit code labels
       :raises AttributeError: if at least one of the labels does not correspond to an existing exit code
 
-
    .. py:method:: exit_codes() -> aiida.engine.processes.exit_code.ExitCodesNamespace
       :canonical: aiida.engine.processes.process.Process.exit_codes
 
@@ -1617,7 +1523,6 @@ API
       Additionally, the namespace can also be called with either the exit code integer status to retrieve it.
 
       :returns: ExitCodesNamespace of ExitCode named tuples
-
 
 
    .. py:method:: spec_metadata() -> aiida.engine.processes.ports.PortNamespace
@@ -1633,7 +1538,6 @@ API
 
       :return: instance of sub class of ProcessNode
 
-
    .. py:property:: uuid
       :canonical: aiida.engine.processes.process.Process.uuid
       :type: str
@@ -1641,7 +1545,6 @@ API
       Return the UUID of the process which corresponds to the UUID of its associated `ProcessNode`.
 
       :return: the UUID associated to this process instance
-
 
    .. py:property:: metadata
       :canonical: aiida.engine.processes.process.Process.metadata
@@ -1652,14 +1555,12 @@ API
       :return: metadata dictionary
 
 
-
    .. py:method:: _save_checkpoint() -> None
       :canonical: aiida.engine.processes.process.Process._save_checkpoint
 
       Save the current state in a chechpoint if persistence is enabled and the process state is not terminal
 
       If the persistence call excepts with a PersistenceError, it will be caught and a warning will be logged.
-
 
    .. py:method:: save_instance_state(out_state: typing.MutableMapping[str, typing.Any], save_context: typing.Optional[plumpy.persistence.LoadSaveContext]) -> None
       :canonical: aiida.engine.processes.process.Process.save_instance_state
@@ -1668,14 +1569,12 @@ API
 
       See documentation of :meth:`!plumpy.processes.Process.save_instance_state`.
 
-
    .. py:method:: get_provenance_inputs_iterator() -> typing.Iterator[typing.Tuple[str, typing.Union[aiida.engine.processes.ports.InputPort, aiida.engine.processes.ports.PortNamespace]]]
       :canonical: aiida.engine.processes.process.Process.get_provenance_inputs_iterator
 
       Get provenance input iterator.
 
       :rtype: filter
-
 
    .. py:method:: load_instance_state(saved_state: typing.MutableMapping[str, typing.Any], load_context: plumpy.persistence.LoadSaveContext) -> None
       :canonical: aiida.engine.processes.process.Process.load_instance_state
@@ -1686,14 +1585,12 @@ API
       :param load_context:
 
 
-
    .. py:method:: kill(msg: typing.Union[str, None] = None) -> typing.Union[bool, plumpy.futures.Future]
       :canonical: aiida.engine.processes.process.Process.kill
 
       Kill the process and all the children calculations it called
 
       :param msg: message
-
 
    .. py:method:: out(output_port: str, value: typing.Any = None) -> None
       :canonical: aiida.engine.processes.process.Process.out
@@ -1706,7 +1603,6 @@ API
       :param value: value to put inside output port
 
 
-
    .. py:method:: out_many(out_dict: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.engine.processes.process.Process.out_many
 
@@ -1716,7 +1612,6 @@ API
 
       :param out_dict: output dictionary
       :type out_dict: dict
-
 
    .. py:method:: on_create() -> None
       :canonical: aiida.engine.processes.process.Process.on_create
@@ -1741,7 +1636,6 @@ API
 
       :param exc_info: the sys.exc_info() object (type, value, traceback)
 
-
    .. py:method:: on_finish(result: typing.Union[int, aiida.engine.processes.exit_code.ExitCode], successful: bool) -> None
       :canonical: aiida.engine.processes.process.Process.on_finish
 
@@ -1749,7 +1643,6 @@ API
 
       :param result: result of the process
       :param successful: whether execution was successful
-
 
 
    .. py:method:: on_paused(msg: typing.Optional[str] = None) -> None
@@ -1760,12 +1653,10 @@ API
       :param msg: message
 
 
-
    .. py:method:: on_playing() -> None
       :canonical: aiida.engine.processes.process.Process.on_playing
 
       The Process was unpaused so remove the paused attribute on the process node
-
 
    .. py:method:: on_output_emitting(output_port: str, value: typing.Any) -> None
       :canonical: aiida.engine.processes.process.Process.on_output_emitting
@@ -1776,14 +1667,12 @@ API
       :param value: The value emitted
 
 
-
    .. py:method:: set_status(status: typing.Optional[str]) -> None
       :canonical: aiida.engine.processes.process.Process.set_status
 
       The status of the Process is about to be changed, so we reflect this is in node's attribute proxy.
 
       :param status: the status message
-
 
 
    .. py:method:: submit(process: typing.Type[aiida.engine.processes.process.Process], **kwargs) -> aiida.orm.ProcessNode
@@ -1793,7 +1682,6 @@ API
 
       :param process: process
       :return: the calculation node of the process
-
 
 
    .. py:property:: runner
@@ -1810,7 +1698,6 @@ API
       :return: the parent process node if there is one
 
 
-
    .. py:method:: build_process_type() -> str
       :canonical: aiida.engine.processes.process.Process.build_process_type
       :classmethod:
@@ -1821,7 +1708,6 @@ API
 
       Note: This could be made into a property 'process_type' but in order to have it be a property of the class
       it would need to be defined in the metaclass, see https://bugs.python.org/issue20659
-
 
    .. py:method:: report(msg: str, *args, **kwargs) -> None
       :canonical: aiida.engine.processes.process.Process.report
@@ -1835,14 +1721,12 @@ API
       :param kwargs: kwargs to pass to the log call
 
 
-
    .. py:method:: _create_and_setup_db_record() -> typing.Union[int, uuid.UUID]
       :canonical: aiida.engine.processes.process.Process._create_and_setup_db_record
 
       Create and setup the database record for this process
 
       :return: the uuid or pk of the process
-
 
 
    .. py:method:: encode_input_args(inputs: typing.Dict[str, typing.Any]) -> str
@@ -1853,7 +1737,6 @@ API
       :param inputs: A mapping of the inputs as passed to the process
       :return: The encoded (serialized) inputs
 
-
    .. py:method:: decode_input_args(encoded: str) -> typing.Dict[str, typing.Any]
       :canonical: aiida.engine.processes.process.Process.decode_input_args
 
@@ -1862,14 +1745,12 @@ API
       :param encoded: encoded (serialized) inputs
       :return: The decoded input args
 
-
    .. py:method:: update_outputs() -> None
       :canonical: aiida.engine.processes.process.Process.update_outputs
 
       Attach new outputs to the node since the last call.
 
       Does nothing, if self.metadata.store_provenance is False.
-
 
    .. py:method:: _build_process_label() -> str
       :canonical: aiida.engine.processes.process.Process._build_process_label
@@ -1880,7 +1761,6 @@ API
           subclasses to provide a more specific label.
 
       :returns: The process label to use for ``ProcessNode`` instances.
-
 
    .. py:method:: _setup_db_record() -> None
       :canonical: aiida.engine.processes.process.Process._setup_db_record
@@ -1895,7 +1775,6 @@ API
 
       In addition, the parent calculation will be setup with a CALL link if applicable and all inputs will be
       linked up as well.
-
 
    .. py:method:: _setup_version_info() -> None
       :canonical: aiida.engine.processes.process.Process._setup_version_info
@@ -1923,7 +1802,6 @@ API
       :return: flat dictionary of parsed inputs
 
 
-
    .. py:method:: _flat_outputs() -> typing.Dict[str, typing.Any]
       :canonical: aiida.engine.processes.process.Process._flat_outputs
 
@@ -1932,7 +1810,6 @@ API
       The eventual keys will be a concatenation of the nested keys.
 
       :return: flat dictionary of parsed outputs
-
 
    .. py:method:: _flatten_inputs(port: typing.Union[None, aiida.engine.processes.ports.InputPort, aiida.engine.processes.ports.PortNamespace], port_value: typing.Any, parent_name: str = '', separator: str = PORT_NAMESPACE_SEPARATOR) -> typing.List[typing.Tuple[str, typing.Any]]
       :canonical: aiida.engine.processes.process.Process._flatten_inputs
@@ -1945,7 +1822,6 @@ API
       :param parent_name: the parent key with which to prefix the keys
       :param separator: character to use for the concatenation of keys
       :return: flat list of inputs
-
 
 
    .. py:method:: _flatten_outputs(port: typing.Union[None, aiida.engine.processes.ports.OutputPort, aiida.engine.processes.ports.PortNamespace], port_value: typing.Any, parent_name: str = '', separator: str = PORT_NAMESPACE_SEPARATOR) -> typing.List[typing.Tuple[str, typing.Any]]
@@ -1961,7 +1837,6 @@ API
       :return: flat list of outputs
 
 
-
    .. py:method:: exposed_inputs(process_class: typing.Type[aiida.engine.processes.process.Process], namespace: typing.Optional[str] = None, agglomerate: bool = True) -> aiida.common.extendeddicts.AttributeDict
       :canonical: aiida.engine.processes.process.Process.exposed_inputs
 
@@ -1973,7 +1848,6 @@ API
           searched for inputs. Inputs in lower-lying namespaces take precedence.
 
       :returns: exposed inputs
-
 
 
    .. py:method:: exposed_outputs(node: aiida.orm.ProcessNode, process_class: typing.Type[aiida.engine.processes.process.Process], namespace: typing.Optional[str] = None, agglomerate: bool = True) -> aiida.common.extendeddicts.AttributeDict
@@ -1989,7 +1863,6 @@ API
       :returns: exposed outputs
 
 
-
    .. py:method:: _get_namespace_list(namespace: typing.Optional[str] = None, agglomerate: bool = True) -> typing.List[typing.Optional[str]]
       :canonical: aiida.engine.processes.process.Process._get_namespace_list
       :staticmethod:
@@ -2001,7 +1874,6 @@ API
           be searched.
 
       :returns: namespace list
-
 
 
    .. py:method:: is_valid_cache(node: aiida.orm.ProcessNode) -> bool
@@ -2019,7 +1891,6 @@ API
           codes may have no effect.
 
 
-
 .. py:class:: ProcessBuilder(process_class: typing.Type[aiida.engine.processes.process.Process])
    :canonical: aiida.engine.processes.builder.ProcessBuilder
 
@@ -2033,7 +1904,6 @@ API
       Construct a `ProcessBuilder` instance for the given `Process` class.
 
       :param process_class: the `Process` subclass
-
 
    .. py:property:: process_class
       :canonical: aiida.engine.processes.builder.ProcessBuilder.process_class
@@ -2055,7 +1925,6 @@ API
 
    Dynamically generates the getters and setters for the input ports of a given PortNamespace
 
-
    .. py:method:: __init__(port_namespace: aiida.engine.processes.ports.PortNamespace) -> None
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace.__init__
 
@@ -2068,7 +1937,6 @@ API
       :param port_namespace: the inputs PortNamespace for which to construct the builder
 
 
-
    .. py:method:: __setattr__(attr: str, value: typing.Any) -> None
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace.__setattr__
 
@@ -2076,7 +1944,6 @@ API
 
       .. note:: Any attributes without a leading underscore being set correspond to inputs and should hence be
           validated with respect to the corresponding input port from the process spec
-
 
 
    .. py:method:: __repr__()
@@ -2128,7 +1995,6 @@ API
       :param args: a single mapping that should be mapped on the namespace.
       :param kwds: keyword value pairs that should be mapped onto the ports.
 
-
    .. py:method:: _update(*args, **kwds)
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace._update
 
@@ -2140,7 +2006,6 @@ API
       :param args: a single mapping that should be mapped on the namespace.
       :param kwds: keyword value pairs that should be mapped onto the ports.
 
-
    .. py:method:: _inputs(prune: bool = False) -> dict
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace._inputs
 
@@ -2148,7 +2013,6 @@ API
 
       :param prune: boolean, when True, will prune nested namespaces that contain no actual values whatsoever
       :return: mapping of inputs ports and their input values.
-
 
    .. py:method:: _prune(value)
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace._prune
@@ -2160,7 +2024,6 @@ API
 
       :param value: a nested mapping of port values
       :return: the same mapping but without any nested namespace that is completely empty.
-
 
 .. py:class:: ProcessFuture(pk: int, loop: typing.Optional[asyncio.AbstractEventLoop] = None, poll_interval: typing.Union[None, int, float] = None, communicator: typing.Optional[kiwipy.Communicator] = None)
    :canonical: aiida.engine.processes.futures.ProcessFuture
@@ -2185,7 +2048,6 @@ API
       :param loop: An event loop
       :param poll_interval: optional polling interval, if None, polling is not activated.
       :param communicator: optional communicator, if None, will not subscribe to broadcasts.
-
 
    .. py:method:: cleanup() -> None
       :canonical: aiida.engine.processes.futures.ProcessFuture.cleanup
@@ -2219,7 +2081,6 @@ API
        which has status `0` meaning that the work chain step will be considered
        successful and the work chain will continue to the next step.
 
-
    .. py:attribute:: do_break
       :canonical: aiida.engine.processes.workchains.utils.ProcessHandlerReport.do_break
       :type: bool
@@ -2239,7 +2100,6 @@ API
 
    This sub class defines custom classes for input ports and port namespaces. It also adds support for the definition
    of exit codes and retrieving them subsequently.
-
 
    .. py:attribute:: METADATA_KEY
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.METADATA_KEY
@@ -2278,7 +2138,6 @@ API
 
       :returns: ExitCodesNamespace of ExitCode named tuples
 
-
    .. py:method:: exit_code(status: int, label: str, message: str, invalidates_cache: bool = False) -> None
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.exit_code
 
@@ -2289,7 +2148,6 @@ API
       :param message: a more detailed description of the exit code
       :param invalidates_cache: when set to `True`, a process exiting
           with this exit code will not be considered for caching
-
 
    .. py:property:: ports
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.ports
@@ -2338,7 +2196,6 @@ API
       :param communicator: the communicator to use
       :param rmq_submit: if True, processes will be submitted to RabbitMQ, otherwise they will be scheduled here
       :param persister: the persister to use to persist processes
-
 
 
    .. py:method:: __enter__() -> aiida.engine.runners.Runner
@@ -2391,7 +2248,6 @@ API
 
       :return: True if the runner is a daemon runner
 
-
    .. py:method:: is_closed() -> bool
       :canonical: aiida.engine.runners.Runner.is_closed
 
@@ -2428,7 +2284,6 @@ API
       :param inputs: the inputs to be passed to the process
       :return: the calculation node of the process
 
-
    .. py:method:: schedule(process: aiida.engine.runners.TYPE_SUBMIT_PROCESS, *args: typing.Any, **inputs: typing.Any) -> aiida.orm.ProcessNode
       :canonical: aiida.engine.runners.Runner.schedule
 
@@ -2437,7 +2292,6 @@ API
       :param process: the process class to submit
       :param inputs: the inputs to be passed to the process
       :return: the calculation node of the process
-
 
    .. py:method:: _run(process: aiida.engine.runners.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Tuple[typing.Dict[str, typing.Any], aiida.orm.ProcessNode]
       :canonical: aiida.engine.runners.Runner._run
@@ -2449,7 +2303,6 @@ API
       :param inputs: the inputs to be passed to the process
       :return: tuple of the outputs of the process and the calculation node
 
-
    .. py:method:: run(process: aiida.engine.runners.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Dict[str, typing.Any]
       :canonical: aiida.engine.runners.Runner.run
 
@@ -2459,7 +2312,6 @@ API
       :param process: the process class or process function to run
       :param inputs: the inputs to be passed to the process
       :return: the outputs of the process
-
 
    .. py:method:: run_get_node(process: aiida.engine.runners.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> aiida.engine.runners.ResultAndNode
       :canonical: aiida.engine.runners.Runner.run_get_node
@@ -2471,7 +2323,6 @@ API
       :param inputs: the inputs to be passed to the process
       :return: tuple of the outputs of the process and the calculation node
 
-
    .. py:method:: run_get_pk(process: aiida.engine.runners.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> aiida.engine.runners.ResultAndPk
       :canonical: aiida.engine.runners.Runner.run_get_pk
 
@@ -2481,7 +2332,6 @@ API
       :param process: the process class or process function to run
       :param inputs: the inputs to be passed to the process
       :return: tuple of the outputs of the process and process node pk
-
 
    .. py:method:: call_on_process_finish(pk: int, callback: typing.Callable[[], typing.Any]) -> None
       :canonical: aiida.engine.runners.Runner.call_on_process_finish
@@ -2495,7 +2345,6 @@ API
       :param pk: pk of the process
       :param callback: function to be called upon process termination
 
-
    .. py:method:: get_process_future(pk: int) -> aiida.engine.processes.futures.ProcessFuture
       :canonical: aiida.engine.runners.Runner.get_process_future
 
@@ -2505,7 +2354,6 @@ API
 
       :return: A future representing the completion of the process node
 
-
    .. py:method:: _poll_process(node, callback)
       :canonical: aiida.engine.runners.Runner._poll_process
 
@@ -2513,7 +2361,6 @@ API
 
       :param node: the process node
       :param callback: callback to be called when process is terminated
-
 
 .. py:data:: ToContext
    :canonical: aiida.engine.processes.workchains.context.ToContext
@@ -2528,7 +2375,6 @@ API
    The mixins have to go before the main port class in the superclass order
    to make sure the mixin has the chance to strip out the non_db keyword.
 
-
    .. py:method:: __init__(*args, **kwargs) -> None
       :canonical: aiida.engine.processes.ports.WithNonDb.__init__
 
@@ -2540,7 +2386,6 @@ API
 
       :return: boolean, True if `non_db` was explicitly defined during construction, False otherwise
 
-
    .. py:property:: non_db
       :canonical: aiida.engine.processes.ports.WithNonDb.non_db
       :type: bool
@@ -2549,13 +2394,11 @@ API
 
       :return: boolean, True if it should be storable as a `Node`, False otherwise
 
-
 .. py:class:: WithSerialize(*args, **kwargs)
    :canonical: aiida.engine.processes.ports.WithSerialize
 
    A mixin that adds support for a serialization function which is automatically applied on inputs
    that are not AiiDA data types.
-
 
    .. py:method:: __init__(*args, **kwargs) -> None
       :canonical: aiida.engine.processes.ports.WithSerialize.__init__
@@ -2567,7 +2410,6 @@ API
 
       :param value: the value to be serialized
       :returns: a serialized version of the value or the unchanged value
-
 
 .. py:class:: WorkChain(inputs: dict | None = None, logger: logging.Logger | None = None, runner: aiida.engine.runners.Runner | None = None, enable_persistence: bool = True)
    :canonical: aiida.engine.processes.workchains.workchain.WorkChain
@@ -2605,7 +2447,6 @@ API
       :param enable_persistence: whether to persist this work chain
 
 
-
    .. py:method:: spec() -> aiida.engine.processes.workchains.workchain.WorkChainSpec
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.spec
       :classmethod:
@@ -2617,7 +2458,6 @@ API
       Return the ProcessNode used by this process to represent itself in the database.
 
       :return: instance of sub class of ProcessNode
-
 
    .. py:property:: ctx
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.ctx
@@ -2636,7 +2476,6 @@ API
       :type save_context: :class:`!plumpy.persistence.LoadSaveContext`
 
 
-
    .. py:method:: load_instance_state(saved_state, load_context)
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.load_instance_state
 
@@ -2644,7 +2483,6 @@ API
 
       :param saved_state: saved instance state
       :param load_context:
-
 
 
    .. py:method:: on_run()
@@ -2658,14 +2496,12 @@ API
 
       :param key: A key into the context, where words before a dot are interpreted as a key for a sub-dictionary
 
-
    .. py:method:: _insert_awaitable(awaitable: aiida.engine.processes.workchains.awaitable.Awaitable) -> None
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain._insert_awaitable
 
       Insert an awaitable that should be terminated before before continuing to the next step.
 
       :param awaitable: the thing to await
-
 
    .. py:method:: _resolve_awaitable(awaitable: aiida.engine.processes.workchains.awaitable.Awaitable, value: typing.Any) -> None
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain._resolve_awaitable
@@ -2676,7 +2512,6 @@ API
 
       :param awaitable: the awaitable to resolve
 
-
    .. py:method:: to_context(**kwargs: aiida.engine.processes.workchains.awaitable.Awaitable | aiida.orm.ProcessNode) -> None
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.to_context
 
@@ -2684,7 +2519,6 @@ API
 
       This is a convenience method that provides syntactic sugar, for a user to add multiple intersteps that will
       assign a certain value to the corresponding key in the context of the work chain.
-
 
    .. py:method:: _update_process_status() -> None
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain._update_process_status
@@ -2704,14 +2538,12 @@ API
       will enter in the Wait state, otherwise it will go to Continue. When the stepper returns that it is done, the
       stepper result will be converted to None and returned, unless it is an integer or instance of ExitCode.
 
-
    .. py:method:: _store_nodes(data: typing.Any) -> None
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain._store_nodes
 
       Recurse through a data structure and store any unstored nodes that are found along the way
 
       :param data: a data structure potentially containing unstored nodes
-
 
    .. py:method:: on_exiting() -> None
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.on_exiting
@@ -2720,7 +2552,6 @@ API
 
       After the state is exited the next state will be entered and if persistence is enabled, a checkpoint will
       be saved. If the context contains unstored nodes, the serialization necessary for checkpointing will fail.
-
 
    .. py:method:: on_wait(awaitables: typing.Sequence[aiida.engine.processes.workchains.awaitable.Awaitable])
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.on_wait
@@ -2736,7 +2567,6 @@ API
       function will be bound with the awaitable and the runner will be asked to
       call it when the target is completed
 
-
    .. py:method:: _on_awaitable_finished(awaitable: aiida.engine.processes.workchains.awaitable.Awaitable) -> None
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain._on_awaitable_finished
 
@@ -2746,7 +2576,6 @@ API
       awaitables have been dealt with, the work chain process is resumed.
 
       :param awaitable: an Awaitable instance
-
 
 .. py:function:: append_(target: typing.Union[aiida.engine.processes.workchains.awaitable.Awaitable, aiida.orm.ProcessNode]) -> aiida.engine.processes.workchains.awaitable.Awaitable
    :canonical: aiida.engine.processes.workchains.context.append_
@@ -2760,7 +2589,6 @@ API
    :returns: the awaitable
 
 
-
 .. py:function:: assign_(target: typing.Union[aiida.engine.processes.workchains.awaitable.Awaitable, aiida.orm.ProcessNode]) -> aiida.engine.processes.workchains.awaitable.Awaitable
    :canonical: aiida.engine.processes.workchains.context.assign_
 
@@ -2771,7 +2599,6 @@ API
    :param target: an instance of a Process or Awaitable
 
    :returns: the awaitable
-
 
 
 .. py:function:: calcfunction(function: aiida.engine.processes.functions.FunctionType) -> aiida.engine.processes.functions.FunctionType
@@ -2799,7 +2626,6 @@ API
    :param function: The function to decorate.
    :return: The decorated function.
 
-
 .. py:function:: construct_awaitable(target: typing.Union[aiida.engine.processes.workchains.awaitable.Awaitable, aiida.orm.ProcessNode]) -> aiida.engine.processes.workchains.awaitable.Awaitable
    :canonical: aiida.engine.processes.workchains.awaitable.construct_awaitable
 
@@ -2816,14 +2642,12 @@ API
    Currently the only awaitable classes are ProcessNode and Workflow
    The only awaitable actions are the Assign and Append operators
 
-
 .. py:function:: get_object_loader() -> aiida.engine.persistence.ObjectLoader
    :canonical: aiida.engine.persistence.get_object_loader
 
    Return the global AiiDA object loader.
 
    :return: The global object loader
-
 
 
 .. py:function:: interruptable_task(coro: typing.Callable[[aiida.engine.utils.InterruptableFuture], typing.Awaitable[typing.Any]], loop: typing.Optional[asyncio.AbstractEventLoop] = None) -> aiida.engine.utils.InterruptableFuture
@@ -2835,7 +2659,6 @@ API
    :param loop: the event loop in which to run the coroutine, by default uses asyncio.get_event_loop()
    :return: an InterruptableFuture
 
-
 .. py:function:: is_process_function(function: typing.Any) -> bool
    :canonical: aiida.engine.utils.is_process_function
 
@@ -2843,7 +2666,6 @@ API
 
    :param function: a function
    :returns: True if the function is a wrapped process function, False otherwise
-
 
 .. py:function:: process_handler(wrapped: typing.Optional[types.FunctionType] = None, *, priority: int = 0, exit_codes: typing.Union[None, aiida.engine.processes.exit_code.ExitCode, typing.List[aiida.engine.processes.exit_code.ExitCode]] = None, enabled: bool = True) -> types.FunctionType
    :canonical: aiida.engine.processes.workchains.utils.process_handler
@@ -2877,7 +2699,6 @@ API
        set to `False`, the handler will be skipped. This static value can be overridden on a per work chain instance
        basis through the input `handler_overrides`.
 
-
 .. py:function:: run(process: aiida.engine.launch.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Dict[str, typing.Any]
    :canonical: aiida.engine.launch.run
 
@@ -2887,7 +2708,6 @@ API
    :param inputs: the inputs to be passed to the process
 
    :return: the outputs of the process
-
 
 
 .. py:function:: run_get_node(process: aiida.engine.launch.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Tuple[typing.Dict[str, typing.Any], aiida.orm.ProcessNode]
@@ -2901,7 +2721,6 @@ API
    :return: tuple of the outputs of the process and the process node
 
 
-
 .. py:function:: run_get_pk(process: aiida.engine.launch.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Tuple[typing.Dict[str, typing.Any], int]
    :canonical: aiida.engine.launch.run_get_pk
 
@@ -2911,7 +2730,6 @@ API
    :param inputs: the inputs to be passed to the process
 
    :return: tuple of the outputs of the process and process node pk
-
 
 
 .. py:function:: submit(process: aiida.engine.launch.TYPE_SUBMIT_PROCESS, **inputs: typing.Any) -> aiida.orm.ProcessNode
@@ -2928,7 +2746,6 @@ API
    :param inputs: the inputs to be passed to the process
 
    :return: the calculation node of the process
-
 
 
 .. py:function:: workfunction(function: aiida.engine.processes.functions.FunctionType) -> aiida.engine.processes.functions.FunctionType
@@ -2955,4 +2772,3 @@ API
 
    :param function: The function to decorate.
    :return: The decorated function.
-

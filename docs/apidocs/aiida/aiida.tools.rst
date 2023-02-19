@@ -17,7 +17,6 @@ What functionality should go directly in the ORM class in `aiida.orm` and what i
 
 .. note:: Modules in this sub package may require the database environment to be loaded
 
-
 Package Contents
 ----------------
 
@@ -125,7 +124,6 @@ API
       :param node_id_type: the type of identifier to within the node text ('pk', 'uuid' or 'label')
       :type node_id_type: str
 
-
    .. py:property:: backend
       :canonical: aiida.tools.visualization.graph.Graph.backend
       :type: aiida.orm.implementation.StorageBackend
@@ -156,7 +154,6 @@ API
       :type node: int or str or aiida.orm.nodes.node.Node
       :returns: aiida.orm.nodes.node.Node
 
-
    .. py:method:: _default_link_types(link_types)
       :canonical: aiida.tools.visualization.graph.Graph._default_link_types
       :staticmethod:
@@ -165,7 +162,6 @@ API
 
       :param links: iterable with the link_types ()
       :returns: list of :py:class:`aiida.common.links.LinkType`
-
 
    .. py:method:: add_node(node, style_override=None, overwrite=False)
       :canonical: aiida.tools.visualization.graph.Graph.add_node
@@ -178,7 +174,6 @@ API
       :type style_override: dict or None
       :param overwrite: whether to overrite an existing node (Default value = False)
       :type overwrite: bool
-
 
    .. py:method:: add_edge(in_node, out_node, link_pair=None, style=None, overwrite=False)
       :canonical: aiida.tools.visualization.graph.Graph.add_edge
@@ -195,7 +190,6 @@ API
       :type style: dict or None
       :param overwrite: whether to overrite existing edge (Default value = False)
       :type overwrite: bool
-
 
    .. py:method:: _convert_link_types(link_types)
       :canonical: aiida.tools.visualization.graph.Graph._convert_link_types
@@ -218,7 +212,6 @@ API
       :type return_pks: bool
       :returns: list of nodes or node pks
 
-
    .. py:method:: add_outgoing(node, link_types=(), annotate_links=None, return_pks=True)
       :canonical: aiida.tools.visualization.graph.Graph.add_outgoing
 
@@ -233,7 +226,6 @@ API
       :param return_pks: whether to return a list of nodes, or list of node pks (Default value = True)
       :type return_pks: bool
       :returns: list of nodes or node pks
-
 
    .. py:method:: recurse_descendants(origin, depth=None, link_types=(), annotate_links=False, origin_style=MappingProxyType(_OVERRIDE_STYLES_DICT['origin_node']), include_process_inputs=False, highlight_classes=None)
       :canonical: aiida.tools.visualization.graph.Graph.recurse_descendants
@@ -257,7 +249,6 @@ API
           other nodes are decolorized (Default value = None)
       :typle highlight_classes: tuple of class or class
 
-
    .. py:method:: recurse_ancestors(origin, depth=None, link_types=(), annotate_links=False, origin_style=MappingProxyType(_OVERRIDE_STYLES_DICT['origin_node']), include_process_outputs=False, highlight_classes=None)
       :canonical: aiida.tools.visualization.graph.Graph.recurse_ancestors
 
@@ -280,7 +271,6 @@ API
           to be highlight and other nodes are decolorized (Default value = None)
       :typle highlight_classes: list or tuple of str
 
-
    .. py:method:: add_origin_to_targets(origin, target_cls, target_filters=None, include_target_inputs=False, include_target_outputs=False, origin_style=(), annotate_links=False)
       :canonical: aiida.tools.visualization.graph.Graph.add_origin_to_targets
 
@@ -299,7 +289,6 @@ API
       :type origin_style: dict or tuple
       :param annotate_links: label edges with the link 'label', 'type' or 'both' (Default value = False)
       :type annotate_links: bool
-
 
    .. py:method:: add_origins_to_targets(origin_cls, target_cls, origin_filters=None, target_filters=None, include_target_inputs=False, include_target_outputs=False, origin_style=(), annotate_links=False)
       :canonical: aiida.tools.visualization.graph.Graph.add_origins_to_targets
@@ -320,7 +309,6 @@ API
       :type origin_style: dict or tuple
       :param annotate_links: label edges with the link 'label', 'type' or 'both' (Default value = False)
       :type annotate_links: bool
-
 
 .. py:exception:: GroupNotFoundError(grouppath)
    :canonical: aiida.tools.groups.paths.GroupNotFoundError
@@ -353,7 +341,6 @@ API
 
    See tests for usage examples.
 
-
    .. py:method:: __init__(path: str = '', cls: aiida.orm.groups.GroupMeta = orm.Group, warn_invalid_child: bool = True) -> None
       :canonical: aiida.tools.groups.paths.GroupPath.__init__
 
@@ -362,7 +349,6 @@ API
       :param path: The initial path of the group.
       :param cls: The subclass of `Group` to operate on.
       :param warn_invalid_child: Issue a warning, when iterating children, if a child path is invalid.
-
 
 
    .. py:method:: _validate_path(path)
@@ -448,7 +434,6 @@ API
       This is an efficient method for checking existence,
       which does not require the (slow) loading of the ORM entity.
 
-
    .. py:property:: is_virtual
       :canonical: aiida.tools.groups.paths.GroupPath.is_virtual
       :type: bool
@@ -466,7 +451,6 @@ API
       Delete the concrete group associated with this path.
 
       :raises: GroupNotFoundError, GroupNotUniqueError
-
 
    .. py:property:: children
       :canonical: aiida.tools.groups.paths.GroupPath.children
@@ -504,7 +488,6 @@ API
       :param query_batch: The size of the batches to ask the backend to batch results in subcollections.
           You can optimize the speed of the query by tuning this parameter.
           Be aware though that is only safe if no commit will take place during this transaction.
-
 
    .. py:property:: browse
       :canonical: aiida.tools.groups.paths.GroupPath.browse
@@ -547,7 +530,6 @@ API
    :param diffusivity: Float controls the radial term in orbital equation
                        units are reciprocal Angstrom.
 
-
    .. py:attribute:: _base_fields_required
       :canonical: aiida.tools.data.orbital.orbital.Orbital._base_fields_required
       :value: (('position',),)
@@ -582,7 +564,6 @@ API
       :return: validated_dict: a dictionary containing all the input keys
                which have now been validated.
 
-
    .. py:method:: set_orbital_dict(init_dict)
       :canonical: aiida.tools.data.orbital.orbital.Orbital.set_orbital_dict
 
@@ -591,12 +572,10 @@ API
 
       :param init_dict: the initialization dictionary
 
-
    .. py:method:: get_orbital_dict()
       :canonical: aiida.tools.data.orbital.orbital.Orbital.get_orbital_dict
 
       returns the internal keys as a dictionary
-
 
 .. py:class:: RealhydrogenOrbital
    :canonical: aiida.tools.data.orbital.realhydrogen.RealhydrogenOrbital
@@ -630,7 +609,6 @@ API
    table 3.2. M then indexes all the possible orbitals from 0 to 2L for
    L > 0 and from 0 to (-L) for L < 0.
 
-
    .. py:attribute:: _base_fields_required
       :canonical: aiida.tools.data.orbital.realhydrogen.RealhydrogenOrbital._base_fields_required
       :value: None
@@ -653,7 +631,6 @@ API
       :param input_dict: the dictionary of keys to be validated
       :return validated_dict: a validated dictionary
 
-
    .. py:method:: get_name_from_quantum_numbers(angular_momentum, magnetic_number=None)
       :canonical: aiida.tools.data.orbital.realhydrogen.RealhydrogenOrbital.get_name_from_quantum_numbers
       :classmethod:
@@ -661,7 +638,6 @@ API
       Returns the orbital_name correponding to the angular_momentum alone,
       or to both angular_number with magnetic_number. For example using
       angular_momentum=1 and magnetic_number=1 will return "Px"
-
 
    .. py:method:: get_quantum_numbers_from_name(name)
       :canonical: aiida.tools.data.orbital.realhydrogen.RealhydrogenOrbital.get_quantum_numbers_from_name
@@ -671,7 +647,6 @@ API
       For example, using "P" as name will return all quantum numbers
       associated with a "P" orbital, while "Px" will return only one set
       of quantum numbers, the ones associated with "Px"
-
 
 .. py:function:: default_link_styles(link_pair: aiida.orm.utils.links.LinkPair, add_label: bool, add_type: bool) -> dict
    :canonical: aiida.tools.visualization.graph.default_link_styles
@@ -686,7 +661,6 @@ API
    :type add_type: bool
    :rtype: dict
 
-
 .. py:function:: default_node_styles(node)
    :canonical: aiida.tools.visualization.graph.default_node_styles
 
@@ -695,7 +669,6 @@ API
    :param node: the node to map
    :type node: aiida.orm.nodes.node.Node
    :rtype: dict
-
 
 .. py:function:: default_node_sublabels(node)
    :canonical: aiida.tools.visualization.graph.default_node_sublabels
@@ -706,7 +679,6 @@ API
    :param node: the node to map
    :type node: aiida.orm.nodes.node.Node
    :rtype: str
-
 
 .. py:function:: delete_group_nodes(pks: typing.Iterable[int], dry_run: typing.Union[bool, typing.Callable[[typing.Set[int]], bool]] = True, backend=None, **traversal_rules: bool) -> typing.Tuple[typing.Set[int], bool]
    :canonical: aiida.tools.graph.deletions.delete_group_nodes
@@ -743,7 +715,6 @@ API
        are toggleable and what the defaults are.
 
    :returns: (node pks to delete, whether they were deleted)
-
 
 
 .. py:function:: delete_nodes(pks: typing.Iterable[int], dry_run: typing.Union[bool, typing.Callable[[typing.Set[int]], bool]] = True, backend=None, **traversal_rules: bool) -> typing.Tuple[typing.Set[int], bool]
@@ -785,7 +756,6 @@ API
    :returns: (pks to delete, whether they were deleted)
 
 
-
 .. py:function:: get_explicit_kpoints_path(structure, method='seekpath', **kwargs)
    :canonical: aiida.tools.data.array.kpoints.main.get_explicit_kpoints_path
 
@@ -815,7 +785,6 @@ API
    :param kwargs: optional keyword arguments that depend on the selected method
    :returns: dictionary as described above in the docstring
 
-
 .. py:function:: get_kpoints_path(structure, method='seekpath', **kwargs)
    :canonical: aiida.tools.data.array.kpoints.main.get_kpoints_path
 
@@ -844,7 +813,6 @@ API
    :param kwargs: optional keyword arguments that depend on the selected method
    :returns: dictionary as described above in the docstring
 
-
 .. py:function:: pstate_node_styles(node)
    :canonical: aiida.tools.visualization.graph.pstate_node_styles
 
@@ -853,7 +821,6 @@ API
    :param node: the node to map
    :type node: aiida.orm.nodes.node.Node
    :rtype: dict
-
 
 .. py:function:: spglib_tuple_to_structure(structure_tuple, kind_info=None, kinds=None)
    :canonical: aiida.tools.data.structure.spglib_tuple_to_structure
@@ -869,7 +836,6 @@ API
       the numbers used in element_numbers. If not provided, assumes {element_name: element_Z}
    :param kinds: a list of the kinds of the structure.
 
-
 .. py:function:: structure_to_spglib_tuple(structure)
    :canonical: aiida.tools.data.structure.structure_to_spglib_tuple
 
@@ -882,4 +848,3 @@ API
        the numbers used in element_numbers. When possible, it uses
        the Z number of the element, otherwise it uses numbers > 1000;
        kinds is a list of the kinds of the structure.
-

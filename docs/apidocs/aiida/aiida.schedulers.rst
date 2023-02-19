@@ -96,7 +96,6 @@ API
       * ``finish_time``: the absolute time at which the job first entered the
         'finished' state, of type datetime.datetime
 
-
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.JobInfo._default_fields
       :value: ('job_id', 'title', 'exit_status', 'terminating_signal', 'annotation', 'job_state', 'job_substate', ...
@@ -125,7 +124,6 @@ API
       :param value: The value to serialise
       :return: The serialised value
 
-
    .. py:method:: _deserialize_date(value)
       :canonical: aiida.schedulers.datastructures.JobInfo._deserialize_date
       :staticmethod:
@@ -133,7 +131,6 @@ API
       Deserialise a date
       :param value: The date vlue
       :return: The deserialised date
-
 
    .. py:method:: serialize_field(value, field_type)
       :canonical: aiida.schedulers.datastructures.JobInfo.serialize_field
@@ -145,7 +142,6 @@ API
       :param field_type: The field type
       :return: The serialised value
 
-
    .. py:method:: deserialize_field(value, field_type)
       :canonical: aiida.schedulers.datastructures.JobInfo.deserialize_field
       :classmethod:
@@ -155,7 +151,6 @@ API
       :param field_type: The field type
       :return: The deserialised value
 
-
    .. py:method:: serialize()
       :canonical: aiida.schedulers.datastructures.JobInfo.serialize
 
@@ -163,14 +158,12 @@ API
 
       :return: A string with serialised representation of the current data.
 
-
    .. py:method:: get_dict()
       :canonical: aiida.schedulers.datastructures.JobInfo.get_dict
 
       Serialise the current data into a dictionary that is JSON-serializable.
 
       :return: A dictionary
-
 
    .. py:method:: load_from_dict(data)
       :canonical: aiida.schedulers.datastructures.JobInfo.load_from_dict
@@ -180,7 +173,6 @@ API
 
       :param data: The dictionary with the data to load from
 
-
    .. py:method:: load_from_serialized(data)
       :canonical: aiida.schedulers.datastructures.JobInfo.load_from_serialized
       :classmethod:
@@ -188,7 +180,6 @@ API
       Create a new instance loading the values from JSON-serialised data as a string
 
       :param data: The string with the JSON-serialised data to load from
-
 
 .. py:class:: JobResource(dictionary=None)
    :canonical: aiida.schedulers.datastructures.JobResource
@@ -213,7 +204,6 @@ API
    The constructor should take care of checking the values.
    The init should raise only ValueError or TypeError on invalid parameters.
 
-
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.JobResource._default_fields
       :value: None
@@ -228,7 +218,6 @@ API
       :param kwargs: dictionary of values to define the job resources
       :raises ValueError: if the resources are invalid or incomplete
       :return: optional tuple of parsed resource settings
-
 
    .. py:method:: get_valid_keys()
       :canonical: aiida.schedulers.datastructures.JobResource.get_valid_keys
@@ -263,7 +252,6 @@ API
    Enumeration of possible scheduler states of a CalcJob.
 
    There is no FAILED state as every completed job is put in DONE, regardless of success.
-
 
    .. py:attribute:: UNDETERMINED
       :canonical: aiida.schedulers.datastructures.JobState.UNDETERMINED
@@ -385,7 +373,6 @@ API
        The serial execution would be without the &'s.
        Values are given by aiida.common.datastructures.CodeRunMode.
 
-
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.JobTemplate._default_fields
       :value: ('shebang', 'submit_as_hold', 'rerunnable', 'job_environment', 'environment_variables_double_quotes'...
@@ -403,7 +390,6 @@ API
    * ``name``: name of the machine
    * ``num_cpus``: number of cores used by the job on this machine
    * ``num_mpiprocs``: number of MPI processes used by the job on this machine
-
 
    .. py:attribute:: _default_fields
       :canonical: aiida.schedulers.datastructures.MachineInfo._default_fields
@@ -430,14 +416,12 @@ API
       :return: attribute dictionary with the parsed parameters populated
       :raises ValueError: if the resources are invalid or incomplete
 
-
    .. py:method:: __init__(**kwargs)
       :canonical: aiida.schedulers.datastructures.NodeNumberJobResource.__init__
 
       Initialize the job resources from the passed arguments.
 
       :raises ValueError: if the resources are invalid or incomplete
-
 
    .. py:method:: get_valid_keys()
       :canonical: aiida.schedulers.datastructures.NodeNumberJobResource.get_valid_keys
@@ -477,7 +461,6 @@ API
       :return: attribute dictionary with the parsed parameters populated
       :raises ValueError: if the resources are invalid or incomplete
 
-
    .. py:method:: __init__(**kwargs)
       :canonical: aiida.schedulers.datastructures.ParEnvJobResource.__init__
 
@@ -485,7 +468,6 @@ API
       obtained with the function self.get_valid_keys()).
 
       :raises ValueError: if the resources are invalid or incomplete
-
 
    .. py:method:: accepts_default_mpiprocs_per_machine()
       :canonical: aiida.schedulers.datastructures.ParEnvJobResource.accepts_default_mpiprocs_per_machine
@@ -533,7 +515,6 @@ API
       class of this scheduler does not accept the `num_mpiprocs_per_machine` keyword. Note that the changes are made
       in place to the `resources` argument passed.
 
-
    .. py:method:: validate_resources(**resources)
       :canonical: aiida.schedulers.scheduler.Scheduler.validate_resources
       :classmethod:
@@ -542,7 +523,6 @@ API
 
       :param resources: keyword arguments to define the job resources
       :raises ValueError: if the resources are invalid or incomplete
-
 
    .. py:method:: __init__()
       :canonical: aiida.schedulers.scheduler.Scheduler.__init__
@@ -587,7 +567,6 @@ API
       postpend_code
       postpend_computer
 
-
    .. py:method:: _get_submit_script_environment_variables(template)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_submit_script_environment_variables
 
@@ -595,7 +574,6 @@ API
 
       :parameter template: a `aiida.schedulers.datastrutures.JobTemplate` instance.
       :return: string containing environment variable declarations.
-
 
    .. py:method:: _get_submit_script_header(job_tmpl)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_submit_script_header
@@ -605,14 +583,12 @@ API
 
       :param job_tmpl: a `JobTemplate` instance with relevant parameters set.
 
-
    .. py:method:: _get_submit_script_footer(job_tmpl)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_submit_script_footer
 
       Return the submit script final part, using the parameters from the job template.
 
       :param job_tmpl: a `JobTemplate` instance with relevant parameters set.
-
 
    .. py:method:: _get_run_line(codes_info, codes_run_mode)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_run_line
@@ -626,7 +602,6 @@ API
       :parameter codes_run_mode: instance of `aiida.common.datastructures.CodeRunMode` contains the information on how
           to launch the multiple codes.
       :return: string with format: [executable] [args] {[ < stdin ]} {[ < stdout ]} {[2>&1 | 2> stderr]}
-
 
    .. py:method:: _get_joblist_command(jobs=None, user=None)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_joblist_command
@@ -642,7 +617,6 @@ API
       :param jobs: either None to get a list of all jobs in the machine, or a list of jobs.
       :param user: either None, or a string with the username (to show only jobs of the specific user).
 
-
    .. py:method:: _get_detailed_job_info_command(job_id)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_detailed_job_info_command
 
@@ -653,7 +627,6 @@ API
       instead sometimes it is useful to know some more detailed information about the job exit status, etc.
 
       :raises: :class:`aiida.common.exceptions.FeatureNotAvailable`
-
 
    .. py:method:: get_detailed_job_info(job_id)
       :canonical: aiida.schedulers.scheduler.Scheduler.get_detailed_job_info
@@ -666,7 +639,6 @@ API
       :param job_id: the job identifier
       :return: dictionary with `retval`, `stdout` and `stderr`.
 
-
    .. py:method:: _parse_joblist_output(retval, stdout, stderr)
       :canonical: aiida.schedulers.scheduler.Scheduler._parse_joblist_output
       :abstractmethod:
@@ -674,7 +646,6 @@ API
       Parse the joblist output as returned by executing the command returned by `_get_joblist_command` method.
 
       :return: list of `JobInfo` objects, one of each job each with at least its default params implemented.
-
 
    .. py:method:: get_jobs(jobs=None, user=None, as_dict=False)
       :canonical: aiida.schedulers.scheduler.Scheduler.get_jobs
@@ -689,7 +660,6 @@ API
           returned, having as key the job_id and as value the JobInfo object.
       :return: list of active jobs
 
-
    .. py:property:: transport
       :canonical: aiida.schedulers.scheduler.Scheduler.transport
 
@@ -702,7 +672,6 @@ API
 
       This class assumes that the transport is open and active.
 
-
    .. py:method:: _get_submit_command(submit_script)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_submit_command
       :abstractmethod:
@@ -714,7 +683,6 @@ API
       :param submit_script: the path of the submit script relative to the working directory.
       :return: the string to execute to submit a given script.
 
-
    .. py:method:: _parse_submit_output(retval, stdout, stderr)
       :canonical: aiida.schedulers.scheduler.Scheduler._parse_submit_output
       :abstractmethod:
@@ -723,14 +691,12 @@ API
 
       :return: a string with the job ID.
 
-
    .. py:method:: submit_from_script(working_directory, submit_script)
       :canonical: aiida.schedulers.scheduler.Scheduler.submit_from_script
 
       Submit the submission script to the scheduler.
 
       :return: return a string with the job ID in a valid format to be used for querying.
-
 
    .. py:method:: kill(jobid)
       :canonical: aiida.schedulers.scheduler.Scheduler.kill
@@ -744,7 +710,6 @@ API
 
       :param jobid: the job ID to be killed
       :return: True if everything seems ok, False otherwise.
-
 
    .. py:method:: _get_kill_command(jobid)
       :canonical: aiida.schedulers.scheduler.Scheduler._get_kill_command
@@ -760,7 +725,6 @@ API
 
       :return: True if everything seems ok, False otherwise.
 
-
    .. py:method:: parse_output(detailed_job_info=None, stdout=None, stderr=None)
       :canonical: aiida.schedulers.scheduler.Scheduler.parse_output
 
@@ -772,7 +736,6 @@ API
       :param stdout: string with the output written by the scheduler to stdout.
       :param stderr: string with the output written by the scheduler to stderr.
       :return: None or an instance of :class:`aiida.engine.processes.exit_code.ExitCode`.
-
 
 .. py:class:: SchedulerError
    :canonical: aiida.schedulers.scheduler.SchedulerError

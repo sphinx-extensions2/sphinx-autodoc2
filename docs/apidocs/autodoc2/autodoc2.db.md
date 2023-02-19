@@ -52,7 +52,6 @@ A simple interface for storing and querying the analysis items, from a single pa
 This allows for potential extensibility in the future,
 e.g. using a persistent sqlite database.
 
-
 ```{py:method} add(item: autodoc2.utils.ItemData) -> None
 :canonical: autodoc2.db.Database.add
 
@@ -80,7 +79,6 @@ Get an item from the database, by full_name.
 Get an item from the database, matching the wildcards `*` and `?`.
 
 `*` matches any number of characters, and `?` matches any single character.
-
 
 ```
 
@@ -114,7 +112,6 @@ Get all items that are direct children of this name, i.e. `{full_name}.{name}`.
 :param types: If given, only return items of these types.
 :param sort_name: If True, sort the names alphabetically.
 
-
 ```
 
 ```{py:method} get_children_names(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[str]
@@ -125,7 +122,6 @@ Get all names of direct children of this name, i.e. `{full_name}.{name}`.
 :param full_name: The full name of the item.
 :param types: If given, only return items of these types.
 :param sort_name: If True, sort the names alphabetically.
-
 
 ```
 
@@ -180,7 +176,6 @@ Get an item from the database, matching the wildcards `*` and `?`.
 
 `*` matches any number of characters, and `?` matches any single character.
 
-
 ```
 
 ```{py:method} get_type(full_name: str) -> None | str
@@ -213,7 +208,6 @@ Get all items that are direct children of this name, i.e. `{full_name}.{name}`.
 :param types: If given, only return items of these types.
 :param sort_name: If True, sort the names alphabetically.
 
-
 ```
 
 ```{py:method} get_children_names(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[str]
@@ -224,7 +218,6 @@ Get all names of direct children of this name, i.e. `{full_name}.{name}`.
 :param full_name: The full name of the item.
 :param types: If given, only return items of these types.
 :param sort_name: If True, sort the names alphabetically.
-
 
 ```
 

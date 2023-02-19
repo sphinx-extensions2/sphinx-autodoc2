@@ -262,7 +262,6 @@ API
       :param use_double_quotes: Whether the command line invocation of this code should be escaped with double quotes.
       :param is_hidden: Whether the code is hidden.
 
-
    .. py:method:: can_run_on_computer(computer: aiida.orm.Computer) -> bool
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.can_run_on_computer
       :abstractmethod:
@@ -272,7 +271,6 @@ API
       :param computer: The computer.
       :return: ``True`` if the code can run on ``computer``, ``False`` otherwise.
 
-
    .. py:method:: get_executable() -> pathlib.PurePosixPath
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.get_executable
       :abstractmethod:
@@ -281,7 +279,6 @@ API
 
       :return: The executable to be called in the submission script.
 
-
    .. py:method:: get_executable_cmdline_params(cmdline_params: list[str] | None = None) -> list
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.get_executable_cmdline_params
 
@@ -289,7 +286,6 @@ API
 
       :param cmdline_params: List of command line parameters provided by the ``CalcJob`` plugin.
       :return: List of the executable followed by its command line parameters.
-
 
    .. py:method:: get_prepend_cmdline_params(mpi_args: list[str] | None = None, extra_mpirun_params: list[str] | None = None) -> list[str]
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.get_prepend_cmdline_params
@@ -301,7 +297,6 @@ API
       :param extra_mpiruns_params: List of MPI parameters provided by the ``metadata.options.extra_mpirun_params``
           input of the ``CalcJob``.
       :return: List of command line parameters to be prepended to the executable in submission line.
-
 
    .. py:method:: validate_working_directory(folder: aiida.common.folders.Folder)
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.validate_working_directory
@@ -317,7 +312,6 @@ API
           working directory for the corresponding calculation job instance.
       :raises PluginInternalError: If the content of the sandbox folder is not valid.
 
-
    .. py:property:: full_label
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.full_label
       :abstractmethod:
@@ -330,7 +324,6 @@ API
 
       :return: The full label of the code.
 
-
    .. py:property:: label
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.label
       :type: str
@@ -338,7 +331,6 @@ API
       Return the label.
 
       :return: The label.
-
 
    .. py:property:: default_calc_job_plugin
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.default_calc_job_plugin
@@ -348,7 +340,6 @@ API
 
       :return: The entry point name of the default ``CalcJob`` plugin to use.
 
-
    .. py:property:: append_text
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.append_text
       :type: str
@@ -356,7 +347,6 @@ API
       Return the text that should be appended to the run line in the job script.
 
       :return: The text that should be appended to the run line in the job script.
-
 
    .. py:property:: prepend_text
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.prepend_text
@@ -366,7 +356,6 @@ API
 
       :return: The text that should be prepended to the run line in the job script.
 
-
    .. py:property:: use_double_quotes
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.use_double_quotes
       :type: bool
@@ -375,7 +364,6 @@ API
 
       :return: ``True`` if to escape with double quotes, ``False`` otherwise.
 
-
    .. py:property:: is_hidden
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.is_hidden
       :type: bool
@@ -383,7 +371,6 @@ API
       Return whether the code is hidden.
 
       :return: ``True`` if the code is hidden, ``False`` otherwise, which is also the default.
-
 
    .. py:method:: get_builder() -> aiida.engine.ProcessBuilder
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.get_builder
@@ -397,7 +384,6 @@ API
       :return: a ``ProcessBuilder`` instance with the ``code`` input already populated with ourselves
       :raise aiida.common.EntryPointError: if the specified plugin does not exist.
       :raise ValueError: if no default plugin was specified.
-
 
    .. py:method:: cli_validate_label_uniqueness(_, __, value)
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.cli_validate_label_uniqueness
@@ -446,7 +432,6 @@ API
      If too much RAM memory is used, you can clear the
      cache with the :py:meth:`.clear_internal_cache` method.
 
-
    .. py:attribute:: array_prefix
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.array_prefix
       :value: 'array|'
@@ -462,14 +447,12 @@ API
 
       This will be called after the constructor is called or an entity is created from an existing backend entity.
 
-
    .. py:method:: delete_array(name)
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.delete_array
 
       Delete an array from the node. Can only be called before storing.
 
       :param name: The name of the array to delete from the node.
-
 
    .. py:method:: get_arraynames()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.get_arraynames
@@ -480,20 +463,17 @@ API
       .. versionadded:: 0.7
          Renamed from arraynames
 
-
    .. py:method:: _arraynames_from_files()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData._arraynames_from_files
 
       Return a list of all arrays stored in the node, listing the files (and
       not relying on the properties).
 
-
    .. py:method:: _arraynames_from_properties()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData._arraynames_from_properties
 
       Return a list of all arrays stored in the node, listing the attributes
       starting with the correct prefix.
-
 
    .. py:method:: get_shape(name)
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.get_shape
@@ -503,7 +483,6 @@ API
 
       :param name: The name of the array.
 
-
    .. py:method:: get_iterarrays()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.get_iterarrays
 
@@ -512,14 +491,12 @@ API
       .. versionadded:: 1.0
           Renamed from iterarrays
 
-
    .. py:method:: get_array(name)
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.get_array
 
       Return an array stored in the node
 
       :param name: The name of the array to return.
-
 
    .. py:method:: clear_internal_cache()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.clear_internal_cache
@@ -529,7 +506,6 @@ API
       disk).
       This function is useful if you want to keep the node in memory, but you
       do not want to waste memory to cache the arrays in RAM.
-
 
    .. py:method:: set_array(name, array)
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.set_array
@@ -542,7 +518,6 @@ API
       :param name: The name of the array.
       :param array: The numpy array to store.
 
-
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData._validate
 
@@ -550,7 +525,6 @@ API
       list of properties match. Just a name check, no check on the size
       since this would require to reload all arrays and this may take time
       and memory.
-
 
    .. py:method:: _get_array_entries()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData._get_array_entries
@@ -561,14 +535,12 @@ API
       the value is the numpy array transformed into a list. This is so that
       it can be transformed into a json object.
 
-
    .. py:method:: _prepare_json(main_file_name='', comments=True)
       :canonical: aiida.orm.nodes.data.array.array.ArrayData._prepare_json
 
       Dump the content of the arrays stored in this node into JSON format.
 
       :param comments: if True, includes comments (if it makes sense for the given format)
-
 
 .. py:class:: AttributeManager(node)
    :canonical: aiida.orm.utils.managers.AttributeManager
@@ -580,30 +552,25 @@ API
    :note: Important! It cannot be used to change variables, just to read
      them. To change values (of unstored nodes), use the proper Node methods.
 
-
    .. py:method:: __init__(node)
       :canonical: aiida.orm.utils.managers.AttributeManager.__init__
 
       :param node: the node object.
-
 
    .. py:method:: __dir__()
       :canonical: aiida.orm.utils.managers.AttributeManager.__dir__
 
       Allow to list the keys of the dictionary
 
-
    .. py:method:: __iter__()
       :canonical: aiida.orm.utils.managers.AttributeManager.__iter__
 
       Return the keys as an iterator
 
-
    .. py:method:: _get_dict()
       :canonical: aiida.orm.utils.managers.AttributeManager._get_dict
 
       Return the internal dictionary
-
 
    .. py:method:: __getattr__(name)
       :canonical: aiida.orm.utils.managers.AttributeManager.__getattr__
@@ -614,7 +581,6 @@ API
         and underscores, and do not start with a number.
 
       :param name: name of the key whose value is required.
-
 
    .. py:method:: __setattr__(name, value)
       :canonical: aiida.orm.utils.managers.AttributeManager.__setattr__
@@ -627,7 +593,6 @@ API
       Interface to get to dictionary values as a dictionary.
 
       :param name: name of the key whose value is required.
-
 
 .. py:class:: AuthInfo(computer: aiida.orm.Computer, user: aiida.orm.User, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.authinfos.AuthInfo
@@ -653,7 +618,6 @@ API
       :param user: a `User` instance
       :param backend: the backend to use for the instance, or use the default backend if None
 
-
    .. py:method:: __str__() -> str
       :canonical: aiida.orm.authinfos.AuthInfo.__str__
 
@@ -664,7 +628,6 @@ API
       Return whether this instance is enabled.
 
       :return: True if enabled, False otherwise
-
 
    .. py:property:: computer
       :canonical: aiida.orm.authinfos.AuthInfo.computer
@@ -685,14 +648,12 @@ API
 
       :return: a dictionary with authentication parameters
 
-
    .. py:method:: set_auth_params(auth_params: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.authinfos.AuthInfo.set_auth_params
 
       Set the dictionary of authentication parameters
 
       :param auth_params: a dictionary with authentication parameters
-
 
    .. py:method:: get_metadata() -> typing.Dict[str, typing.Any]
       :canonical: aiida.orm.authinfos.AuthInfo.get_metadata
@@ -701,14 +662,12 @@ API
 
       :return: a dictionary with metadata
 
-
    .. py:method:: set_metadata(metadata: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.authinfos.AuthInfo.set_metadata
 
       Set the dictionary of metadata
 
       :param metadata: a dictionary with metadata
-
 
    .. py:method:: get_workdir() -> str
       :canonical: aiida.orm.authinfos.AuthInfo.get_workdir
@@ -718,7 +677,6 @@ API
       If no explicit work directory is set for this instance, the working directory of the computer will be returned.
 
       :return: the working directory
-
 
    .. py:method:: get_transport() -> aiida.transports.Transport
       :canonical: aiida.orm.authinfos.AuthInfo.get_transport
@@ -739,13 +697,11 @@ API
 
    Class to handle bands data
 
-
    .. py:method:: set_kpointsdata(kpointsdata)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.set_kpointsdata
 
       Load the kpoints from a kpoint object.
       :param kpointsdata: an instance of KpointsData class
-
 
    .. py:method:: _validate_bands_occupations(bands, occupations=None, labels=None)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._validate_bands_occupations
@@ -755,7 +711,6 @@ API
       Bands and occupations must be convertible into arrays of
       Nkpoints x Nbands floats or Nspins x Nkpoints x Nbands; Nkpoints must
       correspond to the number of kpoints.
-
 
    .. py:method:: set_bands(bands, units=None, occupations=None, labels=None)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.set_bands
@@ -768,24 +723,20 @@ API
       :param occupations: optional, a 2D list or array of floats of same
       shape as bands, with the occupation associated to each band
 
-
    .. py:property:: array_labels
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.array_labels
 
       Get the labels associated with the band arrays
-
 
    .. py:property:: units
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.units
 
       Units in which the data in bands were stored. A string
 
-
    .. py:method:: _set_pbc(value)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._set_pbc
 
       validate the pbc, then store them
-
 
    .. py:method:: get_bands(also_occupations=False, also_labels=False)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.get_bands
@@ -794,7 +745,6 @@ API
       of energies.
       :param also_occupations: if True, returns also the occupations array.
       Default = False
-
 
    .. py:method:: _get_bandplot_data(cartesian, prettify_format=None, join_symbol=None, get_segments=False, y_origin=0.0)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._get_bandplot_data
@@ -821,7 +771,6 @@ API
          depending on the type of spin; the length is always equalt to the total
          number of bands per kpoint).
 
-
    .. py:method:: _prepare_agr_batch(main_file_name='', comments=True, prettify_format=None)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_agr_batch
 
@@ -837,7 +786,6 @@ API
       :param prettify_format: if None, use the default prettify format. Otherwise
           specify a string with the prettifier to use.
 
-
    .. py:method:: _prepare_dat_multicolumn(main_file_name='', comments=True)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_dat_multicolumn
 
@@ -848,7 +796,6 @@ API
       :param comments: if True, print comments (if it makes sense for the given
           format)
 
-
    .. py:method:: _prepare_dat_blocks(main_file_name='', comments=True)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_dat_blocks
 
@@ -858,7 +805,6 @@ API
 
       :param comments: if True, print comments (if it makes sense for the given
           format)
-
 
    .. py:method:: _matplotlib_get_dict(main_file_name='', comments=True, title='', legend=None, legend2=None, y_max_lim=None, y_min_lim=None, y_origin=0.0, prettify_format=None, **kwargs)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._matplotlib_get_dict
@@ -888,7 +834,6 @@ API
       :param kwargs: additional customization variables; only a subset is
           accepted, see internal variable 'valid_additional_keywords
 
-
    .. py:method:: _prepare_mpl_singlefile(*args, **kwargs)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_mpl_singlefile
 
@@ -896,7 +841,6 @@ API
 
       For the possible parameters, see documentation of
       :py:meth:`~aiida.orm.nodes.data.array.bands.BandsData._matplotlib_get_dict`
-
 
    .. py:method:: _prepare_mpl_withjson(main_file_name='', *args, **kwargs)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_mpl_withjson
@@ -907,7 +851,6 @@ API
       For the possible parameters, see documentation of
       :py:meth:`~aiida.orm.nodes.data.array.bands.BandsData._matplotlib_get_dict`
 
-
    .. py:method:: _prepare_mpl_pdf(main_file_name='', *args, **kwargs)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_mpl_pdf
 
@@ -916,7 +859,6 @@ API
 
       For the possible parameters, see documentation of
       :py:meth:`~aiida.orm.nodes.data.array.bands.BandsData._matplotlib_get_dict`
-
 
    .. py:method:: _prepare_mpl_png(main_file_name='', *args, **kwargs)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_mpl_png
@@ -927,13 +869,11 @@ API
       For the possible parameters, see documentation of
       :py:meth:`~aiida.orm.nodes.data.array.bands.BandsData._matplotlib_get_dict`
 
-
    .. py:method:: _get_mpl_body_template(paths)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._get_mpl_body_template
       :staticmethod:
 
       :param paths: paths of k-points
-
 
    .. py:method:: show_mpl(**kwargs)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.show_mpl
@@ -943,7 +883,6 @@ API
       main_file_name.
 
       Other kwargs are passed to self._exportcontent.
-
 
    .. py:method:: _prepare_gnuplot(main_file_name=None, title='', comments=True, prettify_format=None, y_max_lim=None, y_min_lim=None, y_origin=0.0)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_gnuplot
@@ -960,7 +899,6 @@ API
           format)
       :param prettify_format: if None, use the default prettify format. Otherwise
           specify a string with the prettifier to use.
-
 
    .. py:method:: _prepare_agr(main_file_name='', comments=True, setnumber_offset=0, color_number=1, color_number2=2, legend='', title='', y_max_lim=None, y_min_lim=None, y_origin=0.0, prettify_format=None)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._prepare_agr
@@ -991,7 +929,6 @@ API
       :param prettify_format: if None, use the default prettify format. Otherwise
           specify a string with the prettifier to use.
 
-
    .. py:method:: _get_band_segments(cartesian)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._get_band_segments
 
@@ -1004,7 +941,6 @@ API
 
       :param comments: if True, print comments (if it makes sense for the given
           format)
-
 
 .. py:class:: BaseType(value=None, **kwargs)
    :canonical: aiida.orm.nodes.data.base.BaseType
@@ -1120,7 +1056,6 @@ API
 
       :return: CalculationTools instance
 
-
    .. py:method:: _updatable_attributes() -> typing.Tuple[str, ...]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode._updatable_attributes
 
@@ -1140,7 +1075,6 @@ API
       also add the `options` that were passed in the `metadata` input of the `CalcJob` process.
 
 
-
    .. py:property:: is_imported
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.is_imported
       :type: bool
@@ -1156,7 +1090,6 @@ API
       :return: the option value or None
       :raises: ValueError for unknown option
 
-
    .. py:method:: set_option(name: str, value: typing.Any) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_option
 
@@ -1167,7 +1100,6 @@ API
       :raises: ValueError for unknown option
       :raises: TypeError for values with invalid type
 
-
    .. py:method:: get_options() -> typing.Dict[str, typing.Any]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_options
 
@@ -1175,14 +1107,12 @@ API
 
       :return: dictionary of the options and their values
 
-
    .. py:method:: set_options(options: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_options
 
       Set the options for this CalcJobNode
 
       :param options: dictionary of option and their values to set
-
 
    .. py:method:: get_state() -> typing.Optional[aiida.common.datastructures.CalcJobState]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_state
@@ -1196,14 +1126,12 @@ API
 
       :return: instance of `aiida.common.datastructures.CalcJobState` or `None` if invalid value, or not set
 
-
    .. py:method:: set_state(state: aiida.common.datastructures.CalcJobState) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_state
 
       Set the calculation active job state.
 
       :raise: ValueError if state is invalid
-
 
    .. py:method:: delete_state() -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.delete_state
@@ -1217,14 +1145,12 @@ API
 
       :param remote_workdir: absolute filepath to the remote working directory
 
-
    .. py:method:: get_remote_workdir() -> typing.Optional[str]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_remote_workdir
 
       Return the path to the remote (on cluster) scratch folder of the calculation.
 
       :return: a string with the remote path
-
 
    .. py:method:: _validate_retrieval_directive(directives: typing.Sequence[typing.Union[str, typing.Tuple[str, str, str]]]) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode._validate_retrieval_directive
@@ -1234,7 +1160,6 @@ API
 
       :param directives: a list or tuple of file retrieval directives
       :raise ValueError: if the format of the directives is invalid
-
 
    .. py:method:: set_retrieve_list(retrieve_list: typing.Sequence[typing.Union[str, typing.Tuple[str, str, str]]]) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_retrieve_list
@@ -1246,14 +1171,12 @@ API
 
       :param retrieve_list: list or tuple of with filepath directives
 
-
    .. py:method:: get_retrieve_list() -> typing.Optional[typing.Sequence[typing.Union[str, typing.Tuple[str, str, str]]]]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_retrieve_list
 
       Return the list of files/directories to be retrieved on the cluster after the calculation has completed.
 
       :return: a list of file directives
-
 
    .. py:method:: set_retrieve_temporary_list(retrieve_temporary_list: typing.Sequence[typing.Union[str, typing.Tuple[str, str, str]]]) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_retrieve_temporary_list
@@ -1265,14 +1188,12 @@ API
 
       :param retrieve_temporary_list: list or tuple of with filepath directives
 
-
    .. py:method:: get_retrieve_temporary_list() -> typing.Optional[typing.Sequence[typing.Union[str, typing.Tuple[str, str, str]]]]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_retrieve_temporary_list
 
       Return list of files to be retrieved from the cluster which will be available during parsing.
 
       :return: a list of file directives
-
 
    .. py:method:: set_job_id(job_id: typing.Union[int, str]) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_job_id
@@ -1283,14 +1204,12 @@ API
 
       :param job_id: the id assigned by the scheduler after submission
 
-
    .. py:method:: get_job_id() -> typing.Optional[str]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_job_id
 
       Return job id that was assigned to the calculation by the scheduler.
 
       :return: the string representation of the scheduler job id
-
 
    .. py:method:: set_scheduler_state(state: aiida.schedulers.datastructures.JobState) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_scheduler_state
@@ -1299,14 +1218,12 @@ API
 
       :param state: an instance of `JobState`
 
-
    .. py:method:: get_scheduler_state() -> typing.Optional[aiida.schedulers.datastructures.JobState]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_scheduler_state
 
       Return the status of the calculation according to the cluster scheduler.
 
       :return: a JobState enum instance.
-
 
    .. py:method:: get_scheduler_lastchecktime() -> typing.Optional[datetime.datetime]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_scheduler_lastchecktime
@@ -1315,14 +1232,12 @@ API
 
       :return: a datetime object or None
 
-
    .. py:method:: set_detailed_job_info(detailed_job_info: typing.Optional[dict]) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_detailed_job_info
 
       Set the detailed job info dictionary.
 
       :param detailed_job_info: a dictionary with metadata with the accounting of a completed job
-
 
    .. py:method:: get_detailed_job_info() -> typing.Optional[dict]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_detailed_job_info
@@ -1333,14 +1248,12 @@ API
 
       :return: the dictionary with detailed job info if defined or None
 
-
    .. py:method:: set_last_job_info(last_job_info: aiida.schedulers.datastructures.JobInfo) -> None
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.set_last_job_info
 
       Set the last job info.
 
       :param last_job_info: a `JobInfo` object
-
 
    .. py:method:: get_last_job_info() -> typing.Optional[aiida.schedulers.datastructures.JobInfo]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_last_job_info
@@ -1355,14 +1268,12 @@ API
 
       :return: a `JobInfo` object (that closely resembles a dictionary) or None.
 
-
    .. py:method:: get_authinfo() -> aiida.orm.authinfos.AuthInfo
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_authinfo
 
       Return the `AuthInfo` that is configured for the `Computer` set for this node.
 
       :return: `AuthInfo`
-
 
    .. py:method:: get_transport() -> aiida.transports.Transport
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_transport
@@ -1371,7 +1282,6 @@ API
 
       :return: `Transport` configured with the `AuthInfo` associated to the computer of this node
 
-
    .. py:method:: get_parser_class() -> typing.Optional[typing.Type[aiida.parsers.Parser]]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_parser_class
 
@@ -1379,7 +1289,6 @@ API
 
       :return: a `Parser` class.
       :raises `aiida.common.exceptions.EntryPointError`: if the parser entry point can not be resolved.
-
 
    .. py:property:: link_label_retrieved
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.link_label_retrieved
@@ -1394,7 +1303,6 @@ API
 
       :return: the retrieved FolderData node or None if not found
 
-
    .. py:property:: res
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.res
       :type: aiida.orm.utils.calcjob.CalcJobResultManager
@@ -1407,7 +1315,6 @@ API
           in the dictionary of the parsed results which contains a list of floats.
           The command `calc.res.energy` will return such a list.
 
-
    .. py:method:: get_scheduler_stdout() -> typing.Optional[typing.AnyStr]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_scheduler_stdout
 
@@ -1415,14 +1322,12 @@ API
 
       :return: scheduler stderr output or None
 
-
    .. py:method:: get_scheduler_stderr() -> typing.Optional[typing.AnyStr]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_scheduler_stderr
 
       Return the scheduler stdout output if the calculation has finished and been retrieved, None otherwise.
 
       :return: scheduler stdout output or None
-
 
    .. py:method:: get_description() -> str
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_description
@@ -1445,14 +1350,12 @@ API
    If both these conditions are met, the results are defined as the dictionary contained within the default
    output node.
 
-
    .. py:method:: __init__(node)
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.__init__
 
       Construct an instance of the `CalcJobResultManager`.
 
       :param calc: the `CalcJobNode` instance.
-
 
    .. py:property:: node
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.node
@@ -1466,7 +1369,6 @@ API
 
       :raises ValueError: if no default output node could be loaded
 
-
    .. py:method:: get_results()
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.get_results
 
@@ -1475,7 +1377,6 @@ API
       This property will lazily load the dictionary.
 
       :return: the dictionary of the default result node
-
 
    .. py:method:: __dir__()
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.__dir__
@@ -1496,7 +1397,6 @@ API
       :return: value of the attribute
       :raises AttributeError: if the results node cannot be retrieved or it does not contain the `name` attribute
 
-
    .. py:method:: __getitem__(name)
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.__getitem__
 
@@ -1505,7 +1405,6 @@ API
       :param name: name of the result return
       :return: value of the attribute
       :raises KeyError: if the results node cannot be retrieved or it does not contain the `name` attribute
-
 
 .. py:class:: CalculationEntityLoader
    :canonical: aiida.orm.utils.loaders.CalculationEntityLoader
@@ -1523,7 +1422,6 @@ API
 
       :returns: the orm base class
 
-
    .. py:method:: _get_query_builder_label_identifier(identifier, classes, operator='==', project='*')
       :canonical: aiida.orm.utils.loaders.CalculationEntityLoader._get_query_builder_label_identifier
       :classmethod:
@@ -1538,7 +1436,6 @@ API
       :returns: the query builder instance that should retrieve the entity corresponding to the identifier
       :raises ValueError: if the identifier is invalid
       :raises aiida.common.NotExistent: if the orm base class does not support a LABEL like identifier
-
 
 .. py:class:: CalculationNode(backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None, user: typing.Optional[aiida.orm.users.User] = None, computer: typing.Optional[aiida.orm.computers.Computer] = None, **kwargs: typing.Any)
    :canonical: aiida.orm.nodes.process.calculation.calculation.CalculationNode
@@ -1570,7 +1467,6 @@ API
       The incoming nodes are reachable by their link labels which are attributes of the manager.
 
 
-
    .. py:property:: outputs
       :canonical: aiida.orm.nodes.process.calculation.calculation.CalculationNode.outputs
       :type: aiida.orm.utils.managers.NodeLinksManager
@@ -1580,7 +1476,6 @@ API
       The returned Manager allows you to easily explore the nodes connected to this node
       via an outgoing CREATE link.
       The outgoing nodes are reachable by their link labels which are attributes of the manager.
-
 
 
 .. py:class:: CifData(ase=None, file=None, filename=None, values=None, scan_type=None, parse_policy=None, **kwargs)
@@ -1594,7 +1489,6 @@ API
        information, so all conversions are done through the physical file:
        when setting ``ase`` or ``values``, a physical CIF file is generated
        first, the values are updated from the physical CIF file.
-
 
    .. py:attribute:: _SET_INCOMPATIBILITIES
       :canonical: aiida.orm.nodes.data.cif.CifData._SET_INCOMPATIBILITIES
@@ -1637,7 +1531,6 @@ API
       :param scan_type: scan type string for parsing with PyCIFRW ('standard' or 'flex'). See CifFile.ReadCif
       :param parse_policy: 'eager' (parse CIF file on set_file) or 'lazy' (defer parsing until needed)
 
-
    .. py:method:: read_cif(fileobj, index=-1, **kwargs)
       :canonical: aiida.orm.nodes.data.cif.CifData.read_cif
       :staticmethod:
@@ -1652,7 +1545,6 @@ API
       ASE tag to zero for all Atom elements.
 
 
-
    .. py:method:: from_md5(md5, backend=None)
       :canonical: aiida.orm.nodes.data.cif.CifData.from_md5
       :classmethod:
@@ -1661,7 +1553,6 @@ API
 
       .. note:: the hash has to be stored in a ``_md5`` attribute,
           otherwise the CIF file will not be found.
-
 
    .. py:method:: get_or_create(filename, use_first=False, store_cif=True)
       :canonical: aiida.orm.nodes.data.cif.CifData.get_or_create
@@ -1676,14 +1567,12 @@ API
               the database. default=True.
       :return (cif, created): where cif is the CifData object, and create is either            True if the object was created, or False if the object was retrieved            from the DB.
 
-
    .. py:property:: ase
       :canonical: aiida.orm.nodes.data.cif.CifData.ase
 
       ASE object, representing the CIF.
 
       .. note:: requires ASE module.
-
 
    .. py:method:: get_ase(**kwargs)
       :canonical: aiida.orm.nodes.data.cif.CifData.get_ase
@@ -1694,7 +1583,6 @@ API
 
       .. note:: requires ASE module.
 
-
    .. py:method:: set_ase(aseatoms)
       :canonical: aiida.orm.nodes.data.cif.CifData.set_ase
 
@@ -1702,14 +1590,12 @@ API
 
       :param aseatoms: the ASE atoms object
 
-
    .. py:property:: values
       :canonical: aiida.orm.nodes.data.cif.CifData.values
 
       PyCifRW structure, representing the CIF datablocks.
 
       .. note:: requires PyCifRW module.
-
 
    .. py:method:: set_values(values)
       :canonical: aiida.orm.nodes.data.cif.CifData.set_values
@@ -1722,7 +1608,6 @@ API
 
       .. note:: requires PyCifRW module.
 
-
    .. py:method:: parse(scan_type=None)
       :canonical: aiida.orm.nodes.data.cif.CifData.parse
 
@@ -1730,12 +1615,10 @@ API
 
       :param scan_type:  See set_scan_type
 
-
    .. py:method:: store(*args, **kwargs)
       :canonical: aiida.orm.nodes.data.cif.CifData.store
 
       Store the node.
-
 
    .. py:method:: set_file(file, filename=None)
       :canonical: aiida.orm.nodes.data.cif.CifData.set_file
@@ -1749,7 +1632,6 @@ API
           Hint: Pass io.BytesIO(b"my string") to construct the file directly from a string.
       :param filename: specify filename to use (defaults to name of provided file).
 
-
    .. py:method:: set_scan_type(scan_type)
       :canonical: aiida.orm.nodes.data.cif.CifData.set_scan_type
 
@@ -1761,7 +1643,6 @@ API
 
       :param scan_type: Either 'standard' or 'flex' (see _scan_types)
 
-
    .. py:method:: set_parse_policy(parse_policy)
       :canonical: aiida.orm.nodes.data.cif.CifData.set_parse_policy
 
@@ -1769,7 +1650,6 @@ API
 
       :param parse_policy: Either 'eager' (parse CIF file on set_file)
           or 'lazy' (defer parsing until needed)
-
 
    .. py:method:: get_formulae(mode='sum', custom_tags=None)
       :canonical: aiida.orm.nodes.data.cif.CifData.get_formulae
@@ -1779,12 +1659,10 @@ API
       Note: This does not compute the formula, it only reads it from the
       appropriate tag. Use refine_inline to compute formulae.
 
-
    .. py:method:: get_spacegroup_numbers()
       :canonical: aiida.orm.nodes.data.cif.CifData.get_spacegroup_numbers
 
       Get the spacegroup international number.
-
 
    .. py:property:: has_partial_occupancies
       :canonical: aiida.orm.nodes.data.cif.CifData.has_partial_occupancies
@@ -1797,7 +1675,6 @@ API
 
       :return: True if there are partial occupancies, False otherwise
 
-
    .. py:property:: has_attached_hydrogens
       :canonical: aiida.orm.nodes.data.cif.CifData.has_attached_hydrogens
 
@@ -1805,7 +1682,6 @@ API
       to the atoms of the structure.
 
       :returns: True if there are attached hydrogens, False otherwise.
-
 
    .. py:property:: has_undefined_atomic_sites
       :canonical: aiida.orm.nodes.data.cif.CifData.has_undefined_atomic_sites
@@ -1820,7 +1696,6 @@ API
       :return: boolean, True if no atomic sites are defined or if any of the defined sites contain undefined positions
           and False otherwise
 
-
    .. py:property:: has_atomic_sites
       :canonical: aiida.orm.nodes.data.cif.CifData.has_atomic_sites
 
@@ -1832,7 +1707,6 @@ API
 
       :returns: False when at least one atomic site fractional coordinate is not
           equal to `?` and True otherwise
-
 
    .. py:property:: has_unknown_species
       :canonical: aiida.orm.nodes.data.cif.CifData.has_unknown_species
@@ -1846,12 +1720,10 @@ API
 
       :returns: True when there are unknown species in any of the formulae, False if not, None if no formula found
 
-
    .. py:method:: generate_md5()
       :canonical: aiida.orm.nodes.data.cif.CifData.generate_md5
 
       Computes and returns MD5 hash of the CIF file.
-
 
    .. py:method:: get_structure(converter='pymatgen', store=False, **kwargs)
       :canonical: aiida.orm.nodes.data.cif.CifData.get_structure
@@ -1872,7 +1744,6 @@ API
           in which case they will be combined to a single disordered site. Defaults to 1e-4. (pymatgen only)
       :return: :py:class:`aiida.orm.nodes.data.structure.StructureData` node.
 
-
    .. py:method:: _prepare_cif(**kwargs)
       :canonical: aiida.orm.nodes.data.cif.CifData._prepare_cif
 
@@ -1881,14 +1752,12 @@ API
       If parsed values are present, a CIF string is created and written to file. If no parsed values are present, the
       CIF string is read from file.
 
-
    .. py:method:: _get_object_ase()
       :canonical: aiida.orm.nodes.data.cif.CifData._get_object_ase
 
       Converts CifData to ase.Atoms
 
       :return: an ase.Atoms object
-
 
    .. py:method:: _get_object_pycifrw()
       :canonical: aiida.orm.nodes.data.cif.CifData._get_object_pycifrw
@@ -1897,12 +1766,10 @@ API
 
       :return: a PyCIFRW.CifFile object
 
-
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.cif.CifData._validate
 
       Validates MD5 hash of CIF file.
-
 
 .. py:class:: Code(remote_computer_exec=None, local_executable=None, input_plugin_name=None, files=None, **kwargs)
    :canonical: aiida.orm.nodes.data.code.legacy.Code
@@ -1921,7 +1788,6 @@ API
    methods (e.g., the set_preexec_code() can be used to load specific modules required
    for the code to be run).
 
-
    .. py:method:: __init__(remote_computer_exec=None, local_executable=None, input_plugin_name=None, files=None, **kwargs)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.__init__
 
@@ -1932,7 +1798,6 @@ API
       :param prepend_text: The text that should be prepended to the run line in the job script.
       :param use_double_quotes: Whether the command line invocation of this code should be escaped with double quotes.
       :param is_hidden: Whether the code is hidden.
-
 
    .. py:attribute:: HIDDEN_KEY
       :canonical: aiida.orm.nodes.data.code.legacy.Code.HIDDEN_KEY
@@ -1946,7 +1811,6 @@ API
       :param computer: The computer.
       :return: ``True`` if the code can run on ``computer``, ``False`` otherwise.
 
-
    .. py:method:: get_executable() -> pathlib.PurePosixPath
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_executable
 
@@ -1954,12 +1818,10 @@ API
 
       :return: The executable to be called in the submission script.
 
-
    .. py:method:: hide()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.hide
 
       Hide the code (prevents from showing it in the verdi code list)
-
 
    .. py:method:: reveal()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.reveal
@@ -1967,12 +1829,10 @@ API
       Reveal the code (allows to show it in the verdi code list)
       By default, it is revealed
 
-
    .. py:property:: hidden
       :canonical: aiida.orm.nodes.data.code.legacy.Code.hidden
 
       Determines whether the Code is hidden or not
-
 
    .. py:method:: set_files(files)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.set_files
@@ -1983,7 +1843,6 @@ API
 
       :todo: decide whether to check if the Code must be a local executable
            to be able to call this function.
-
 
    .. py:method:: __str__()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.__str__
@@ -2002,7 +1861,6 @@ API
 
       Returns label of the form <code-label>@<computer-name>.
 
-
    .. py:method:: relabel(new_label)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.relabel
 
@@ -2010,14 +1868,12 @@ API
 
       :param new_label: new code label
 
-
    .. py:method:: get_description()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_description
 
       Return a string description of this Code instance.
 
       :return: string description of this Code instance
-
 
    .. py:method:: get_code_helper(label, machinename=None, backend=None)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_code_helper
@@ -2029,7 +1885,6 @@ API
       :raise aiida.common.NotExistent: if no code identified by the given string is found
       :raise aiida.common.MultipleObjectsError: if the string cannot identify uniquely
           a code
-
 
    .. py:method:: get(pk=None, label=None, machinename=None)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get
@@ -2045,7 +1900,6 @@ API
       :raise aiida.common.NotExistent: if no code identified by the given string is found
       :raise aiida.common.MultipleObjectsError: if the string cannot identify uniquely a code
       :raise ValueError: if neither a pk nor a label was passed in
-
 
    .. py:method:: get_from_string(code_string)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_from_string
@@ -2068,7 +1922,6 @@ API
       :raise TypeError: if code_string is not of string type
 
 
-
    .. py:method:: list_for_plugin(plugin, labels=True, backend=None)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.list_for_plugin
       :classmethod:
@@ -2080,7 +1933,6 @@ API
         return the code PKs (integers).
       :return: a list of string, with the code names if labels is True,
         otherwise a list of integers with the code PKs.
-
 
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.code.legacy.Code._validate
@@ -2095,7 +1947,6 @@ API
       Therefore, use :py:meth:`~aiida.orm.nodes.attributes.NodeAttributes.get()` and similar methods that
       automatically read either from the DB or from the internal attribute cache.
 
-
    .. py:method:: validate_remote_exec_path()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.validate_remote_exec_path
 
@@ -2108,13 +1959,11 @@ API
       :raises `~aiida.common.exceptions.ValidationError`: if no transport could be opened or if the defined executable
           does not exist on the remote computer.
 
-
    .. py:method:: set_prepend_text(code)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.set_prepend_text
 
       Pass a string of code that will be put in the scheduler script before the
       execution of the code.
-
 
    .. py:method:: get_prepend_text()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_prepend_text
@@ -2122,20 +1971,17 @@ API
       Return the code that will be put in the scheduler script before the
       execution, or an empty string if no pre-exec code was defined.
 
-
    .. py:method:: set_input_plugin_name(input_plugin)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.set_input_plugin_name
 
       Set the name of the default input plugin, to be used for the automatic
       generation of a new calculation.
 
-
    .. py:method:: get_input_plugin_name()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_input_plugin_name
 
       Return the name of the default input plugin (or None if no input plugin
       was set.
-
 
    .. py:method:: set_use_double_quotes(use_double_quotes: bool)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.set_use_double_quotes
@@ -2144,7 +1990,6 @@ API
 
       :param use_double_quotes: True if to escape with double quotes, False otherwise.
 
-
    .. py:method:: get_use_double_quotes() -> bool
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_use_double_quotes
 
@@ -2152,26 +1997,22 @@ API
 
       :returns: True if to escape with double quotes, False otherwise which is also the default.
 
-
    .. py:method:: set_append_text(code)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.set_append_text
 
       Pass a string of code that will be put in the scheduler script after the
       execution of the code.
 
-
    .. py:method:: get_append_text()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_append_text
 
       Return the postexec_code, or an empty string if no post-exec code was defined.
-
 
    .. py:method:: set_local_executable(exec_name)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.set_local_executable
 
       Set the filename of the local executable.
       Implicitly set the code as local.
-
 
    .. py:method:: get_local_executable()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_local_executable
@@ -2184,7 +2025,6 @@ API
 
       :param remote_computer_exec: a tuple (computer, remote_exec_path), where computer is a aiida.orm.Computer and
           remote_exec_path is the absolute path of the main executable on remote computer.
-
 
    .. py:method:: get_remote_exec_path()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_remote_exec_path
@@ -2203,7 +2043,6 @@ API
 
       It also deletes the flags related to the local case (if any)
 
-
    .. py:method:: _set_remote()
       :canonical: aiida.orm.nodes.data.code.legacy.Code._set_remote
 
@@ -2213,13 +2052,11 @@ API
 
       It also deletes the flags related to the local case (if any)
 
-
    .. py:method:: is_local()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.is_local
 
       Return True if the code is 'local', False if it is 'remote' (see also documentation
       of the set_local and set_remote functions).
-
 
    .. py:method:: can_run_on(computer)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.can_run_on
@@ -2231,14 +2068,12 @@ API
 
       TODO: add filters to mask the remote machines on which a local code can run.
 
-
    .. py:method:: get_execname()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_execname
 
       Return the executable string to be put in the script.
       For local codes, it is ./LOCAL_EXECUTABLE_NAME
       For remote codes, it is the absolute path to the executable.
-
 
 .. py:class:: CodeEntityLoader
    :canonical: aiida.orm.utils.loaders.CodeEntityLoader
@@ -2256,7 +2091,6 @@ API
 
       :returns: the orm base class
 
-
    .. py:method:: _get_query_builder_label_identifier(identifier, classes, operator='==', project='*')
       :canonical: aiida.orm.utils.loaders.CodeEntityLoader._get_query_builder_label_identifier
       :classmethod:
@@ -2271,7 +2105,6 @@ API
       :returns: the query builder instance that should retrieve the entity corresponding to the identifier
       :raises ValueError: if the identifier is invalid
       :raises aiida.common.NotExistent: if the orm base class does not support a LABEL like identifier
-
 
 .. py:class:: Collection(entity_class: typing.Type[aiida.orm.entities.EntityType], backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.entities.Collection
@@ -2295,7 +2128,6 @@ API
 
       :param backend: the backend instance to get the collection for
 
-
    .. py:method:: __init__(entity_class: typing.Type[aiida.orm.entities.EntityType], backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None) -> None
       :canonical: aiida.orm.entities.Collection.__init__
 
@@ -2303,7 +2135,6 @@ API
 
       :param entity_class: the entity type e.g. User, Computer, etc
       :param backend: the backend instance to get the collection for, or use the default
-
 
    .. py:method:: __call__(backend: aiida.orm.implementation.StorageBackend) -> aiida.orm.entities.CollectionType
       :canonical: aiida.orm.entities.Collection.__call__
@@ -2332,7 +2163,6 @@ API
       :param limit: the maximum number of results to return
       :param offset: number of initial results to be skipped
 
-
    .. py:method:: get(**filters: typing.Any) -> aiida.orm.entities.EntityType
       :canonical: aiida.orm.entities.Collection.get
 
@@ -2341,7 +2171,6 @@ API
       :param filters: the filters identifying the object to get
 
       :return: the entry
-
 
    .. py:method:: find(filters: typing.Optional[aiida.orm.querybuilder.FilterType] = None, order_by: typing.Optional[aiida.orm.querybuilder.OrderByType] = None, limit: typing.Optional[int] = None) -> typing.List[aiida.orm.entities.EntityType]
       :canonical: aiida.orm.entities.Collection.find
@@ -2354,14 +2183,12 @@ API
 
       :return: a list of resulting matches
 
-
    .. py:method:: all() -> typing.List[aiida.orm.entities.EntityType]
       :canonical: aiida.orm.entities.Collection.all
 
       Get all entities in this collection.
 
       :return: A list of all entities
-
 
    .. py:method:: count(filters: typing.Optional[aiida.orm.querybuilder.FilterType] = None) -> int
       :canonical: aiida.orm.entities.Collection.count
@@ -2371,7 +2198,6 @@ API
       :param filters: the keyword value pair filters to match
 
       :return: The number of entities found using the supplied criteria
-
 
 .. py:class:: Comment(node: aiida.orm.Node, user: aiida.orm.User, content: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.comments.Comment
@@ -2396,7 +2222,6 @@ API
 
       :return: a Comment object associated to the given node and user
 
-
    .. py:method:: __str__() -> str
       :canonical: aiida.orm.comments.Comment.__str__
 
@@ -2409,7 +2234,6 @@ API
       This identifier is unique across all entities types and backend instances.
 
       :return: the entity uuid
-
 
    .. py:property:: ctime
       :canonical: aiida.orm.comments.Comment.ctime
@@ -2446,7 +2270,6 @@ API
    Bases: :py:obj:`aiida.orm.entities.Entity`\ [\ :py:obj:`aiida.orm.implementation.BackendComputer`\ , :py:obj:`aiida.orm.computers.ComputerCollection`\ ]
 
    Computer entity.
-
 
    .. py:attribute:: _logger
       :canonical: aiida.orm.computers.Computer._logger
@@ -2493,7 +2316,6 @@ API
 
       :return: the entity uuid
 
-
    .. py:property:: logger
       :canonical: aiida.orm.computers.Computer.logger
       :type: logging.Logger
@@ -2504,13 +2326,11 @@ API
 
       Validates the label.
 
-
    .. py:method:: _hostname_validator(hostname: str) -> None
       :canonical: aiida.orm.computers.Computer._hostname_validator
       :classmethod:
 
       Validates the hostname.
-
 
    .. py:method:: _description_validator(description: str) -> None
       :canonical: aiida.orm.computers.Computer._description_validator
@@ -2518,13 +2338,11 @@ API
 
       Validates the description.
 
-
    .. py:method:: _transport_type_validator(transport_type: str) -> None
       :canonical: aiida.orm.computers.Computer._transport_type_validator
       :classmethod:
 
       Validates the transport string.
-
 
    .. py:method:: _scheduler_type_validator(scheduler_type: str) -> None
       :canonical: aiida.orm.computers.Computer._scheduler_type_validator
@@ -2532,13 +2350,11 @@ API
 
       Validates the transport string.
 
-
    .. py:method:: _prepend_text_validator(prepend_text: str) -> None
       :canonical: aiida.orm.computers.Computer._prepend_text_validator
       :classmethod:
 
       Validates the prepend text string.
-
 
    .. py:method:: _append_text_validator(append_text: str) -> None
       :canonical: aiida.orm.computers.Computer._append_text_validator
@@ -2546,20 +2362,17 @@ API
 
       Validates the append text string.
 
-
    .. py:method:: _workdir_validator(workdir: str) -> None
       :canonical: aiida.orm.computers.Computer._workdir_validator
       :classmethod:
 
       Validates the transport string.
 
-
    .. py:method:: _mpirun_command_validator(mpirun_cmd: typing.Union[typing.List[str], typing.Tuple[str, ...]]) -> None
       :canonical: aiida.orm.computers.Computer._mpirun_command_validator
 
       Validates the mpirun_command variable. MUST be called after properly
       checking for a valid scheduler.
-
 
    .. py:method:: validate() -> None
       :canonical: aiida.orm.computers.Computer.validate
@@ -2573,13 +2386,11 @@ API
       For the base class, this is always valid. Subclasses will reimplement this.
       In the subclass, always call the super().validate() method first!
 
-
    .. py:method:: _default_mpiprocs_per_machine_validator(def_cpus_per_machine: typing.Optional[int]) -> None
       :canonical: aiida.orm.computers.Computer._default_mpiprocs_per_machine_validator
       :classmethod:
 
       Validates the default number of CPUs per machine (node)
-
 
    .. py:method:: default_memory_per_machine_validator(def_memory_per_machine: typing.Optional[int]) -> None
       :canonical: aiida.orm.computers.Computer.default_memory_per_machine_validator
@@ -2592,7 +2403,6 @@ API
 
       Return a copy of the current object to work with, not stored yet.
 
-
    .. py:method:: store() -> aiida.orm.computers.Computer
       :canonical: aiida.orm.computers.Computer.store
 
@@ -2600,7 +2410,6 @@ API
 
       Differently from Nodes, a computer can be re-stored if its properties
       are to be changed (e.g. a new mpirun command, etc.)
-
 
    .. py:property:: label
       :canonical: aiida.orm.computers.Computer.label
@@ -2610,7 +2419,6 @@ API
 
       :return: the label.
 
-
    .. py:property:: description
       :canonical: aiida.orm.computers.Computer.description
       :type: str
@@ -2618,7 +2426,6 @@ API
       Return the computer computer.
 
       :return: the description.
-
 
    .. py:property:: hostname
       :canonical: aiida.orm.computers.Computer.hostname
@@ -2628,7 +2435,6 @@ API
 
       :return: the hostname.
 
-
    .. py:property:: scheduler_type
       :canonical: aiida.orm.computers.Computer.scheduler_type
       :type: str
@@ -2636,7 +2442,6 @@ API
       Return the computer scheduler type.
 
       :return: the scheduler type.
-
 
    .. py:property:: transport_type
       :canonical: aiida.orm.computers.Computer.transport_type
@@ -2646,7 +2451,6 @@ API
 
       :return: the transport_type.
 
-
    .. py:property:: metadata
       :canonical: aiida.orm.computers.Computer.metadata
       :type: typing.Dict[str, typing.Any]
@@ -2654,7 +2458,6 @@ API
       Return the computer metadata.
 
       :return: the metadata.
-
 
    .. py:method:: delete_property(name: str, raise_exception: bool = True) -> None
       :canonical: aiida.orm.computers.Computer.delete_property
@@ -2664,7 +2467,6 @@ API
       :param name: the name of the property
       :param raise_exception: if True raise if the property does not exist, otherwise return None
 
-
    .. py:method:: set_property(name: str, value: typing.Any) -> None
       :canonical: aiida.orm.computers.Computer.set_property
 
@@ -2672,7 +2474,6 @@ API
 
       :param name: the property name
       :param value: the new value
-
 
    .. py:method:: get_property(name: str, *args: typing.Any) -> typing.Any
       :canonical: aiida.orm.computers.Computer.get_property
@@ -2683,7 +2484,6 @@ API
       :param args: additional arguments
 
       :return: the property value
-
 
    .. py:method:: get_prepend_text() -> str
       :canonical: aiida.orm.computers.Computer.get_prepend_text
@@ -2704,14 +2504,12 @@ API
 
       :returns: True if to escape with double quotes, False otherwise which is also the default.
 
-
    .. py:method:: set_use_double_quotes(val: bool) -> None
       :canonical: aiida.orm.computers.Computer.set_use_double_quotes
 
       Set whether the command line parameters of this computer should be escaped with double quotes.
 
       :param use_double_quotes: True if to escape with double quotes, False otherwise.
-
 
    .. py:method:: get_mpirun_command() -> typing.List[str]
       :canonical: aiida.orm.computers.Computer.get_mpirun_command
@@ -2721,13 +2519,11 @@ API
 
       I also provide a sensible default that may be ok in many cases.
 
-
    .. py:method:: set_mpirun_command(val: typing.Union[typing.List[str], typing.Tuple[str, ...]]) -> None
       :canonical: aiida.orm.computers.Computer.set_mpirun_command
 
       Set the mpirun command. It must be a list of strings (you can use
       string.split() if you have a single, space-separated string).
-
 
    .. py:method:: get_default_mpiprocs_per_machine() -> typing.Optional[int]
       :canonical: aiida.orm.computers.Computer.get_default_mpiprocs_per_machine
@@ -2735,13 +2531,11 @@ API
       Return the default number of CPUs per machine (node) for this computer,
       or None if it was not set.
 
-
    .. py:method:: set_default_mpiprocs_per_machine(def_cpus_per_machine: typing.Optional[int]) -> None
       :canonical: aiida.orm.computers.Computer.set_default_mpiprocs_per_machine
 
       Set the default number of CPUs per machine (node) for this computer.
       Accepts None if you do not want to set this value.
-
 
    .. py:method:: get_default_memory_per_machine() -> typing.Optional[int]
       :canonical: aiida.orm.computers.Computer.get_default_memory_per_machine
@@ -2749,13 +2543,11 @@ API
       Return the default amount of memory (kB) per machine (node) for this computer,
       or None if it was not set.
 
-
    .. py:method:: set_default_memory_per_machine(def_memory_per_machine: typing.Optional[int]) -> None
       :canonical: aiida.orm.computers.Computer.set_default_memory_per_machine
 
       Set the default amount of memory (kB) per machine (node) for this computer.
       Accepts None if you do not want to set this value.
-
 
    .. py:method:: get_minimum_job_poll_interval() -> float
       :canonical: aiida.orm.computers.Computer.get_minimum_job_poll_interval
@@ -2769,7 +2561,6 @@ API
 
       :return: The minimum interval (in seconds).
 
-
    .. py:method:: set_minimum_job_poll_interval(interval: float) -> None
       :canonical: aiida.orm.computers.Computer.set_minimum_job_poll_interval
 
@@ -2778,13 +2569,11 @@ API
 
       :param interval: The minimum interval in seconds
 
-
    .. py:method:: get_workdir() -> str
       :canonical: aiida.orm.computers.Computer.get_workdir
 
       Get the working directory for this computer
       :return: The currently configured working directory
-
 
    .. py:method:: set_workdir(val: str) -> None
       :canonical: aiida.orm.computers.Computer.set_workdir
@@ -2796,7 +2585,6 @@ API
       :canonical: aiida.orm.computers.Computer.set_shebang
 
       :param str val: A valid shebang line
-
 
    .. py:method:: get_authinfo(user: aiida.orm.User) -> aiida.orm.AuthInfo
       :canonical: aiida.orm.computers.Computer.get_authinfo
@@ -2810,7 +2598,6 @@ API
       :raise aiida.common.NotExistent: if the computer is not configured for the given
           user.
 
-
    .. py:property:: is_configured
       :canonical: aiida.orm.computers.Computer.is_configured
       :type: bool
@@ -2818,7 +2605,6 @@ API
       Return whether the computer is configured for the current default user.
 
       :return: Boolean, ``True`` if the computer is configured for the current default user, ``False`` otherwise.
-
 
    .. py:method:: is_user_configured(user: aiida.orm.User) -> bool
       :canonical: aiida.orm.computers.Computer.is_user_configured
@@ -2828,7 +2614,6 @@ API
       :param user: the user to check
       :return: True if configured, False otherwise
 
-
    .. py:method:: is_user_enabled(user: aiida.orm.User) -> bool
       :canonical: aiida.orm.computers.Computer.is_user_enabled
 
@@ -2836,7 +2621,6 @@ API
 
       :param user: the user to check
       :return: True if enabled, False otherwise
-
 
    .. py:method:: get_transport(user: typing.Optional[aiida.orm.User] = None) -> aiida.transports.Transport
       :canonical: aiida.orm.computers.Computer.get_transport
@@ -2858,7 +2642,6 @@ API
           parameters to the supercomputer, as configured with ``verdi computer configure``
           for the user specified as a parameter ``user``.
 
-
    .. py:method:: get_transport_class() -> typing.Type[aiida.transports.Transport]
       :canonical: aiida.orm.computers.Computer.get_transport_class
 
@@ -2878,14 +2661,12 @@ API
       :kwargs: the configuration keywords with corresponding values
       :return: the authinfo object for the configured user
 
-
    .. py:method:: get_configuration(user: typing.Optional[aiida.orm.User] = None) -> typing.Dict[str, typing.Any]
       :canonical: aiida.orm.computers.Computer.get_configuration
 
       Get the configuration of computer for the given user as a dictionary
 
       :param user: the user to to get the configuration for, otherwise default user
-
 
 .. py:class:: ComputerEntityLoader
    :canonical: aiida.orm.utils.loaders.ComputerEntityLoader
@@ -2903,7 +2684,6 @@ API
 
       :returns: the orm base class
 
-
    .. py:method:: _get_query_builder_label_identifier(identifier, classes, operator='==', project='*')
       :canonical: aiida.orm.utils.loaders.ComputerEntityLoader._get_query_builder_label_identifier
       :classmethod:
@@ -2918,7 +2698,6 @@ API
       :returns: the query builder instance that should retrieve the entity corresponding to the identifier
       :raises ValueError: if the identifier is invalid
       :raises aiida.common.NotExistent: if the orm base class does not support a LABEL like identifier
-
 
 .. py:class:: ContainerizedCode(engine_command: str, image_name: str, **kwargs)
    :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode
@@ -2950,7 +2729,6 @@ API
 
       :return: The filepath of the executable.
 
-
    .. py:property:: engine_command
       :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.engine_command
       :type: str
@@ -2959,7 +2737,6 @@ API
 
       :return: The engine command of the containerized code
 
-
    .. py:property:: image_name
       :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.image_name
       :type: str
@@ -2967,7 +2744,6 @@ API
       The image name of container
 
       :return: The image name of container.
-
 
    .. py:method:: get_prepend_cmdline_params(mpi_args: list[str] | None = None, extra_mpirun_params: list[str] | None = None) -> list[str]
       :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.get_prepend_cmdline_params
@@ -2998,7 +2774,6 @@ API
    Architecture note:
    Calculation plugins are responsible for converting raw output data from simulation codes to Data nodes.
    Nodes are responsible for validating their content (see _validate method).
-
 
    .. py:attribute:: _source_attributes
       :canonical: aiida.orm.nodes.data.data.Data._source_attributes
@@ -3034,14 +2809,12 @@ API
 
       :returns: an unstored clone of this Data node
 
-
    .. py:method:: clone()
       :canonical: aiida.orm.nodes.data.data.Data.clone
 
       Create a clone of the Data node.
 
       :returns: an unstored clone of this Data node
-
 
    .. py:property:: source
       :canonical: aiida.orm.nodes.data.data.Data.source
@@ -3062,12 +2835,10 @@ API
 
       :return: dictionary describing the source of Data object.
 
-
    .. py:method:: set_source(source)
       :canonical: aiida.orm.nodes.data.data.Data.set_source
 
       Sets the dictionary describing the source of Data object.
-
 
    .. py:property:: creator
       :canonical: aiida.orm.nodes.data.data.Data.creator
@@ -3075,7 +2846,6 @@ API
       Return the creator of this node or None if it does not exist.
 
       :return: the creating node or None
-
 
    .. py:method:: _exportcontent(fileformat, main_file_name='', **kwargs)
       :canonical: aiida.orm.nodes.data.data.Data._exportcontent
@@ -3098,7 +2868,6 @@ API
           {filename: filecontent} for any additional file that should be produced.
       :rtype: (bytes, dict)
 
-
    .. py:method:: export(path, fileformat=None, overwrite=False, **kwargs)
       :canonical: aiida.orm.nodes.data.data.Data.export
 
@@ -3112,14 +2881,12 @@ API
           _exportcontent method
       :return: the list of files created
 
-
    .. py:method:: _get_exporters()
       :canonical: aiida.orm.nodes.data.data.Data._get_exporters
 
       Get all implemented export formats.
       The convention is to find all _prepare_... methods.
       Returns a dictionary of method_name: method_function
-
 
    .. py:method:: get_export_formats()
       :canonical: aiida.orm.nodes.data.data.Data.get_export_formats
@@ -3129,7 +2896,6 @@ API
 
       :return: a list of valid formats
 
-
    .. py:method:: importstring(inputstring, fileformat, **kwargs)
       :canonical: aiida.orm.nodes.data.data.Data.importstring
 
@@ -3137,7 +2903,6 @@ API
 
       :param fileformat: a string (the extension) to describe the file format.
       :returns: a string with the structure description.
-
 
    .. py:method:: importfile(fname, fileformat=None)
       :canonical: aiida.orm.nodes.data.data.Data.importfile
@@ -3148,14 +2913,12 @@ API
       :param fileformat: kind of format to use for the export. If not present,
           it will try to use the extension of the file name.
 
-
    .. py:method:: _get_importers()
       :canonical: aiida.orm.nodes.data.data.Data._get_importers
 
       Get all implemented import formats.
       The convention is to find all _parse_... methods.
       Returns a list of strings.
-
 
    .. py:method:: convert(object_format=None, *args)
       :canonical: aiida.orm.nodes.data.data.Data.convert
@@ -3164,14 +2927,12 @@ API
 
       :param object_format: Specify the output format
 
-
    .. py:method:: _get_converters()
       :canonical: aiida.orm.nodes.data.data.Data._get_converters
 
       Get all implemented converter formats.
       The convention is to find all _get_object_... methods.
       Returns a list of strings.
-
 
 .. py:class:: Dict(value=None, **kwargs)
    :canonical: aiida.orm.nodes.data.dict.Dict
@@ -3204,7 +2965,6 @@ API
 
    Finally, all dictionary mutations will be forbidden once the node is stored.
 
-
    .. py:method:: __init__(value=None, **kwargs)
       :canonical: aiida.orm.nodes.data.dict.Dict.__init__
 
@@ -3216,7 +2976,6 @@ API
       Initial attributes can be changed, deleted or added as long as the node is not stored.
 
       :param value: dictionary to initialise the ``Dict`` node from
-
 
    .. py:method:: __getitem__(key)
       :canonical: aiida.orm.nodes.data.dict.Dict.__getitem__
@@ -3239,7 +2998,6 @@ API
 
       :param dictionary: dictionary to set
 
-
    .. py:method:: update_dict(dictionary)
       :canonical: aiida.orm.nodes.data.dict.Dict.update_dict
 
@@ -3249,7 +3007,6 @@ API
 
       :param dictionary: a dictionary with the keys to substitute
 
-
    .. py:method:: get_dict()
       :canonical: aiida.orm.nodes.data.dict.Dict.get_dict
 
@@ -3257,14 +3014,12 @@ API
 
       :return: dictionary
 
-
    .. py:method:: keys()
       :canonical: aiida.orm.nodes.data.dict.Dict.keys
 
       Iterator of valid keys stored in the Dict object.
 
       :return: iterator over the keys of the current dictionary
-
 
    .. py:method:: items()
       :canonical: aiida.orm.nodes.data.dict.Dict.items
@@ -3279,7 +3034,6 @@ API
       .. note:: this will allow one to do `node.dict.key` as well as `node.dict[key]`.
 
       :return: an instance of the `AttributeResultManager`.
-
 
 .. py:class:: Entity(backend_entity: aiida.orm.entities.BackendEntityType)
    :canonical: aiida.orm.entities.Entity
@@ -3302,14 +3056,12 @@ API
 
       :return: an object that can be used to access entities of this type
 
-
    .. py:method:: collection() -> aiida.orm.entities.CollectionType
       :canonical: aiida.orm.entities.Entity.collection
 
       Get a collection for objects of this type, with the default backend.
 
       :return: an object that can be used to access entities of this type
-
 
    .. py:method:: get(**kwargs)
       :canonical: aiida.orm.entities.Entity.get
@@ -3318,7 +3070,6 @@ API
       Get an entity of the collection matching the given filters.
 
       .. deprecated: Will be removed in v3, use `Entity.collection.get` instead.
-
 
 
    .. py:method:: from_backend_entity(backend_entity: aiida.orm.entities.BackendEntityType) -> aiida.orm.entities.EntityType
@@ -3331,12 +3082,10 @@ API
 
       :return: an AiiDA entity instance
 
-
    .. py:method:: __init__(backend_entity: aiida.orm.entities.BackendEntityType) -> None
       :canonical: aiida.orm.entities.Entity.__init__
 
       :param backend_entity: the backend model supporting this entity
-
 
    .. py:method:: __getstate__()
       :canonical: aiida.orm.entities.Entity.__getstate__
@@ -3350,7 +3099,6 @@ API
 
       This will be called after the constructor is called or an entity is created from an existing backend entity.
 
-
    .. py:property:: id
       :canonical: aiida.orm.entities.Entity.id
       :type: int
@@ -3363,7 +3111,6 @@ API
 
       :return: the entity's id
 
-
    .. py:property:: pk
       :canonical: aiida.orm.entities.Entity.pk
       :type: int
@@ -3373,7 +3120,6 @@ API
       This identifier is guaranteed to be unique amongst entities of the same type for a single backend instance.
 
       :return: the entity's principal key
-
 
    .. py:method:: store() -> aiida.orm.entities.EntityType
       :canonical: aiida.orm.entities.Entity.store
@@ -3409,7 +3155,6 @@ API
    Extras are mutable, even after storing the entity,
    and as such are not deemed a core part of the provenance graph.
 
-
    .. py:method:: __init__(entity: typing.Union[aiida.orm.nodes.node.Node, aiida.orm.groups.Group]) -> None
       :canonical: aiida.orm.extras.EntityExtras.__init__
 
@@ -3436,7 +3181,6 @@ API
 
       :return: the extras as a dictionary
 
-
    .. py:method:: get(key: str, default: typing.Any = _NO_DEFAULT) -> typing.Any
       :canonical: aiida.orm.extras.EntityExtras.get
 
@@ -3452,7 +3196,6 @@ API
       :param default: return this value instead of raising if the attribute does not exist
       :return: the value of the extra
       :raises AttributeError: if the extra does not exist and no default is specified
-
 
    .. py:method:: get_many(keys: typing.List[str]) -> typing.List[typing.Any]
       :canonical: aiida.orm.extras.EntityExtras.get_many
@@ -3471,7 +3214,6 @@ API
       :return: a list of extra values
       :raises AttributeError: if at least one extra does not exist
 
-
    .. py:method:: set(key: str, value: typing.Any) -> None
       :canonical: aiida.orm.extras.EntityExtras.set
 
@@ -3480,7 +3222,6 @@ API
       :param key: name of the extra
       :param value: value of the extra
       :raise aiida.common.ValidationError: if the key is invalid, i.e. contains periods
-
 
    .. py:method:: set_many(extras: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.extras.EntityExtras.set_many
@@ -3492,7 +3233,6 @@ API
       :param extras: a dictionary with the extras to set
       :raise aiida.common.ValidationError: if any of the keys are invalid, i.e. contain periods
 
-
    .. py:method:: reset(extras: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.extras.EntityExtras.reset
 
@@ -3503,7 +3243,6 @@ API
       :param extras: a dictionary with the extras to set
       :raise aiida.common.ValidationError: if any of the keys are invalid, i.e. contain periods
 
-
    .. py:method:: delete(key: str) -> None
       :canonical: aiida.orm.extras.EntityExtras.delete
 
@@ -3512,7 +3251,6 @@ API
       :param key: name of the extra
       :raises AttributeError: if the extra does not exist
 
-
    .. py:method:: delete_many(keys: typing.List[str]) -> None
       :canonical: aiida.orm.extras.EntityExtras.delete_many
 
@@ -3520,7 +3258,6 @@ API
 
       :param keys: names of the extras to delete
       :raises AttributeError: if at least one of the extra does not exist
-
 
    .. py:method:: clear() -> None
       :canonical: aiida.orm.extras.EntityExtras.clear
@@ -3534,14 +3271,12 @@ API
 
       :return: an iterator with extra key value pairs
 
-
    .. py:method:: keys() -> typing.Iterable[str]
       :canonical: aiida.orm.extras.EntityExtras.keys
 
       Return an iterator over the extra keys.
 
       :return: an iterator with extra keys
-
 
 .. py:class:: EntityTypes
    :canonical: aiida.orm.entities.EntityTypes
@@ -3599,7 +3334,6 @@ API
    itself can be retrieved from the ``get_enum`` method. Like a normal enum member, the ``EnumData`` plugin provides
    the ``name`` and ``value`` properties which return the name and value of the enum member, respectively.
 
-
    .. py:attribute:: KEY_NAME
       :canonical: aiida.orm.nodes.data.enum.EnumData.KEY_NAME
       :value: 'name'
@@ -3636,7 +3370,6 @@ API
 
       :raises `ImportError`: if the enum class represented by the stored identifier cannot be imported.
 
-
    .. py:method:: get_member() -> aiida.orm.nodes.data.enum.EnumType
       :canonical: aiida.orm.nodes.data.enum.EnumData.get_member
 
@@ -3648,7 +3381,6 @@ API
 
       :raises `ImportError`: if the enum class represented by the stored identifier cannot be imported.
       :raises `ValueError`: if the stored enum member value is no longer valid for the imported enum class.
-
 
    .. py:method:: __eq__(other: typing.Any) -> bool
       :canonical: aiida.orm.nodes.data.enum.EnumData.__eq__
@@ -3692,7 +3424,6 @@ API
       :param tree: absolute path to a folder to wrap
       :type tree: str
 
-
 .. py:class:: Group(label: typing.Optional[str] = None, user: typing.Optional[aiida.orm.User] = None, description: str = '', type_string: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.groups.Group
 
@@ -3722,7 +3453,6 @@ API
       :param type_string: a string identifying the type of group (by default,
           an empty string, indicating an user-defined group.
 
-
    .. py:method:: base() -> aiida.orm.groups.GroupBase
       :canonical: aiida.orm.groups.Group.base
 
@@ -3746,7 +3476,6 @@ API
 
       :return: the associated entry point or ``None`` if it isn't known.
 
-
    .. py:property:: uuid
       :canonical: aiida.orm.groups.Group.uuid
       :type: str
@@ -3757,13 +3486,11 @@ API
 
       :return: the entity uuid
 
-
    .. py:property:: label
       :canonical: aiida.orm.groups.Group.label
       :type: str
 
       :return: the label of the group as a string
-
 
    .. py:property:: description
       :canonical: aiida.orm.groups.Group.description
@@ -3771,13 +3498,11 @@ API
 
       :return: the description of the group as a string
 
-
    .. py:property:: type_string
       :canonical: aiida.orm.groups.Group.type_string
       :type: str
 
       :return: the string defining the type of the group
-
 
    .. py:property:: user
       :canonical: aiida.orm.groups.Group.user
@@ -3785,14 +3510,12 @@ API
 
       :return: the user associated with this group
 
-
    .. py:method:: count() -> int
       :canonical: aiida.orm.groups.Group.count
 
       Return the number of entities in this group.
 
       :return: integer number of entities contained within the group
-
 
    .. py:property:: nodes
       :canonical: aiida.orm.groups.Group.nodes
@@ -3802,7 +3525,6 @@ API
       the respective AiiDA subclasses of Node, and also allows to ask for
       the number of nodes in the group using len().
 
-
    .. py:property:: is_empty
       :canonical: aiida.orm.groups.Group.is_empty
       :type: bool
@@ -3810,7 +3532,6 @@ API
       Return whether the group is empty, i.e. it does not contain any nodes.
 
       :return: True if it contains no nodes, False otherwise
-
 
    .. py:method:: clear() -> None
       :canonical: aiida.orm.groups.Group.clear
@@ -3826,7 +3547,6 @@ API
 
       :param nodes: a single `Node` or a list of `Nodes`
 
-
    .. py:method:: remove_nodes(nodes: typing.Union[aiida.orm.nodes.Node, typing.Sequence[aiida.orm.nodes.Node]]) -> None
       :canonical: aiida.orm.groups.Group.remove_nodes
 
@@ -3836,12 +3556,10 @@ API
 
       :param nodes: a single `Node` or a list of `Nodes`
 
-
    .. py:method:: is_user_defined() -> bool
       :canonical: aiida.orm.groups.Group.is_user_defined
 
       :return: True if the group is user defined, False otherwise
-
 
    .. py:attribute:: _deprecated_extra_methods
       :canonical: aiida.orm.groups.Group._deprecated_extra_methods
@@ -3853,7 +3571,6 @@ API
       This method is called when an extras is not found in the instance.
 
       It allows for the handling of deprecated mixin methods.
-
 
 .. py:class:: GroupEntityLoader
    :canonical: aiida.orm.utils.loaders.GroupEntityLoader
@@ -3871,7 +3588,6 @@ API
 
       :returns: the orm base class
 
-
    .. py:method:: _get_query_builder_label_identifier(identifier, classes, operator='==', project='*')
       :canonical: aiida.orm.utils.loaders.GroupEntityLoader._get_query_builder_label_identifier
       :classmethod:
@@ -3886,7 +3602,6 @@ API
       :returns: the query builder instance that should retrieve the entity corresponding to the identifier
       :raises ValueError: if the identifier is invalid
       :raises aiida.common.NotExistent: if the orm base class does not support a LABEL like identifier
-
 
 .. py:class:: ImportGroup(label: typing.Optional[str] = None, user: typing.Optional[aiida.orm.User] = None, description: str = '', type_string: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.groups.ImportGroup
@@ -3915,14 +3630,12 @@ API
       :param computer: The remote computer on which the executable is located.
       :param filepath_executable: The absolute filepath of the executable on the remote computer.
 
-
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode._validate
 
       Validate the instance by checking that a computer has been defined.
 
       :raises :class:`aiida.common.exceptions.ValidationError`: If the state of the node is invalid.
-
 
    .. py:method:: validate_filepath_executable()
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.validate_filepath_executable
@@ -3936,7 +3649,6 @@ API
       :raises `~aiida.common.exceptions.ValidationError`: if no transport could be opened or if the defined executable
           does not exist on the remote computer.
 
-
    .. py:method:: can_run_on_computer(computer: aiida.orm.Computer) -> bool
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.can_run_on_computer
 
@@ -3945,14 +3657,12 @@ API
       :param computer: The computer.
       :return: ``True`` if the provided computer is the same as the one configured for this code.
 
-
    .. py:method:: get_executable() -> pathlib.PurePosixPath
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.get_executable
 
       Return the executable that the submission script should execute to run the code.
 
       :return: The executable to be called in the submission script.
-
 
    .. py:property:: computer
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.computer
@@ -3971,7 +3681,6 @@ API
 
       :return: The full label of the code.
 
-
    .. py:property:: filepath_executable
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.filepath_executable
       :type: pathlib.PurePosixPath
@@ -3979,7 +3688,6 @@ API
       Return the absolute filepath of the executable that this code represents.
 
       :return: The absolute filepath of the executable.
-
 
    .. py:method:: cli_validate_label_uniqueness(ctx, _, value)
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.cli_validate_label_uniqueness
@@ -4039,7 +3747,6 @@ API
    Of course, this requires that the class of the originally wrapped instance can be imported in the current
    environment, or an ``ImportError`` will be raised.
 
-
    .. py:method:: __init__(obj: aiida.orm.nodes.data.jsonable.JsonSerializableProtocol, *args, **kwargs)
       :canonical: aiida.orm.nodes.data.jsonable.JsonableData.__init__
 
@@ -4056,7 +3763,6 @@ API
       float constants. If one of the strings is encountered, the Python float constant is returned and otherwise the
       original value is returned.
 
-
    .. py:method:: _get_object() -> aiida.orm.nodes.data.jsonable.JsonSerializableProtocol
       :canonical: aiida.orm.nodes.data.jsonable.JsonableData._get_object
 
@@ -4064,7 +3770,6 @@ API
 
       .. note:: If the object is not yet present in memory, for example if the node was loaded from the database,
           the object will first be reconstructed from the state stored in the node attributes.
-
 
 
    .. py:property:: obj
@@ -4082,14 +3787,12 @@ API
           with the object returned by this property.
 
 
-
 .. py:class:: Kind(**kwargs)
    :canonical: aiida.orm.nodes.data.structure.Kind
 
    This class contains the information about the species (kinds) of the system.
 
    It can be a single atom, or an alloy, or even contain vacancies.
-
 
    .. py:method:: __init__(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.Kind.__init__
@@ -4116,7 +3819,6 @@ API
       :param name: a string that uniquely identifies the kind, and that
                  is used to identify the sites.
 
-
    .. py:method:: get_raw()
       :canonical: aiida.orm.nodes.data.structure.Kind.get_raw
 
@@ -4125,7 +3827,6 @@ API
       structure in the DB.
 
       :return: a python dictionary with the kind.
-
 
    .. py:method:: reset_mass()
       :canonical: aiida.orm.nodes.data.structure.Kind.reset_mass
@@ -4142,7 +3843,6 @@ API
 
       It sets the mass to None if the sum of weights is zero.
 
-
    .. py:property:: name
       :canonical: aiida.orm.nodes.data.structure.Kind.name
 
@@ -4151,14 +3851,12 @@ API
 
       :return: a string
 
-
    .. py:method:: set_automatic_kind_name(tag=None)
       :canonical: aiida.orm.nodes.data.structure.Kind.set_automatic_kind_name
 
       Set the type to a string obtained with the symbols appended one
       after the other, without spaces, in alphabetical order;
       if the site has a vacancy, a X is appended at the end too.
-
 
    .. py:method:: compare_with(other_kind)
       :canonical: aiida.orm.nodes.data.structure.Kind.compare_with
@@ -4180,7 +3878,6 @@ API
           a 'human-readable' description of the first difference encountered
           between the two sites.
 
-
    .. py:property:: mass
       :canonical: aiida.orm.nodes.data.structure.Kind.mass
 
@@ -4188,13 +3885,11 @@ API
 
       :return: a float
 
-
    .. py:property:: weights
       :canonical: aiida.orm.nodes.data.structure.Kind.weights
 
       Weights for this species kind. Refer also to
       :func:validate_symbols_tuple for the validation rules on the weights.
-
 
    .. py:method:: get_symbols_string()
       :canonical: aiida.orm.nodes.data.structure.Kind.get_symbols_string
@@ -4212,13 +3907,11 @@ API
       .. note:: Note the difference with respect to the symbols and the
           symbol properties!
 
-
    .. py:property:: symbol
       :canonical: aiida.orm.nodes.data.structure.Kind.symbol
 
       If the kind has only one symbol, return it; otherwise, raise a
       ValueError.
-
 
    .. py:property:: symbols
       :canonical: aiida.orm.nodes.data.structure.Kind.symbols
@@ -4230,7 +3923,6 @@ API
       .. note:: Note that if you change the list of symbols, the kind
           name remains unchanged.
 
-
    .. py:method:: set_symbols_and_weights(symbols, weights)
       :canonical: aiida.orm.nodes.data.structure.Kind.set_symbols_and_weights
 
@@ -4238,14 +3930,12 @@ API
 
       .. note:: Note that the kind name remains unchanged.
 
-
    .. py:property:: is_alloy
       :canonical: aiida.orm.nodes.data.structure.Kind.is_alloy
 
       Return whether the Kind is an alloy, i.e. contains more than one element
 
       :return: boolean, True if the kind has more than one element, False otherwise.
-
 
    .. py:property:: has_vacancies
       :canonical: aiida.orm.nodes.data.structure.Kind.has_vacancies
@@ -4255,7 +3945,6 @@ API
       .. note:: the property uses the internal variable `_SUM_THRESHOLD` as a threshold.
 
       :return: boolean, True if the sum of the weights is less than one, False otherwise
-
 
    .. py:method:: __repr__()
       :canonical: aiida.orm.nodes.data.structure.Kind.__repr__
@@ -4283,7 +3972,6 @@ API
    PRIMITIVE unit cell is provided in input to the set_cell or
    set_cell_from_structure methods.
 
-
    .. py:method:: get_description()
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.get_description
 
@@ -4291,20 +3979,17 @@ API
       :param node:
       :return: retstr
 
-
    .. py:property:: cell
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.cell
 
       The crystal unit cell. Rows are the crystal vectors in Angstroms.
       :return: a 3x3 numpy.array
 
-
    .. py:method:: _set_cell(value)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._set_cell
 
       Validate if 'value' is a allowed crystal unit cell
       :param value: something compatible with a 3x3 tuple of floats
-
 
    .. py:property:: pbc
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.pbc
@@ -4314,12 +3999,10 @@ API
       :return: a tuple of three booleans, each one tells if there are periodic
           boundary conditions for the i-th real-space direction (i=1,2,3)
 
-
    .. py:method:: _set_pbc(value)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._set_pbc
 
       validate the pbc, then store them
-
 
    .. py:property:: labels
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.labels
@@ -4327,12 +4010,10 @@ API
       Labels associated with the list of kpoints.
       List of tuples with kpoint index and kpoint name: ``[(0,'G'),(13,'M'),...]``
 
-
    .. py:method:: _set_labels(value)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._set_labels
 
       set label names. Must pass in input a list like: ``[[0,'X'],[34,'L'],... ]``
-
 
    .. py:method:: _change_reference(kpoints, to_cartesian=True)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._change_reference
@@ -4340,7 +4021,6 @@ API
       Change reference system, from cartesian to crystal coordinates (units of b1,b2,b3) or viceversa.
       :param kpoints: a list of (3) point coordinates
       :return kpoints: a list of (3) point coordinates in the new reference
-
 
    .. py:method:: set_cell_from_structure(structuredata)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.set_cell_from_structure
@@ -4350,7 +4030,6 @@ API
       To set manually a cell, use "set_cell"
 
       :param structuredata: an instance of StructureData
-
 
    .. py:method:: set_cell(cell, pbc=None)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.set_cell
@@ -4363,7 +4042,6 @@ API
       :param pbc: list of 3 booleans, True if in the nth crystal direction the
                   structure is periodic. Default = [True,True,True]
 
-
    .. py:property:: reciprocal_cell
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.reciprocal_cell
 
@@ -4371,7 +4049,6 @@ API
 
       :returns: reciprocal cell in units of 1/Angstrom with cell vectors stored as rows.
           Use e.g. reciprocal_cell[0] to access the first reciprocal cell vector.
-
 
    .. py:method:: set_kpoints_mesh(mesh, offset=None)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.set_kpoints_mesh
@@ -4387,7 +4064,6 @@ API
           [1.,1.,1.] by periodicity should be equivalent to [0.,0.,0.]
           Default = [0.,0.,0.].
 
-
    .. py:method:: get_kpoints_mesh(print_list=False)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.get_kpoints_mesh
 
@@ -4400,7 +4076,6 @@ API
               floats 0<x<1, representing the mesh and the offset of kpoints
       :return kpoints: (if print_list = True) an explicit list of kpoints coordinates,
               similar to what returned by get_kpoints()
-
 
    .. py:method:: set_kpoints_mesh_from_density(distance, offset=None, force_parity=False)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.set_kpoints_mesh_from_density
@@ -4422,7 +4097,6 @@ API
       :note: a cell should be defined first.
       :note: the number of kpoints along non-periodic axes is always 1.
 
-
    .. py:property:: _dimension
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._dimension
 
@@ -4431,14 +4105,12 @@ API
       :return dimensionality: 0, 1, 2 or 3
       :note: will return 3 if pbc has not been set beforehand
 
-
    .. py:method:: _validate_kpoints_weights(kpoints, weights)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._validate_kpoints_weights
 
       Validate the list of kpoints and of weights before storage.
       Kpoints and weights must be convertible respectively to an array of
       N x dimension and N floats
-
 
    .. py:method:: set_kpoints(kpoints, cartesian=False, labels=None, weights=None, fill_values=0)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.set_kpoints
@@ -4473,7 +4145,6 @@ API
           non-periodic dimensions (indicated by False in self.pbc), or list of
           values for each of the non-periodic dimensions.
 
-
    .. py:method:: get_kpoints(also_weights=False, cartesian=False)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.get_kpoints
 
@@ -4483,7 +4154,6 @@ API
           Default = False
       :param cartesian: if True, returns points in cartesian coordinates,
           otherwise, returns in crystal coordinates. Default = False.
-
 
 .. py:class:: LinkManager(link_triples: typing.List[aiida.orm.utils.links.LinkTriple])
    :canonical: aiida.orm.utils.links.LinkManager
@@ -4500,7 +4170,6 @@ API
    The methods `all_nodes` and `all_link_labels` are syntactic sugar wrappers around `all` to get a list of only the
    incoming nodes or link labels, respectively.
 
-
    .. py:method:: __init__(link_triples: typing.List[aiida.orm.utils.links.LinkTriple])
       :canonical: aiida.orm.utils.links.LinkManager.__init__
 
@@ -4513,14 +4182,12 @@ API
 
       :return: iterator of LinkTriple instances
 
-
    .. py:method:: __next__() -> typing.Generator[aiida.orm.utils.links.LinkTriple, None, None]
       :canonical: aiida.orm.utils.links.LinkManager.__next__
 
       Return the next element in the iterator.
 
       :return: LinkTriple
-
 
    .. py:method:: __bool__()
       :canonical: aiida.orm.utils.links.LinkManager.__bool__
@@ -4532,7 +4199,6 @@ API
 
       :return: LinkTriple
 
-
    .. py:method:: one() -> aiida.orm.utils.links.LinkTriple
       :canonical: aiida.orm.utils.links.LinkManager.one
 
@@ -4542,14 +4208,12 @@ API
       :return: LinkTriple instance
       :raises ValueError: if the iterator contains anything but one entry
 
-
    .. py:method:: first() -> typing.Optional[aiida.orm.utils.links.LinkTriple]
       :canonical: aiida.orm.utils.links.LinkManager.first
 
       Return the first entry from the iterator.
 
       :return: LinkTriple instance or None if no entries were matched
-
 
    .. py:method:: all() -> typing.List[aiida.orm.utils.links.LinkTriple]
       :canonical: aiida.orm.utils.links.LinkManager.all
@@ -4558,14 +4222,12 @@ API
 
       :return: list of LinkTriple instances
 
-
    .. py:method:: all_nodes() -> typing.List[aiida.orm.Node]
       :canonical: aiida.orm.utils.links.LinkManager.all_nodes
 
       Return a list of all nodes.
 
       :return: list of nodes
-
 
    .. py:method:: all_link_pairs() -> typing.List[aiida.orm.utils.links.LinkPair]
       :canonical: aiida.orm.utils.links.LinkManager.all_link_pairs
@@ -4574,14 +4236,12 @@ API
 
       :return: list of LinkPair instances
 
-
    .. py:method:: all_link_labels() -> typing.List[str]
       :canonical: aiida.orm.utils.links.LinkManager.all_link_labels
 
       Return a list of all link labels.
 
       :return: list of link labels
-
 
    .. py:method:: get_node_by_label(label: str) -> aiida.orm.Node
       :canonical: aiida.orm.utils.links.LinkManager.get_node_by_label
@@ -4590,7 +4250,6 @@ API
 
       :return: node that corresponds to the given label
       :raises aiida.common.NotExistent: if the label is not present among the link_triples
-
 
    .. py:method:: nested(sort=True)
       :canonical: aiida.orm.utils.links.LinkManager.nested
@@ -4603,7 +4262,6 @@ API
 
       :return: dictionary of nested namespaces
       :raises KeyError: if there are duplicate link labels in a namespace
-
 
 .. py:class:: LinkPair
    :canonical: aiida.orm.utils.links.LinkPair
@@ -4658,7 +4316,6 @@ API
 
       :param value: list to initialise the ``List`` node from
 
-
    .. py:method:: __getitem__(item)
       :canonical: aiida.orm.nodes.data.list.List.__getitem__
 
@@ -4702,7 +4359,6 @@ API
       S.remove(value) -- remove first occurrence of value.
       Raise ValueError if the value is not present.
 
-
    .. py:method:: pop(**kwargs)
       :canonical: aiida.orm.nodes.data.list.List.pop
 
@@ -4733,14 +4389,12 @@ API
 
       :return: a list
 
-
    .. py:method:: set_list(data)
       :canonical: aiida.orm.nodes.data.list.List.set_list
 
       Set the contents of this node.
 
       :param data: the list to set
-
 
    .. py:method:: _using_list_reference()
       :canonical: aiida.orm.nodes.data.list.List._using_list_reference
@@ -4757,14 +4411,12 @@ API
           underlying sequence.  False otherwise.
       :rtype: bool
 
-
 .. py:class:: Log(time: datetime.datetime, loggername: str, levelname: str, dbnode_id: int, message: str = '', metadata: typing.Optional[typing.Dict[str, typing.Any]] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.logs.Log
 
    Bases: :py:obj:`aiida.orm.entities.Entity`\ [\ :py:obj:`aiida.orm.implementation.BackendLog`\ , :py:obj:`aiida.orm.logs.LogCollection`\ ]
 
    An AiiDA Log entity.  Corresponds to a logged message against a particular AiiDA node.
-
 
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.logs.Log._CLS_COLLECTION
@@ -4783,7 +4435,6 @@ API
       :param metadata: metadata
       :param backend: database backend
 
-
    .. py:property:: uuid
       :canonical: aiida.orm.logs.Log.uuid
       :type: str
@@ -4794,7 +4445,6 @@ API
 
       :return: the entity uuid
 
-
    .. py:property:: time
       :canonical: aiida.orm.logs.Log.time
       :type: datetime.datetime
@@ -4802,7 +4452,6 @@ API
       Get the time corresponding to the entry
 
       :return: The entry timestamp
-
 
    .. py:property:: loggername
       :canonical: aiida.orm.logs.Log.loggername
@@ -4812,7 +4461,6 @@ API
 
       :return: The entry loggername
 
-
    .. py:property:: levelname
       :canonical: aiida.orm.logs.Log.levelname
       :type: str
@@ -4820,7 +4468,6 @@ API
       The name of the log level
 
       :return: The entry log level name
-
 
    .. py:property:: dbnode_id
       :canonical: aiida.orm.logs.Log.dbnode_id
@@ -4830,7 +4477,6 @@ API
 
       :return: The id of the object that created the log entry
 
-
    .. py:property:: message
       :canonical: aiida.orm.logs.Log.message
       :type: str
@@ -4839,7 +4485,6 @@ API
 
       :return: The entry message
 
-
    .. py:property:: metadata
       :canonical: aiida.orm.logs.Log.metadata
       :type: typing.Dict[str, typing.Any]
@@ -4847,7 +4492,6 @@ API
       Get the metadata corresponding to the entry
 
       :return: The entry metadata
-
 
 .. py:class:: Node(backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None, user: typing.Optional[aiida.orm.users.User] = None, computer: typing.Optional[aiida.orm.computers.Computer] = None, **kwargs: typing.Any)
    :canonical: aiida.orm.nodes.node.Node
@@ -4866,7 +4510,6 @@ API
 
    In the plugin, also set the _plugin_type_string, to be set in the DB in
    the 'type' field.
-
 
    .. py:attribute:: _CLS_COLLECTION
       :canonical: aiida.orm.nodes.node.Node._CLS_COLLECTION
@@ -4922,7 +4565,6 @@ API
 
       :param backend_entity: the backend model supporting this entity
 
-
    .. py:method:: base() -> aiida.orm.nodes.node.NodeBase
       :canonical: aiida.orm.nodes.node.Node.base
 
@@ -4936,7 +4578,6 @@ API
       This is called from `NodeAttributes` methods that modify the attributes.
 
       :param keys: the keys that will be mutated, or all if None
-
 
    .. py:method:: __eq__(other: typing.Any) -> bool
       :canonical: aiida.orm.nodes.node.Node.__eq__
@@ -4981,14 +4622,12 @@ API
       Therefore, use :py:meth:`~aiida.orm.nodes.attributes.NodeAttributes.get()` and similar methods that
       automatically read either from the DB or from the internal attribute cache.
 
-
    .. py:method:: _validate_storability() -> None
       :canonical: aiida.orm.nodes.node.Node._validate_storability
 
       Verify that the current node is allowed to be stored.
 
       :raises `aiida.common.exceptions.StoringNotAllowed`: if the node does not match all requirements for storing
-
 
    .. py:method:: class_node_type() -> str
       :canonical: aiida.orm.nodes.node.Node.class_node_type
@@ -5002,7 +4641,6 @@ API
 
       :return: the associated entry point or ``None`` if it isn't known.
 
-
    .. py:property:: logger
       :canonical: aiida.orm.nodes.node.Node.logger
       :type: typing.Optional[logging.Logger]
@@ -5010,7 +4648,6 @@ API
       Return the logger configured for this Node.
 
       :return: Logger object
-
 
    .. py:property:: uuid
       :canonical: aiida.orm.nodes.node.Node.uuid
@@ -5020,7 +4657,6 @@ API
 
       :return: the string representation of the UUID
 
-
    .. py:property:: node_type
       :canonical: aiida.orm.nodes.node.Node.node_type
       :type: str
@@ -5028,7 +4664,6 @@ API
       Return the node type.
 
       :return: the node type
-
 
    .. py:property:: process_type
       :canonical: aiida.orm.nodes.node.Node.process_type
@@ -5038,7 +4673,6 @@ API
 
       :return: the process type
 
-
    .. py:property:: label
       :canonical: aiida.orm.nodes.node.Node.label
       :type: str
@@ -5047,7 +4681,6 @@ API
 
       :return: the label
 
-
    .. py:property:: description
       :canonical: aiida.orm.nodes.node.Node.description
       :type: str
@@ -5055,7 +4688,6 @@ API
       Return the node description.
 
       :return: the description
-
 
    .. py:property:: computer
       :canonical: aiida.orm.nodes.node.Node.computer
@@ -5077,7 +4709,6 @@ API
 
       :return: the ctime
 
-
    .. py:property:: mtime
       :canonical: aiida.orm.nodes.node.Node.mtime
       :type: datetime.datetime
@@ -5085,7 +4716,6 @@ API
       Return the node mtime.
 
       :return: the mtime
-
 
    .. py:method:: store_all(with_transaction: bool = True) -> aiida.orm.nodes.node.Node
       :canonical: aiida.orm.nodes.node.Node.store_all
@@ -5095,7 +4725,6 @@ API
       Unstored nodes from cached incoming linkswill also be stored.
 
       :parameter with_transaction: if False, do not use a transaction because the caller will already have opened one.
-
 
    .. py:method:: store(with_transaction: bool = True) -> aiida.orm.nodes.node.Node
       :canonical: aiida.orm.nodes.node.Node.store
@@ -5110,7 +4739,6 @@ API
 
       :parameter with_transaction: if False, do not use a transaction because the caller will already have opened one.
 
-
    .. py:method:: _store(with_transaction: bool = True, clean: bool = True) -> aiida.orm.nodes.node.Node
       :canonical: aiida.orm.nodes.node.Node._store
 
@@ -5119,14 +4747,12 @@ API
       :param with_transaction: if False, do not use a transaction because the caller will already have opened one.
       :param clean: boolean, if True, will clean the attributes and extras before attempting to store
 
-
    .. py:method:: _verify_are_parents_stored() -> None
       :canonical: aiida.orm.nodes.node.Node._verify_are_parents_stored
 
       Verify that all `parent` nodes are already stored.
 
       :raise aiida.common.ModificationNotAllowed: if one of the source nodes of incoming links is not stored.
-
 
    .. py:method:: _store_from_cache(cache_node: aiida.orm.nodes.node.Node, with_transaction: bool) -> None
       :canonical: aiida.orm.nodes.node.Node._store_from_cache
@@ -5141,7 +4767,6 @@ API
           ``repository`` instance with a clone of that of the source node, which does not actually copy any files.
 
 
-
    .. py:method:: _add_outputs_from_cache(cache_node: aiida.orm.nodes.node.Node) -> None
       :canonical: aiida.orm.nodes.node.Node._add_outputs_from_cache
 
@@ -5154,7 +4779,6 @@ API
 
       :return: a description string
 
-
    .. py:property:: is_valid_cache
       :canonical: aiida.orm.nodes.node.Node.is_valid_cache
       :type: bool
@@ -5164,7 +4788,6 @@ API
       The base class assumes that all node instances are valid to cache from, unless the ``_VALID_CACHE_KEY`` extra
       has been set to ``False`` explicitly. Subclasses can override this property with more specific logic, but should
       probably also consider the value returned by this base class.
-
 
    .. py:attribute:: _deprecated_repo_methods
       :canonical: aiida.orm.nodes.node.Node._deprecated_repo_methods
@@ -5198,14 +4821,12 @@ API
       This used to be a class argument with the value ``NodeCollection``. The argument is deprecated and this property
       is here for backwards compatibility to print the deprecation warning.
 
-
    .. py:method:: __getattr__(name: str) -> typing.Any
       :canonical: aiida.orm.nodes.node.Node.__getattr__
 
       This method is called when an attribute is not found in the instance.
 
       It allows for the handling of deprecated mixin methods.
-
 
 .. py:class:: NodeAttributes(node: aiida.orm.nodes.node.Node)
    :canonical: aiida.orm.nodes.attributes.NodeAttributes
@@ -5217,7 +4838,6 @@ API
 
    Once the node is stored, the attributes are generally deemed immutable
    (except for some updatable keys on process nodes, which can be mutated whilst the node is not "sealed").
-
 
    .. py:method:: __init__(node: aiida.orm.nodes.node.Node) -> None
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.__init__
@@ -5245,7 +4865,6 @@ API
 
       :return: the attributes as a dictionary
 
-
    .. py:method:: get(key: str, default=_NO_DEFAULT) -> typing.Any
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.get
 
@@ -5261,7 +4880,6 @@ API
       :param default: return this value instead of raising if the attribute does not exist
       :return: the value of the attribute
       :raises AttributeError: if the attribute does not exist and no default is specified
-
 
    .. py:method:: get_many(keys: typing.List[str]) -> typing.List[typing.Any]
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.get_many
@@ -5280,7 +4898,6 @@ API
       :return: a list of attribute values
       :raises AttributeError: if at least one attribute does not exist
 
-
    .. py:method:: set(key: str, value: typing.Any) -> None
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.set
 
@@ -5290,7 +4907,6 @@ API
       :param value: value of the attribute
       :raise aiida.common.ValidationError: if the key is invalid, i.e. contains periods
       :raise aiida.common.ModificationNotAllowed: if the entity is stored
-
 
    .. py:method:: set_many(attributes: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.set_many
@@ -5303,7 +4919,6 @@ API
       :raise aiida.common.ValidationError: if any of the keys are invalid, i.e. contain periods
       :raise aiida.common.ModificationNotAllowed: if the entity is stored
 
-
    .. py:method:: reset(attributes: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.reset
 
@@ -5315,7 +4930,6 @@ API
       :raise aiida.common.ValidationError: if any of the keys are invalid, i.e. contain periods
       :raise aiida.common.ModificationNotAllowed: if the entity is stored
 
-
    .. py:method:: delete(key: str) -> None
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.delete
 
@@ -5325,7 +4939,6 @@ API
       :raises AttributeError: if the attribute does not exist
       :raise aiida.common.ModificationNotAllowed: if the entity is stored
 
-
    .. py:method:: delete_many(keys: typing.List[str]) -> None
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.delete_many
 
@@ -5334,7 +4947,6 @@ API
       :param keys: names of the attributes to delete
       :raises AttributeError: if at least one of the attribute does not exist
       :raise aiida.common.ModificationNotAllowed: if the entity is stored
-
 
    .. py:method:: clear() -> None
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.clear
@@ -5348,14 +4960,12 @@ API
 
       :return: an iterator with attribute key value pairs
 
-
    .. py:method:: keys() -> typing.Iterable[str]
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.keys
 
       Return an iterator over the attribute keys.
 
       :return: an iterator with attribute keys
-
 
 .. py:class:: NodeEntityLoader
    :canonical: aiida.orm.utils.loaders.NodeEntityLoader
@@ -5373,7 +4983,6 @@ API
 
       :returns: the orm base class
 
-
    .. py:method:: _get_query_builder_label_identifier(identifier, classes, operator='==', project='*')
       :canonical: aiida.orm.utils.loaders.NodeEntityLoader._get_query_builder_label_identifier
       :classmethod:
@@ -5389,13 +4998,11 @@ API
       :raises ValueError: if the identifier is invalid
       :raises aiida.common.NotExistent: if the orm base class does not support a LABEL like identifier
 
-
 .. py:class:: NodeLinksManager(node, link_type, incoming)
    :canonical: aiida.orm.utils.managers.NodeLinksManager
 
    A manager that allows to inspect, with tab-completion, nodes linked to a given one.
    See an example of its use in `CalculationNode.inputs`.
-
 
    .. py:attribute:: _namespace_separator
       :canonical: aiida.orm.utils.managers.NodeLinksManager._namespace_separator
@@ -5411,14 +5018,12 @@ API
       :param incoming: if True, inspect incoming links, otherwise inspect
           outgoing links
 
-
    .. py:method:: _construct_attribute_dict(incoming)
       :canonical: aiida.orm.utils.managers.NodeLinksManager._construct_attribute_dict
 
       Construct an attribute dict from all links of the node, recreating nested namespaces from flat link labels.
 
       :param incoming: if True, inspect incoming links, otherwise inspect outgoing links.
-
 
    .. py:method:: _get_keys()
       :canonical: aiida.orm.utils.managers.NodeLinksManager._get_keys
@@ -5447,12 +5052,10 @@ API
 
       :param label: the link label connecting the current node to the node to get.
 
-
    .. py:method:: __dir__()
       :canonical: aiida.orm.utils.managers.NodeLinksManager.__dir__
 
       Allow to list all valid input links
-
 
    .. py:method:: __iter__()
       :canonical: aiida.orm.utils.managers.NodeLinksManager.__iter__
@@ -5461,7 +5064,6 @@ API
       :canonical: aiida.orm.utils.managers.NodeLinksManager.__getattr__
 
       :param name: name of the attribute to be asked to the parser results.
-
 
    .. py:method:: __contains__(key)
       :canonical: aiida.orm.utils.managers.NodeLinksManager.__contains__
@@ -5474,7 +5076,6 @@ API
       interface to get to the parser results as a dictionary.
 
       :param name: name of the attribute to be asked to the parser results.
-
 
    .. py:method:: __str__()
       :canonical: aiida.orm.utils.managers.NodeLinksManager.__str__
@@ -5507,7 +5108,6 @@ API
    Note that this does mean that ``repository_metadata`` does not give accurate information,
    as long as the node is not yet stored.
 
-
    .. py:method:: __init__(node: aiida.orm.nodes.node.Node) -> None
       :canonical: aiida.orm.nodes.repository.NodeRepository.__init__
 
@@ -5523,7 +5123,6 @@ API
 
       :return: the repository metadata
 
-
    .. py:method:: _update_repository_metadata()
       :canonical: aiida.orm.nodes.repository.NodeRepository._update_repository_metadata
 
@@ -5536,7 +5135,6 @@ API
 
       :raises `~aiida.common.exceptions.ModificationNotAllowed`: when the node is stored and therefore immutable.
 
-
    .. py:property:: _repository
       :canonical: aiida.orm.nodes.repository.NodeRepository._repository
       :type: aiida.repository.Repository
@@ -5546,7 +5144,6 @@ API
       .. note:: this property is protected because a node's repository should not be accessed outside of its scope.
 
       :return: the file repository instance.
-
 
    .. py:method:: _store() -> None
       :canonical: aiida.orm.nodes.repository.NodeRepository._store
@@ -5562,7 +5159,6 @@ API
 
       :param repo: the repository to clone.
 
-
    .. py:method:: _clone(repo: aiida.orm.nodes.repository.NodeRepository) -> None
       :canonical: aiida.orm.nodes.repository.NodeRepository._clone
 
@@ -5572,7 +5168,6 @@ API
 
       :param repo: the repository to clone.
 
-
    .. py:method:: serialize() -> typing.Dict
       :canonical: aiida.orm.nodes.repository.NodeRepository.serialize
 
@@ -5580,14 +5175,12 @@ API
 
       :return: dictionary with the content metadata.
 
-
    .. py:method:: hash() -> str
       :canonical: aiida.orm.nodes.repository.NodeRepository.hash
 
       Generate a hash of the repository's contents.
 
       :return: the hash representing the contents of the repository.
-
 
    .. py:method:: list_objects(path: typing.Optional[str] = None) -> typing.List[aiida.repository.File]
       :canonical: aiida.orm.nodes.repository.NodeRepository.list_objects
@@ -5600,7 +5193,6 @@ API
       :raises FileNotFoundError: if no object exists for the given path.
       :raises NotADirectoryError: if the object at the given path is not a directory.
 
-
    .. py:method:: list_object_names(path: typing.Optional[str] = None) -> typing.List[str]
       :canonical: aiida.orm.nodes.repository.NodeRepository.list_object_names
 
@@ -5611,7 +5203,6 @@ API
       :raises TypeError: if the path is not a string and relative path.
       :raises FileNotFoundError: if no object exists for the given path.
       :raises NotADirectoryError: if the object at the given path is not a directory.
-
 
    .. py:method:: open(path: str, mode='r') -> typing.Iterator[typing.Union[typing.BinaryIO, typing.TextIO]]
       :canonical: aiida.orm.nodes.repository.NodeRepository.open
@@ -5628,7 +5219,6 @@ API
       :raises IsADirectoryError: if the object is a directory and not a file.
       :raises OSError: if the file could not be opened.
 
-
    .. py:method:: get_object(path: typing.Optional[aiida.orm.nodes.repository.FilePath] = None) -> aiida.repository.File
       :canonical: aiida.orm.nodes.repository.NodeRepository.get_object
 
@@ -5638,7 +5228,6 @@ API
       :return: the `File` representing the object located at the given relative path.
       :raises TypeError: if the path is not a string or ``Path``, or is an absolute path.
       :raises FileNotFoundError: if no object exists for the given path.
-
 
    .. py:method:: get_object_content(path: str, mode='r') -> typing.Union[str, bytes]
       :canonical: aiida.orm.nodes.repository.NodeRepository.get_object_content
@@ -5651,7 +5240,6 @@ API
       :raises IsADirectoryError: if the object is a directory and not a file.
       :raises OSError: if the file could not be opened.
 
-
    .. py:method:: put_object_from_bytes(content: bytes, path: str) -> None
       :canonical: aiida.orm.nodes.repository.NodeRepository.put_object_from_bytes
 
@@ -5661,7 +5249,6 @@ API
       :param content: the content to store.
       :raises TypeError: if the path is not a string and relative path.
       :raises FileExistsError: if an object already exists at the given path.
-
 
    .. py:method:: put_object_from_filelike(handle: io.BufferedReader, path: str)
       :canonical: aiida.orm.nodes.repository.NodeRepository.put_object_from_filelike
@@ -5673,7 +5260,6 @@ API
       :raises TypeError: if the path is not a string and relative path.
       :raises `~aiida.common.exceptions.ModificationNotAllowed`: when the node is stored and therefore immutable.
 
-
    .. py:method:: put_object_from_file(filepath: str, path: str)
       :canonical: aiida.orm.nodes.repository.NodeRepository.put_object_from_file
 
@@ -5684,7 +5270,6 @@ API
       :raises TypeError: if the path is not a string and relative path, or the handle is not a byte stream.
       :raises `~aiida.common.exceptions.ModificationNotAllowed`: when the node is stored and therefore immutable.
 
-
    .. py:method:: put_object_from_tree(filepath: str, path: typing.Optional[str] = None)
       :canonical: aiida.orm.nodes.repository.NodeRepository.put_object_from_tree
 
@@ -5694,7 +5279,6 @@ API
       :param path: the relative path where to store the objects in the repository.
       :raises TypeError: if the path is not a string and relative path.
       :raises `~aiida.common.exceptions.ModificationNotAllowed`: when the node is stored and therefore immutable.
-
 
    .. py:method:: walk(path: typing.Optional[aiida.orm.nodes.repository.FilePath] = None) -> typing.Iterable[typing.Tuple[pathlib.PurePosixPath, typing.List[str], typing.List[str]]]
       :canonical: aiida.orm.nodes.repository.NodeRepository.walk
@@ -5709,7 +5293,6 @@ API
           always relative with respect to the repository root, instead of an absolute path and it is an instance of
           ``pathlib.PurePosixPath`` instead of a normal string
 
-
    .. py:method:: glob() -> typing.Iterable[pathlib.PurePosixPath]
       :canonical: aiida.orm.nodes.repository.NodeRepository.glob
 
@@ -5723,7 +5306,6 @@ API
       :param target: absolute path of the directory where to copy the contents to.
       :param path: optional relative path whose contents to copy.
 
-
    .. py:method:: delete_object(path: str)
       :canonical: aiida.orm.nodes.repository.NodeRepository.delete_object
 
@@ -5736,14 +5318,12 @@ API
       :raises OSError: if the file could not be deleted.
       :raises `~aiida.common.exceptions.ModificationNotAllowed`: when the node is stored and therefore immutable.
 
-
    .. py:method:: erase()
       :canonical: aiida.orm.nodes.repository.NodeRepository.erase
 
       Delete all objects from the repository.
 
       :raises `~aiida.common.exceptions.ModificationNotAllowed`: when the node is stored and therefore immutable.
-
 
 .. py:class:: NumericType
    :canonical: aiida.orm.nodes.data.numeric.NumericType
@@ -5823,13 +5403,11 @@ API
    Used for storing collections of orbitals, as well as
    providing methods for accessing them internally.
 
-
    .. py:method:: clear_orbitals()
       :canonical: aiida.orm.nodes.data.orbital.OrbitalData.clear_orbitals
 
       Remove all orbitals that were added to the class
       Cannot work if OrbitalData has been already stored
-
 
    .. py:method:: get_orbitals(**kwargs)
       :canonical: aiida.orm.nodes.data.orbital.OrbitalData.get_orbitals
@@ -5843,7 +5421,6 @@ API
       :kwargs: attributes than can filter the set of returned orbitals
       :return list_of_outputs: a list of orbitals
 
-
    .. py:method:: set_orbitals(orbitals)
       :canonical: aiida.orm.nodes.data.orbital.OrbitalData.set_orbitals
 
@@ -5851,7 +5428,6 @@ API
       set_orbital_dict method to generate a orbital dict string.
 
       :param orbital: an orbital or list of orbitals to be set
-
 
 .. py:function:: OrderSpecifier(field, direction)
    :canonical: aiida.orm.logs.OrderSpecifier
@@ -5875,7 +5451,6 @@ API
 
       :returns: the orm base class
 
-
    .. py:method:: _get_query_builder_label_identifier(identifier, classes, operator='==', project='*')
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader._get_query_builder_label_identifier
       :abstractmethod:
@@ -5892,7 +5467,6 @@ API
       :raises ValueError: if the identifier is invalid
       :raises aiida.common.NotExistent: if the orm base class does not support a LABEL like identifier
 
-
    .. py:method:: _get_query_builder_id_identifier(identifier, classes)
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader._get_query_builder_id_identifier
       :classmethod:
@@ -5904,7 +5478,6 @@ API
       :param classes: a tuple of orm classes to which the identifier should be mapped
       :returns: the query builder instance
 
-
    .. py:method:: _get_query_builder_uuid_identifier(identifier, classes, query_with_dashes)
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader._get_query_builder_uuid_identifier
       :classmethod:
@@ -5915,7 +5488,6 @@ API
       :param identifier: the UUID identifier
       :param classes: a tuple of orm classes to which the identifier should be mapped
       :returns: the query builder instance
-
 
    .. py:method:: get_query_builder(identifier, identifier_type=None, sub_classes=None, query_with_dashes=True, operator='==', project='*')
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader.get_query_builder
@@ -5932,7 +5504,6 @@ API
       :param project: the property or properties to project for entities matching the query
       :returns: the query builder instance and a dictionary of used query parameters
 
-
    .. py:method:: get_options(incomplete, project='*')
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader.get_options
       :classmethod:
@@ -5945,7 +5516,6 @@ API
       :param incomplete: the incomplete identifier
       :param project: the field(s) to project for each entity that matches the incomplete identifier
       :return: list of entities matching the incomplete identifier
-
 
    .. py:method:: load_entity(identifier, identifier_type=None, sub_classes=None, query_with_dashes=True)
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader.load_entity
@@ -5961,7 +5531,6 @@ API
       :raises aiida.common.MultipleObjectsError: if the identifier maps onto multiple entities
       :raises aiida.common.NotExistent: if the identifier maps onto not a single entity
 
-
    .. py:method:: get_query_classes(sub_classes=None)
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader.get_query_classes
       :classmethod:
@@ -5975,7 +5544,6 @@ API
           base orm class of the loader, that will narrow the queryset
       :returns: the tuple of orm classes to be used for the entity query
       :raises ValueError: if any of the classes are not a sub class of the entity loader's orm base class
-
 
    .. py:method:: infer_identifier_type(value)
       :canonical: aiida.orm.utils.loaders.OrmEntityLoader.infer_identifier_type
@@ -6005,7 +5573,6 @@ API
       :param value: the value of the identifier
       :returns: the identifier and identifier type
       :raises ValueError: if the value is an invalid identifier
-
 
 .. py:class:: PortableCode(filepath_executable: str, filepath_files: pathlib.Path, **kwargs)
    :canonical: aiida.orm.nodes.data.code.portable.PortableCode
@@ -6037,14 +5604,12 @@ API
       :param filepath_executable: The relative filepath of the executable within the directory of uploaded files.
       :param filepath_files: The filepath to the directory containing all the files of the code.
 
-
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode._validate
 
       Validate the instance by checking that an executable is defined and it is part of the repository files.
 
       :raises :class:`aiida.common.exceptions.ValidationError`: If the state of the node is invalid.
-
 
    .. py:method:: can_run_on_computer(computer: aiida.orm.Computer) -> bool
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode.can_run_on_computer
@@ -6056,14 +5621,12 @@ API
       :param computer: The computer.
       :return: ``True`` if the provided computer is the same as the one configured for this code.
 
-
    .. py:method:: get_executable() -> pathlib.PurePosixPath
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode.get_executable
 
       Return the executable that the submission script should execute to run the code.
 
       :return: The executable to be called in the submission script.
-
 
    .. py:method:: validate_working_directory(folder: aiida.common.folders.Folder)
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode.validate_working_directory
@@ -6080,7 +5643,6 @@ API
       :raises PluginInternalError: The ``CalcJob`` plugin created a file that has the same relative filepath as the
           executable for this portable code.
 
-
    .. py:property:: full_label
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode.full_label
       :type: str
@@ -6092,7 +5654,6 @@ API
 
       :return: The full label of the code.
 
-
    .. py:property:: filepath_executable
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode.filepath_executable
       :type: pathlib.PurePosixPath
@@ -6100,7 +5661,6 @@ API
       Return the relative filepath of the executable that this code represents.
 
       :return: The relative filepath of the executable.
-
 
    .. py:method:: _get_cli_options() -> dict
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode._get_cli_options
@@ -6120,7 +5680,6 @@ API
    of `Process`) to persist important information of its state to the database. This serves as a way for the user to
    inspect the state of the `Process` during its execution as well as a permanent record of its execution in the
    provenance graph, after the execution has terminated.
-
 
    .. py:attribute:: _CLS_NODE_LINKS
       :canonical: aiida.orm.nodes.process.process.ProcessNode._CLS_NODE_LINKS
@@ -6181,7 +5740,6 @@ API
 
       :return: LoggerAdapter object, that works like a logger, but also has the 'extra' embedded
 
-
    .. py:method:: get_builder_restart() -> aiida.engine.processes.builder.ProcessBuilder
       :canonical: aiida.orm.nodes.process.process.ProcessNode.get_builder_restart
 
@@ -6193,7 +5751,6 @@ API
 
       :return: `~aiida.engine.processes.builder.ProcessBuilder` instance
 
-
    .. py:property:: process_class
       :canonical: aiida.orm.nodes.process.process.ProcessNode.process_class
       :type: typing.Type[aiida.engine.processes.Process]
@@ -6204,14 +5761,12 @@ API
       :raises ValueError: if no process type is defined, it is an invalid process type string or cannot be resolved
           to load the corresponding class
 
-
    .. py:method:: set_process_type(process_type_string: str) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_type
 
       Set the process type string.
 
       :param process_type: the process type string identifying the class using this process node as storage.
-
 
    .. py:property:: process_label
       :canonical: aiida.orm.nodes.process.process.ProcessNode.process_label
@@ -6221,14 +5776,12 @@ API
 
       :returns: the process label
 
-
    .. py:method:: set_process_label(label: str) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_label
 
       Set the process label
 
       :param label: process label string
-
 
    .. py:property:: process_state
       :canonical: aiida.orm.nodes.process.process.ProcessNode.process_state
@@ -6238,14 +5791,12 @@ API
 
       :returns: the process state instance of ProcessState enum
 
-
    .. py:method:: set_process_state(state: typing.Union[str, plumpy.process_states.ProcessState, None])
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_state
 
       Set the process state
 
       :param state: value or instance of ProcessState enum
-
 
    .. py:property:: process_status
       :canonical: aiida.orm.nodes.process.process.ProcessNode.process_status
@@ -6257,7 +5808,6 @@ API
 
       :returns: the process status
 
-
    .. py:method:: set_process_status(status: typing.Optional[str]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_status
 
@@ -6267,7 +5817,6 @@ API
       If status is None, the corresponding attribute will be deleted.
 
       :param status: string process status
-
 
    .. py:property:: is_terminated
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_terminated
@@ -6280,7 +5829,6 @@ API
       :return: True if the process has terminated, False otherwise
       :rtype: bool
 
-
    .. py:property:: is_excepted
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_excepted
       :type: bool
@@ -6292,7 +5840,6 @@ API
       :return: True if during execution of the process an exception occurred, False otherwise
       :rtype: bool
 
-
    .. py:property:: is_killed
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_killed
       :type: bool
@@ -6303,7 +5850,6 @@ API
 
       :return: True if the process was killed, False otherwise
       :rtype: bool
-
 
    .. py:property:: is_finished
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_finished
@@ -6317,7 +5863,6 @@ API
       :return: True if the process has finished, False otherwise
       :rtype: bool
 
-
    .. py:property:: is_finished_ok
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_finished_ok
       :type: bool
@@ -6328,7 +5873,6 @@ API
 
       :return: True if the process has finished successfully, False otherwise
       :rtype: bool
-
 
    .. py:property:: is_failed
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_failed
@@ -6341,7 +5885,6 @@ API
       :return: True if the process has failed, False otherwise
       :rtype: bool
 
-
    .. py:property:: exit_status
       :canonical: aiida.orm.nodes.process.process.ProcessNode.exit_status
       :type: typing.Optional[int]
@@ -6350,14 +5893,12 @@ API
 
       :returns: the exit status, an integer exit code or None
 
-
    .. py:method:: set_exit_status(status: typing.Union[None, enum.Enum, int]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_exit_status
 
       Set the exit status of the process
 
       :param state: an integer exit code or None, which will be interpreted as zero
-
 
    .. py:property:: exit_message
       :canonical: aiida.orm.nodes.process.process.ProcessNode.exit_message
@@ -6367,14 +5908,12 @@ API
 
       :returns: the exit message
 
-
    .. py:method:: set_exit_message(message: typing.Optional[str]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_exit_message
 
       Set the exit message of the process, if None nothing will be done
 
       :param message: a string message
-
 
    .. py:property:: exception
       :canonical: aiida.orm.nodes.process.process.ProcessNode.exception
@@ -6386,14 +5925,12 @@ API
 
       :returns: the exception message or None
 
-
    .. py:method:: set_exception(exception: str) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_exception
 
       Set the exception of the process
 
       :param exception: the exception message
-
 
    .. py:property:: checkpoint
       :canonical: aiida.orm.nodes.process.process.ProcessNode.checkpoint
@@ -6403,7 +5940,6 @@ API
 
       :returns: checkpoint bundle if it exists, None otherwise
 
-
    .. py:method:: set_checkpoint(checkpoint: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_checkpoint
 
@@ -6411,12 +5947,10 @@ API
 
       :param state: string representation of the stepper state info
 
-
    .. py:method:: delete_checkpoint() -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.delete_checkpoint
 
       Delete the checkpoint bundle set for the process
-
 
    .. py:property:: paused
       :canonical: aiida.orm.nodes.process.process.ProcessNode.paused
@@ -6426,7 +5960,6 @@ API
 
       :returns: True if the Calculation is marked as paused, False otherwise
 
-
    .. py:method:: pause() -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.pause
 
@@ -6434,7 +5967,6 @@ API
 
       This serves only to reflect that the corresponding Process is paused and so this method should not be called
       by anyone but the Process instance itself.
-
 
    .. py:method:: unpause() -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.unpause
@@ -6444,7 +5976,6 @@ API
       This serves only to reflect that the corresponding Process is unpaused and so this method should not be called
       by anyone but the Process instance itself.
 
-
    .. py:property:: called
       :canonical: aiida.orm.nodes.process.process.ProcessNode.called
       :type: typing.List[aiida.orm.nodes.process.process.ProcessNode]
@@ -6452,7 +5983,6 @@ API
       Return a list of nodes that the process called
 
       :returns: list of process nodes called by this process
-
 
    .. py:property:: called_descendants
       :canonical: aiida.orm.nodes.process.process.ProcessNode.called_descendants
@@ -6462,7 +5992,6 @@ API
 
       This will recursively find all the called processes for this process and its children.
 
-
    .. py:property:: caller
       :canonical: aiida.orm.nodes.process.process.ProcessNode.caller
       :type: typing.Optional[aiida.orm.nodes.process.process.ProcessNode]
@@ -6470,7 +5999,6 @@ API
       Return the process node that called this process node, or None if it does not have a caller
 
       :returns: process node that called this process node instance or None
-
 
 .. py:class:: ProjectionData(*args, source=None, **kwargs)
    :canonical: aiida.orm.nodes.data.array.projection.ProjectionData
@@ -6482,7 +6010,6 @@ API
    given bloch wavefunction, the bloch wavefunction being indexed by
    s, n, and k. E.g. the elements are the projections described as
    < orbital | Bloch wavefunction (s,n,k) >
-
 
    .. py:method:: _check_projections_bands(projection_array)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData._check_projections_bands
@@ -6497,7 +6024,6 @@ API
       :raise: AttributeError if input_array is not of same shape as
               dos_energy
 
-
    .. py:method:: set_reference_bandsdata(value)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData.set_reference_bandsdata
 
@@ -6506,7 +6032,6 @@ API
 
       :param value: a BandsData instance, a uuid or a pk
       :raise: exceptions.NotExistent if there was no BandsData associated with uuid or pk
-
 
    .. py:method:: get_reference_bandsdata()
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData.get_reference_bandsdata
@@ -6517,7 +6042,6 @@ API
       :return: a BandsData instance
       :raise AttributeError: if the bandsdata has not been set yet
       :raise exceptions.NotExistent: if the bandsdata uuid did not retrieve bandsdata
-
 
    .. py:method:: _find_orbitals_and_indices(**kwargs)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData._find_orbitals_and_indices
@@ -6530,7 +6054,6 @@ API
                to the kwargs
       :return: all_orbitals, list of orbitals to which the indexes correspond
 
-
    .. py:method:: get_pdos(**kwargs)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData.get_pdos
 
@@ -6540,7 +6063,6 @@ API
                      arrays
       :return: a list of tuples containing the orbital, energy array and pdos
                array associated with all orbitals that correspond to kwargs
-
 
 
    .. py:method:: get_projections(**kwargs)
@@ -6554,13 +6076,11 @@ API
                associated with all orbitals that correspond to kwargs
 
 
-
    .. py:method:: _from_index_to_arrayname(index)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData._from_index_to_arrayname
       :staticmethod:
 
       Used internally to determine the array names.
-
 
    .. py:method:: set_projectiondata(list_of_orbitals, list_of_projections=None, list_of_energy=None, list_of_pdos=None, tags=None, bands_check=True)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData.set_projectiondata
@@ -6592,14 +6112,12 @@ API
                           been stored and therefore get_reference_bandsdata
                           cannot be called
 
-
    .. py:method:: set_orbitals(**kwargs)
       :canonical: aiida.orm.nodes.data.array.projection.ProjectionData.set_orbitals
       :abstractmethod:
 
       This method is inherited from OrbitalData, but is blocked here.
       If used will raise a NotImplementedError
-
 
 .. py:class:: QueryBuilder(backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None, *, debug: bool = False, path: typing.Optional[typing.Sequence[typing.Union[str, typing.Dict[str, typing.Any], aiida.orm.querybuilder.EntityClsType]]] = (), filters: typing.Optional[typing.Dict[str, aiida.orm.querybuilder.FilterType]] = None, project: typing.Optional[typing.Dict[str, aiida.orm.querybuilder.ProjectType]] = None, limit: typing.Optional[int] = None, offset: typing.Optional[int] = None, order_by: typing.Optional[aiida.orm.querybuilder.OrderByType] = None, distinct: bool = False)
    :canonical: aiida.orm.querybuilder.QueryBuilder
@@ -6614,7 +6132,6 @@ API
        qb.append(Node)
        # retrieving the results:
        results = qb.all()
-
 
 
    .. py:attribute:: _EDGE_TAG_DELIM
@@ -6656,7 +6173,6 @@ API
           How to order the results. As the 2 above, can be set also at later stage,
           check :func:`QueryBuilder.order_by` for more information.
       :param distinct: Whether to return de-duplicated rows
-
 
 
    .. py:property:: backend
@@ -6707,7 +6223,6 @@ API
 
       :returns: A list of tags
 
-
    .. py:method:: _get_unique_tag(classifiers: typing.List[aiida.orm.querybuilder.Classifier]) -> str
       :canonical: aiida.orm.querybuilder.QueryBuilder._get_unique_tag
 
@@ -6723,7 +6238,6 @@ API
           Can also be a list of dictionaries, when multiple classes are passed to QueryBuilder.append
 
       :returns: A tag as a string (it is a single string also when passing multiple classes).
-
 
    .. py:method:: append(cls: typing.Optional[typing.Union[aiida.orm.querybuilder.EntityClsType, typing.Sequence[aiida.orm.querybuilder.EntityClsType]]] = None, entity_type: typing.Optional[typing.Union[str, typing.Sequence[str]]] = None, tag: typing.Optional[str] = None, filters: typing.Optional[aiida.orm.querybuilder.FilterType] = None, project: typing.Optional[aiida.orm.querybuilder.ProjectType] = None, subclassing: bool = True, edge_tag: typing.Optional[str] = None, edge_filters: typing.Optional[aiida.orm.querybuilder.FilterType] = None, edge_project: typing.Optional[aiida.orm.querybuilder.ProjectType] = None, outerjoin: bool = False, joining_keyword: typing.Optional[str] = None, joining_value: typing.Optional[typing.Any] = None, orm_base: typing.Optional[str] = None, **kwargs: typing.Any) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.append
@@ -6789,7 +6303,6 @@ API
 
       :return: self
 
-
    .. py:method:: order_by(order_by: aiida.orm.querybuilder.OrderByType) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.order_by
 
@@ -6825,7 +6338,6 @@ API
           qb.append(Node, tag='node')
           qb.order_by({'node':[{'id':'desc'}]})
 
-
    .. py:method:: add_filter(tagspec: typing.Union[str, aiida.orm.querybuilder.EntityClsType], filter_spec: aiida.orm.querybuilder.FilterType) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.add_filter
 
@@ -6845,7 +6357,6 @@ API
           # Now I am overriding the first filter I set:
           qb.add_filter('node',{'id':13})
 
-
    .. py:method:: _process_filters(filters: aiida.orm.querybuilder.FilterType) -> typing.Dict[str, typing.Any]
       :canonical: aiida.orm.querybuilder.QueryBuilder._process_filters
       :staticmethod:
@@ -6861,7 +6372,6 @@ API
       :param classifiers: a dictionary with classifiers
       :param subclassing: if True, allow for subclasses of the ormclass
 
-
    .. py:method:: _add_process_type_filter(tagspec: str, classifiers: typing.List[aiida.orm.querybuilder.Classifier], subclassing: bool) -> None
       :canonical: aiida.orm.querybuilder.QueryBuilder._add_process_type_filter
 
@@ -6873,7 +6383,6 @@ API
 
       Note: This function handles the case when process_type_string is None.
 
-
    .. py:method:: _add_group_type_filter(tagspec: str, classifiers: typing.List[aiida.orm.querybuilder.Classifier], subclassing: bool) -> None
       :canonical: aiida.orm.querybuilder.QueryBuilder._add_group_type_filter
 
@@ -6882,7 +6391,6 @@ API
       :param tagspec: The tag, which has to exist already as a key in self._filters
       :param classifiers: a dictionary with classifiers
       :param subclassing: if True, allow for subclasses of the ormclass
-
 
    .. py:method:: add_projection(tag_spec: typing.Union[str, aiida.orm.querybuilder.EntityClsType], projection_spec: aiida.orm.querybuilder.ProjectType) -> None
       :canonical: aiida.orm.querybuilder.QueryBuilder.add_projection
@@ -6932,7 +6440,6 @@ API
       Be aware that the result of ``**`` depends on the backend implementation.
 
 
-
    .. py:method:: set_debug(debug: bool) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.set_debug
 
@@ -6941,7 +6448,6 @@ API
 
       :param debug: Turn debug on or off
 
-
    .. py:method:: debug(msg: str, *objects: typing.Any) -> None
       :canonical: aiida.orm.querybuilder.QueryBuilder.debug
 
@@ -6949,14 +6455,12 @@ API
 
       objects will passed to the format string, e.g. ``msg % objects``
 
-
    .. py:method:: limit(limit: typing.Optional[int]) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.limit
 
       Set the limit (nr of rows to return)
 
       :param limit: integers of number of rows of rows to return
-
 
    .. py:method:: offset(offset: typing.Optional[int]) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.offset
@@ -6968,7 +6472,6 @@ API
       that are returned.
 
       :param offset: integers of nr of rows to skip
-
 
    .. py:method:: distinct(value: bool = True) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.distinct
@@ -6989,14 +6492,12 @@ API
 
       :returns: self
 
-
    .. py:method:: inputs(**kwargs: typing.Any) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.inputs
 
       Join to inputs of previous vertice in path.
 
       :returns: self
-
 
    .. py:method:: outputs(**kwargs: typing.Any) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.outputs
@@ -7005,7 +6506,6 @@ API
 
       :returns: self
 
-
    .. py:method:: children(**kwargs: typing.Any) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.children
 
@@ -7013,14 +6513,12 @@ API
 
       :returns: self
 
-
    .. py:method:: parents(**kwargs: typing.Any) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.parents
 
       Join to parents/ancestors of previous vertice in path.
 
       :returns: self
-
 
    .. py:method:: as_sql(inline: bool = False) -> str
       :canonical: aiida.orm.querybuilder.QueryBuilder.as_sql
@@ -7034,7 +6532,6 @@ API
 
       :params inline: Inline bound parameters (this is normally handled by the Python DB-API).
 
-
    .. py:method:: analyze_query(execute: bool = True, verbose: bool = False) -> str
       :canonical: aiida.orm.querybuilder.QueryBuilder.analyze_query
 
@@ -7044,7 +6541,6 @@ API
 
       :params execute: Carry out the command and show actual run times and other statistics.
       :params verbose: Display additional information regarding the plan.
-
 
    .. py:method:: _get_aiida_entity_res(value) -> typing.Any
       :canonical: aiida.orm.querybuilder.QueryBuilder._get_aiida_entity_res
@@ -7056,7 +6552,6 @@ API
 
       :param value: a projected query result to convert
       :return: the converted value
-
 
    .. py:method:: first(flat: bool = False) -> typing.Optional[list[typing.Any] | typing.Any]
       :canonical: aiida.orm.querybuilder.QueryBuilder.first
@@ -7071,14 +6566,12 @@ API
       :param flat: if True, return just the projected quantity if there is just a single projection.
       :returns: One row of results as a list, or None if no result returned.
 
-
    .. py:method:: count() -> int
       :canonical: aiida.orm.querybuilder.QueryBuilder.count
 
       Counts the number of rows returned by the backend.
 
       :returns: the number of rows as an integer
-
 
    .. py:method:: iterall(batch_size: typing.Optional[int] = 100) -> typing.Iterable[typing.List[typing.Any]]
       :canonical: aiida.orm.querybuilder.QueryBuilder.iterall
@@ -7094,7 +6587,6 @@ API
 
       :returns: a generator of lists
 
-
    .. py:method:: iterdict(batch_size: typing.Optional[int] = 100) -> typing.Iterable[typing.Dict[str, typing.Dict[str, typing.Any]]]
       :canonical: aiida.orm.querybuilder.QueryBuilder.iterdict
 
@@ -7108,7 +6600,6 @@ API
           You can optimize the speed of the query by tuning this parameter.
 
       :returns: a generator of dictionaries
-
 
    .. py:method:: all(batch_size: typing.Optional[int] = None, flat: bool = False) -> typing.Union[typing.List[typing.List[typing.Any]], typing.List[typing.Any]]
       :canonical: aiida.orm.querybuilder.QueryBuilder.all
@@ -7124,7 +6615,6 @@ API
       :param flat: return the result as a flat list of projected entities without sub lists.
       :returns: a list of lists of all projected entities.
 
-
    .. py:method:: one() -> typing.List[typing.Any]
       :canonical: aiida.orm.querybuilder.QueryBuilder.one
 
@@ -7134,7 +6624,6 @@ API
 
       :raises: MultipleObjectsError if more then one row can be returned
       :raises: NotExistent if no result was found
-
 
    .. py:method:: dict(batch_size: typing.Optional[int] = None) -> typing.List[typing.Dict[str, typing.Dict[str, typing.Any]]]
       :canonical: aiida.orm.querybuilder.QueryBuilder.dict
@@ -7183,7 +6672,6 @@ API
               }
 
 
-
 .. py:class:: RemoteData(remote_path=None, **kwargs)
    :canonical: aiida.orm.nodes.data.remote.base.RemoteData
 
@@ -7192,7 +6680,6 @@ API
    Store a link to a file or folder on a remote machine.
 
    Remember to pass a computer!
-
 
    .. py:attribute:: KEY_EXTRA_CLEANED
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.KEY_EXTRA_CLEANED
@@ -7214,7 +6701,6 @@ API
 
       Check if remote folder is empty
 
-
    .. py:method:: getfile(relpath, destpath)
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.getfile
 
@@ -7222,7 +6708,6 @@ API
 
       :param relpath:  The relative path of the file on the remote to retrieve.
       :param destpath: The absolute path of where to store the file on the local machine.
-
 
    .. py:method:: listdir(relpath='.')
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.listdir
@@ -7232,7 +6717,6 @@ API
       :param relpath: If 'relpath' is specified, lists the content of the given subfolder.
       :return: a flat list of file/directory names (as strings).
 
-
    .. py:method:: listdir_withattributes(path='.')
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.listdir_withattributes
 
@@ -7240,7 +6724,6 @@ API
 
       :param relpath: If 'relpath' is specified, lists the content of the given subfolder.
       :return: a list of dictionaries, where the documentation is in :py:class:Transport.listdir_withattributes.
-
 
    .. py:method:: _clean(transport=None)
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData._clean
@@ -7255,7 +6738,6 @@ API
           Note that the user should take care that the correct transport is passed.
       :raises ValueError: If the hostname of the provided transport does not match that of the node's computer.
 
-
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData._validate
 
@@ -7268,7 +6750,6 @@ API
       This method is called automatically before storing the node in the DB.
       Therefore, use :py:meth:`~aiida.orm.nodes.attributes.NodeAttributes.get()` and similar methods that
       automatically read either from the DB or from the internal attribute cache.
-
 
    .. py:method:: get_authinfo()
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.get_authinfo
@@ -7293,7 +6774,6 @@ API
    implementing all these variants in the same class will lead to an unintuitive interface where certain properties or
    methods of the class will only be available or function properly based on the ``stash_mode``.
 
-
    .. py:attribute:: _storable
       :canonical: aiida.orm.nodes.data.remote.stash.base.RemoteStashData._storable
       :value: False
@@ -7305,7 +6785,6 @@ API
 
       :param stash_mode: the stashing mode with which the data was stashed on the remote.
 
-
    .. py:property:: stash_mode
       :canonical: aiida.orm.nodes.data.remote.stash.base.RemoteStashData.stash_mode
       :type: aiida.common.datastructures.StashMode
@@ -7313,7 +6792,6 @@ API
       Return the mode with which the data was stashed on the remote.
 
       :return: the stash mode.
-
 
 .. py:class:: RemoteStashFolderData(stash_mode: aiida.common.datastructures.StashMode, target_basepath: str, source_list: typing.List, **kwargs)
    :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData
@@ -7323,7 +6801,6 @@ API
    Data plugin that models a folder with files of a completed calculation job that has been stashed through a copy.
 
    This data plugin can and should be used to stash files if and only if the stash mode is `StashMode.COPY`.
-
 
    .. py:attribute:: _storable
       :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData._storable
@@ -7338,7 +6815,6 @@ API
       :param target_basepath: the target basepath.
       :param source_list: the list of source files.
 
-
    .. py:property:: target_basepath
       :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData.target_basepath
       :type: str
@@ -7347,7 +6823,6 @@ API
 
       :return: the target basepath.
 
-
    .. py:property:: source_list
       :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData.source_list
       :type: typing.Union[typing.List, typing.Tuple]
@@ -7355,7 +6830,6 @@ API
       Return the list of source files that were stashed.
 
       :return: the list of source files.
-
 
 .. py:class:: SinglefileData(file, filename=None, **kwargs)
    :canonical: aiida.orm.nodes.data.singlefile.SinglefileData
@@ -7377,14 +6851,12 @@ API
           Hint: Pass io.BytesIO(b"my string") to construct the SinglefileData directly from a string.
       :param filename: specify filename to use (defaults to name of provided file).
 
-
    .. py:property:: filename
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.filename
 
       Return the name of the file stored.
 
       :return: the filename under which the file is stored in the repository
-
 
    .. py:method:: open(path=None, mode='r')
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.open
@@ -7395,14 +6867,12 @@ API
       :param mode: the mode with which to open the file handle (default: read mode)
       :return: a file handle
 
-
    .. py:method:: get_content()
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.get_content
 
       Return the content of the single file stored for this data node.
 
       :return: the content of the file as a string
-
 
    .. py:method:: set_file(file, filename=None)
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.set_file
@@ -7412,7 +6882,6 @@ API
       :param file: an absolute filepath or filelike object whose contents to copy
           Hint: Pass io.BytesIO(b"my string") to construct the file directly from a string.
       :param filename: specify filename to use (defaults to name of provided file).
-
 
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData._validate
@@ -7426,7 +6895,6 @@ API
 
    It can be a single atom, or an alloy, or even contain vacancies.
 
-
    .. py:method:: __init__(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.Site.__init__
 
@@ -7438,7 +6906,6 @@ API
               Validation will be done at the StructureData level.
       :param position: the absolute position (three floats) in angstrom
 
-
    .. py:method:: get_raw()
       :canonical: aiida.orm.nodes.data.structure.Site.get_raw
 
@@ -7447,7 +6914,6 @@ API
       structure in the DB.
 
       :return: a python dictionary with the site.
-
 
    .. py:method:: get_ase(kinds)
       :canonical: aiida.orm.nodes.data.structure.Site.get_ase
@@ -7459,7 +6925,6 @@ API
       .. note:: If any site is an alloy or has vacancies, a ValueError
           is raised (from the site.get_ase() routine).
 
-
    .. py:property:: kind_name
       :canonical: aiida.orm.nodes.data.structure.Site.kind_name
 
@@ -7468,13 +6933,11 @@ API
       The type of a site is used to decide whether two sites are identical
       (same mass, symbols, weights, ...) or not.
 
-
    .. py:property:: position
       :canonical: aiida.orm.nodes.data.structure.Site.position
 
       Return the position of this site in absolute coordinates,
       in angstrom.
-
 
    .. py:method:: __repr__()
       :canonical: aiida.orm.nodes.data.structure.Site.__repr__
@@ -7507,7 +6970,6 @@ API
    boundary conditions (whether they are periodic or not) and other
    related useful information.
 
-
    .. py:attribute:: _set_incompatibilities
       :canonical: aiida.orm.nodes.data.structure.StructureData._set_incompatibilities
       :value: [('ase', 'cell'), ('ase', 'pbc'), ('ase', 'pymatgen'), ('ase', 'pymatgen_molecule'), ('ase', 'pymatg...
@@ -7533,12 +6995,10 @@ API
       :return: returns a dictionary with keys "dim" (dimensionality integer), "label" (dimensionality label)
           and "value" (numerical length/surface/volume).
 
-
    .. py:method:: set_ase(aseatoms)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_ase
 
       Load the structure from a ASE object
-
 
    .. py:method:: set_pymatgen(obj, **kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_pymatgen
@@ -7547,7 +7007,6 @@ API
 
       .. note:: Requires the pymatgen module (version >= 3.0.13, usage
           of earlier versions may cause errors).
-
 
    .. py:method:: set_pymatgen_molecule(mol, margin=5)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_pymatgen_molecule
@@ -7559,7 +7018,6 @@ API
 
       .. note:: Requires the pymatgen module (version >= 3.0.13, usage
           of earlier versions may cause errors).
-
 
    .. py:method:: set_pymatgen_structure(struct)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_pymatgen_structure
@@ -7573,49 +7031,41 @@ API
 
       :raise ValueError: if there are partial occupancies together with spins.
 
-
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.structure.StructureData._validate
 
       Performs some standard validation tests.
-
 
    .. py:method:: _prepare_xsf(main_file_name='')
       :canonical: aiida.orm.nodes.data.structure.StructureData._prepare_xsf
 
       Write the given structure to a string of format XSF (for XCrySDen).
 
-
    .. py:method:: _prepare_cif(main_file_name='')
       :canonical: aiida.orm.nodes.data.structure.StructureData._prepare_cif
 
       Write the given structure to a string of format CIF.
-
 
    .. py:method:: _prepare_chemdoodle(main_file_name='')
       :canonical: aiida.orm.nodes.data.structure.StructureData._prepare_chemdoodle
 
       Write the given structure to a string of format required by ChemDoodle.
 
-
    .. py:method:: _prepare_xyz(main_file_name='')
       :canonical: aiida.orm.nodes.data.structure.StructureData._prepare_xyz
 
       Write the given structure to a string of format XYZ.
-
 
    .. py:method:: _parse_xyz(inputstring)
       :canonical: aiida.orm.nodes.data.structure.StructureData._parse_xyz
 
       Read the structure from a string of format XYZ.
 
-
    .. py:method:: _adjust_default_cell(vacuum_factor=1.0, vacuum_addition=10.0, pbc=(False, False, False))
       :canonical: aiida.orm.nodes.data.structure.StructureData._adjust_default_cell
 
       If the structure was imported from an xyz file, it lacks a cell.
       This method will adjust the cell
-
 
    .. py:method:: get_description()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_description
@@ -7625,7 +7075,6 @@ API
       :param self: the StructureData node
       :return: retsrt: the description string
 
-
    .. py:method:: get_symbols_set()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_symbols_set
 
@@ -7634,7 +7083,6 @@ API
       kind k in the structure).
 
       :returns: a set of strings of element names.
-
 
    .. py:method:: get_formula(mode='hill', separator='')
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_formula
@@ -7685,7 +7133,6 @@ API
           initial order in which the atoms were appended by the user is
           used to group and/or order the symbols in the formula
 
-
    .. py:method:: get_site_kindnames()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_site_kindnames
 
@@ -7698,7 +7145,6 @@ API
 
       :return: a list of strings
 
-
    .. py:method:: get_composition()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_composition
 
@@ -7709,7 +7155,6 @@ API
       No reduction with smallest common divisor!
 
       :returns: a dictionary with the composition
-
 
    .. py:method:: get_ase()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_ase
@@ -7723,7 +7168,6 @@ API
 
       .. note:: If any site is an alloy or has vacancies, a ValueError
           is raised (from the site.get_ase() routine).
-
 
    .. py:method:: get_pymatgen(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_pymatgen
@@ -7742,7 +7186,6 @@ API
 
       .. note:: Requires the pymatgen module (version >= 3.0.13, usage
           of earlier versions may cause errors).
-
 
    .. py:method:: get_pymatgen_structure(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_pymatgen_structure
@@ -7766,7 +7209,6 @@ API
       :raise ValueError: if periodic boundary conditions do not hold
         in at least one dimension of real space.
 
-
    .. py:method:: get_pymatgen_molecule()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_pymatgen_molecule
 
@@ -7779,7 +7221,6 @@ API
         :py:class:`StructureData <aiida.orm.nodes.data.structure.StructureData>`
         object.
 
-
    .. py:method:: append_kind(kind)
       :canonical: aiida.orm.nodes.data.structure.StructureData.append_kind
 
@@ -7789,7 +7230,6 @@ API
 
       :param kind: the site to append, must be a Kind object.
 
-
    .. py:method:: append_site(site)
       :canonical: aiida.orm.nodes.data.structure.StructureData.append_site
 
@@ -7798,7 +7238,6 @@ API
       It makes a copy of the site.
 
       :param site: the site to append. It must be a Site object.
-
 
    .. py:method:: append_atom(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData.append_atom
@@ -7833,7 +7272,6 @@ API
       .. note :: checks of equality of species are done using
         the :py:meth:`~aiida.orm.nodes.data.structure.Kind.compare_with` method.
 
-
    .. py:method:: clear_kinds()
       :canonical: aiida.orm.nodes.data.structure.StructureData.clear_kinds
 
@@ -7841,24 +7279,20 @@ API
 
       .. note:: Also clear all sites!
 
-
    .. py:method:: clear_sites()
       :canonical: aiida.orm.nodes.data.structure.StructureData.clear_sites
 
       Removes all sites for the StructureData object.
-
 
    .. py:property:: sites
       :canonical: aiida.orm.nodes.data.structure.StructureData.sites
 
       Returns a list of sites.
 
-
    .. py:property:: kinds
       :canonical: aiida.orm.nodes.data.structure.StructureData.kinds
 
       Returns a list of kinds.
-
 
    .. py:method:: get_kind(kind_name)
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_kind
@@ -7872,7 +7306,6 @@ API
 
       :raise: ValueError if the kind_name is not present.
 
-
    .. py:method:: get_kind_names()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_kind_names
 
@@ -7884,14 +7317,12 @@ API
 
       :return: a list of strings.
 
-
    .. py:property:: cell
       :canonical: aiida.orm.nodes.data.structure.StructureData.cell
 
       Returns the cell shape.
 
       :return: a 3x3 list of lists.
-
 
    .. py:method:: set_cell(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_cell
@@ -7907,7 +7338,6 @@ API
 
       :raises:
           ModificationNotAllowed: if object is already stored
-
 
    .. py:method:: reset_sites_positions(new_positions, conserve_particle=True)
       :canonical: aiida.orm.nodes.data.structure.StructureData.reset_sites_positions
@@ -7926,7 +7356,6 @@ API
           given in the same order of the one it's substituting, i.e. the
           kind of the site will not be checked.
 
-
    .. py:property:: pbc
       :canonical: aiida.orm.nodes.data.structure.StructureData.pbc
 
@@ -7934,7 +7363,6 @@ API
 
       :return: a tuple of three booleans, each one tells if there are periodic
           boundary conditions for the i-th real-space direction (i=1,2,3)
-
 
    .. py:method:: set_pbc(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_pbc
@@ -7946,7 +7374,6 @@ API
 
       Get the lengths of cell lattice vectors in angstroms.
 
-
    .. py:method:: set_cell_lengths(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_cell_lengths
       :abstractmethod:
@@ -7955,7 +7382,6 @@ API
       :canonical: aiida.orm.nodes.data.structure.StructureData.cell_angles
 
       Get the angles between the cell lattice vectors in degrees.
-
 
    .. py:method:: set_cell_angles(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_cell_angles
@@ -7968,14 +7394,12 @@ API
 
       :return: a boolean, True if at least one kind is an alloy
 
-
    .. py:property:: has_vacancies
       :canonical: aiida.orm.nodes.data.structure.StructureData.has_vacancies
 
       Return whether the structure has vacancies in the structure.
 
       :return: a boolean, True if at least one kind has a vacancy
-
 
    .. py:method:: get_cell_volume()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_cell_volume
@@ -7985,7 +7409,6 @@ API
       Use the `get_dimensionality` method in order to get the area/length of lower-dimensional cells.
 
       :return: a float.
-
 
    .. py:method:: get_cif(converter='ase', store=False, **kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_cif
@@ -8000,14 +7423,12 @@ API
           AiiDA database for record. Default False.
       :return: :py:class:`aiida.orm.nodes.data.cif.CifData` node.
 
-
    .. py:method:: _get_object_phonopyatoms()
       :canonical: aiida.orm.nodes.data.structure.StructureData._get_object_phonopyatoms
 
       Converts StructureData to PhonopyAtoms
 
       :return: a PhonopyAtoms object
-
 
    .. py:method:: _get_object_ase()
       :canonical: aiida.orm.nodes.data.structure.StructureData._get_object_ase
@@ -8017,7 +7438,6 @@ API
       to ase.Atoms
 
       :return: an ase.Atoms object
-
 
    .. py:method:: _get_object_pymatgen(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData._get_object_pymatgen
@@ -8031,7 +7451,6 @@ API
 
       .. note:: Requires the pymatgen module (version >= 3.0.13, usage
           of earlier versions may cause errors).
-
 
    .. py:method:: _get_object_pymatgen_structure(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData._get_object_pymatgen_structure
@@ -8058,7 +7477,6 @@ API
       .. note:: Requires the pymatgen module (version >= 3.0.13, usage
           of earlier versions may cause errors)
 
-
    .. py:method:: _get_object_pymatgen_molecule(**kwargs)
       :canonical: aiida.orm.nodes.data.structure.StructureData._get_object_pymatgen_molecule
 
@@ -8073,7 +7491,6 @@ API
       .. note:: Requires the pymatgen module (version >= 3.0.13, usage
           of earlier versions may cause errors)
 
-
 .. py:class:: TrajectoryData(structurelist=None, **kwargs)
    :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData
 
@@ -8081,7 +7498,6 @@ API
 
    Stores a trajectory (a sequence of crystal structures with timestamps, and
    possibly with velocities).
-
 
    .. py:method:: __init__(structurelist=None, **kwargs)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.__init__
@@ -8092,7 +7508,6 @@ API
       Internal function to validate the type and shape of the arrays. See
       the documentation of py:meth:`.set_trajectory` for a description of the
       valid shape and type of the parameters.
-
 
    .. py:method:: set_trajectory(symbols, positions, stepids=None, cells=None, times=None, velocities=None)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.set_trajectory
@@ -8147,7 +7562,6 @@ API
 
       .. todo :: Choose suitable units for velocities
 
-
    .. py:method:: set_structurelist(structurelist)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.set_structurelist
 
@@ -8160,25 +7574,21 @@ API
       :raises ValueError: if symbol lists of supplied structures are
           different
 
-
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData._validate
 
       Verify that the required arrays are present and that their type and
       dimension are correct.
 
-
    .. py:property:: numsteps
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.numsteps
 
       Return the number of stored steps, or zero if nothing has been stored yet.
 
-
    .. py:property:: numsites
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.numsites
 
       Return the number of stored sites, or zero if nothing has been stored yet.
-
 
    .. py:method:: get_stepids()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_stepids
@@ -8190,14 +7600,12 @@ API
 
       :raises KeyError: if the trajectory has not been set yet.
 
-
    .. py:method:: get_times()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_times
 
       Return the array of times (in ps), if it has already been set.
 
       :raises KeyError: if the trajectory has not been set yet.
-
 
    .. py:method:: get_cells()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_cells
@@ -8206,7 +7614,6 @@ API
 
       :raises KeyError: if the trajectory has not been set yet.
 
-
    .. py:property:: symbols
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.symbols
 
@@ -8214,14 +7621,12 @@ API
 
       :raises KeyError: if the trajectory has not been set yet.
 
-
    .. py:method:: get_positions()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_positions
 
       Return the array of positions, if it has already been set.
 
       :raises KeyError: if the trajectory has not been set yet.
-
 
    .. py:method:: get_velocities()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_velocities
@@ -8232,7 +7637,6 @@ API
         functions, will not raise an exception if the velocities are not
         set, but rather return ``None`` (both if no trajectory was not set yet,
         and if it the trajectory was set but no velocities were specified).
-
 
    .. py:method:: get_index_from_stepid(stepid)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_index_from_stepid
@@ -8250,7 +7654,6 @@ API
           only the index of the first one is returned).
 
       :raises ValueError: if no step with the given value is found.
-
 
    .. py:method:: get_step_data(index)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_step_data
@@ -8274,7 +7677,6 @@ API
          0 to ``self.numsteps - 1``.
       :raises IndexError: if you require an index beyond the limits.
       :raises KeyError: if you did not store the trajectory yet.
-
 
    .. py:method:: get_step_structure(index, custom_kinds=None)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_step_structure
@@ -8302,18 +7704,15 @@ API
 
       :return: :py:class:`aiida.orm.nodes.data.structure.StructureData` node.
 
-
    .. py:method:: _prepare_xsf(index=None, main_file_name='')
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData._prepare_xsf
 
       Write the given trajectory to a string of format XSF (for XCrySDen).
 
-
    .. py:method:: _prepare_cif(trajectory_index=None, main_file_name='')
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData._prepare_cif
 
       Write the given trajectory to a string of format CIF.
-
 
    .. py:method:: get_structure(store=False, **kwargs)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_structure
@@ -8342,7 +7741,6 @@ API
 
       :return: :py:class:`aiida.orm.nodes.data.structure.StructureData` node.
 
-
    .. py:method:: get_cif(index=None, **kwargs)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_cif
 
@@ -8350,7 +7748,6 @@ API
 
       .. versionadded:: 1.0
          Renamed from _get_cif
-
 
    .. py:method:: _parse_xyz_pos(inputstring)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData._parse_xyz_pos
@@ -8375,7 +7772,6 @@ API
           t.set_array('symbols', array([site.kind for site in s.sites]))
           t.importfile('some-calc/AIIDA-PROJECT-pos-1.xyz', 'xyz_pos')
 
-
    .. py:method:: _parse_xyz_vel(inputstring)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData._parse_xyz_vel
 
@@ -8384,7 +7780,6 @@ API
       .. note:: The steps and symbols must be set manually before calling this
           import function as a consistency measure. See also comment for
           :py:meth:`._parse_xyz_pos`
-
 
    .. py:method:: show_mpl_pos(**kwargs)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.show_mpl_pos
@@ -8403,12 +7798,10 @@ API
           If not specified, all atoms of the correct species are displayed.
       :param bool dont_block: If True, interpreter is not blocked when figure is displayed.
 
-
    .. py:method:: show_mpl_heatmap(**kwargs)
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.show_mpl_heatmap
 
       Show a heatmap of the trajectory with matplotlib.
-
 
 .. py:class:: UpfData(file, filename=None, **kwargs)
    :canonical: aiida.orm.nodes.data.upf.UpfData
@@ -8429,7 +7822,6 @@ API
       :param store_upf: boolean, if false, the `UpfData` if created will not be stored.
       :return: tuple of `UpfData` and boolean indicating whether it was created.
 
-
    .. py:method:: store(*args, **kwargs)
       :canonical: aiida.orm.nodes.data.upf.UpfData.store
 
@@ -8446,7 +7838,6 @@ API
       :param md5: the file hash
       :return: list of existing `UpfData` nodes that have the same md5 hash
 
-
    .. py:method:: set_file(file, filename=None)
       :canonical: aiida.orm.nodes.data.upf.UpfData.set_file
 
@@ -8455,7 +7846,6 @@ API
       :param file: filepath or filelike object of the UPF potential file to store.
           Hint: Pass io.BytesIO(b"my string") to construct the file directly from a string.
       :param filename: specify filename to use (defaults to name of provided file).
-
 
    .. py:method:: get_upf_family_names()
       :canonical: aiida.orm.nodes.data.upf.UpfData.get_upf_family_names
@@ -8469,14 +7859,12 @@ API
 
       :return: the element
 
-
    .. py:property:: md5sum
       :canonical: aiida.orm.nodes.data.upf.UpfData.md5sum
 
       Return the md5 checksum of the UPF pseudopotential file.
 
       :return: the md5 checksum
-
 
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.upf.UpfData._validate
@@ -8488,7 +7876,6 @@ API
 
       Return UPF content.
 
-
    .. py:method:: get_upf_group(group_label)
       :canonical: aiida.orm.nodes.data.upf.UpfData.get_upf_group
       :classmethod:
@@ -8497,7 +7884,6 @@ API
 
       :param group_label: the family group label
       :return: the `Group` with the given label, if it exists
-
 
    .. py:method:: get_upf_groups(filter_elements=None, user=None, backend=None)
       :canonical: aiida.orm.nodes.data.upf.UpfData.get_upf_groups
@@ -8512,12 +7898,10 @@ API
           If defined, it should be either a `User` instance or the user email.
       :return: list of `Group` entities of type UPF.
 
-
    .. py:method:: _prepare_json(main_file_name='')
       :canonical: aiida.orm.nodes.data.upf.UpfData._prepare_json
 
       Returns UPF PP in json format.
-
 
 .. py:class:: UpfFamily(label: typing.Optional[str] = None, user: typing.Optional[aiida.orm.User] = None, description: str = '', type_string: typing.Optional[str] = None, backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None)
    :canonical: aiida.orm.groups.UpfFamily
@@ -8574,7 +7958,6 @@ API
 
       :return: the user full name
 
-
    .. py:method:: get_short_name() -> str
       :canonical: aiida.orm.users.User.get_short_name
 
@@ -8582,13 +7965,11 @@ API
 
       :return: The short name
 
-
    .. py:property:: uuid
       :canonical: aiida.orm.users.User.uuid
       :type: None
 
       For now users do not have UUIDs so always return None
-
 
 .. py:class:: WorkChainNode
    :canonical: aiida.orm.nodes.process.workflow.workchain.WorkChainNode
@@ -8612,14 +7993,12 @@ API
 
       :returns: string representation of the stepper state info
 
-
    .. py:method:: set_stepper_state_info(stepper_state_info: str) -> None
       :canonical: aiida.orm.nodes.process.workflow.workchain.WorkChainNode.set_stepper_state_info
 
       Set the stepper state info
 
       :param state: string representation of the stepper state info
-
 
 .. py:class:: WorkFunctionNode
    :canonical: aiida.orm.nodes.process.workflow.workfunction.WorkFunctionNode
@@ -8663,7 +8042,6 @@ API
 
       :return: `NodeLinksManager`
 
-
    .. py:property:: outputs
       :canonical: aiida.orm.nodes.process.workflow.workflow.WorkflowNode.outputs
       :type: aiida.orm.utils.managers.NodeLinksManager
@@ -8676,7 +8054,6 @@ API
 
       :return: `NodeLinksManager`
 
-
 .. py:class:: XyData
    :canonical: aiida.orm.nodes.data.array.xy.XyData
 
@@ -8686,14 +8063,12 @@ API
    each other. That is there is one array, the X array, and there are several
    Y arrays, which can be considered functions of X.
 
-
    .. py:method:: _arrayandname_validator(array, name, units)
       :canonical: aiida.orm.nodes.data.array.xy.XyData._arrayandname_validator
       :staticmethod:
 
       Validates that the array is an numpy.ndarray and that the name is
       of type str. Raises TypeError or ValueError if this not the case.
-
 
    .. py:method:: set_x(x_array, x_name, x_units)
       :canonical: aiida.orm.nodes.data.array.xy.XyData.set_x
@@ -8703,7 +8078,6 @@ API
       :param x_array: A numpy.ndarray, containing only floats
       :param x_name: a string for the x array name
       :param x_units: the units of x
-
 
    .. py:method:: set_y(y_arrays, y_names, y_units)
       :canonical: aiida.orm.nodes.data.array.xy.XyData.set_y
@@ -8715,7 +8089,6 @@ API
       :param y_names: A list of strings giving the names of the y_arrays
       :param y_units: A list of strings giving the units of the y_arrays
 
-
    .. py:method:: get_x()
       :canonical: aiida.orm.nodes.data.array.xy.XyData.get_x
 
@@ -8724,7 +8097,6 @@ API
       :return x_name: the name set for the x_array
       :return x_array: the x array set earlier
       :return x_units: the x units set earlier
-
 
    .. py:method:: get_y()
       :canonical: aiida.orm.nodes.data.array.xy.XyData.get_y
@@ -8735,7 +8107,6 @@ API
       :return y_names: list of strings naming the y_arrays
       :return y_arrays: list of y_arrays
       :return y_units: list of strings giving the units for the y_arrays
-
 
 .. py:function:: cif_from_ase(ase, full_occupancies=False, add_fake_biso=False)
    :canonical: aiida.orm.nodes.data.cif.cif_from_ase
@@ -8748,7 +8119,6 @@ API
 
    :param ase: ASE "images"
    :return: array of CIF datablocks
-
 
 .. py:function:: find_bandgap(bandsdata, number_electrons=None, fermi_energy=None)
    :canonical: aiida.orm.nodes.data.array.bands.find_bandgap
@@ -8780,7 +8150,6 @@ API
             float. The gap is None in case of a metal, zero when the homo is
             equal to the lumo (e.g. in semi-metals).
 
-
 .. py:function:: get_loader(orm_class)
    :canonical: aiida.orm.utils.loaders.get_loader
 
@@ -8790,7 +8159,6 @@ API
    :returns: a subclass of OrmEntityLoader
    :raises ValueError: if no OrmEntityLoader subclass can be found for the given orm class
 
-
 .. py:function:: get_query_type_from_type_string(type_string)
    :canonical: aiida.orm.utils.node.get_query_type_from_type_string
 
@@ -8798,7 +8166,6 @@ API
 
    :param type_string: the plugin_type_string attribute of a Node
    :return: the type string that can be used to query for
-
 
 .. py:function:: get_type_string_from_class(class_module, class_name)
    :canonical: aiida.orm.utils.node.get_type_string_from_class
@@ -8810,12 +8177,10 @@ API
    :param class_module: module of the class
    :param class_name: name of the class
 
-
 .. py:function:: has_pycifrw()
    :canonical: aiida.orm.nodes.data.cif.has_pycifrw
 
    :return: True if the PyCifRW module can be imported, False otherwise.
-
 
 .. py:function:: load_code(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Code
    :canonical: aiida.orm.utils.loaders.load_code
@@ -8838,7 +8203,6 @@ API
    :raise aiida.common.NotExistent: if no matching Code is found
    :raise aiida.common.MultipleObjectsError: if more than one Code was found
 
-
 .. py:function:: load_computer(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Computer
    :canonical: aiida.orm.utils.loaders.load_computer
 
@@ -8859,7 +8223,6 @@ API
    :raise TypeError: if the provided identifier has the wrong type
    :raise aiida.common.NotExistent: if no matching Computer is found
    :raise aiida.common.MultipleObjectsError: if more than one Computer was found
-
 
 .. py:function:: load_entity(entity_loader=None, identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True)
    :canonical: aiida.orm.utils.loaders.load_entity
@@ -8882,7 +8245,6 @@ API
    :raise aiida.common.NotExistent: if no matching Code is found
    :raise aiida.common.MultipleObjectsError: if more than one Code was found
 
-
 .. py:function:: load_group(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Group
    :canonical: aiida.orm.utils.loaders.load_group
 
@@ -8904,7 +8266,6 @@ API
    :raise aiida.common.NotExistent: if no matching Group is found
    :raise aiida.common.MultipleObjectsError: if more than one Group was found
 
-
 .. py:function:: load_node(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Node
    :canonical: aiida.orm.utils.loaders.load_node
 
@@ -8924,7 +8285,6 @@ API
    :raise aiida.common.NotExistent: if no matching Node is found
    :raise aiida.common.MultipleObjectsError: if more than one Node was found
 
-
 .. py:function:: load_node_class(type_string)
    :canonical: aiida.orm.utils.node.load_node_class
 
@@ -8932,7 +8292,6 @@ API
 
    :param type_string: the `type` string of the node
    :return: a sub class of `Node`
-
 
 .. py:function:: pycifrw_from_cif(datablocks, loops=None, names=None)
    :canonical: aiida.orm.nodes.data.cif.pycifrw_from_cif
@@ -8943,7 +8302,6 @@ API
    :param loops: optional dict of lists of CIF tag loops.
    :param names: optional list of datablock names
    :return: CifFile
-
 
 .. py:function:: to_aiida_type(value)
    :canonical: aiida.orm.nodes.data.base.to_aiida_type
@@ -9012,4 +8370,3 @@ API
    :param link_label: link label
    :raise TypeError: if `source` or `target` is not a Node instance, or `link_type` is not a `LinkType` enum
    :raise ValueError: if the proposed link is invalid
-

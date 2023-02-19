@@ -78,7 +78,6 @@ API
    :raises aiida.common.MultipleEntryPointError: entry point could not be uniquely resolved
    :raises aiida.common.LoadingEntryPointError: entry point could not be loaded
 
-
 .. py:function:: CalcJobImporterFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.CalcJobImporter]]
    :canonical: aiida.plugins.factories.CalcJobImporterFactory
 
@@ -87,7 +86,6 @@ API
    :param entry_point_name: the entry point name.
    :return: the loaded :class:`~aiida.engine.processes.calcjobs.importer.CalcJobImporter` plugin.
    :raises ``aiida.common.InvalidEntryPointTypeError``: if the type of the loaded entry point is invalid.
-
 
 .. py:function:: CalculationFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.CalcJob], typing.Callable]
    :canonical: aiida.plugins.factories.CalculationFactory
@@ -99,7 +97,6 @@ API
    :return: sub class of :py:class:`~aiida.engine.processes.calcjobs.calcjob.CalcJob`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
 
-
 .. py:function:: DataFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.Data]]
    :canonical: aiida.plugins.factories.DataFactory
 
@@ -109,7 +106,6 @@ API
    :param load: if True, load the matched entry point and return the loaded resource instead of the entry point itself.
    :return: sub class of :py:class:`~aiida.orm.nodes.data.data.Data`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
-
 
 .. py:function:: DbImporterFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.tools.dbimporters.DbImporter]]
    :canonical: aiida.plugins.factories.DbImporterFactory
@@ -121,7 +117,6 @@ API
    :return: sub class of :py:class:`~aiida.tools.dbimporters.baseclasses.DbImporter`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
 
-
 .. py:function:: GroupFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.Group]]
    :canonical: aiida.plugins.factories.GroupFactory
 
@@ -131,7 +126,6 @@ API
    :param load: if True, load the matched entry point and return the loaded resource instead of the entry point itself.
    :return: sub class of :py:class:`~aiida.orm.groups.Group`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
-
 
 .. py:function:: OrbitalFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.tools.data.orbital.Orbital]]
    :canonical: aiida.plugins.factories.OrbitalFactory
@@ -143,7 +137,6 @@ API
    :return: sub class of :py:class:`~aiida.tools.data.orbital.orbital.Orbital`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
 
-
 .. py:function:: ParserFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.parsers.Parser]]
    :canonical: aiida.plugins.factories.ParserFactory
 
@@ -153,7 +146,6 @@ API
    :param load: if True, load the matched entry point and return the loaded resource instead of the entry point itself.
    :return: sub class of :py:class:`~aiida.parsers.parser.Parser`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
-
 
 .. py:class:: PluginVersionProvider()
    :canonical: aiida.plugins.utils.PluginVersionProvider
@@ -185,7 +177,6 @@ API
       :raises TypeError: If ``plugin`` (or the resource pointed to it in the case of an entry point) is not a class
           or a function.
 
-
 .. py:function:: SchedulerFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.schedulers.Scheduler]]
    :canonical: aiida.plugins.factories.SchedulerFactory
 
@@ -195,7 +186,6 @@ API
    :param load: if True, load the matched entry point and return the loaded resource instead of the entry point itself.
    :return: sub class of :py:class:`~aiida.schedulers.scheduler.Scheduler`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
-
 
 .. py:function:: StorageFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.implementation.StorageBackend]]
    :canonical: aiida.plugins.factories.StorageFactory
@@ -207,7 +197,6 @@ API
    :return: sub class of :py:class:`~aiida.orm.implementation.storage_backend.StorageBackend`.
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
 
-
 .. py:function:: TransportFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.transports.Transport]]
    :canonical: aiida.plugins.factories.TransportFactory
 
@@ -216,7 +205,6 @@ API
    :param entry_point_name: the entry point name.
    :param load: if True, load the matched entry point and return the loaded resource instead of the entry point itself.
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
-
 
 .. py:function:: WorkflowFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.WorkChain], typing.Callable]
    :canonical: aiida.plugins.factories.WorkflowFactory
@@ -228,7 +216,6 @@ API
    :return: sub class of :py:class:`~aiida.engine.processes.workchains.workchain.WorkChain` or a `workfunction`
    :raises aiida.common.InvalidEntryPointTypeError: if the type of the loaded entry point is invalid.
 
-
 .. py:function:: get_entry_points(group: str) -> importlib_metadata.EntryPoints
    :canonical: aiida.plugins.entry_point.get_entry_points
 
@@ -236,7 +223,6 @@ API
 
    :param group: the entry point group
    :return: a list of entry points
-
 
 .. py:function:: load_entry_point(group: str, name: str) -> typing.Any
    :canonical: aiida.plugins.entry_point.load_entry_point
@@ -252,7 +238,6 @@ API
    :raises aiida.common.MultipleEntryPointError: entry point could not be uniquely resolved
    :raises aiida.common.LoadingEntryPointError: entry point could not be loaded
 
-
 .. py:function:: load_entry_point_from_string(entry_point_string: str) -> typing.Any
    :canonical: aiida.plugins.entry_point.load_entry_point_from_string
 
@@ -265,7 +250,6 @@ API
    :raises aiida.common.MissingEntryPointError: entry point was not registered
    :raises aiida.common.MultipleEntryPointError: entry point could not be uniquely resolved
    :raises aiida.common.LoadingEntryPointError: entry point could not be loaded
-
 
 .. py:function:: parse_entry_point(group: str, spec: str) -> importlib_metadata.EntryPoint
    :canonical: aiida.plugins.entry_point.parse_entry_point

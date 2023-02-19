@@ -130,4 +130,3 @@ API
 
           {py:obj}`A`\[{py:obj}`B`, {py:obj}`C`, {py:obj}`D`\]
 
-

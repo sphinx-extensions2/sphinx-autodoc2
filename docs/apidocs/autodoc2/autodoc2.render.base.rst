@@ -86,7 +86,6 @@ API
       :param types: If given, only return items of these types.
       :param omit_hidden: If True, omit hidden items.
 
-
    .. py:method:: is_hidden(item: autodoc2.utils.ItemData) -> bool
       :canonical: autodoc2.render.base.RendererBase.is_hidden
 
@@ -99,7 +98,6 @@ API
       - is it a dunder, i.e. __name__
       - is it a private member, i.e. starts with _, but not a dunder
       - is it an inherited member of a class
-
 
    .. py:method:: is_module_deprecated(item: autodoc2.utils.ItemData) -> bool
       :canonical: autodoc2.render.base.RendererBase.is_module_deprecated

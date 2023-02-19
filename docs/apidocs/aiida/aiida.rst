@@ -114,14 +114,12 @@ API
    :returns: StrictVersion instance with the current version
    :rtype: :class:`!distutils.version.StrictVersion`
 
-
 .. py:function:: get_version() -> str
    :canonical: aiida.get_version
 
    Return the current AiiDA distribution version
 
    :returns: the current version
-
 
 .. py:function:: _get_raw_file_header() -> str
    :canonical: aiida._get_raw_file_header
@@ -130,7 +128,6 @@ API
    Note: is not preceded by comment character.
 
    :return: default AiiDA source file header
-
 
 .. py:function:: get_file_header(comment_char: str = '# ') -> str
    :canonical: aiida.get_file_header
@@ -144,7 +141,6 @@ API
    :param comment_char: string put in front of each line
 
    :return: default AiiDA source file header
-
 
 .. py:function:: load_ipython_extension(ipython)
    :canonical: aiida.load_ipython_extension

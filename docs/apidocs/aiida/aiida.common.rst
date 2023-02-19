@@ -11,7 +11,6 @@ Common data structures, utility classes and functions
 
 .. note:: Modules in this sub package have to run without a loaded database environment
 
-
 Package Contents
 ----------------
 
@@ -96,7 +95,6 @@ API
    Each module will have its own subclass, inherited from this
    (e.g. ExecManagerException, TransportException, ...)
 
-
 .. py:class:: AttributeDict(dictionary=None)
    :canonical: aiida.common.extendeddicts.AttributeDict
 
@@ -109,7 +107,6 @@ API
    Raises an AttributeError if the key does not exist, when called as an attribute,
    while the usual KeyError if the key does not exist and the dictionary syntax is
    used.
-
 
    .. py:method:: __init__(dictionary=None)
       :canonical: aiida.common.extendeddicts.AttributeDict.__init__
@@ -128,7 +125,6 @@ API
 
       :raises AttributeError: if the attribute does not correspond to an existing key.
 
-
    .. py:method:: __setattr__(attr, value)
       :canonical: aiida.common.extendeddicts.AttributeDict.__setattr__
 
@@ -140,7 +136,6 @@ API
       Delete a key as an attribute.
 
       :raises AttributeError: if the attribute does not correspond to an existing key.
-
 
    .. py:method:: __deepcopy__(memo=None)
       :canonical: aiida.common.extendeddicts.AttributeDict.__deepcopy__
@@ -217,7 +212,6 @@ API
        but can also be `CodeRunMode.PARALLEL`)
    * skip_submit: a flag that, when set to True, orders the engine to skip the submit/update steps (so no code will
        run, it will only upload the files and then retrieve/parse).
-
 
    .. py:attribute:: _default_fields
       :canonical: aiida.common.datastructures.CalcInfo._default_fields
@@ -308,7 +302,6 @@ API
      on the remote computer)
    * ``code_uuid``: the uuid of the code associated to the CodeInfo
 
-
    .. py:attribute:: _default_fields
       :canonical: aiida.common.datastructures.CodeInfo._default_fields
       :value: ('cmdline_params', 'stdin_name', 'stdout_name', 'stderr_name', 'join_files', 'withmpi', 'code_uuid')
@@ -330,7 +323,6 @@ API
        code1.x
        code2.x
 
-
    .. py:attribute:: SERIAL
       :canonical: aiida.common.datastructures.CodeRunMode.SERIAL
       :value: 0
@@ -346,7 +338,6 @@ API
 
    Error raised when there is a configuration error in AiiDA.
 
-
 .. py:exception:: ConfigurationVersionError()
    :canonical: aiida.common.exceptions.ConfigurationVersionError
 
@@ -355,7 +346,6 @@ API
    Configuration error raised when the configuration file version is not
    compatible with the current version.
 
-
 .. py:exception:: ContentNotExistent()
    :canonical: aiida.common.exceptions.ContentNotExistent
 
@@ -363,7 +353,6 @@ API
 
    Raised when trying to access an attribute, a key or a file in the result
    nodes that is not present
-
 
 .. py:exception:: CorruptStorage()
    :canonical: aiida.common.exceptions.CorruptStorage
@@ -380,7 +369,6 @@ API
    Raised when the content of the DB is not valid.
    This should never happen if the user does not play directly
    with the DB.
-
 
 .. py:class:: DefaultFieldsAttributeDict(dictionary=None)
    :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict
@@ -438,7 +426,6 @@ API
 
        See if we want that setting a default field to None means deleting it.
 
-
    .. py:attribute:: _default_fields
       :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict._default_fields
       :value: None
@@ -448,12 +435,10 @@ API
 
       Validate the keys, if any ``validate_*`` method is available.
 
-
    .. py:method:: __setattr__(attr, value)
       :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict.__setattr__
 
       Overridden to allow direct access to fields with underscore.
-
 
    .. py:method:: __getitem__(key)
       :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict.__getitem__
@@ -461,25 +446,21 @@ API
       Return None instead of raising an exception if the key does not exist
       but is in the list of default fields.
 
-
    .. py:method:: get_default_fields()
       :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict.get_default_fields
       :classmethod:
 
       Return the list of default fields, either defined in the instance or not.
 
-
    .. py:method:: defaultkeys()
       :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict.defaultkeys
 
       Return the default keys defined in the instance.
 
-
    .. py:method:: extrakeys()
       :canonical: aiida.common.extendeddicts.DefaultFieldsAttributeDict.extrakeys
 
       Return the extra keys defined in the instance.
-
 
 .. py:exception:: EntryPointError()
    :canonical: aiida.common.exceptions.EntryPointError
@@ -495,7 +476,6 @@ API
 
    Raised when accessing a calculation that is in the FAILED status
 
-
 .. py:exception:: FeatureDisabled()
    :canonical: aiida.common.exceptions.FeatureDisabled
 
@@ -504,14 +484,12 @@ API
    Raised when a feature is requested, but the user has chosen to disable
    it (e.g., for submissions on disabled computers).
 
-
 .. py:exception:: FeatureNotAvailable()
    :canonical: aiida.common.exceptions.FeatureNotAvailable
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when a feature is requested from a plugin, that is not available.
-
 
 .. py:class:: FixedFieldsAttributeDict(init=None)
    :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict
@@ -527,7 +505,6 @@ API
        class TestExample(FixedFieldsAttributeDict):
            _valid_fields = ('a','b','c')
 
-
    .. py:attribute:: _valid_fields
       :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict._valid_fields
       :value: None
@@ -542,19 +519,16 @@ API
 
       Set a key as an attribute.
 
-
    .. py:method:: __setattr__(attr, value)
       :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict.__setattr__
 
       Overridden to allow direct access to fields with underscore.
-
 
    .. py:method:: get_valid_fields()
       :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict.get_valid_fields
       :classmethod:
 
       Return the list of valid fields.
-
 
    .. py:method:: __dir__()
       :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict.__dir__
@@ -603,7 +577,6 @@ API
 
    Raised when an attempt to hash an object fails via a known failure mode
 
-
 .. py:exception:: IncompatibleStorageSchema()
    :canonical: aiida.common.exceptions.IncompatibleStorageSchema
 
@@ -619,7 +592,6 @@ API
    The input data for a calculation did not validate (e.g., missing
    required input data, wrong data, ...)
 
-
 .. py:exception:: IntegrityError()
    :canonical: aiida.common.exceptions.IntegrityError
 
@@ -629,14 +601,12 @@ API
    or a general data integrity error.  This can happen if, e.g., a foreign key check fails.
    See PEP 249 for details.
 
-
 .. py:exception:: InternalError()
    :canonical: aiida.common.exceptions.InternalError
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Error raised when there is an internal error of AiiDA.
-
 
 .. py:exception:: InvalidEntryPointTypeError()
    :canonical: aiida.common.exceptions.InvalidEntryPointTypeError
@@ -654,14 +624,12 @@ API
    before saving the entry), or deleting an entry that is protected (e.g.,
    because it is referenced by foreign keys)
 
-
 .. py:exception:: LicensingException()
    :canonical: aiida.common.exceptions.LicensingException
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when requirements for data licensing are not met.
-
 
 .. py:class:: LinkType
    :canonical: aiida.common.links.LinkType
@@ -708,7 +676,6 @@ API
 
    Raised if attempting to access a locked profile
 
-
 .. py:exception:: LockingProfileError()
    :canonical: aiida.common.exceptions.LockingProfileError
 
@@ -716,14 +683,12 @@ API
 
    Raised if the profile can`t be locked
 
-
 .. py:exception:: MissingConfigurationError()
    :canonical: aiida.common.exceptions.MissingConfigurationError
 
    Bases: :py:obj:`aiida.common.exceptions.ConfigurationError`
 
    Configuration error raised when the configuration file is missing.
-
 
 .. py:exception:: MissingEntryPointError()
    :canonical: aiida.common.exceptions.MissingEntryPointError
@@ -740,7 +705,6 @@ API
    Raised when the user tries to modify a field, object, property, ... that should not
    be modified.
 
-
 .. py:exception:: MultipleEntryPointError()
    :canonical: aiida.common.exceptions.MultipleEntryPointError
 
@@ -756,14 +720,12 @@ API
    Raised when more than one entity is found in the DB, but only one was
    expected.
 
-
 .. py:exception:: NotExistent()
    :canonical: aiida.common.exceptions.NotExistent
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when the required entity does not exist.
-
 
 .. py:exception:: NotExistentAttributeError()
    :canonical: aiida.common.exceptions.NotExistentAttributeError
@@ -772,14 +734,12 @@ API
 
    Raised when the required entity does not exist, when fetched as an attribute.
 
-
 .. py:exception:: NotExistentKeyError()
    :canonical: aiida.common.exceptions.NotExistentKeyError
 
    Bases: :py:obj:`KeyError`, :py:obj:`aiida.common.exceptions.NotExistent`
 
    Raised when the required entity does not exist, when fetched as a dictionary key.
-
 
 .. py:exception:: OutputParsingError()
    :canonical: aiida.common.exceptions.OutputParsingError
@@ -788,14 +748,12 @@ API
 
    Can be raised by a Parser when it fails to parse the output generated by a `CalcJob` process.
 
-
 .. py:exception:: ParsingError()
    :canonical: aiida.common.exceptions.ParsingError
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Generic error raised when there is a parsing error
-
 
 .. py:exception:: PluginInternalError()
    :canonical: aiida.common.exceptions.PluginInternalError
@@ -805,14 +763,12 @@ API
    Error raised when there is an internal error which is due to a plugin
    and not to the AiiDA infrastructure.
 
-
 .. py:exception:: ProfileConfigurationError()
    :canonical: aiida.common.exceptions.ProfileConfigurationError
 
    Bases: :py:obj:`aiida.common.exceptions.ConfigurationError`
 
    Configuration error raised when a wrong/inexistent profile is requested.
-
 
 .. py:class:: ProgressReporterAbstract(*, total: int, desc: typing.Optional[str] = None, **kwargs: typing.Any)
    :canonical: aiida.common.progress_reporter.ProgressReporterAbstract
@@ -829,7 +785,6 @@ API
                progress.update()
 
 
-
    .. py:method:: __init__(*, total: int, desc: typing.Optional[str] = None, **kwargs: typing.Any)
       :canonical: aiida.common.progress_reporter.ProgressReporterAbstract.__init__
 
@@ -837,7 +792,6 @@ API
 
       :param total: The number of expected iterations.
       :param desc: A description of the process
-
 
 
    .. py:property:: total
@@ -877,14 +831,12 @@ API
       :param refresh: Force refresh of the progress reporter
 
 
-
    .. py:method:: update(n: int = 1)
       :canonical: aiida.common.progress_reporter.ProgressReporterAbstract.update
 
       Update the progress counter.
 
       :param n: Increment to add to the internal counter of iterations
-
 
 
    .. py:method:: reset(total: typing.Optional[int] = None)
@@ -895,7 +847,6 @@ API
       :param total: If not None, update number of expected iterations.
 
 
-
 .. py:exception:: RemoteOperationError()
    :canonical: aiida.common.exceptions.RemoteOperationError
 
@@ -903,7 +854,6 @@ API
 
    Raised when an error in a remote operation occurs, as in a failed kill()
    of a scheduler job.
-
 
 .. py:class:: StashMode
    :canonical: aiida.common.datastructures.StashMode
@@ -930,7 +880,6 @@ API
 
    Raised when the user tries to store an unstorable node (e.g. a base Node class)
 
-
 .. py:data:: TQDM_BAR_FORMAT
    :canonical: aiida.common.progress_reporter.TQDM_BAR_FORMAT
    :value: '{desc:40.40}{percentage:6.1f}%|{bar}| {n_fmt}/{total_fmt}'
@@ -944,14 +893,12 @@ API
 
    This is to prevent data loss.
 
-
 .. py:exception:: TransportTaskException()
    :canonical: aiida.common.exceptions.TransportTaskException
 
    Bases: :py:obj:`aiida.common.exceptions.AiidaException`
 
    Raised when a TransportTask, an task to be completed by the engine that requires transport, fails
-
 
 .. py:exception:: UniquenessError()
    :canonical: aiida.common.exceptions.UniquenessError
@@ -961,14 +908,12 @@ API
    Raised when the user tries to violate a uniqueness constraint (on the
    DB, for instance).
 
-
 .. py:exception:: UnsupportedSpeciesError()
    :canonical: aiida.common.exceptions.UnsupportedSpeciesError
 
    Bases: :py:obj:`ValueError`
 
    Raised when StructureData operations are fed species that are not supported by AiiDA such as Deuterium
-
 
 .. py:exception:: ValidationError()
    :canonical: aiida.common.exceptions.ValidationError
@@ -977,7 +922,6 @@ API
 
    Error raised when there is an error during the validation phase
    of a property.
-
 
 .. py:function:: create_callback(progress_reporter: aiida.common.progress_reporter.ProgressReporterAbstract) -> typing.Callable[[str, typing.Any], None]
    :canonical: aiida.common.progress_reporter.create_callback
@@ -993,7 +937,6 @@ API
            to update the progress by a certain number of iterations
 
 
-
 .. py:function:: get_progress_reporter() -> typing.Type[aiida.common.progress_reporter.ProgressReporterAbstract]
    :canonical: aiida.common.progress_reporter.get_progress_reporter
 
@@ -1005,7 +948,6 @@ API
            for i in range(10):
                progress.set_description_str(f"A process: {i}")
                progress.update()
-
 
 
 .. py:function:: override_log_level(level=logging.CRITICAL)
@@ -1024,7 +966,6 @@ API
    :param leave: If True, keeps all traces of the progressbar upon termination of iteration.
            If `None`, will leave only if `position` is `0`.
    :param kwargs: pass to the tqdm init
-
 
 
 .. py:function:: set_progress_reporter(reporter: typing.Optional[typing.Type[aiida.common.progress_reporter.ProgressReporterAbstract]] = None, **kwargs: typing.Any)
@@ -1048,7 +989,6 @@ API
                progress.update()
 
 
-
 .. py:function:: validate_link_label(link_label)
    :canonical: aiida.common.links.validate_link_label
 
@@ -1062,4 +1002,3 @@ API
 
    :raises TypeError: if the link label is not a string type
    :raises ValueError: if the link label is invalid
-

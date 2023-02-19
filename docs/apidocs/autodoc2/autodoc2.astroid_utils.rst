@@ -84,7 +84,6 @@ API
 
    :returns: The original name.
 
-
 .. py:function:: is_constructor(node: astroid.nodes.NodeNG) -> bool
    :canonical: autodoc2.astroid_utils.is_constructor
 
@@ -96,7 +95,6 @@ API
    Get the full path of a name from a ``from x import y`` statement.
 
    :returns: The full import path of the name.
-
 
 .. py:function:: get_assign_value(node: astroid.nodes.NodeNG) -> None | tuple[str, typing.Any]
    :canonical: autodoc2.astroid_utils.get_assign_value
@@ -110,7 +108,6 @@ API
    :returns: The name that is assigned to,
        and the value assigned to the name (if it can be converted).
 
-
 .. py:function:: get_const_values(node: astroid.nodes.NodeNG) -> typing.Any
    :canonical: autodoc2.astroid_utils.get_const_values
 
@@ -122,7 +119,6 @@ API
    Get the type annotation of the assignment of the given node.
 
    :returns: The type annotation as a string, or None if one does not exist.
-
 
 .. py:function:: resolve_annotation(annotation: astroid.nodes.NodeNG) -> str
    :canonical: autodoc2.astroid_utils.resolve_annotation
@@ -138,7 +134,6 @@ API
    :param basename: The partial base name to resolve.
 
    :returns: The fully resolved base name.
-
 
 .. py:function:: get_module_all(node: astroid.nodes.Module) -> None | list[str]
    :canonical: autodoc2.astroid_utils.get_module_all
@@ -179,7 +174,6 @@ API
 
    :returns: True if the function is a property setter, False otherwise.
 
-
 .. py:function:: get_class_docstring(node: astroid.nodes.ClassDef) -> str
    :canonical: autodoc2.astroid_utils.get_class_docstring
 
@@ -214,7 +208,6 @@ API
    Get the arguments of a function.
 
    :returns: a list of (type, name, annotation, default)
-
 
 .. py:function:: _iter_args(args: list[astroid.nodes.NodeNG], annotations: list[astroid.nodes.NodeNG], defaults: list[astroid.nodes.NodeNG]) -> typing.Iterable[typing.Tuple[str, None | str, str | None]]
    :canonical: autodoc2.astroid_utils._iter_args

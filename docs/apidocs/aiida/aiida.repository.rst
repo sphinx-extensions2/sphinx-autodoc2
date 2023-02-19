@@ -47,7 +47,6 @@ API
    a string-based key with which the content of the stored object can be addressed. This key is guaranteed to be unique
    and persistent. Persisting the key or mapping it onto a virtual file hierarchy is again up to the client upstream.
 
-
    .. py:property:: uuid
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.uuid
       :abstractmethod:
@@ -66,7 +65,6 @@ API
       necessary to re-compute all the `Node.base.repository.metadata` before importing (otherwise they will not match
       with the repository).
 
-
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.initialise
       :abstractmethod:
@@ -74,7 +72,6 @@ API
       Initialise the repository if it hasn't already been initialised.
 
       :param kwargs: parameters for the initialisation.
-
 
    .. py:property:: is_initialised
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.is_initialised
@@ -93,7 +90,6 @@ API
           example, if the repository is essentially a folder on disk, the folder itself should also be deleted, not
           just its contents.
 
-
    .. py:method:: is_readable_byte_stream(handle) -> bool
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.is_readable_byte_stream
       :staticmethod:
@@ -106,7 +102,6 @@ API
       :param handle: filelike object with the byte content to be stored.
       :return: the generated fully qualified identifier for the object within the repository.
       :raises TypeError: if the handle is not a byte stream.
-
 
    .. py:method:: _put_object_from_filelike(handle: typing.BinaryIO) -> str
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend._put_object_from_filelike
@@ -121,7 +116,6 @@ API
       :return: the generated fully qualified identifier for the object within the repository.
       :raises TypeError: if the handle is not a byte stream.
 
-
    .. py:method:: has_objects(keys: typing.List[str]) -> typing.List[bool]
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.has_objects
       :abstractmethod:
@@ -134,7 +128,6 @@ API
           list of logicals, in the same order as the keys provided, with value True if the respective
           object exists and False otherwise.
 
-
    .. py:method:: has_object(key: str) -> bool
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.has_object
 
@@ -143,7 +136,6 @@ API
       :param key: fully qualified identifier for the object within the repository.
       :return: True if the object exists, False otherwise.
 
-
    .. py:method:: list_objects() -> typing.Iterable[str]
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.list_objects
       :abstractmethod:
@@ -151,7 +143,6 @@ API
       Return iterable that yields all available objects by key.
 
       :return: An iterable for all the available object keys.
-
 
    .. py:method:: get_info(detailed: bool = False, **kwargs) -> dict
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.get_info
@@ -163,7 +154,6 @@ API
           flag to enable extra information (detailed=False by default, only returns basic information).
 
       :return: a dictionary with the information.
-
 
    .. py:method:: maintain(dry_run: bool = False, live: bool = True, **kwargs) -> None
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.maintain
@@ -179,7 +169,6 @@ API
           backend is currently being used/accessed). The backend is expected then to only allow (and
           thus set by default) the operations that are safe to perform in this state.
 
-
    .. py:method:: open(key: str) -> typing.Iterator[typing.BinaryIO]
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.open
 
@@ -193,7 +182,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if the file could not be opened.
 
-
    .. py:method:: get_object_content(key: str) -> bytes
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.get_object_content
 
@@ -202,7 +190,6 @@ API
       :param key: fully qualified identifier for the object within the repository.
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if the file could not be opened.
-
 
    .. py:method:: iter_object_streams(keys: typing.List[str]) -> typing.Iterator[typing.Tuple[str, typing.BinaryIO]]
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.iter_object_streams
@@ -217,7 +204,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if a file could not be opened.
 
-
    .. py:method:: get_object_hash(key: str) -> str
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.get_object_hash
 
@@ -231,7 +217,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if the file could not be opened.
 
-
    .. py:method:: delete_objects(keys: typing.List[str]) -> None
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.delete_objects
       :abstractmethod:
@@ -242,7 +227,6 @@ API
       :raise FileNotFoundError: if any of the files does not exist.
       :raise OSError: if any of the files could not be deleted.
 
-
    .. py:method:: delete_object(key: str) -> None
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.delete_object
 
@@ -251,7 +235,6 @@ API
       :param key: fully qualified identifier for the object within the repository.
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if the file could not be deleted.
-
 
 .. py:class:: DiskObjectStoreRepositoryBackend(container: disk_objectstore.Container)
    :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend
@@ -266,7 +249,6 @@ API
        which ensures the session being closed. Note that not all methods may open the session and so need closing it,
        but to be on the safe side, we put every use of the container in a context manager. If no session is created,
        the ``close`` method is essentially a no-op.
-
 
 
    .. py:method:: __init__(container: disk_objectstore.Container)
@@ -293,14 +275,12 @@ API
       necessary to re-compute all the `Node.base.repository.metadata` before importing (otherwise they will not match
       with the repository).
 
-
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.initialise
 
       Initialise the repository if it hasn't already been initialised.
 
       :param kwargs: parameters for the initialisation.
-
 
    .. py:property:: is_initialised
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.is_initialised
@@ -322,7 +302,6 @@ API
       :return: the generated fully qualified identifier for the object within the repository.
       :raises TypeError: if the handle is not a byte stream.
 
-
    .. py:method:: has_objects(keys: typing.List[str]) -> typing.List[bool]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.has_objects
 
@@ -333,7 +312,6 @@ API
       :return:
           list of logicals, in the same order as the keys provided, with value True if the respective
           object exists and False otherwise.
-
 
    .. py:method:: open(key: str) -> typing.Iterator[typing.BinaryIO]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.open
@@ -348,7 +326,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if the file could not be opened.
 
-
    .. py:method:: iter_object_streams(keys: typing.List[str]) -> typing.Iterator[typing.Tuple[str, typing.BinaryIO]]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.iter_object_streams
 
@@ -361,7 +338,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if a file could not be opened.
 
-
    .. py:method:: delete_objects(keys: typing.List[str]) -> None
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.delete_objects
 
@@ -371,14 +347,12 @@ API
       :raise FileNotFoundError: if any of the files does not exist.
       :raise OSError: if any of the files could not be deleted.
 
-
    .. py:method:: list_objects() -> typing.Iterable[str]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.list_objects
 
       Return iterable that yields all available objects by key.
 
       :return: An iterable for all the available object keys.
-
 
    .. py:method:: get_object_hash(key: str) -> str
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.get_object_hash
@@ -393,7 +367,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
 
 
-
    .. py:method:: maintain(dry_run: bool = False, live: bool = True, pack_loose: bool = None, do_repack: bool = None, clean_storage: bool = None, do_vacuum: bool = None) -> dict
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.maintain
 
@@ -405,7 +378,6 @@ API
       :param clean_storage:flag for forcing the cleaning of soft-deleted files from the repository.
       :param do_vacuum:flag for forcing the vacuuming of the internal database when cleaning the repository.
       :return:a dictionary with information on the operations performed.
-
 
    .. py:method:: get_info(detailed=False) -> typing.Dict[str, typing.Union[int, str, typing.Dict[str, int], typing.Dict[str, float]]]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.get_info
@@ -430,7 +402,6 @@ API
       :raises ValueError: If a key is defined for a directory,
           or objects are defined for a file
 
-
    .. py:method:: from_serialized(serialized: dict, name='') -> aiida.repository.common.File
       :canonical: aiida.repository.common.File.from_serialized
       :classmethod:
@@ -440,7 +411,6 @@ API
       :param serialized: the serialized instance.
       :return: the reconstructed file object.
 
-
    .. py:method:: serialize() -> dict
       :canonical: aiida.repository.common.File.serialize
 
@@ -449,7 +419,6 @@ API
       .. note:: the serialization format is optimized to reduce the size in bytes.
 
       :return: dictionary with the content metadata.
-
 
    .. py:property:: name
       :canonical: aiida.repository.common.File.name
@@ -525,7 +494,6 @@ API
    removed from the internal virtual hierarchy, but not in the actual backend. This is because those objects can be
    referenced by other instances.
 
-
    .. py:attribute:: _file_cls
       :canonical: aiida.repository.repository.Repository._file_cls
       :value: None
@@ -537,7 +505,6 @@ API
 
       :param backend: instance of repository backend to use to actually store the file objects. By default, an
           instance of the ``SandboxRepositoryBackend`` will be created.
-
 
    .. py:method:: __str__() -> str
       :canonical: aiida.repository.repository.Repository.__str__
@@ -564,7 +531,6 @@ API
 
       :param backend: instance of repository backend to use to actually store the file objects.
 
-
    .. py:method:: reset() -> None
       :canonical: aiida.repository.repository.Repository.reset
 
@@ -574,7 +540,6 @@ API
       Serialize the metadata into a JSON-serializable format.
 
       :return: dictionary with the content metadata.
-
 
    .. py:method:: flatten(serialized=Optional[Dict[str, Any]], delimiter: str = '/') -> typing.Dict[str, typing.Optional[str]]
       :canonical: aiida.repository.repository.Repository.flatten
@@ -588,7 +553,6 @@ API
       :param delimiter: the delimiter to use to separate the path elements.
       :return: dictionary with the flattened content.
 
-
    .. py:method:: hash() -> str
       :canonical: aiida.repository.repository.Repository.hash
 
@@ -597,7 +561,6 @@ API
       .. warning:: this will read the content of all file objects contained within the virtual hierarchy into memory.
 
       :return: the hash representing the contents of the repository.
-
 
    .. py:method:: _pre_process_path(path: typing.Optional[aiida.repository.repository.FilePath] = None) -> pathlib.PurePosixPath
       :canonical: aiida.repository.repository.Repository._pre_process_path
@@ -611,7 +574,6 @@ API
       :param path: the path as a ``pathlib.PurePosixPath`` object or `None`.
       :raises TypeError: if the type of path was not a str nor a ``pathlib.PurePosixPath`` instance.
 
-
    .. py:property:: backend
       :canonical: aiida.repository.repository.Repository.backend
       :type: aiida.repository.backend.AbstractRepositoryBackend
@@ -620,7 +582,6 @@ API
 
       :return: the repository backend.
 
-
    .. py:method:: set_backend(backend: aiida.repository.backend.AbstractRepositoryBackend) -> None
       :canonical: aiida.repository.repository.Repository.set_backend
 
@@ -628,7 +589,6 @@ API
 
       :param backend: the repository backend.
       :raises TypeError: if the type of the backend is invalid.
-
 
    .. py:method:: _insert_file(path: pathlib.PurePosixPath, key: str) -> None
       :canonical: aiida.repository.repository.Repository._insert_file
@@ -640,7 +600,6 @@ API
       :param path: the relative path where to store the object in the repository.
       :param key: fully qualified identifier for the object within the repository.
 
-
    .. py:method:: create_directory(path: aiida.repository.repository.FilePath) -> aiida.repository.common.File
       :canonical: aiida.repository.repository.Repository.create_directory
 
@@ -650,14 +609,12 @@ API
       :return: the created directory.
       :raises TypeError: if the path is not a string or ``Path``, or is an absolute path.
 
-
    .. py:method:: get_file_keys() -> typing.List[str]
       :canonical: aiida.repository.repository.Repository.get_file_keys
 
       Return the keys of all file objects contained within this repository.
 
       :return: list of keys, which map a file to its content in the backend repository.
-
 
    .. py:method:: get_object(path: typing.Optional[aiida.repository.repository.FilePath] = None) -> aiida.repository.common.File
       :canonical: aiida.repository.repository.Repository.get_object
@@ -668,7 +625,6 @@ API
       :return: the `File` representing the object located at the given relative path.
       :raises TypeError: if the path is not a string or ``Path``, or is an absolute path.
       :raises FileNotFoundError: if no object exists for the given path.
-
 
    .. py:method:: get_directory(path: typing.Optional[aiida.repository.repository.FilePath] = None) -> aiida.repository.common.File
       :canonical: aiida.repository.repository.Repository.get_directory
@@ -681,7 +637,6 @@ API
       :raises FileNotFoundError: if no object exists for the given path.
       :raises NotADirectoryError: if the object at the given path is not a directory.
 
-
    .. py:method:: get_file(path: aiida.repository.repository.FilePath) -> aiida.repository.common.File
       :canonical: aiida.repository.repository.Repository.get_file
 
@@ -692,7 +647,6 @@ API
       :raises TypeError: if the path is not a string or ``Path``, or is an absolute path.
       :raises FileNotFoundError: if no object exists for the given path.
       :raises IsADirectoryError: if the object at the given path is not a directory.
-
 
    .. py:method:: list_objects(path: typing.Optional[aiida.repository.repository.FilePath] = None) -> typing.List[aiida.repository.common.File]
       :canonical: aiida.repository.repository.Repository.list_objects
@@ -705,7 +659,6 @@ API
       :raises FileNotFoundError: if no object exists for the given path.
       :raises NotADirectoryError: if the object at the given path is not a directory.
 
-
    .. py:method:: list_object_names(path: typing.Optional[aiida.repository.repository.FilePath] = None) -> typing.List[str]
       :canonical: aiida.repository.repository.Repository.list_object_names
 
@@ -717,7 +670,6 @@ API
       :raises FileNotFoundError: if no object exists for the given path.
       :raises NotADirectoryError: if the object at the given path is not a directory.
 
-
    .. py:method:: put_object_from_filelike(handle: typing.BinaryIO, path: aiida.repository.repository.FilePath) -> None
       :canonical: aiida.repository.repository.Repository.put_object_from_filelike
 
@@ -727,7 +679,6 @@ API
       :param path: the relative path where to store the object in the repository.
       :raises TypeError: if the path is not a string or ``Path``, or is an absolute path.
 
-
    .. py:method:: put_object_from_file(filepath: aiida.repository.repository.FilePath, path: aiida.repository.repository.FilePath) -> None
       :canonical: aiida.repository.repository.Repository.put_object_from_file
 
@@ -736,7 +687,6 @@ API
       :param filepath: absolute path of file whose contents to copy to the repository
       :param path: the relative path where to store the object in the repository.
       :raises TypeError: if the path is not a string and relative path, or the handle is not a byte stream.
-
 
    .. py:method:: put_object_from_tree(filepath: aiida.repository.repository.FilePath, path: typing.Optional[aiida.repository.repository.FilePath] = None) -> None
       :canonical: aiida.repository.repository.Repository.put_object_from_tree
@@ -748,14 +698,12 @@ API
       :raises TypeError: if the filepath is not a string or ``Path``, or is a relative path.
       :raises TypeError: if the path is not a string or ``Path``, or is an absolute path.
 
-
    .. py:method:: is_empty() -> bool
       :canonical: aiida.repository.repository.Repository.is_empty
 
       Return whether the repository is empty.
 
       :return: True if the repository contains no file objects.
-
 
    .. py:method:: has_object(path: aiida.repository.repository.FilePath) -> bool
       :canonical: aiida.repository.repository.Repository.has_object
@@ -765,7 +713,6 @@ API
       :param path: the relative path of the object within the repository.
       :return: True if the object exists, False otherwise.
       :raises TypeError: if the path is not a string or ``Path``, or is an absolute path.
-
 
    .. py:method:: open(path: aiida.repository.repository.FilePath) -> typing.Iterator[typing.BinaryIO]
       :canonical: aiida.repository.repository.Repository.open
@@ -782,7 +729,6 @@ API
       :raises IsADirectoryError: if the object is a directory and not a file.
       :raises OSError: if the file could not be opened.
 
-
    .. py:method:: get_object_content(path: aiida.repository.repository.FilePath) -> bytes
       :canonical: aiida.repository.repository.Repository.get_object_content
 
@@ -793,7 +739,6 @@ API
       :raises FileNotFoundError: if the file does not exist.
       :raises IsADirectoryError: if the object is a directory and not a file.
       :raises OSError: if the file could not be opened.
-
 
    .. py:method:: delete_object(path: aiida.repository.repository.FilePath, hard_delete: bool = False) -> None
       :canonical: aiida.repository.repository.Repository.delete_object
@@ -810,7 +755,6 @@ API
       :raises IsADirectoryError: if the object is a directory and not a file.
       :raises OSError: if the file could not be deleted.
 
-
    .. py:method:: erase() -> None
       :canonical: aiida.repository.repository.Repository.erase
 
@@ -819,7 +763,6 @@ API
       .. important: this intentionally does not call through to any ``erase`` method of the backend, because unlike
           this class, the backend does not just store the objects of a single node, but potentially of a lot of other
           nodes. Therefore, we manually delete all file objects and then simply reset the internal file hierarchy.
-
 
 
    .. py:method:: clone(source: aiida.repository.repository.Repository) -> None
@@ -840,7 +783,6 @@ API
           always relative with respect to the repository root, instead of an absolute path and it is an instance of
           ``pathlib.PurePosixPath`` instead of a normal string
 
-
    .. py:method:: copy_tree(target: typing.Union[str, pathlib.Path], path: typing.Optional[aiida.repository.repository.FilePath] = None) -> None
       :canonical: aiida.repository.repository.Repository.copy_tree
 
@@ -855,14 +797,12 @@ API
       :raises TypeError: if ``target`` is of incorrect type or not absolute.
       :raises NotADirectoryError: if ``path`` does not reference a directory.
 
-
    .. py:method:: initialise(**kwargs: typing.Any) -> None
       :canonical: aiida.repository.repository.Repository.initialise
 
       Initialise the repository if it hasn't already been initialised.
 
       :param kwargs: keyword argument that will be passed to the ``initialise`` call of the backend.
-
 
    .. py:method:: delete() -> None
       :canonical: aiida.repository.repository.Repository.delete
@@ -871,7 +811,6 @@ API
 
       .. important:: This will not just delete the contents of the repository but also the repository itself and all
           of its assets. For example, if the repository is stored inside a folder on disk, the folder may be deleted.
-
 
 .. py:class:: SandboxRepositoryBackend(filepath: str | None = None)
    :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend
@@ -886,7 +825,6 @@ API
       Construct a new instance.
 
       :param filepath: The path to the directory in which the sandbox folder should be created.
-
 
    .. py:method:: __str__() -> str
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.__str__
@@ -906,7 +844,6 @@ API
 
       .. note:: A sandbox folder does not have the concept of a unique identifier and so always returns ``None``.
 
-
    .. py:property:: key_format
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.key_format
       :type: str | None
@@ -917,14 +854,12 @@ API
       necessary to re-compute all the `Node.base.repository.metadata` before importing (otherwise they will not match
       with the repository).
 
-
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.initialise
 
       Initialise the repository if it hasn't already been initialised.
 
       :param kwargs: parameters for the initialisation.
-
 
    .. py:property:: is_initialised
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.is_initialised
@@ -951,7 +886,6 @@ API
       :return: the generated fully qualified identifier for the object within the repository.
       :raises TypeError: if the handle is not a byte stream.
 
-
    .. py:method:: has_objects(keys: list[str]) -> list[bool]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.has_objects
 
@@ -962,7 +896,6 @@ API
       :return:
           list of logicals, in the same order as the keys provided, with value True if the respective
           object exists and False otherwise.
-
 
    .. py:method:: open(key: str) -> typing.Iterator[typing.BinaryIO]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.open
@@ -977,7 +910,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if the file could not be opened.
 
-
    .. py:method:: iter_object_streams(keys: list[str]) -> typing.Iterator[tuple[str, typing.BinaryIO]]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.iter_object_streams
 
@@ -990,7 +922,6 @@ API
       :raise FileNotFoundError: if the file does not exist.
       :raise OSError: if a file could not be opened.
 
-
    .. py:method:: delete_objects(keys: list[str]) -> None
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.delete_objects
 
@@ -1000,14 +931,12 @@ API
       :raise FileNotFoundError: if any of the files does not exist.
       :raise OSError: if any of the files could not be deleted.
 
-
    .. py:method:: list_objects() -> typing.Iterable[str]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.list_objects
 
       Return iterable that yields all available objects by key.
 
       :return: An iterable for all the available object keys.
-
 
    .. py:method:: maintain(dry_run: bool = False, live: bool = True, **kwargs) -> None
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.maintain
@@ -1023,7 +952,6 @@ API
           backend is currently being used/accessed). The backend is expected then to only allow (and
           thus set by default) the operations that are safe to perform in this state.
 
-
    .. py:method:: get_info(detailed: bool = False, **kwargs) -> dict
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.get_info
       :abstractmethod:
@@ -1034,4 +962,3 @@ API
           flag to enable extra information (detailed=False by default, only returns basic information).
 
       :return: a dictionary with the information.
-

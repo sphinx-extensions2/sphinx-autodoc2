@@ -191,7 +191,7 @@ class MystRenderer(RendererBase):
             # or, more broadly speaking, decorated at all
         yield ""
         if item["doc"]:
-            yield item["doc"]
+            yield from item["doc"].splitlines()
             yield ""
         yield backticks
         yield ""
@@ -238,7 +238,8 @@ class MystRenderer(RendererBase):
         # TODO inheritance diagram
 
         if item["doc"]:
-            lines += [item["doc"], ""]
+            lines += item["doc"].splitlines()
+            lines.append("")
 
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
@@ -271,7 +272,7 @@ class MystRenderer(RendererBase):
         yield ""
 
         if item["doc"]:
-            yield item["doc"]
+            yield from item["doc"].splitlines()
             yield ""
 
         yield backticks
@@ -300,7 +301,7 @@ class MystRenderer(RendererBase):
         yield ""
 
         if item["doc"]:
-            yield item["doc"]
+            yield from item["doc"].splitlines()
             yield ""
 
         yield backticks
@@ -344,7 +345,7 @@ class MystRenderer(RendererBase):
 
         yield ""
         if item["doc"]:
-            yield item["doc"]
+            yield from item["doc"].splitlines()
             yield ""
 
         yield backticks

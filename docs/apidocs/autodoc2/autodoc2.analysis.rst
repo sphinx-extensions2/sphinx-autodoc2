@@ -89,7 +89,6 @@ API
        But if you want to expose objects from other packages,
        you can use this to record them.
 
-
 .. py:data:: _dc_kwargs
    :canonical: autodoc2.analysis._dc_kwargs
    :type: dict[str, bool]
@@ -133,7 +132,6 @@ API
 
    Remove common leading indentation,
    where the indentation of the first line is ignored.
-
 
 .. py:function:: walk_node(node: astroid.nodes.NodeNG, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis.walk_node

@@ -133,7 +133,6 @@ API
 
    The ParamType for identifying Calculation entities or its subclasses
 
-
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.calculation.CalculationParamType.name
       :value: 'Calculation'
@@ -146,14 +145,12 @@ API
 
       :return: the orm entity loader class for this ParamType
 
-
 .. py:class:: CodeParamType(sub_classes=None, entry_point=None)
    :canonical: aiida.cmdline.params.types.code.CodeParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
    The ParamType for identifying Code entities or its subclasses
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.code.CodeParamType.name
@@ -167,7 +164,6 @@ API
       :param sub_classes: specify a tuple of Code sub classes to narrow the query set
       :param entry_point: specify an optional calculation entry point that the Code's input plugin should match
 
-
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.code.CodeParamType.orm_class_loader
 
@@ -176,14 +172,12 @@ API
 
       :return: the orm entity loader class for this ParamType
 
-
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.code.CodeParamType.shell_complete
 
       Return possible completions based on an incomplete value.
 
       :returns: list of tuples of valid entry points (matching incomplete) and a description
-
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.code.CodeParamType.convert
@@ -194,7 +188,6 @@ API
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
    The ParamType for identifying Computer entities or its subclasses
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.computer.ComputerParamType.name
@@ -208,14 +201,12 @@ API
 
       :return: the orm entity loader class for this ParamType
 
-
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.computer.ComputerParamType.shell_complete
 
       Return possible completions based on an incomplete value.
 
       :returns: list of tuples of valid entry points (matching incomplete) and a description
-
 
 .. py:class:: ConfigOptionParamType
    :canonical: aiida.cmdline.params.types.config.ConfigOptionParamType
@@ -238,14 +229,12 @@ API
 
       :returns: list of tuples of valid entry points (matching incomplete) and a description
 
-
 .. py:class:: DataParamType(sub_classes=None)
    :canonical: aiida.cmdline.params.types.data.DataParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
    The ParamType for identifying Data entities or its subclasses
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.data.DataParamType.name
@@ -258,7 +247,6 @@ API
       to be used to load the entity for a given identifier
 
       :return: the orm entity loader class for this ParamType
-
 
 .. py:class:: DynamicEntryPointCommandGroup(command, entry_point_group: str, entry_point_name_filter='.*', **kwargs)
    :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup
@@ -286,7 +274,6 @@ API
            pass
 
 
-
    .. py:method:: __init__(command, entry_point_group: str, entry_point_name_filter='.*', **kwargs)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.__init__
 
@@ -297,7 +284,6 @@ API
 
       :param ctx: The :class:`click.Context`.
 
-
    .. py:method:: get_command(ctx, cmd_name)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.get_command
 
@@ -306,7 +292,6 @@ API
       :param ctx: The :class:`click.Context`.
       :param cmd_name: The name of the command.
       :returns: The :class:`click.Command`.
-
 
    .. py:method:: create_command(entry_point)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_command
@@ -320,14 +305,12 @@ API
 
       :param entry_point: The entry point.
 
-
    .. py:method:: list_options(entry_point)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.list_options
 
       Return the list of options that should be applied to the command for the given entry point.
 
       :param entry_point: The entry point.
-
 
    .. py:method:: create_option(name, spec)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_option
@@ -343,7 +326,6 @@ API
    Parameter whose values have to correspond to a valid email address format.
 
    .. note:: For the moment, we do not require the domain suffix, i.e. 'aiida@localhost' is still valid.
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.EmailType.name
@@ -363,7 +345,6 @@ API
    Parameter whose values have to be valid Python entry point strings.
 
    See https://packaging.python.org/en/latest/specifications/entry-points/
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.EntryPointType.name
@@ -386,7 +367,6 @@ API
 
    :param int timeout_seconds: Maximum timeout accepted for URL response.
        Must be an integer in the range [0;60].
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.path.FileOrUrl.name
@@ -434,7 +414,6 @@ API
           that in this case, only a single entry point name can be specified
       :param sub_classes: a tuple of entry point strings from the `aiida.groups` entry point group.
 
-
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.group.GroupParamType.orm_class_loader
 
@@ -444,14 +423,12 @@ API
 
       :return: the orm entity loader class for this `ParamType`
 
-
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.group.GroupParamType.shell_complete
 
       Return possible completions based on an incomplete value.
 
       :returns: list of tuples of valid entry points (matching incomplete) and a description
-
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.group.GroupParamType.convert
@@ -464,7 +441,6 @@ API
    Parameter corresponding to a valid hostname (or empty) string.
 
    Regex according to https://stackoverflow.com/a/3824105/1069467
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.HostnameType.name
@@ -488,7 +464,6 @@ API
    parameter type should implement the `orm_class_loader` method to return the appropriate orm class loader,
    which should be a subclass of `aiida.orm.utils.loaders.OrmEntityLoader` for the corresponding orm class.
 
-
    .. py:method:: __init__(sub_classes=None)
       :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.__init__
 
@@ -506,7 +481,6 @@ API
           will be mapped upon. These classes have to be strict sub classes of the base orm class defined
           by the orm class loader
 
-
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.orm_class_loader
       :abstractmethod:
@@ -515,7 +489,6 @@ API
       to be used to load the entity for a given identifier
 
       :return: the orm entity loader class for this ParamType
-
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.convert
@@ -527,7 +500,6 @@ API
       :raises click.BadParameter: if the value cannot be mapped onto any existing instance
       :raises RuntimeError: if the defined orm class loader is not a subclass of the OrmEntityLoader class
 
-
 .. py:class:: LabelStringType
    :canonical: aiida.cmdline.params.types.strings.LabelStringType
 
@@ -538,7 +510,6 @@ API
    Non-empty string, made up of word characters (includes underscores [1]), dashes, and dots.
 
    [1] See https://docs.python.org/3/library/re.html
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.LabelStringType.name
@@ -565,7 +536,6 @@ API
    its autocomplete. This type will generate the choices set lazily through the
    choices property
 
-
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.name
       :value: 'choice'
@@ -581,7 +551,6 @@ API
 
       :return: The click Choice
       :rtype: :class:`click.Choice`
-
 
    .. py:property:: choices
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.choices
@@ -613,7 +582,6 @@ API
 
    Return a list of arguments (by using 'value.strip().split(" ") on the input string)
 
-
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.computer.MpirunCommandParamType.name
       :value: 'mpiruncommandstring'
@@ -631,7 +599,6 @@ API
 
    An extension of click.ParamType that can parse multiple values for a given ParamType
 
-
    .. py:method:: __init__(param_type)
       :canonical: aiida.cmdline.params.types.multiple.MultipleValueParamType.__init__
 
@@ -648,7 +615,6 @@ API
 
    The ParamType for identifying Node entities or its subclasses
 
-
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.node.NodeParamType.name
       :value: 'Node'
@@ -660,7 +626,6 @@ API
       to be used to load the entity for a given identifier
 
       :return: the orm entity loader class for this ParamType
-
 
 .. py:class:: NonEmptyStringParamType
    :canonical: aiida.cmdline.params.types.strings.NonEmptyStringParamType
@@ -690,7 +655,6 @@ API
 
    :param int timeout_seconds: Maximum timeout accepted for URL response.
        Must be an integer in the range [0;60].
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.path.PathOrUrl.name
@@ -729,7 +693,6 @@ API
        click.option(... type=PluginParamType(group=('calculations', 'data'))
 
 
-
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.name
       :value: 'plugin'
@@ -744,14 +707,12 @@ API
       Validate that group is either a string or a tuple of valid entry point groups, or if it
       is not specified use the tuple of all recognized entry point groups.
 
-
    .. py:method:: _init_entry_points()
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType._init_entry_points
 
       Populate entry point information that will be used later on.  This should only be called
       once in the constructor after setting self.groups because the groups should not be changed
       after instantiation
-
 
    .. py:property:: groups
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.groups
@@ -762,7 +723,6 @@ API
       Returns whether the set of supported entry point groups can lead to ambiguity when only an entry point name
       is specified. This will happen if one ore more groups share an entry point with a common name
 
-
    .. py:method:: get_valid_arguments()
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_valid_arguments
 
@@ -772,12 +732,10 @@ API
 
       :returns: list of valid entry point strings
 
-
    .. py:method:: get_possibilities(incomplete='')
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_possibilities
 
       Return a list of plugins starting with incomplete
-
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.shell_complete
@@ -785,7 +743,6 @@ API
       Return possible completions based on an incomplete value
 
       :returns: list of tuples of valid entry points (matching incomplete) and a description
-
 
    .. py:method:: get_missing_message(param)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_missing_message
@@ -800,7 +757,6 @@ API
       :returns: the entry point if valid
       :raises: ValueError if the entry point string is invalid
 
-
    .. py:method:: validate_entry_point_group(group)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.validate_entry_point_group
 
@@ -810,14 +766,12 @@ API
       Convert the string value to an entry point instance, if the value can be successfully parsed
       into an actual entry point. Will raise click.BadParameter if validation fails.
 
-
 .. py:class:: ProcessParamType
    :canonical: aiida.cmdline.params.types.process.ProcessParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
    The ParamType for identifying ProcessNode entities or its subclasses
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.process.ProcessParamType.name
@@ -831,7 +785,6 @@ API
 
       :return: the orm entity loader class for this ParamType
 
-
 .. py:class:: ProfileParamType(*args, **kwargs)
    :canonical: aiida.cmdline.params.types.profile.ProfileParamType
 
@@ -842,7 +795,6 @@ API
    This parameter type requires the command that uses it to define the ``context_class`` class attribute to be the
    :class:`aiida.cmdline.groups.verdi.VerdiContext` class, as that is responsible for creating the user defined object
    ``obj`` on the context and loads the instance config.
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.profile.ProfileParamType.name
@@ -867,14 +819,12 @@ API
 
       :returns: list of tuples of valid entry points (matching incomplete) and a description
 
-
 .. py:class:: ShebangParamType
    :canonical: aiida.cmdline.params.types.computer.ShebangParamType
 
    Bases: :py:obj:`click.types.StringParamType`
 
    Custom click param type for shebang line
-
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.computer.ShebangParamType.name
@@ -893,7 +843,6 @@ API
 
    The user parameter type for click.   Can get or create a user.
 
-
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.user.UserParamType.name
       :value: 'user'
@@ -902,7 +851,6 @@ API
       :canonical: aiida.cmdline.params.types.user.UserParamType.__init__
 
       :param create: If the user does not exist, create a new instance (unstored).
-
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.user.UserParamType.convert
@@ -914,7 +862,6 @@ API
 
       :returns: list of tuples of valid entry points (matching incomplete) and a description
 
-
 .. py:class:: VerdiCommandGroup
    :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup
 
@@ -924,7 +871,6 @@ API
 
    The class automatically adds the verbosity option to all commands in the interface. It also adds some functionality
    to provide suggestions of commands in case the user provided command name does not exist.
-
 
    .. py:attribute:: context_class
       :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup.context_class
@@ -955,7 +901,6 @@ API
       Note that if the command is not found and ``resilient_parsing`` is set to True on the context, then the latter
       feature is disabled because most likely we are operating in tab-completion mode.
 
-
    .. py:method:: group(*args, **kwargs)
       :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup.group
 
@@ -968,7 +913,6 @@ API
 
    The ParamType for identifying WorkflowNode entities or its subclasses
 
-
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.workflow.WorkflowParamType.name
       :value: 'WorkflowNode'
@@ -980,7 +924,6 @@ API
       to be used to load the entity for a given identifier
 
       :return: the orm entity loader class for this ParamType
-
 
 .. py:function:: dbenv()
    :canonical: aiida.cmdline.utils.decorators.dbenv
@@ -1018,7 +961,6 @@ API
 
            # do db unrelated stuff
 
-
 .. py:function:: echo_critical(message: str, bold: bool = False, nl: bool = True, err: bool = True, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_critical
 
@@ -1033,7 +975,6 @@ API
    :param err: whether to log to stderr.
    :param prefix: whether the message should be prefixed with a colored version of the log level.
 
-
 .. py:function:: echo_dictionary(dictionary, fmt='json+date', sort_keys=True)
    :canonical: aiida.cmdline.utils.echo.echo_dictionary
 
@@ -1042,7 +983,6 @@ API
    :param dictionary: the dictionary
    :param fmt: the format to use for printing
    :param sort_keys: Whether to automatically sort keys
-
 
 .. py:function:: echo_error(message: str, bold: bool = False, nl: bool = True, err: bool = True, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_error
@@ -1055,7 +995,6 @@ API
    :param err: whether to log to stderr.
    :param prefix: whether the message should be prefixed with a colored version of the log level.
 
-
 .. py:function:: echo_info(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_info
 
@@ -1067,7 +1006,6 @@ API
    :param err: whether to log to stderr.
    :param prefix: whether the message should be prefixed with a colored version of the log level.
 
-
 .. py:function:: echo_report(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_report
 
@@ -1078,7 +1016,6 @@ API
    :param nl: whether to add a newline at the end of the message.
    :param err: whether to log to stderr.
    :param prefix: whether the message should be prefixed with a colored version of the log level.
-
 
 .. py:function:: echo_success(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_success
@@ -1093,7 +1030,6 @@ API
    :param err: whether to log to stderr.
    :param prefix: whether the message should be prefixed with a colored version of the log level.
 
-
 .. py:function:: echo_warning(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_warning
 
@@ -1105,7 +1041,6 @@ API
    :param err: whether to log to stderr.
    :param prefix: whether the message should be prefixed with a colored version of the log level.
 
-
 .. py:function:: format_call_graph(calc_node, max_depth: int = None, info_fn=calc_info)
    :canonical: aiida.cmdline.utils.ascii_vis.format_call_graph
 
@@ -1116,7 +1051,6 @@ API
    :param info_fn: An optional function that takes the node and returns a string
        of information to be displayed for each node.
 
-
 .. py:function:: is_verbose()
    :canonical: aiida.cmdline.utils.common.is_verbose
 
@@ -1126,7 +1060,6 @@ API
        consider the logging level set on the parent ``AIIDA_LOGGER`` if not explicitly set on itself. The level of the
        main logger can be manipulated from the command line through the ``VERBOSITY`` option that is available for all
        commands.
-
 
 
 .. py:function:: only_if_daemon_running(echo_function=echo.echo_critical, message=None)
@@ -1148,7 +1081,6 @@ API
    :param echo_function: echo function to issue the message, should be from `aiida.cmdline.utils.echo`
    :param message: optional message to override the default message
 
-
 .. py:function:: with_dbenv()
    :canonical: aiida.cmdline.utils.decorators.with_dbenv
 
@@ -1162,4 +1094,3 @@ API
        def create_node():
            from aiida.orm import Int  # note the local import
            node = Int(1).store()
-

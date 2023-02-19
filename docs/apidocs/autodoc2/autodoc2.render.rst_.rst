@@ -120,4 +120,3 @@ API
 
       The backslash escapes are needed because of:
       https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#character-level-inline-markup-1
-

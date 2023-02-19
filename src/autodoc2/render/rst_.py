@@ -79,14 +79,10 @@ class RstRenderer(RendererBase):
         yield from ["", ""]
 
         if item["doc"]:
-            yield from [
-                "Description",
-                "-----------",
-                "",
-                # TODO ensure any headings are at least level 3
-                item["doc"],
-                "",
-            ]
+            yield from ["Description", "-----------", ""]
+            # TODO ensure any headings are at least level 3
+            yield from item["doc"].splitlines()
+            yield ""
 
         visible_subpackages = [
             i["full_name"] for i in self.get_children(item, {"package"})
@@ -182,7 +178,11 @@ class RstRenderer(RendererBase):
             # or, more broadly speaking, decorated at all
         yield ""
         if item["doc"]:
-            yield indent(item["doc"], "   ")
+            for line in item["doc"].splitlines():
+                if line.strip():
+                    yield f"   {line}"
+                else:
+                    yield line
             yield ""
 
     def render_exception(self, item: ItemData) -> t.Iterable[str]:
@@ -218,7 +218,11 @@ class RstRenderer(RendererBase):
         # TODO inheritance diagram
 
         if item["doc"]:
-            yield indent(item["doc"], "   ")
+            for line in item["doc"].splitlines():
+                if line.strip():
+                    yield f"   {line}"
+                else:
+                    yield line
             yield ""
 
         for child in self.get_children(
@@ -243,7 +247,11 @@ class RstRenderer(RendererBase):
         yield ""
 
         if item["doc"]:
-            yield indent(item["doc"], "   ")
+            for line in item["doc"].splitlines():
+                if line.strip():
+                    yield f"   {line}"
+                else:
+                    yield line
             yield ""
 
     def render_method(self, item: ItemData) -> t.Iterable[str]:
@@ -267,7 +275,11 @@ class RstRenderer(RendererBase):
         yield ""
 
         if item["doc"]:
-            yield indent(item["doc"], "   ")
+            for line in item["doc"].splitlines():
+                if line.strip():
+                    yield f"   {line}"
+                else:
+                    yield line
             yield ""
 
     def render_attribute(self, item: ItemData) -> t.Iterable[str]:
@@ -304,7 +316,11 @@ class RstRenderer(RendererBase):
 
         yield ""
         if item["doc"]:
-            yield indent(item["doc"], "   ")
+            for line in item["doc"].splitlines():
+                if line.strip():
+                    yield f"   {line}"
+                else:
+                    yield line
             yield ""
 
     def _reformat_cls_base_rst(self, value: str) -> str:

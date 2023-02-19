@@ -206,7 +206,6 @@ API
    :param exclude_dirs: Directory names to exclude (matched with fnmatch).
    :param exclude_files: File names to exclude (matched with fnmatch).
 
-
 .. py:class:: ResolvedDict()
    :canonical: autodoc2.utils.ResolvedDict
 
@@ -221,7 +220,6 @@ API
 
       These are names in __all__ that we have successfully resolved,
       to one or more items.
-
 
    .. py:attribute:: unresolved
       :canonical: autodoc2.utils.ResolvedDict.unresolved
@@ -245,7 +243,6 @@ API
       These are star imports in the module, that have no recognised __all__.
       At present we do not resolve them.
 
-
    .. py:attribute:: stars_unknown
       :canonical: autodoc2.utils.ResolvedDict.stars_unknown
       :type: set[str]
@@ -253,7 +250,6 @@ API
 
       These are star imports in the module, that we cannot resolve.
       Because they point to a module that is not in the database.
-
 
 .. py:function:: resolve_all(db: autodoc2.db.Database, package_name: str) -> dict[str, autodoc2.utils.ResolvedDict]
    :canonical: autodoc2.utils.resolve_all

@@ -79,7 +79,6 @@ API
 
    This uses the global, with package level overrides.
 
-
    .. py:attribute:: module_all_regexes
       :canonical: autodoc2.config.RenderConfig.module_all_regexes
       :type: list[typing.Pattern[str]]

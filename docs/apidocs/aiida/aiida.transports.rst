@@ -46,7 +46,6 @@ API
 
    Support connection, command execution and data transfer to remote computers via SSH+SFTP.
 
-
    .. py:attribute:: _valid_connect_options
       :canonical: aiida.transports.plugins.ssh.SshTransport._valid_connect_options
       :value: [('username',), ('port',), ('look_for_keys',), ('key_filename',), ('timeout',), ('allow_agent',), ('...
@@ -69,20 +68,17 @@ API
 
       Return a suggestion for the specific field.
 
-
    .. py:method:: _get_port_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_port_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
 
-
    .. py:method:: _get_key_filename_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_key_filename_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:method:: _get_timeout_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_timeout_suggestion_string
@@ -92,13 +88,11 @@ API
 
       Provide 60s as a default timeout for connections.
 
-
    .. py:method:: _get_allow_agent_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_allow_agent_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:method:: _get_look_for_keys_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_look_for_keys_suggestion_string
@@ -106,13 +100,11 @@ API
 
       Return a suggestion for the specific field.
 
-
    .. py:method:: _get_proxy_command_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_proxy_command_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:method:: _get_proxy_jump_suggestion_string(_)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_proxy_jump_suggestion_string
@@ -120,13 +112,11 @@ API
 
       Return an empty suggestion since Paramiko does not parse ProxyJump from the SSH config.
 
-
    .. py:method:: _get_compress_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_compress_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:method:: _get_load_system_host_keys_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_load_system_host_keys_suggestion_string
@@ -134,13 +124,11 @@ API
 
       Return a suggestion for the specific field.
 
-
    .. py:method:: _get_key_policy_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_key_policy_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:method:: _get_gss_auth_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_auth_suggestion_string
@@ -148,13 +136,11 @@ API
 
       Return a suggestion for the specific field.
 
-
    .. py:method:: _get_gss_kex_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_kex_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:method:: _get_gss_deleg_creds_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_deleg_creds_suggestion_string
@@ -162,13 +148,11 @@ API
 
       Return a suggestion for the specific field.
 
-
    .. py:method:: _get_gss_host_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_host_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:method:: __init__(*args, **kwargs)
       :canonical: aiida.transports.plugins.ssh.SshTransport.__init__
@@ -186,7 +170,6 @@ API
       function (as port, username, password, ...); taken from the
       accepted paramiko.SSHClient.connect() params.
 
-
    .. py:method:: open()
       :canonical: aiida.transports.plugins.ssh.SshTransport.open
 
@@ -197,7 +180,6 @@ API
       The current working directory is set explicitly, so it is not None.
 
       :raise aiida.common.InvalidOperation: if the channel is already open
-
 
    .. py:method:: _close_proxies()
       :canonical: aiida.transports.plugins.ssh.SshTransport._close_proxies
@@ -213,7 +195,6 @@ API
 
       :raise aiida.common.InvalidOperation: if the channel is already open
 
-
    .. py:property:: sshclient
       :canonical: aiida.transports.plugins.ssh.SshTransport.sshclient
 
@@ -225,7 +206,6 @@ API
 
       Return a useful string.
 
-
    .. py:method:: chdir(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.chdir
 
@@ -234,12 +214,10 @@ API
       Differently from paramiko, if you pass None to chdir, nothing
       happens and the cwd is unchanged.
 
-
    .. py:method:: normalize(path='.')
       :canonical: aiida.transports.plugins.ssh.SshTransport.normalize
 
       Returns the normalized path (removing double slashes, etc...)
-
 
    .. py:method:: stat(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.stat
@@ -256,7 +234,6 @@ API
       :return: a `paramiko.sftp_attr.SFTPAttributes` object containing
           attributes about the given file.
 
-
    .. py:method:: lstat(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.lstat
 
@@ -269,7 +246,6 @@ API
       :return: a `paramiko.sftp_attr.SFTPAttributes` object containing
           attributes about the given file.
 
-
    .. py:method:: getcwd()
       :canonical: aiida.transports.plugins.ssh.SshTransport.getcwd
 
@@ -277,7 +253,6 @@ API
       emulated by paramiko. If no directory has been set with chdir,
       this method will return None. But in __enter__ this is set explicitly,
       so this should never happen within this class.
-
 
    .. py:method:: makedirs(path, ignore_existing=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.makedirs
@@ -296,7 +271,6 @@ API
 
       :raise OSError: If the directory already exists.
 
-
    .. py:method:: mkdir(path, ignore_existing=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.mkdir
 
@@ -308,7 +282,6 @@ API
 
       :raise OSError: If the directory already exists.
 
-
    .. py:method:: rmtree(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.rmtree
 
@@ -319,12 +292,10 @@ API
 
       :raise IOError: if the rm execution failed.
 
-
    .. py:method:: rmdir(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.rmdir
 
       Remove the folder named 'path' if empty.
-
 
    .. py:method:: chown(path, uid, gid)
       :canonical: aiida.transports.plugins.ssh.SshTransport.chown
@@ -334,13 +305,11 @@ API
 
       For now, this is not implemented for the SSH transport.
 
-
    .. py:method:: isdir(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.isdir
 
       Return True if the given path is a directory, False otherwise.
       Return False also if the path does not exist.
-
 
    .. py:method:: chmod(path, mode)
       :canonical: aiida.transports.plugins.ssh.SshTransport.chmod
@@ -350,14 +319,12 @@ API
       :param path: path to file
       :param mode: new permission bits (integer)
 
-
    .. py:method:: _os_path_split_asunder(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport._os_path_split_asunder
       :staticmethod:
 
       Used by makedirs. Takes path (a str)
       and returns a list deconcatenating the path
-
 
    .. py:method:: put(localpath, remotepath, callback=None, dereference=True, overwrite=True, ignore_nonexisting=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.put
@@ -375,7 +342,6 @@ API
       :raise ValueError: if local path is invalid
       :raise OSError: if the localpath does not exist
 
-
    .. py:method:: putfile(localpath, remotepath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.putfile
 
@@ -389,7 +355,6 @@ API
       :raise ValueError: if local path is invalid
       :raise OSError: if the localpath does not exist,
                   or unintentionally overwriting
-
 
    .. py:method:: puttree(localpath, remotepath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.puttree
@@ -412,7 +377,6 @@ API
       .. note:: setting dereference equal to True could cause infinite loops.
             see os.walk() documentation
 
-
    .. py:method:: get(remotepath, localpath, callback=None, dereference=True, overwrite=True, ignore_nonexisting=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.get
 
@@ -430,7 +394,6 @@ API
       :raise ValueError: if local path is invalid
       :raise IOError: if the remotepath is not found
 
-
    .. py:method:: getfile(remotepath, localpath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.getfile
 
@@ -443,7 +406,6 @@ API
 
       :raise ValueError: if local path is invalid
       :raise OSError: if unintentionally overwriting
-
 
    .. py:method:: gettree(remotepath, localpath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.gettree
@@ -462,13 +424,11 @@ API
       :raise IOError: if the remotepath is not found
       :raise OSError: if unintentionally overwriting
 
-
    .. py:method:: get_attribute(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.get_attribute
 
       Returns the object Fileattribute, specified in aiida.transports
       Receives in input the path of a given file.
-
 
    .. py:method:: copyfile(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copyfile
@@ -483,7 +443,6 @@ API
 
       :raises IOError: if one of src or dst does not exist
 
-
    .. py:method:: copytree(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copytree
 
@@ -496,7 +455,6 @@ API
       :type dereference: bool
 
       :raise IOError: if one of src or dst does not exist
-
 
    .. py:method:: copy(remotesource, remotedestination, dereference=False, recursive=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copy
@@ -515,7 +473,6 @@ API
 
       .. note:: setting dereference equal to True could cause infinite loops.
 
-
    .. py:method:: _exec_cp(cp_exe, cp_flags, src, dst)
       :canonical: aiida.transports.plugins.ssh.SshTransport._exec_cp
 
@@ -527,7 +484,6 @@ API
 
       Acts on the local folder, for the rest, same as listdir
 
-
    .. py:method:: listdir(path='.', pattern=None)
       :canonical: aiida.transports.plugins.ssh.SshTransport.listdir
 
@@ -537,12 +493,10 @@ API
       :param pattern: returns the list of files matching pattern.
                            Unix only. (Use to emulate ``ls *`` for example)
 
-
    .. py:method:: remove(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.remove
 
       Remove a single file at 'path'
-
 
    .. py:method:: rename(oldpath, newpath)
       :canonical: aiida.transports.plugins.ssh.SshTransport.rename
@@ -555,13 +509,11 @@ API
       :raises IOError: if oldpath/newpath is not found
       :raises ValueError: if sroldpathc/newpath is not a valid string
 
-
    .. py:method:: isfile(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.isfile
 
       Return True if the given path is a file, False otherwise.
       Return False also if the path does not exist.
-
 
    .. py:method:: _exec_command_internal(command, combine_stderr=False, bufsize=-1)
       :canonical: aiida.transports.plugins.ssh.SshTransport._exec_command_internal
@@ -586,7 +538,6 @@ API
           plus the methods provided by paramiko, and channel is a
           paramiko.Channel object.
 
-
    .. py:method:: exec_command_wait_bytes(command, stdin=None, combine_stderr=False, bufsize=-1)
       :canonical: aiida.transports.plugins.ssh.SshTransport.exec_command_wait_bytes
 
@@ -602,13 +553,11 @@ API
       :return: a tuple with (return_value, stdout, stderr) where stdout and stderr
           are both bytes and the return_value is an int.
 
-
    .. py:method:: gotocomputer_command(remotedir)
       :canonical: aiida.transports.plugins.ssh.SshTransport.gotocomputer_command
 
       Specific gotocomputer string to connect to a given remote computer via
       ssh and directly go to the calculation folder.
-
 
    .. py:method:: _symlink(source, dest)
       :canonical: aiida.transports.plugins.ssh.SshTransport._symlink
@@ -617,7 +566,6 @@ API
 
       :param source: source of link
       :param dest: link to create
-
 
    .. py:method:: symlink(remotesource, remotedestination)
       :canonical: aiida.transports.plugins.ssh.SshTransport.symlink
@@ -628,12 +576,10 @@ API
       :param remotesource: remote source. Can contain a pattern.
       :param remotedestination: remote destination
 
-
    .. py:method:: path_exists(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.path_exists
 
       Check if path exists
-
 
 .. py:class:: Transport(*args, **kwargs)
    :canonical: aiida.transports.transport.Transport
@@ -677,7 +623,6 @@ API
       :param use_login_shell: (optional, default True)
          if False, do not use a login shell when executing command
 
-
    .. py:method:: __enter__()
       :canonical: aiida.transports.transport.Transport.__enter__
 
@@ -698,12 +643,10 @@ API
           # ...closed
 
 
-
    .. py:method:: __exit__(type_, value, traceback)
       :canonical: aiida.transports.transport.Transport.__exit__
 
       Closes connections, if needed (used in 'with' statements).
-
 
    .. py:property:: is_open
       :canonical: aiida.transports.transport.Transport.is_open
@@ -714,13 +657,11 @@ API
 
       Opens a local transport channel
 
-
    .. py:method:: close()
       :canonical: aiida.transports.transport.Transport.close
       :abstractmethod:
 
       Closes the local transport channel
-
 
    .. py:method:: __repr__()
       :canonical: aiida.transports.transport.Transport.__repr__
@@ -745,13 +686,11 @@ API
         aiida.orm.utils.log.get_dblogger_extra function. Pass None if you
         do not want to have extras passed.
 
-
    .. py:method:: get_short_doc()
       :canonical: aiida.transports.transport.Transport.get_short_doc
       :classmethod:
 
       Return the first non-empty line of the class docstring, if available
-
 
    .. py:method:: get_valid_auth_params()
       :canonical: aiida.transports.transport.Transport.get_valid_auth_params
@@ -759,14 +698,12 @@ API
 
       Return the internal list of valid auth_params
 
-
    .. py:method:: auth_options() -> collections.OrderedDict
       :canonical: aiida.transports.transport.Transport.auth_options
 
       Return the authentication options to be used for building the CLI.
 
       :return: `OrderedDict` of tuples, with first element option name and second dictionary of kwargs
-
 
    .. py:method:: _get_safe_interval_suggestion_string(computer)
       :canonical: aiida.transports.transport.Transport._get_safe_interval_suggestion_string
@@ -776,13 +713,11 @@ API
 
       This is used to provide a default in ``verdi computer configure``.
 
-
    .. py:method:: _get_use_login_shell_suggestion_string(computer)
       :canonical: aiida.transports.transport.Transport._get_use_login_shell_suggestion_string
       :classmethod:
 
       Return a suggestion for the specific field.
-
 
    .. py:property:: logger
       :canonical: aiida.transports.transport.Transport.logger
@@ -791,7 +726,6 @@ API
       If you have set extra parameters using set_logger_extra(), a
       suitable LoggerAdapter instance is created, bringing with itself
       also the extras.
-
 
    .. py:method:: get_safe_open_interval()
       :canonical: aiida.transports.transport.Transport.get_safe_open_interval
@@ -810,7 +744,6 @@ API
       :return: The safe interval between calling open, in seconds
       :rtype: float
 
-
    .. py:method:: chdir(path)
       :canonical: aiida.transports.transport.Transport.chdir
       :abstractmethod:
@@ -821,7 +754,6 @@ API
       :raises: IOError, if the requested path does not exist
       :rtype: str
 
-
    .. py:method:: chmod(path, mode)
       :canonical: aiida.transports.transport.Transport.chmod
       :abstractmethod:
@@ -830,7 +762,6 @@ API
 
       :param str path: path to file
       :param int mode: new permissions
-
 
    .. py:method:: chown(path, uid, gid)
       :canonical: aiida.transports.transport.Transport.chown
@@ -844,7 +775,6 @@ API
       :param str path: path to the file to change the owner and group of
       :param int uid: new owner's uid
       :param int gid: new group id
-
 
    .. py:method:: copy(remotesource, remotedestination, dereference=False, recursive=True)
       :canonical: aiida.transports.transport.Transport.copy
@@ -862,7 +792,6 @@ API
 
       :raises: IOError, if one of src or dst does not exist
 
-
    .. py:method:: copyfile(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.transport.Transport.copyfile
       :abstractmethod:
@@ -877,7 +806,6 @@ API
 
       :raises IOError: if one of src or dst does not exist
 
-
    .. py:method:: copytree(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.transport.Transport.copytree
       :abstractmethod:
@@ -891,7 +819,6 @@ API
       :type dereference: bool
 
       :raise IOError: if one of src or dst does not exist
-
 
    .. py:method:: copy_from_remote_to_remote(transportdestination, remotesource, remotedestination, **kwargs)
       :canonical: aiida.transports.transport.Transport.copy_from_remote_to_remote
@@ -916,7 +843,6 @@ API
       .. note:: the supported keys in kwargs are callback, dereference,
          overwrite and ignore_nonexisting.
 
-
    .. py:method:: _exec_command_internal(command, **kwargs)
       :canonical: aiida.transports.transport.Transport._exec_command_internal
       :abstractmethod:
@@ -932,7 +858,6 @@ API
       :param str command: execute the command given as a string
       :return: stdin, stdout, stderr and the session, when this exists                  (can be None).
 
-
    .. py:method:: exec_command_wait_bytes(command, stdin=None, **kwargs)
       :canonical: aiida.transports.transport.Transport.exec_command_wait_bytes
       :abstractmethod:
@@ -947,7 +872,6 @@ API
       :param str command: execute the command given as a string
       :param stdin: (optional,default=None) can be a string or a file-like object.
       :return: a tuple: the retcode (int), stdout (bytes) and stderr (bytes).
-
 
    .. py:method:: exec_command_wait(command, stdin=None, encoding='utf-8', **kwargs)
       :canonical: aiida.transports.transport.Transport.exec_command_wait
@@ -970,7 +894,6 @@ API
       :return: a tuple with (return_value, stdout, stderr) where stdout and stderr are both strings, decoded
           with the specified encoding.
 
-
    .. py:method:: get(remotepath, localpath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.get
       :abstractmethod:
@@ -980,7 +903,6 @@ API
 
       :param remotepath: (str) remote_folder_path
       :param localpath: (str) local_folder_path
-
 
    .. py:method:: getfile(remotepath, localpath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.getfile
@@ -992,7 +914,6 @@ API
       :param str remotepath: remote_folder_path
       :param str localpath: local_folder_path
 
-
    .. py:method:: gettree(remotepath, localpath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.gettree
       :abstractmethod:
@@ -1003,7 +924,6 @@ API
       :param str remotepath: remote_folder_path
       :param str localpath: local_folder_path
 
-
    .. py:method:: getcwd()
       :canonical: aiida.transports.transport.Transport.getcwd
       :abstractmethod:
@@ -1011,7 +931,6 @@ API
       Get working directory
 
       :return: a string identifying the current working directory
-
 
    .. py:method:: get_attribute(path)
       :canonical: aiida.transports.transport.Transport.get_attribute
@@ -1036,7 +955,6 @@ API
       :param str path: path to file
       :return: object FixedFieldsAttributeDict
 
-
    .. py:method:: get_mode(path)
       :canonical: aiida.transports.transport.Transport.get_mode
 
@@ -1044,7 +962,6 @@ API
 
       :param str path: path to file
       :return: the portion of the file's mode that can be set by chmod()
-
 
    .. py:method:: isdir(path)
       :canonical: aiida.transports.transport.Transport.isdir
@@ -1055,7 +972,6 @@ API
       :param str path: path to directory
       :return: boolean
 
-
    .. py:method:: isfile(path)
       :canonical: aiida.transports.transport.Transport.isfile
       :abstractmethod:
@@ -1064,7 +980,6 @@ API
 
       :param str path: path to file
       :return: boolean
-
 
    .. py:method:: listdir(path='.', pattern=None)
       :canonical: aiida.transports.transport.Transport.listdir
@@ -1078,7 +993,6 @@ API
       :param str pattern: if used, listdir returns a list of files matching
                           filters in Unix style. Unix only.
       :return: a list of strings
-
 
    .. py:method:: listdir_withattributes(path='.', pattern=None)
       :canonical: aiida.transports.transport.Transport.listdir_withattributes
@@ -1104,7 +1018,6 @@ API
           (if the file is a folder, a directory, ...). 'attributes' behaves as the output of
           transport.get_attribute(); isdir is a boolean indicating if the object is a directory or not.
 
-
    .. py:method:: makedirs(path, ignore_existing=False)
       :canonical: aiida.transports.transport.Transport.makedirs
       :abstractmethod:
@@ -1119,7 +1032,6 @@ API
 
       :raises: OSError, if directory at path already exists
 
-
    .. py:method:: mkdir(path, ignore_existing=False)
       :canonical: aiida.transports.transport.Transport.mkdir
       :abstractmethod:
@@ -1131,7 +1043,6 @@ API
                                    directory already exists
 
       :raises: OSError, if directory at path already exists
-
 
    .. py:method:: normalize(path='.')
       :canonical: aiida.transports.transport.Transport.normalize
@@ -1145,7 +1056,6 @@ API
 
       :raise IOError: if the path can't be resolved on the server
 
-
    .. py:method:: put(localpath, remotepath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.put
       :abstractmethod:
@@ -1157,7 +1067,6 @@ API
       :param str localpath: absolute path to local source
       :param str remotepath: path to remote destination
 
-
    .. py:method:: putfile(localpath, remotepath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.putfile
       :abstractmethod:
@@ -1167,7 +1076,6 @@ API
 
       :param str localpath: absolute path to local file
       :param str remotepath: path to remote file
-
 
    .. py:method:: puttree(localpath, remotepath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.puttree
@@ -1179,7 +1087,6 @@ API
       :param str localpath: absolute path to local folder
       :param str remotepath: path to remote folder
 
-
    .. py:method:: remove(path)
       :canonical: aiida.transports.transport.Transport.remove
       :abstractmethod:
@@ -1190,7 +1097,6 @@ API
       :param str path: path to file to remove
 
       :raise IOError: if the path is a directory
-
 
    .. py:method:: rename(oldpath, newpath)
       :canonical: aiida.transports.transport.Transport.rename
@@ -1204,7 +1110,6 @@ API
       :raises IOError: if oldpath/newpath is not found
       :raises ValueError: if oldpath/newpath is not a valid string
 
-
    .. py:method:: rmdir(path)
       :canonical: aiida.transports.transport.Transport.rmdir
       :abstractmethod:
@@ -1214,7 +1119,6 @@ API
 
       :param str path: absolute path to the folder to remove
 
-
    .. py:method:: rmtree(path)
       :canonical: aiida.transports.transport.Transport.rmtree
       :abstractmethod:
@@ -1222,7 +1126,6 @@ API
       Remove recursively the content at path
 
       :param str path: absolute path to remove
-
 
    .. py:method:: gotocomputer_command(remotedir)
       :canonical: aiida.transports.transport.Transport.gotocomputer_command
@@ -1239,7 +1142,6 @@ API
 
       :param str remotedir: the full path of the remote directory
 
-
    .. py:method:: symlink(remotesource, remotedestination)
       :canonical: aiida.transports.transport.Transport.symlink
       :abstractmethod:
@@ -1250,7 +1152,6 @@ API
       :param remotesource: remote source
       :param remotedestination: remote destination
 
-
    .. py:method:: whoami()
       :canonical: aiida.transports.transport.Transport.whoami
 
@@ -1260,13 +1161,11 @@ API
                retval (int),
                stderr (str)
 
-
    .. py:method:: path_exists(path)
       :canonical: aiida.transports.transport.Transport.path_exists
       :abstractmethod:
 
       Returns True if path exists, False otherwise.
-
 
    .. py:method:: glob(pathname)
       :canonical: aiida.transports.transport.Transport.glob
@@ -1275,14 +1174,12 @@ API
 
       The pattern may contain simple shell-style wildcards a la fnmatch.
 
-
    .. py:method:: iglob(pathname)
       :canonical: aiida.transports.transport.Transport.iglob
 
       Return an iterator which yields the paths matching a pathname pattern.
 
       The pattern may contain simple shell-style wildcards a la fnmatch.
-
 
 
    .. py:method:: glob1(dirname, pattern)
@@ -1311,7 +1208,6 @@ API
    :return: the parsed bool value.
    :raise ValueError: If the value is not parsable as a bool
 
-
 .. py:function:: parse_sshconfig(computername)
    :canonical: aiida.transports.plugins.ssh.parse_sshconfig
 
@@ -1321,4 +1217,3 @@ API
    returns the part of configuration of the given computer name.
 
    :param computername: the computer name for which we want the configuration.
-

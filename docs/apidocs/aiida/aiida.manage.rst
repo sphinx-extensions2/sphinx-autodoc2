@@ -17,7 +17,6 @@ Managing an AiiDA instance:
 
 .. note:: Modules in this sub package may require the database environment to be loaded
 
-
 Package Contents
 ----------------
 
@@ -168,7 +167,6 @@ API
       :param filepath: the absolute path to the configuration file
       :return: `Config` instance
 
-
    .. py:method:: _backup(filepath)
       :canonical: aiida.manage.configuration.config.Config._backup
       :classmethod:
@@ -177,7 +175,6 @@ API
 
       :param filepath: absolute path to the configuration file to backup
       :return: the absolute path of the created backup
-
 
    .. py:method:: validate(config: dict, filepath: typing.Optional[str] = None)
       :canonical: aiida.manage.configuration.config.Config.validate
@@ -195,7 +192,6 @@ API
       :param filepath: the absolute filepath of the configuration file
       :param config: the content of the configuration file in dictionary form
       :param validate: validate the dictionary against the schema
-
 
    .. py:method:: __eq__(other)
       :canonical: aiida.manage.configuration.config.Config.__eq__
@@ -216,7 +212,6 @@ API
 
       :param message: a string message to echo with describing the infraction
 
-
    .. py:property:: dictionary
       :canonical: aiida.manage.configuration.config.Config.dictionary
       :type: dict
@@ -224,7 +219,6 @@ API
       Return the dictionary representation of the config as it would be written to file.
 
       :return: dictionary representation of config as it should be written to file
-
 
    .. py:property:: version
       :canonical: aiida.manage.configuration.config.Config.version
@@ -248,14 +242,12 @@ API
 
       :return: the default profile name or None if not defined
 
-
    .. py:property:: profile_names
       :canonical: aiida.manage.configuration.config.Config.profile_names
 
       Return the list of profile names.
 
       :return: list of profile names
-
 
    .. py:property:: profiles
       :canonical: aiida.manage.configuration.config.Config.profiles
@@ -265,7 +257,6 @@ API
       :return: the profiles
       :rtype: list of `Profile` instances
 
-
    .. py:method:: validate_profile(name)
       :canonical: aiida.manage.configuration.config.Config.validate_profile
 
@@ -273,7 +264,6 @@ API
 
       :param name: name of the profile:
       :raises aiida.common.ProfileConfigurationError: if the name is not found in the configuration file
-
 
    .. py:method:: get_profile(name: typing.Optional[str] = None) -> aiida.manage.configuration.profile.Profile
       :canonical: aiida.manage.configuration.config.Config.get_profile
@@ -283,7 +273,6 @@ API
       :return: the profile instance or None if it does not exist
       :raises aiida.common.ProfileConfigurationError: if the name is not found in the configuration file
 
-
    .. py:method:: add_profile(profile)
       :canonical: aiida.manage.configuration.config.Config.add_profile
 
@@ -292,7 +281,6 @@ API
       :param profile: the profile configuration dictionary
       :return: self
 
-
    .. py:method:: update_profile(profile)
       :canonical: aiida.manage.configuration.config.Config.update_profile
 
@@ -300,7 +288,6 @@ API
 
       :param profile: the profile instance to update
       :return: self
-
 
    .. py:method:: remove_profile(name)
       :canonical: aiida.manage.configuration.config.Config.remove_profile
@@ -311,7 +298,6 @@ API
       :raises aiida.common.ProfileConfigurationError: if the given profile does not exist
       :return: self
 
-
    .. py:method:: delete_profile(name: str, include_database: bool = True, include_database_user: bool = False, include_repository: bool = True)
       :canonical: aiida.manage.configuration.config.Config.delete_profile
 
@@ -320,7 +306,6 @@ API
       :param include_database: also delete the database configured for the profile.
       :param include_database_user: also delete the database user configured for the profile.
       :param include_repository: also delete the repository configured for the profile.
-
 
    .. py:method:: set_default_profile(name, overwrite=False)
       :canonical: aiida.manage.configuration.config.Config.set_default_profile
@@ -331,7 +316,6 @@ API
       :param overwrite: when True, set the profile as the new default even if a default profile is already defined
       :raises aiida.common.ProfileConfigurationError: if the given profile does not exist
       :return: self
-
 
    .. py:property:: options
       :canonical: aiida.manage.configuration.config.Config.options
@@ -348,7 +332,6 @@ API
 
       :returns: the parsed value (potentially cast to a valid type)
 
-
    .. py:method:: unset_option(option_name: str, scope=None)
       :canonical: aiida.manage.configuration.config.Config.unset_option
 
@@ -356,7 +339,6 @@ API
 
       :param option_name: the name of the configuration option
       :param scope: unset the option for this profile or globally if not specified
-
 
    .. py:method:: get_option(option_name, scope=None, default=True)
       :canonical: aiida.manage.configuration.config.Config.get_option
@@ -368,7 +350,6 @@ API
       :param default: boolean, If True will return the option default, even if not defined within the given scope
       :return: the option value or None if not set for the given scope
 
-
    .. py:method:: get_options(scope: typing.Optional[str] = None) -> typing.Dict[str, typing.Tuple[aiida.manage.configuration.options.Option, str, typing.Any]]
       :canonical: aiida.manage.configuration.config.Config.get_options
 
@@ -376,7 +357,6 @@ API
 
       :param scope: the profile name or globally if not specified
       :returns: (option, source, value)
-
 
    .. py:method:: store()
       :canonical: aiida.manage.configuration.config.Config.store
@@ -387,7 +367,6 @@ API
           backup of the original file on disk will be created before overwriting it.
 
       :return: self
-
 
    .. py:method:: _atomic_write(filepath=None)
       :canonical: aiida.manage.configuration.config.Config._atomic_write
@@ -400,7 +379,6 @@ API
           of being atomic within the limitations of the application.
 
       :param filepath: optional filepath to write the contents to, if not specified, the default filename is used.
-
 
 .. py:exception:: ConfigValidationError(message: str, keypath: typing.Sequence[typing.Any] = (), schema: typing.Optional[dict] = None, filepath: typing.Optional[str] = None)
    :canonical: aiida.manage.configuration.config.ConfigValidationError
@@ -483,7 +461,6 @@ API
       :raise: ConfigValidationError
 
 
-
 .. py:class:: Postgres(dbinfo=None, **kwargs)
    :canonical: aiida.manage.external.postgres.Postgres
 
@@ -504,7 +481,6 @@ API
        if not postgres.db_exists('dbname'):
            postgres.create_db('username', 'dbname')
 
-
    .. py:method:: __init__(dbinfo=None, **kwargs)
       :canonical: aiida.manage.external.postgres.Postgres.__init__
 
@@ -524,7 +500,6 @@ API
 
       :returns: Postgres instance pre-populated with data from AiiDA profile
 
-
    .. py:method:: dbuser_exists(dbuser)
       :canonical: aiida.manage.external.postgres.Postgres.dbuser_exists
 
@@ -532,7 +507,6 @@ API
 
       :param str dbuser: database user to check for
       :return: (bool) True if user exists, False otherwise
-
 
    .. py:method:: create_dbuser(dbuser, dbpass, privileges='')
       :canonical: aiida.manage.external.postgres.Postgres.create_dbuser
@@ -544,14 +518,12 @@ API
       :raises: psycopg2.errors.DuplicateObject if user already exists and
           self.connection_mode == PostgresConnectionMode.PSYCOPG
 
-
    .. py:method:: drop_dbuser(dbuser)
       :canonical: aiida.manage.external.postgres.Postgres.drop_dbuser
 
       Drop a database user in postgres
 
       :param str dbuser: Name of the user to be dropped.
-
 
    .. py:method:: check_dbuser(dbuser)
       :canonical: aiida.manage.external.postgres.Postgres.check_dbuser
@@ -561,7 +533,6 @@ API
       :param str dbuser: Name of the user to be created or reused.
       :returns: tuple (dbuser, created)
 
-
    .. py:method:: db_exists(dbname)
       :canonical: aiida.manage.external.postgres.Postgres.db_exists
 
@@ -569,7 +540,6 @@ API
 
       :param str dbname: Name of the database to check for
       :return: (bool), True if database exists, False otherwise
-
 
    .. py:method:: create_db(dbuser, dbname)
       :canonical: aiida.manage.external.postgres.Postgres.create_db
@@ -579,14 +549,12 @@ API
       :param str dbuser: Name of the user which should own the db.
       :param str dbname: Name of the database.
 
-
    .. py:method:: drop_db(dbname)
       :canonical: aiida.manage.external.postgres.Postgres.drop_db
 
       Drop a database in postgres
 
       :param str dbname: Name of the database.
-
 
    .. py:method:: copy_db(src_db, dest_db, dbuser)
       :canonical: aiida.manage.external.postgres.Postgres.copy_db
@@ -599,14 +567,12 @@ API
       :param str dbname: Name of the database to be created or reused.
       :returns: tuple (dbname, created)
 
-
    .. py:method:: create_dbuser_db_safe(dbname, dbuser, dbpass)
       :canonical: aiida.manage.external.postgres.Postgres.create_dbuser_db_safe
 
       Create DB and user + grant privileges.
 
       Prompts when reusing existing users / databases.
-
 
    .. py:property:: host_for_psycopg2
       :canonical: aiida.manage.external.postgres.Postgres.host_for_psycopg2
@@ -633,7 +599,6 @@ API
    It overrides the _continue method to make sure the node corresponding to the task can be loaded and
    that if it is already marked as terminated, it is not continued but the future is reconstructed and returned
 
-
    .. py:method:: handle_continue_exception(node, exception, message)
       :canonical: aiida.manage.external.rmq.launcher.ProcessLauncher.handle_continue_exception
       :staticmethod:
@@ -648,7 +613,6 @@ API
 
       :param exception: the exception object
       :param message: string message to use for the log message
-
 
    .. py:method:: _continue(communicator, pid, nowait, tag=None)
       :canonical: aiida.manage.external.rmq.launcher.ProcessLauncher._continue
@@ -665,7 +629,6 @@ API
       :param nowait: if True don't wait for the process to finish, just return the pid, otherwise wait and
           return the results
       :param tag: the tag of the checkpoint to continue from
-
 
 .. py:class:: Profile(name: str, config: typing.Mapping[str, typing.Any], validate=True)
    :canonical: aiida.manage.configuration.profile.Profile
@@ -739,7 +702,6 @@ API
 
       :return: string UUID
 
-
    .. py:property:: default_user_email
       :canonical: aiida.manage.configuration.profile.Profile.default_user_email
       :type: typing.Optional[str]
@@ -765,7 +727,6 @@ API
 
       :param name: the name of the storage backend
       :param config: the configuration of the storage backend
-
 
    .. py:property:: storage_cls
       :canonical: aiida.manage.configuration.profile.Profile.storage_cls
@@ -793,7 +754,6 @@ API
       :param name: the name of the process backend
       :param config: the configuration of the process backend
 
-
    .. py:property:: options
       :canonical: aiida.manage.configuration.profile.Profile.options
 
@@ -809,7 +769,6 @@ API
       :param option_value: the option value
       :param override: boolean, if False, will not override the option if it already exists
 
-
    .. py:method:: unset_option(option_key)
       :canonical: aiida.manage.configuration.profile.Profile.unset_option
 
@@ -820,7 +779,6 @@ API
 
       :return: the profile name
 
-
    .. py:property:: dictionary
       :canonical: aiida.manage.configuration.profile.Profile.dictionary
       :type: typing.Dict[str, typing.Any]
@@ -829,7 +787,6 @@ API
 
       :return: the profile configuration dictionary
 
-
    .. py:property:: is_test_profile
       :canonical: aiida.manage.configuration.profile.Profile.is_test_profile
       :type: bool
@@ -837,7 +794,6 @@ API
       Return whether the profile is a test profile
 
       :return: boolean, True if test profile, False otherwise
-
 
    .. py:property:: repository_path
       :canonical: aiida.manage.configuration.profile.Profile.repository_path
@@ -851,7 +807,6 @@ API
 
       :return: absolute filepath of the profile's file repository
 
-
    .. py:property:: rmq_prefix
       :canonical: aiida.manage.configuration.profile.Profile.rmq_prefix
       :type: str
@@ -859,7 +814,6 @@ API
       Return the prefix that should be used for RMQ resources
 
       :return: the rmq prefix string
-
 
    .. py:method:: get_rmq_url() -> str
       :canonical: aiida.manage.configuration.profile.Profile.get_rmq_url
@@ -873,7 +827,6 @@ API
 
       :return: a dictionary of filepaths
 
-
 .. py:class:: RabbitmqManagementClient(username: str, password: str, hostname: str, virtual_host: str)
    :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient
 
@@ -881,7 +834,6 @@ API
 
    This requires the ``rabbitmq_management`` plugin (https://www.rabbitmq.com/management.html) to be enabled. Typically
    this is enabled by running ``rabbitmq-plugins enable rabbitmq_management``.
-
 
    .. py:method:: __init__(username: str, password: str, hostname: str, virtual_host: str)
       :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient.__init__
@@ -892,7 +844,6 @@ API
       :param password: The password to authenticate with.
       :param hostname: The hostname of the RabbitMQ server.
       :param virtual_host: The virtual host.
-
 
    .. py:method:: format_url(url: str, url_params: dict[str, str] | None = None) -> str
       :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient.format_url
@@ -905,7 +856,6 @@ API
       :param url_params: Dictionary with values for the placeholders in the ``url``. The ``virtual_host`` value is
           automatically inserted and should not be specified.
       :returns: The complete URL.
-
 
    .. py:method:: request(url: str, url_params: dict[str, str] | None = None, method: str = 'GET', params: dict[str, typing.Any] | None = None) -> requests.Response
       :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient.request
@@ -920,7 +870,6 @@ API
       :returns: The response of the request.
       :raises `ManagementApiConnectionError`: If connection to the API cannot be made.
 
-
    .. py:property:: is_connected
       :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient.is_connected
       :type: bool
@@ -931,7 +880,6 @@ API
 
       :returns: ``True`` if the server can be reached, ``False`` otherwise.
 
-
 .. py:function:: check_and_migrate_config(config, filepath: typing.Optional[str] = None)
    :canonical: aiida.manage.configuration.migrations.migrations.check_and_migrate_config
 
@@ -940,7 +888,6 @@ API
    :param config: the configuration dictionary
    :param filepath: the path to the configuration file (optional, for error reporting)
    :return: the migrated configuration dictionary
-
 
 .. py:function:: config_needs_migrating(config, filepath: typing.Optional[str] = None)
    :canonical: aiida.manage.configuration.migrations.migrations.config_needs_migrating
@@ -953,7 +900,6 @@ API
    :param filepath: the path to the configuration file (optional, for error reporting)
    :return: True if the configuration has an older version and needs to be migrated, False otherwise
    :raises aiida.common.ConfigurationVersionError: if the config's oldest compatible version is higher than the current
-
 
 .. py:function:: config_schema() -> typing.Dict[str, typing.Any]
    :canonical: aiida.manage.configuration.config.config_schema
@@ -971,7 +917,6 @@ API
        If not provided, caching is disabled for all classes.
    :type identifier: str
 
-
 .. py:function:: downgrade_config(config: aiida.manage.configuration.migrations.migrations.ConfigType, target: int, migrations: typing.Iterable[typing.Type[aiida.manage.configuration.migrations.migrations.SingleMigration]] = MIGRATIONS) -> aiida.manage.configuration.migrations.migrations.ConfigType
    :canonical: aiida.manage.configuration.migrations.migrations.downgrade_config
 
@@ -979,7 +924,6 @@ API
 
    :param config: the configuration dictionary
    :return: the migrated configuration dictionary
-
 
 .. py:function:: enable_caching(*, identifier=None)
    :canonical: aiida.manage.caching.enable_caching
@@ -992,7 +936,6 @@ API
        If not provided, caching is enabled for all classes.
    :type identifier: str
 
-
 .. py:function:: get_current_version(config)
    :canonical: aiida.manage.configuration.migrations.migrations.get_current_version
 
@@ -1000,14 +943,12 @@ API
 
    :return: current config version or 0 if not defined
 
-
 .. py:function:: get_launch_queue_name(prefix=None)
    :canonical: aiida.manage.external.rmq.utils.get_launch_queue_name
 
    Return the launch queue name with an optional prefix.
 
    :returns: launch queue name
-
 
 .. py:function:: get_manager() -> Manager
    :canonical: aiida.manage.manager.get_manager
@@ -1020,7 +961,6 @@ API
    Return the message exchange name for a given prefix.
 
    :returns: message exchange name
-
 
 .. py:function:: get_option(name: str) -> aiida.manage.configuration.options.Option
    :canonical: aiida.manage.configuration.options.get_option
@@ -1052,14 +992,12 @@ API
    :param kwargs: remaining keyword arguments that will be encoded as query parameters.
    :returns: the connection URL string.
 
-
 .. py:function:: get_task_exchange_name(prefix)
    :canonical: aiida.manage.external.rmq.utils.get_task_exchange_name
 
    Return the task exchange name for a given prefix.
 
    :returns: task exchange name
-
 
 .. py:function:: get_use_cache(*, identifier=None)
    :canonical: aiida.manage.caching.get_use_cache
@@ -1072,7 +1010,6 @@ API
    :raises: `~aiida.common.exceptions.ConfigurationError` if the configuration is invalid, either due to a general
        configuration error, or by defining the class both enabled and disabled
 
-
 .. py:function:: parse_option(option_name: str, option_value: typing.Any) -> typing.Tuple[aiida.manage.configuration.options.Option, typing.Any]
    :canonical: aiida.manage.configuration.options.parse_option
 
@@ -1083,7 +1020,6 @@ API
    :return: a tuple of the option and the parsed value
 
 
-
 .. py:function:: upgrade_config(config: aiida.manage.configuration.migrations.migrations.ConfigType, target: int = CURRENT_CONFIG_VERSION, migrations: typing.Iterable[typing.Type[aiida.manage.configuration.migrations.migrations.SingleMigration]] = MIGRATIONS) -> aiida.manage.configuration.migrations.migrations.ConfigType
    :canonical: aiida.manage.configuration.migrations.migrations.upgrade_config
 
@@ -1091,4 +1027,3 @@ API
 
    :param config: the configuration dictionary
    :return: the migrated configuration dictionary
-

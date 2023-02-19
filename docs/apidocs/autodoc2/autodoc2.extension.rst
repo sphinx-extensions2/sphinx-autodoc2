@@ -79,7 +79,6 @@ API
 
    :return: The top level module name, relative to the api directory.
 
-
 .. py:function:: get_git_clone(app: sphinx.application.Sphinx, url: str, branch_tag: str, config: autodoc2.config.Config) -> None | pathlib.Path
    :canonical: autodoc2.extension.get_git_clone
 
