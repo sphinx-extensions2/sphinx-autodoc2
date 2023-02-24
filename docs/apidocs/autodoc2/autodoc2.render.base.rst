@@ -3,10 +3,6 @@
 
 .. py:module:: autodoc2.render.base
 
-
-Description
------------
-
 .. autodoc2-docstring:: autodoc2.render.base
    :renderer: rst
    :allowtitles:

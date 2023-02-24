@@ -3,10 +3,6 @@
 
 .. py:module:: autodoc2.astroid_utils
 
-
-Description
------------
-
 .. autodoc2-docstring:: autodoc2.astroid_utils
    :renderer: rst
    :allowtitles:

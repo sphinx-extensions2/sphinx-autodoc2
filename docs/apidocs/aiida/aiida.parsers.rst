@@ -3,10 +3,6 @@
 
 .. py:module:: aiida.parsers
 
-
-Description
------------
-
 .. autodoc2-docstring:: aiida.parsers
    :renderer: rst
    :allowtitles:

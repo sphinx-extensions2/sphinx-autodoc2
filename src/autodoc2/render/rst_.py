@@ -71,12 +71,8 @@ class RstRenderer(RendererBase):
             yield "   :noindex:"
         if self.is_module_deprecated(item):
             yield "   :deprecated:"
-        yield from ["", ""]
-
+        yield ""
         yield from [
-            "Description",
-            "-----------",
-            "",
             f".. autodoc2-docstring:: {item['full_name']}",
             f"   :renderer: {self.NAME}",
             "   :allowtitles:",

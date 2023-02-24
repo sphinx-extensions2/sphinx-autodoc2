@@ -3,10 +3,6 @@
 
 .. py:module:: aiida.cmdline
 
-
-Description
------------
-
 .. autodoc2-docstring:: aiida.cmdline
    :renderer: rst
    :allowtitles:
