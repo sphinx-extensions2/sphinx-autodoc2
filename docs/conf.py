@@ -167,7 +167,7 @@ class CreateConfigPkgDirective(SphinxDirective):
         return base_node.children  # type: ignore
 
 
-def type_to_string(type_: t.Type[t.Any]) -> str:
+def type_to_string(type_: t.Any) -> str:
     """Convert a type to a string."""
     # TODO just keeping it simple for now but can we do this with astroid!?
     if type_ is str or type_ is (str,):
