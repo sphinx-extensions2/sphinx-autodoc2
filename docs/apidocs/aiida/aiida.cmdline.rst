@@ -7,7 +7,9 @@
 Description
 -----------
 
-The command line interface of AiiDA.
+.. autodoc2-docstring:: aiida.cmdline
+   :renderer: rst
+   :allowtitles:
 
 Package Contents
 ----------------
@@ -20,59 +22,113 @@ Classes
    :align: left
 
    * - :py:obj:`AbsolutePathParamType <aiida.cmdline.params.types.path.AbsolutePathParamType>`
-     - The ParamType for identifying absolute Paths (derived from click.Path).
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.path.AbsolutePathParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`CalculationParamType <aiida.cmdline.params.types.calculation.CalculationParamType>`
-     - The ParamType for identifying Calculation entities or its subclasses
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.calculation.CalculationParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`CodeParamType <aiida.cmdline.params.types.code.CodeParamType>`
-     - The ParamType for identifying Code entities or its subclasses
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`ComputerParamType <aiida.cmdline.params.types.computer.ComputerParamType>`
-     - The ParamType for identifying Computer entities or its subclasses
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ComputerParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`ConfigOptionParamType <aiida.cmdline.params.types.config.ConfigOptionParamType>`
-     - ParamType for configuration options.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.config.ConfigOptionParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`DataParamType <aiida.cmdline.params.types.data.DataParamType>`
-     - The ParamType for identifying Data entities or its subclasses
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.data.DataParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`DynamicEntryPointCommandGroup <aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup>`
-     - Subclass of :class:`click.Group` that loads subcommands dynamically from entry points.
+     - .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup
+          :renderer: rst
+          :summary:
    * - :py:obj:`EmailType <aiida.cmdline.params.types.strings.EmailType>`
-     - Parameter whose values have to correspond to a valid email address format.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EmailType
+          :renderer: rst
+          :summary:
    * - :py:obj:`EntryPointType <aiida.cmdline.params.types.strings.EntryPointType>`
-     - Parameter whose values have to be valid Python entry point strings.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EntryPointType
+          :renderer: rst
+          :summary:
    * - :py:obj:`FileOrUrl <aiida.cmdline.params.types.path.FileOrUrl>`
-     - Extension of click's File-type to include URLs.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.path.FileOrUrl
+          :renderer: rst
+          :summary:
    * - :py:obj:`GroupParamType <aiida.cmdline.params.types.group.GroupParamType>`
-     - The ParamType for identifying Group entities or its subclasses.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`HostnameType <aiida.cmdline.params.types.strings.HostnameType>`
-     - Parameter corresponding to a valid hostname (or empty) string.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.strings.HostnameType
+          :renderer: rst
+          :summary:
    * - :py:obj:`IdentifierParamType <aiida.cmdline.params.types.identifier.IdentifierParamType>`
-     - An extension of click.ParamType for a generic identifier parameter. In AiiDA, orm entities can often be identified by either their ID, UUID or optionally some LABEL identifier. This parameter type implements the convert method, which attempts to convert a value passed to the command for a parameter with this type, to an orm entity. The actual loading of the entity is delegated to the orm class loader. Subclasses of this parameter type should implement the `orm_class_loader` method to return the appropriate orm class loader, which should be a subclass of `aiida.orm.utils.loaders.OrmEntityLoader` for the corresponding orm class.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.identifier.IdentifierParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`LabelStringType <aiida.cmdline.params.types.strings.LabelStringType>`
-     - Parameter accepting valid label strings.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.strings.LabelStringType
+          :renderer: rst
+          :summary:
    * - :py:obj:`LazyChoice <aiida.cmdline.params.types.choice.LazyChoice>`
-     - This is a delegate of click's Choice ParamType that evaluates the set of choices lazily. This is useful if the choices set requires an import that is slow. Using the vanilla click.Choice will call this on import which will slow down verdi and its autocomplete. This type will generate the choices set lazily through the choices property
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice
+          :renderer: rst
+          :summary:
    * - :py:obj:`MpirunCommandParamType <aiida.cmdline.params.types.computer.MpirunCommandParamType>`
-     - Custom click param type for mpirun-command
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.computer.MpirunCommandParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`MultipleValueParamType <aiida.cmdline.params.types.multiple.MultipleValueParamType>`
-     - An extension of click.ParamType that can parse multiple values for a given ParamType
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.multiple.MultipleValueParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`NodeParamType <aiida.cmdline.params.types.node.NodeParamType>`
-     - The ParamType for identifying Node entities or its subclasses
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.node.NodeParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`NonEmptyStringParamType <aiida.cmdline.params.types.strings.NonEmptyStringParamType>`
-     - Parameter whose values have to be string and non-empty.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.strings.NonEmptyStringParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`PathOrUrl <aiida.cmdline.params.types.path.PathOrUrl>`
-     - Extension of click's Path-type to include URLs.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.path.PathOrUrl
+          :renderer: rst
+          :summary:
    * - :py:obj:`PluginParamType <aiida.cmdline.params.types.plugin.PluginParamType>`
-     - AiiDA Plugin name parameter type.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`ProcessParamType <aiida.cmdline.params.types.process.ProcessParamType>`
-     - The ParamType for identifying ProcessNode entities or its subclasses
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.process.ProcessParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`ProfileParamType <aiida.cmdline.params.types.profile.ProfileParamType>`
-     - The profile parameter type for click.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.profile.ProfileParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`ShebangParamType <aiida.cmdline.params.types.computer.ShebangParamType>`
-     - Custom click param type for shebang line
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ShebangParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`UserParamType <aiida.cmdline.params.types.user.UserParamType>`
-     - The user parameter type for click.   Can get or create a user.
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.user.UserParamType
+          :renderer: rst
+          :summary:
    * - :py:obj:`VerdiCommandGroup <aiida.cmdline.groups.verdi.VerdiCommandGroup>`
-     - Subclass of :class:`click.Group` for the ``verdi`` CLI.
+     - .. autodoc2-docstring:: aiida.cmdline.groups.verdi.VerdiCommandGroup
+          :renderer: rst
+          :summary:
    * - :py:obj:`WorkflowParamType <aiida.cmdline.params.types.workflow.WorkflowParamType>`
-     - The ParamType for identifying WorkflowNode entities or its subclasses
+     - .. autodoc2-docstring:: aiida.cmdline.params.types.workflow.WorkflowParamType
+          :renderer: rst
+          :summary:
 
 Functions
 ~~~~~~~~~
@@ -82,29 +138,53 @@ Functions
    :align: left
 
    * - :py:obj:`dbenv <aiida.cmdline.utils.decorators.dbenv>`
-     - Loads the dbenv for a specific region of code, does not unload afterwards
+     - .. autodoc2-docstring:: aiida.cmdline.utils.decorators.dbenv
+          :renderer: rst
+          :summary:
    * - :py:obj:`echo_critical <aiida.cmdline.utils.echo.echo_critical>`
-     - Log a critical error message to the cmdline logger and exit with ``exit_status``.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_critical
+          :renderer: rst
+          :summary:
    * - :py:obj:`echo_dictionary <aiida.cmdline.utils.echo.echo_dictionary>`
-     - Log the given dictionary to stdout in the given format
+     - .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_dictionary
+          :renderer: rst
+          :summary:
    * - :py:obj:`echo_error <aiida.cmdline.utils.echo.echo_error>`
-     - Log an error message to the cmdline logger.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_error
+          :renderer: rst
+          :summary:
    * - :py:obj:`echo_info <aiida.cmdline.utils.echo.echo_info>`
-     - Log an info message to the cmdline logger.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_info
+          :renderer: rst
+          :summary:
    * - :py:obj:`echo_report <aiida.cmdline.utils.echo.echo_report>`
-     - Log an report message to the cmdline logger.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_report
+          :renderer: rst
+          :summary:
    * - :py:obj:`echo_success <aiida.cmdline.utils.echo.echo_success>`
-     - Log a success message to the cmdline logger.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_success
+          :renderer: rst
+          :summary:
    * - :py:obj:`echo_warning <aiida.cmdline.utils.echo.echo_warning>`
-     - Log a warning message to the cmdline logger.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_warning
+          :renderer: rst
+          :summary:
    * - :py:obj:`format_call_graph <aiida.cmdline.utils.ascii_vis.format_call_graph>`
-     - Print a tree like the POSIX tree command for the calculation call graph
+     - .. autodoc2-docstring:: aiida.cmdline.utils.ascii_vis.format_call_graph
+          :renderer: rst
+          :summary:
    * - :py:obj:`is_verbose <aiida.cmdline.utils.common.is_verbose>`
-     - Return whether the configured logging verbosity is considered verbose, i.e., equal or lower to ``INFO`` level.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.common.is_verbose
+          :renderer: rst
+          :summary:
    * - :py:obj:`only_if_daemon_running <aiida.cmdline.utils.decorators.only_if_daemon_running>`
-     - Function decorator for CLI command to print critical error and exit automatically when daemon is not running.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.decorators.only_if_daemon_running
+          :renderer: rst
+          :summary:
    * - :py:obj:`with_dbenv <aiida.cmdline.utils.decorators.with_dbenv>`
-     - Function decorator that will load the database environment for the currently loaded profile.
+     - .. autodoc2-docstring:: aiida.cmdline.utils.decorators.with_dbenv
+          :renderer: rst
+          :summary:
 
 API
 ~~~
@@ -114,976 +194,951 @@ API
 
    Bases: :py:obj:`click.Path`
 
-   The ParamType for identifying absolute Paths (derived from click.Path).
+   .. autodoc2-docstring:: aiida.cmdline.params.types.path.AbsolutePathParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.path.AbsolutePathParamType.name
       :value: 'AbsolutePath'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.AbsolutePathParamType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.path.AbsolutePathParamType.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.AbsolutePathParamType.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.path.AbsolutePathParamType.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.AbsolutePathParamType.__repr__
+         :renderer: rst
 
 .. py:class:: CalculationParamType
    :canonical: aiida.cmdline.params.types.calculation.CalculationParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying Calculation entities or its subclasses
+   .. autodoc2-docstring:: aiida.cmdline.params.types.calculation.CalculationParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.calculation.CalculationParamType.name
       :value: 'Calculation'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.calculation.CalculationParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.calculation.CalculationParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.calculation.CalculationParamType.orm_class_loader
+         :renderer: rst
 
 .. py:class:: CodeParamType(sub_classes=None, entry_point=None)
    :canonical: aiida.cmdline.params.types.code.CodeParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying Code entities or its subclasses
+   .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType
+      :renderer: rst
 
    .. rubric:: Initialization
 
-   Construct the param type
-
-   :param sub_classes: specify a tuple of Code sub classes to narrow the query set
-   :param entry_point: specify an optional calculation entry point that the Code's input plugin should match
+   .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.code.CodeParamType.name
       :value: 'Code'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.code.CodeParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType.orm_class_loader
+         :renderer: rst
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.code.CodeParamType.shell_complete
 
-      Return possible completions based on an incomplete value.
-
-      :returns: list of tuples of valid entry points (matching incomplete) and a description
+      .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType.shell_complete
+         :renderer: rst
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.code.CodeParamType.convert
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType.convert
+         :renderer: rst
 
 .. py:class:: ComputerParamType
    :canonical: aiida.cmdline.params.types.computer.ComputerParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying Computer entities or its subclasses
+   .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ComputerParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.computer.ComputerParamType.name
       :value: 'Computer'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ComputerParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.computer.ComputerParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ComputerParamType.orm_class_loader
+         :renderer: rst
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.computer.ComputerParamType.shell_complete
 
-      Return possible completions based on an incomplete value.
-
-      :returns: list of tuples of valid entry points (matching incomplete) and a description
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ComputerParamType.shell_complete
+         :renderer: rst
 
 .. py:class:: ConfigOptionParamType
    :canonical: aiida.cmdline.params.types.config.ConfigOptionParamType
 
    Bases: :py:obj:`click.types.StringParamType`
 
-   ParamType for configuration options.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.config.ConfigOptionParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.config.ConfigOptionParamType.name
       :value: 'config option'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.config.ConfigOptionParamType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.config.ConfigOptionParamType.convert
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.config.ConfigOptionParamType.convert
+         :renderer: rst
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.config.ConfigOptionParamType.shell_complete
 
-      Return possible completions based on an incomplete value
-
-      :returns: list of tuples of valid entry points (matching incomplete) and a description
+      .. autodoc2-docstring:: aiida.cmdline.params.types.config.ConfigOptionParamType.shell_complete
+         :renderer: rst
 
 .. py:class:: DataParamType(sub_classes=None)
    :canonical: aiida.cmdline.params.types.data.DataParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying Data entities or its subclasses
+   .. autodoc2-docstring:: aiida.cmdline.params.types.data.DataParamType
+      :renderer: rst
 
    .. rubric:: Initialization
 
-   Construct the parameter type, optionally specifying a tuple of entry points that reference classes
-   that should be a sub class of the base orm class of the orm class loader. The classes pointed to by
-   these entry points will be passed to the OrmEntityLoader when converting an identifier and they will
-   restrict the query set by demanding that the class of the corresponding entity matches these sub classes.
-
-   To prevent having to load the database environment at import time, the actual loading of the entry points
-   is deferred until the call to `convert` is made. This is to keep the command line autocompletion light
-   and responsive. The entry point strings will be validated, however, to see if the correspond to known
-   entry points.
-
-   :param sub_classes: a tuple of entry point strings that can narrow the set of orm classes that values
-       will be mapped upon. These classes have to be strict sub classes of the base orm class defined
-       by the orm class loader
+   .. autodoc2-docstring:: aiida.cmdline.params.types.data.DataParamType.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.data.DataParamType.name
       :value: 'Data'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.data.DataParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.data.DataParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.data.DataParamType.orm_class_loader
+         :renderer: rst
 
 .. py:class:: DynamicEntryPointCommandGroup(command, entry_point_group: str, entry_point_name_filter='.*', **kwargs)
    :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup
 
    Bases: :py:obj:`aiida.cmdline.groups.verdi.VerdiCommandGroup`
 
-   Subclass of :class:`click.Group` that loads subcommands dynamically from entry points.
+   .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup
+      :renderer: rst
 
-   A command group using this class will automatically generate the sub commands from the entry points registered in
-   the given ``entry_point_group``. The entry points can be additionally filtered using a regex defined for the
-   ``entry_point_name_filter`` keyword. The actual command for each entry point is defined by ``command``, which should
-   take as a first argument the class that corresponds to the entry point. In addition, it should accept ``kwargs``
-   which will be the values for the options passed when the command is invoked. The help string of the command will be
-   provided by the docstring of the class registered at the respective entry point. Example usage:
+   .. rubric:: Initialization
 
-   .. code:: python
-
-       def create_instance(cls, **kwargs):
-           instance = cls(**kwargs)
-           instance.store()
-           echo.echo_success(f'Created {cls.__name__}<{instance.pk}>')
-
-       @click.group('create', cls=DynamicEntryPointCommandGroup, command=create_instance,)
-       def cmd_create():
-           pass
-
+   .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.__init__
+      :renderer: rst
 
    .. py:method:: list_commands(ctx) -> list[str]
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.list_commands
 
-      Return the sorted list of subcommands for this group.
-
-      :param ctx: The :class:`click.Context`.
+      .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.list_commands
+         :renderer: rst
 
    .. py:method:: get_command(ctx, cmd_name)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.get_command
 
-      Return the command with the given name.
-
-      :param ctx: The :class:`click.Context`.
-      :param cmd_name: The name of the command.
-      :returns: The :class:`click.Command`.
+      .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.get_command
+         :renderer: rst
 
    .. py:method:: create_command(entry_point)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_command
 
-      Create a subcommand for the given ``entry_point``.
+      .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_command
+         :renderer: rst
 
    .. py:method:: create_options(entry_point)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_options
 
-      Create the option decorators for the command function for the given entry point.
-
-      :param entry_point: The entry point.
+      .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_options
+         :renderer: rst
 
    .. py:method:: list_options(entry_point)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.list_options
 
-      Return the list of options that should be applied to the command for the given entry point.
-
-      :param entry_point: The entry point.
+      .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.list_options
+         :renderer: rst
 
    .. py:method:: create_option(name, spec)
       :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_option
       :staticmethod:
 
-      Create a click option from a name and a specification.
+      .. autodoc2-docstring:: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup.create_option
+         :renderer: rst
 
 .. py:class:: EmailType
    :canonical: aiida.cmdline.params.types.strings.EmailType
 
    Bases: :py:obj:`click.types.StringParamType`
 
-   Parameter whose values have to correspond to a valid email address format.
-
-   .. note:: For the moment, we do not require the domain suffix, i.e. 'aiida@localhost' is still valid.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EmailType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.EmailType.name
       :value: 'email'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EmailType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.strings.EmailType.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EmailType.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.strings.EmailType.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EmailType.__repr__
+         :renderer: rst
 
 .. py:class:: EntryPointType
    :canonical: aiida.cmdline.params.types.strings.EntryPointType
 
    Bases: :py:obj:`aiida.cmdline.params.types.strings.NonEmptyStringParamType`
 
-   Parameter whose values have to be valid Python entry point strings.
-
-   See https://packaging.python.org/en/latest/specifications/entry-points/
+   .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EntryPointType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.EntryPointType.name
       :value: 'entrypoint'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EntryPointType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.strings.EntryPointType.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EntryPointType.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.strings.EntryPointType.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.EntryPointType.__repr__
+         :renderer: rst
 
 .. py:class:: FileOrUrl(timeout_seconds=URL_TIMEOUT_SECONDS, **kwargs)
    :canonical: aiida.cmdline.params.types.path.FileOrUrl
 
    Bases: :py:obj:`click.File`
 
-   Extension of click's File-type to include URLs.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.path.FileOrUrl
+      :renderer: rst
 
-   Returns handle either to local file or to remote file fetched from URL.
+   .. rubric:: Initialization
 
-   :param int timeout_seconds: Maximum timeout accepted for URL response.
-       Must be an integer in the range [0;60].
+   .. autodoc2-docstring:: aiida.cmdline.params.types.path.FileOrUrl.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.path.FileOrUrl.name
       :value: 'FileOrUrl'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.FileOrUrl.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.path.FileOrUrl.convert
 
-      Return file handle.
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.FileOrUrl.convert
+         :renderer: rst
 
    .. py:method:: get_url(url, param, ctx)
       :canonical: aiida.cmdline.params.types.path.FileOrUrl.get_url
 
-      Retrieve file from URL.
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.FileOrUrl.get_url
+         :renderer: rst
 
 .. py:class:: GroupParamType(create_if_not_exist=False, sub_classes=('aiida.groups:core', ))
    :canonical: aiida.cmdline.params.types.group.GroupParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying Group entities or its subclasses.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType
+      :renderer: rst
 
    .. rubric:: Initialization
 
-   Construct the parameter type.
-
-   The `sub_classes` argument can be used to narrow the set of subclasses of `Group` that should be matched. By
-   default all subclasses of `Group` will be matched, otherwise it is restricted to the subclasses that correspond
-   to the entry point names in the tuple of `sub_classes`.
-
-   To prevent having to load the database environment at import time, the actual loading of the entry points is
-   deferred until the call to `convert` is made. This is to keep the command line autocompletion light and
-   responsive. The entry point strings will be validated, however, to see if they correspond to known entry points.
-
-   :param create_if_not_exist: boolean, if True, will create the group if it does not yet exist. By default the
-       group created will be of class `Group`, unless another subclass is specified through `sub_classes`. Note
-       that in this case, only a single entry point name can be specified
-   :param sub_classes: a tuple of entry point strings from the `aiida.groups` entry point group.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.group.GroupParamType.name
       :value: 'Group'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.group.GroupParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of `OrmEntityLoader`.
-
-      This class is supposed to be used to load the entity for a given identifier.
-
-      :return: the orm entity loader class for this `ParamType`
+      .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType.orm_class_loader
+         :renderer: rst
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.group.GroupParamType.shell_complete
 
-      Return possible completions based on an incomplete value.
-
-      :returns: list of tuples of valid entry points (matching incomplete) and a description
+      .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType.shell_complete
+         :renderer: rst
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.group.GroupParamType.convert
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType.convert
+         :renderer: rst
 
 .. py:class:: HostnameType
    :canonical: aiida.cmdline.params.types.strings.HostnameType
 
    Bases: :py:obj:`click.types.StringParamType`
 
-   Parameter corresponding to a valid hostname (or empty) string.
-
-   Regex according to https://stackoverflow.com/a/3824105/1069467
+   .. autodoc2-docstring:: aiida.cmdline.params.types.strings.HostnameType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.HostnameType.name
       :value: 'hostname'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.HostnameType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.strings.HostnameType.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.HostnameType.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.strings.HostnameType.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.HostnameType.__repr__
+         :renderer: rst
 
 .. py:class:: IdentifierParamType(sub_classes=None)
    :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType
 
    Bases: :py:obj:`click.ParamType`, :py:obj:`abc.ABC`
 
-   An extension of click.ParamType for a generic identifier parameter. In AiiDA, orm entities can often be
-   identified by either their ID, UUID or optionally some LABEL identifier. This parameter type implements
-   the convert method, which attempts to convert a value passed to the command for a parameter with this type,
-   to an orm entity. The actual loading of the entity is delegated to the orm class loader. Subclasses of this
-   parameter type should implement the `orm_class_loader` method to return the appropriate orm class loader,
-   which should be a subclass of `aiida.orm.utils.loaders.OrmEntityLoader` for the corresponding orm class.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.identifier.IdentifierParamType
+      :renderer: rst
 
    .. rubric:: Initialization
 
-   Construct the parameter type, optionally specifying a tuple of entry points that reference classes
-   that should be a sub class of the base orm class of the orm class loader. The classes pointed to by
-   these entry points will be passed to the OrmEntityLoader when converting an identifier and they will
-   restrict the query set by demanding that the class of the corresponding entity matches these sub classes.
-
-   To prevent having to load the database environment at import time, the actual loading of the entry points
-   is deferred until the call to `convert` is made. This is to keep the command line autocompletion light
-   and responsive. The entry point strings will be validated, however, to see if the correspond to known
-   entry points.
-
-   :param sub_classes: a tuple of entry point strings that can narrow the set of orm classes that values
-       will be mapped upon. These classes have to be strict sub classes of the base orm class defined
-       by the orm class loader
+   .. autodoc2-docstring:: aiida.cmdline.params.types.identifier.IdentifierParamType.__init__
+      :renderer: rst
 
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.orm_class_loader
       :abstractmethod:
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.identifier.IdentifierParamType.orm_class_loader
+         :renderer: rst
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.convert
 
-      Attempt to convert the given value to an instance of the orm class using the orm class loader.
-
-      :return: the loaded orm entity
-      :raises click.BadParameter: if the value is ambiguous and leads to multiple entities
-      :raises click.BadParameter: if the value cannot be mapped onto any existing instance
-      :raises RuntimeError: if the defined orm class loader is not a subclass of the OrmEntityLoader class
+      .. autodoc2-docstring:: aiida.cmdline.params.types.identifier.IdentifierParamType.convert
+         :renderer: rst
 
 .. py:class:: LabelStringType
    :canonical: aiida.cmdline.params.types.strings.LabelStringType
 
    Bases: :py:obj:`aiida.cmdline.params.types.strings.NonEmptyStringParamType`
 
-   Parameter accepting valid label strings.
-
-   Non-empty string, made up of word characters (includes underscores [1]), dashes, and dots.
-
-   [1] See https://docs.python.org/3/library/re.html
+   .. autodoc2-docstring:: aiida.cmdline.params.types.strings.LabelStringType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.LabelStringType.name
       :value: 'labelstring'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.LabelStringType.name
+         :renderer: rst
+
    .. py:attribute:: ALPHABET
       :canonical: aiida.cmdline.params.types.strings.LabelStringType.ALPHABET
       :value: '\\w\\.\\-'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.LabelStringType.ALPHABET
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.strings.LabelStringType.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.LabelStringType.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.strings.LabelStringType.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.LabelStringType.__repr__
+         :renderer: rst
 
 .. py:class:: LazyChoice(get_choices)
    :canonical: aiida.cmdline.params.types.choice.LazyChoice
 
    Bases: :py:obj:`click.ParamType`
 
-   This is a delegate of click's Choice ParamType that evaluates the set of choices
-   lazily. This is useful if the choices set requires an import that is slow. Using
-   the vanilla click.Choice will call this on import which will slow down verdi and
-   its autocomplete. This type will generate the choices set lazily through the
-   choices property
+   .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice
+      :renderer: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.name
       :value: 'choice'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.name
+         :renderer: rst
+
    .. py:property:: _click_choice
       :canonical: aiida.cmdline.params.types.choice.LazyChoice._click_choice
 
-      Get the internal click Choice object that we delegate functionality to.
-      Will construct it lazily if necessary.
-
-      :return: The click Choice
-      :rtype: :class:`click.Choice`
+      .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice._click_choice
+         :renderer: rst
 
    .. py:property:: choices
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.choices
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.choices
+         :renderer: rst
+
    .. py:method:: get_metavar(param)
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.get_metavar
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.get_metavar
+         :renderer: rst
 
    .. py:method:: get_missing_message(param)
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.get_missing_message
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.get_missing_message
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.__repr__
+         :renderer: rst
 
 .. py:class:: MpirunCommandParamType
    :canonical: aiida.cmdline.params.types.computer.MpirunCommandParamType
 
    Bases: :py:obj:`click.types.StringParamType`
 
-   Custom click param type for mpirun-command
-
-   .. note:: requires also a scheduler to be provided, and the scheduler
-      must be called first!
-
-   Validate that the provided 'mpirun' command only contains replacement fields
-   (e.g. ``{tot_num_mpiprocs}``) that are known.
-
-   Return a list of arguments (by using 'value.strip().split(" ") on the input string)
+   .. autodoc2-docstring:: aiida.cmdline.params.types.computer.MpirunCommandParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.computer.MpirunCommandParamType.name
       :value: 'mpiruncommandstring'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.MpirunCommandParamType.name
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.computer.MpirunCommandParamType.__repr__
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.MpirunCommandParamType.__repr__
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.computer.MpirunCommandParamType.convert
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.MpirunCommandParamType.convert
+         :renderer: rst
 
 .. py:class:: MultipleValueParamType(param_type)
    :canonical: aiida.cmdline.params.types.multiple.MultipleValueParamType
 
    Bases: :py:obj:`click.ParamType`
 
-   An extension of click.ParamType that can parse multiple values for a given ParamType
+   .. autodoc2-docstring:: aiida.cmdline.params.types.multiple.MultipleValueParamType
+      :renderer: rst
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.cmdline.params.types.multiple.MultipleValueParamType.__init__
+      :renderer: rst
 
    .. py:method:: get_metavar(param)
       :canonical: aiida.cmdline.params.types.multiple.MultipleValueParamType.get_metavar
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.multiple.MultipleValueParamType.get_metavar
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.multiple.MultipleValueParamType.convert
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.multiple.MultipleValueParamType.convert
+         :renderer: rst
 
 .. py:class:: NodeParamType
    :canonical: aiida.cmdline.params.types.node.NodeParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying Node entities or its subclasses
+   .. autodoc2-docstring:: aiida.cmdline.params.types.node.NodeParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.node.NodeParamType.name
       :value: 'Node'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.node.NodeParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.node.NodeParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.node.NodeParamType.orm_class_loader
+         :renderer: rst
 
 .. py:class:: NonEmptyStringParamType
    :canonical: aiida.cmdline.params.types.strings.NonEmptyStringParamType
 
    Bases: :py:obj:`click.types.StringParamType`
 
-   Parameter whose values have to be string and non-empty.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.strings.NonEmptyStringParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.strings.NonEmptyStringParamType.name
       :value: 'nonemptystring'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.NonEmptyStringParamType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.strings.NonEmptyStringParamType.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.NonEmptyStringParamType.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.strings.NonEmptyStringParamType.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.strings.NonEmptyStringParamType.__repr__
+         :renderer: rst
 
 .. py:class:: PathOrUrl(timeout_seconds=URL_TIMEOUT_SECONDS, **kwargs)
    :canonical: aiida.cmdline.params.types.path.PathOrUrl
 
    Bases: :py:obj:`click.Path`
 
-   Extension of click's Path-type to include URLs.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.path.PathOrUrl
+      :renderer: rst
 
-   A PathOrUrl can either be a `click.Path`-type or a URL.
+   .. rubric:: Initialization
 
-   :param int timeout_seconds: Maximum timeout accepted for URL response.
-       Must be an integer in the range [0;60].
+   .. autodoc2-docstring:: aiida.cmdline.params.types.path.PathOrUrl.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.path.PathOrUrl.name
       :value: 'PathOrUrl'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.PathOrUrl.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.path.PathOrUrl.convert
 
-      Overwrite `convert` Check first if `click.Path`-type, then check if URL.
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.PathOrUrl.convert
+         :renderer: rst
 
    .. py:method:: checks_url(url, param, ctx)
       :canonical: aiida.cmdline.params.types.path.PathOrUrl.checks_url
 
-      Check whether URL is reachable within timeout.
+      .. autodoc2-docstring:: aiida.cmdline.params.types.path.PathOrUrl.checks_url
+         :renderer: rst
 
 .. py:class:: PluginParamType(group=None, load=False, *args, **kwargs)
    :canonical: aiida.cmdline.params.types.plugin.PluginParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.strings.EntryPointType`
 
-   AiiDA Plugin name parameter type.
-
-   :param group: string or tuple of strings, where each is a valid entry point group. Adding the `aiida.`
-       prefix is optional. If it is not detected it will be prepended internally.
-   :param load: when set to True, convert will not return the entry point, but the loaded entry point
-
-   Usage::
-
-       click.option(... type=PluginParamType(group='aiida.calculations')
-
-   or::
-
-       click.option(... type=PluginParamType(group=('calculations', 'data'))
-
+   .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType
+      :renderer: rst
 
    .. rubric:: Initialization
 
-   Validate that group is either a string or a tuple of valid entry point groups, or if it
-   is not specified use the tuple of all recognized entry point groups.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.name
       :value: 'plugin'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.name
+         :renderer: rst
+
    .. py:attribute:: _factory_mapping
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType._factory_mapping
       :value: None
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType._factory_mapping
+         :renderer: rst
+
    .. py:method:: _init_entry_points()
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType._init_entry_points
 
-      Populate entry point information that will be used later on.  This should only be called
-      once in the constructor after setting self.groups because the groups should not be changed
-      after instantiation
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType._init_entry_points
+         :renderer: rst
 
    .. py:property:: groups
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.groups
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.groups
+         :renderer: rst
+
    .. py:property:: has_potential_ambiguity
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.has_potential_ambiguity
 
-      Returns whether the set of supported entry point groups can lead to ambiguity when only an entry point name
-      is specified. This will happen if one ore more groups share an entry point with a common name
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.has_potential_ambiguity
+         :renderer: rst
 
    .. py:method:: get_valid_arguments()
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_valid_arguments
 
-      Return a list of all available plugins for the groups configured for this PluginParamType instance.
-      If the entry point names are not unique, because there are multiple groups that contain an entry
-      point that has an identical name, we need to prefix the names with the full group name
-
-      :returns: list of valid entry point strings
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.get_valid_arguments
+         :renderer: rst
 
    .. py:method:: get_possibilities(incomplete='')
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_possibilities
 
-      Return a list of plugins starting with incomplete
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.get_possibilities
+         :renderer: rst
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.shell_complete
 
-      Return possible completions based on an incomplete value
-
-      :returns: list of tuples of valid entry points (matching incomplete) and a description
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.shell_complete
+         :renderer: rst
 
    .. py:method:: get_missing_message(param)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_missing_message
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.get_missing_message
+         :renderer: rst
+
    .. py:method:: get_entry_point_from_string(entry_point_string)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_entry_point_from_string
 
-      Validate a given entry point string, which means that it should have a valid entry point string format
-      and that the entry point unambiguously corresponds to an entry point in the groups configured for this
-      instance of PluginParameterType.
-
-      :returns: the entry point if valid
-      :raises: ValueError if the entry point string is invalid
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.get_entry_point_from_string
+         :renderer: rst
 
    .. py:method:: validate_entry_point_group(group)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.validate_entry_point_group
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.validate_entry_point_group
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.convert
 
-      Convert the string value to an entry point instance, if the value can be successfully parsed
-      into an actual entry point. Will raise click.BadParameter if validation fails.
+      .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.convert
+         :renderer: rst
 
 .. py:class:: ProcessParamType
    :canonical: aiida.cmdline.params.types.process.ProcessParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying ProcessNode entities or its subclasses
+   .. autodoc2-docstring:: aiida.cmdline.params.types.process.ProcessParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.process.ProcessParamType.name
       :value: 'Process'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.process.ProcessParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.process.ProcessParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.process.ProcessParamType.orm_class_loader
+         :renderer: rst
 
 .. py:class:: ProfileParamType(*args, **kwargs)
    :canonical: aiida.cmdline.params.types.profile.ProfileParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.strings.LabelStringType`
 
-   The profile parameter type for click.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.profile.ProfileParamType
+      :renderer: rst
 
-   This parameter type requires the command that uses it to define the ``context_class`` class attribute to be the
-   :class:`aiida.cmdline.groups.verdi.VerdiContext` class, as that is responsible for creating the user defined object
-   ``obj`` on the context and loads the instance config.
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.cmdline.params.types.profile.ProfileParamType.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.profile.ProfileParamType.name
       :value: 'profile'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.profile.ProfileParamType.name
+         :renderer: rst
+
    .. py:method:: deconvert_default(value)
       :canonical: aiida.cmdline.params.types.profile.ProfileParamType.deconvert_default
       :staticmethod:
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.profile.ProfileParamType.deconvert_default
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.profile.ProfileParamType.convert
 
-      Attempt to match the given value to a valid profile.
+      .. autodoc2-docstring:: aiida.cmdline.params.types.profile.ProfileParamType.convert
+         :renderer: rst
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.profile.ProfileParamType.shell_complete
 
-      Return possible completions based on an incomplete value
-
-      :returns: list of tuples of valid entry points (matching incomplete) and a description
+      .. autodoc2-docstring:: aiida.cmdline.params.types.profile.ProfileParamType.shell_complete
+         :renderer: rst
 
 .. py:class:: ShebangParamType
    :canonical: aiida.cmdline.params.types.computer.ShebangParamType
 
    Bases: :py:obj:`click.types.StringParamType`
 
-   Custom click param type for shebang line
+   .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ShebangParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.computer.ShebangParamType.name
       :value: 'shebangline'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ShebangParamType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.computer.ShebangParamType.convert
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ShebangParamType.convert
+         :renderer: rst
+
    .. py:method:: __repr__()
       :canonical: aiida.cmdline.params.types.computer.ShebangParamType.__repr__
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ShebangParamType.__repr__
+         :renderer: rst
 
 .. py:class:: UserParamType(create=False)
    :canonical: aiida.cmdline.params.types.user.UserParamType
 
    Bases: :py:obj:`click.ParamType`
 
-   The user parameter type for click.   Can get or create a user.
+   .. autodoc2-docstring:: aiida.cmdline.params.types.user.UserParamType
+      :renderer: rst
 
    .. rubric:: Initialization
 
-   :param create: If the user does not exist, create a new instance (unstored).
+   .. autodoc2-docstring:: aiida.cmdline.params.types.user.UserParamType.__init__
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.user.UserParamType.name
       :value: 'user'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.user.UserParamType.name
+         :renderer: rst
+
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.user.UserParamType.convert
+
+      .. autodoc2-docstring:: aiida.cmdline.params.types.user.UserParamType.convert
+         :renderer: rst
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.user.UserParamType.shell_complete
 
-      Return possible completions based on an incomplete value
-
-      :returns: list of tuples of valid entry points (matching incomplete) and a description
+      .. autodoc2-docstring:: aiida.cmdline.params.types.user.UserParamType.shell_complete
+         :renderer: rst
 
 .. py:class:: VerdiCommandGroup
    :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup
 
    Bases: :py:obj:`click.Group`
 
-   Subclass of :class:`click.Group` for the ``verdi`` CLI.
-
-   The class automatically adds the verbosity option to all commands in the interface. It also adds some functionality
-   to provide suggestions of commands in case the user provided command name does not exist.
+   .. autodoc2-docstring:: aiida.cmdline.groups.verdi.VerdiCommandGroup
+      :renderer: rst
 
    .. py:attribute:: context_class
       :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup.context_class
       :value: None
 
+      .. autodoc2-docstring:: aiida.cmdline.groups.verdi.VerdiCommandGroup.context_class
+         :renderer: rst
+
    .. py:method:: add_verbosity_option(cmd)
       :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup.add_verbosity_option
       :staticmethod:
 
-      Apply the ``verbosity`` option to the command, which is common to all ``verdi`` commands.
+      .. autodoc2-docstring:: aiida.cmdline.groups.verdi.VerdiCommandGroup.add_verbosity_option
+         :renderer: rst
 
    .. py:method:: fail_with_suggestions(ctx, cmd_name)
       :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup.fail_with_suggestions
 
-      Fail the command while trying to suggest commands to resemble the requested ``cmd_name``.
+      .. autodoc2-docstring:: aiida.cmdline.groups.verdi.VerdiCommandGroup.fail_with_suggestions
+         :renderer: rst
 
    .. py:method:: get_command(ctx, cmd_name)
       :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup.get_command
 
-      Return the command that corresponds to the requested ``cmd_name``.
-
-      This method is overridden from the base class in order to two functionalities:
-
-          * If the command is found, automatically add the verbosity option.
-          * If the command is not found, attempt to provide a list of suggestions with existing commands that resemble
-            the requested command name.
-
-      Note that if the command is not found and ``resilient_parsing`` is set to True on the context, then the latter
-      feature is disabled because most likely we are operating in tab-completion mode.
+      .. autodoc2-docstring:: aiida.cmdline.groups.verdi.VerdiCommandGroup.get_command
+         :renderer: rst
 
    .. py:method:: group(*args, **kwargs)
       :canonical: aiida.cmdline.groups.verdi.VerdiCommandGroup.group
 
-      Ensure that sub command groups use the same class but do not override an explicitly set value.
+      .. autodoc2-docstring:: aiida.cmdline.groups.verdi.VerdiCommandGroup.group
+         :renderer: rst
 
 .. py:class:: WorkflowParamType
    :canonical: aiida.cmdline.params.types.workflow.WorkflowParamType
 
    Bases: :py:obj:`aiida.cmdline.params.types.identifier.IdentifierParamType`
 
-   The ParamType for identifying WorkflowNode entities or its subclasses
+   .. autodoc2-docstring:: aiida.cmdline.params.types.workflow.WorkflowParamType
+      :renderer: rst
 
    .. py:attribute:: name
       :canonical: aiida.cmdline.params.types.workflow.WorkflowParamType.name
       :value: 'WorkflowNode'
 
+      .. autodoc2-docstring:: aiida.cmdline.params.types.workflow.WorkflowParamType.name
+         :renderer: rst
+
    .. py:property:: orm_class_loader
       :canonical: aiida.cmdline.params.types.workflow.WorkflowParamType.orm_class_loader
 
-      Return the orm entity loader class, which should be a subclass of OrmEntityLoader. This class is supposed
-      to be used to load the entity for a given identifier
-
-      :return: the orm entity loader class for this ParamType
+      .. autodoc2-docstring:: aiida.cmdline.params.types.workflow.WorkflowParamType.orm_class_loader
+         :renderer: rst
 
 .. py:function:: dbenv()
    :canonical: aiida.cmdline.utils.decorators.dbenv
 
-   Loads the dbenv for a specific region of code, does not unload afterwards
-
-   Only use when it makes it possible to avoid loading the dbenv for certain
-   code paths
-
-   Good Example::
-
-       # do this
-       @click.command()
-       @click.option('--with-db', is_flag=True)
-       def profile_info(with_db):
-           # read the config file
-           click.echo(profile_config)
-
-           # load the db only if necessary
-           if with_db:
-               with dbenv():
-                   # gather db statistics for the profile
-                   click.echo(db_statistics)
-
-   This will run very fast without the --with-db flag and slow only if database info is requested
-
-   Do not use if you will end up loading the dbenv anyway
-
-   Bad Example::
-
-       # don't do this
-       def my_function():
-           with dbenv():
-               # read from db
-
-           # do db unrelated stuff
+   .. autodoc2-docstring:: aiida.cmdline.utils.decorators.dbenv
+      :renderer: rst
 
 .. py:function:: echo_critical(message: str, bold: bool = False, nl: bool = True, err: bool = True, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_critical
 
-   Log a critical error message to the cmdline logger and exit with ``exit_status``.
-
-   This should be used to print messages for errors that cannot be recovered from and so the script should be directly
-   terminated with a non-zero exit status to indicate that the command failed.
-
-   :param message: the message to log.
-   :param bold: whether to format the message in bold.
-   :param nl: whether to add a newline at the end of the message.
-   :param err: whether to log to stderr.
-   :param prefix: whether the message should be prefixed with a colored version of the log level.
+   .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_critical
+      :renderer: rst
 
 .. py:function:: echo_dictionary(dictionary, fmt='json+date', sort_keys=True)
    :canonical: aiida.cmdline.utils.echo.echo_dictionary
 
-   Log the given dictionary to stdout in the given format
-
-   :param dictionary: the dictionary
-   :param fmt: the format to use for printing
-   :param sort_keys: Whether to automatically sort keys
+   .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_dictionary
+      :renderer: rst
 
 .. py:function:: echo_error(message: str, bold: bool = False, nl: bool = True, err: bool = True, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_error
 
-   Log an error message to the cmdline logger.
-
-   :param message: the message to log.
-   :param bold: whether to format the message in bold.
-   :param nl: whether to add a newline at the end of the message.
-   :param err: whether to log to stderr.
-   :param prefix: whether the message should be prefixed with a colored version of the log level.
+   .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_error
+      :renderer: rst
 
 .. py:function:: echo_info(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_info
 
-   Log an info message to the cmdline logger.
-
-   :param message: the message to log.
-   :param bold: whether to format the message in bold.
-   :param nl: whether to add a newline at the end of the message.
-   :param err: whether to log to stderr.
-   :param prefix: whether the message should be prefixed with a colored version of the log level.
+   .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_info
+      :renderer: rst
 
 .. py:function:: echo_report(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_report
 
-   Log an report message to the cmdline logger.
-
-   :param message: the message to log.
-   :param bold: whether to format the message in bold.
-   :param nl: whether to add a newline at the end of the message.
-   :param err: whether to log to stderr.
-   :param prefix: whether the message should be prefixed with a colored version of the log level.
+   .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_report
+      :renderer: rst
 
 .. py:function:: echo_success(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_success
 
-   Log a success message to the cmdline logger.
-
-   .. note:: The message will be logged at the ``REPORT`` level and always with the ``Success:`` prefix.
-
-   :param message: the message to log.
-   :param bold: whether to format the message in bold.
-   :param nl: whether to add a newline at the end of the message.
-   :param err: whether to log to stderr.
-   :param prefix: whether the message should be prefixed with a colored version of the log level.
+   .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_success
+      :renderer: rst
 
 .. py:function:: echo_warning(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_warning
 
-   Log a warning message to the cmdline logger.
-
-   :param message: the message to log.
-   :param bold: whether to format the message in bold.
-   :param nl: whether to add a newline at the end of the message.
-   :param err: whether to log to stderr.
-   :param prefix: whether the message should be prefixed with a colored version of the log level.
+   .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_warning
+      :renderer: rst
 
 .. py:function:: format_call_graph(calc_node, max_depth: int = None, info_fn=calc_info)
    :canonical: aiida.cmdline.utils.ascii_vis.format_call_graph
 
-   Print a tree like the POSIX tree command for the calculation call graph
-
-   :param calc_node: The calculation node
-   :param max_depth: Maximum depth of the call graph to print
-   :param info_fn: An optional function that takes the node and returns a string
-       of information to be displayed for each node.
+   .. autodoc2-docstring:: aiida.cmdline.utils.ascii_vis.format_call_graph
+      :renderer: rst
 
 .. py:function:: is_verbose()
    :canonical: aiida.cmdline.utils.common.is_verbose
 
-   Return whether the configured logging verbosity is considered verbose, i.e., equal or lower to ``INFO`` level.
-
-   .. note:: This checks the effective logging level that is set on the ``CMDLINE_LOGGER``. This means that it will
-       consider the logging level set on the parent ``AIIDA_LOGGER`` if not explicitly set on itself. The level of the
-       main logger can be manipulated from the command line through the ``VERBOSITY`` option that is available for all
-       commands.
-
+   .. autodoc2-docstring:: aiida.cmdline.utils.common.is_verbose
+      :renderer: rst
 
 .. py:function:: only_if_daemon_running(echo_function=echo.echo_critical, message=None)
    :canonical: aiida.cmdline.utils.decorators.only_if_daemon_running
 
-   Function decorator for CLI command to print critical error and exit automatically when daemon is not running.
-
-   The error printing and exit behavior can be controlled with the decorator keyword arguments. The default message
-   that is printed can be overridden as well as the echo function that is to be used. By default it uses the
-   `aiida.cmdline.utils.echo.echo_critical` function which automatically aborts the command. The function can be
-   substituted by for example `aiida.cmdline.utils.echo.echo_warning` to instead print just a warning and continue.
-
-   Example::
-
-       @only_if_daemon_running(echo_function=echo.echo_warning, message='beware that the daemon is not running')
-       def create_node():
-           pass
-
-   :param echo_function: echo function to issue the message, should be from `aiida.cmdline.utils.echo`
-   :param message: optional message to override the default message
+   .. autodoc2-docstring:: aiida.cmdline.utils.decorators.only_if_daemon_running
+      :renderer: rst
 
 .. py:function:: with_dbenv()
    :canonical: aiida.cmdline.utils.decorators.with_dbenv
 
-   Function decorator that will load the database environment for the currently loaded profile.
-
-   .. note:: if no profile has been loaded yet, the default profile will be loaded first.
-
-   Example::
-
-       @with_dbenv()
-       def create_node():
-           from aiida.orm import Int  # note the local import
-           node = Int(1).store()
+   .. autodoc2-docstring:: aiida.cmdline.utils.decorators.with_dbenv
+      :renderer: rst

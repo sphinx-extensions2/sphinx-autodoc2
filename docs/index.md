@@ -4,6 +4,7 @@
 
 Static analysis of Python code
 : There is no need to install your package to generate the documentation, and `sphinx-autodoc2` will correctly handle `if TYPE_CHECKING` blocks and other typing only features.
+: Sphinx parse warnings correctly point to the source code line, and not the generated documentation.
 : You can even document packages from outside the project (via `git clone`)!
 
 Optimized for rebuilds

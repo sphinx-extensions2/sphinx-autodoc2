@@ -18,6 +18,9 @@ if t.TYPE_CHECKING:
 class RendererBase(abc.ABC):
     """The base renderer."""
 
+    NAME: t.ClassVar[str] = "base"
+    """The name of the renderer."""
+
     EXTENSION: t.ClassVar[str] = ".txt"
     """The extension for the output files."""
 

@@ -17,6 +17,7 @@ _RE_DELIMS = re.compile(r"(\s*[\[\]\(\),]\s*)")
 class RstRenderer(RendererBase):
     """Render the documentation as reStructuredText."""
 
+    NAME = "rst"
     EXTENSION = ".rst"
 
     def render_item(self, full_name: str) -> t.Iterable[str]:
@@ -49,19 +50,11 @@ class RstRenderer(RendererBase):
         """Generate a summary of the items."""
         for item in items:
             short_name = item["full_name"].split(".")[-1]
-            summary = ""
-            # get the first paragraph, allowing for the first line to be blank
-            for i, line in enumerate(item["doc"].splitlines()):
-                if i > 0 and not line.strip():
-                    break
-                summary += line.rstrip() + " "
-            summary = summary.strip()
-            if summary.endswith("::"):
-                # corner-case in RST, where this starts a literal block
-                summary = summary[:-2]
             # TODO get signature (for functions, etc), plus sphinx also runs rst.escape
             yield f"   * - :py:obj:`{short_name} <{item['full_name']}>`"
-            yield f"     - {summary}"
+            yield f"     - .. autodoc2-docstring:: {item['full_name']}"
+            yield f"          :renderer: {self.NAME}"
+            yield "          :summary:"
 
     def render_package(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a package."""
@@ -80,11 +73,15 @@ class RstRenderer(RendererBase):
             yield "   :deprecated:"
         yield from ["", ""]
 
-        if item["doc"]:
-            yield from ["Description", "-----------", ""]
-            # TODO ensure any headings are at least level 3
-            yield from item["doc"].splitlines()
-            yield ""
+        yield from [
+            "Description",
+            "-----------",
+            "",
+            f".. autodoc2-docstring:: {item['full_name']}",
+            f"   :renderer: {self.NAME}",
+            "   :allowtitles:",
+            "",
+        ]
 
         visible_subpackages = [
             i["full_name"] for i in self.get_children(item, {"package"})
@@ -181,13 +178,9 @@ class RstRenderer(RendererBase):
             # TODO it would also be good to highlight if singledispatch decorated,
             # or, more broadly speaking, decorated at all
         yield ""
-        if item["doc"]:
-            for line in item["doc"].splitlines():
-                if line.strip():
-                    yield f"   {line}"
-                else:
-                    yield line
-            yield ""
+        yield f"   .. autodoc2-docstring:: {item['full_name']}"
+        yield f"      :renderer: {self.NAME}"
+        yield ""
 
     def render_exception(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for an exception."""
@@ -223,24 +216,20 @@ class RstRenderer(RendererBase):
 
         # TODO inheritance diagram
 
-        if item["doc"]:
-            for line in item["doc"].splitlines():
-                if line.strip():
-                    yield f"   {line}"
-                else:
-                    yield line
-            yield ""
+        yield f"   .. autodoc2-docstring:: {item['full_name']}"
+        yield f"      :renderer: {self.NAME}"
+        yield ""
 
         if self.config.class_docstring == "merge":
             init_item = self.get_item(f"{item['full_name']}.__init__")
-            if init_item and init_item["doc"]:
-                yield from ["   .. rubric:: Initialization", ""]
-                for line in init_item["doc"].splitlines():
-                    if line.strip():
-                        yield f"   {line}"
-                    else:
-                        yield line
-                yield ""
+            if init_item:
+                yield from [
+                    "   .. rubric:: Initialization",
+                    "",
+                    f"   .. autodoc2-docstring:: {item['full_name']}.__init__",
+                    f"      :renderer: {self.NAME}",
+                    "",
+                ]
 
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
@@ -270,13 +259,9 @@ class RstRenderer(RendererBase):
             yield f"   :type: {self.format_annotation(item['return_annotation'])}"
         yield ""
 
-        if item["doc"]:
-            for line in item["doc"].splitlines():
-                if line.strip():
-                    yield f"   {line}"
-                else:
-                    yield line
-            yield ""
+        yield f"   .. autodoc2-docstring:: {item['full_name']}"
+        yield f"      :renderer: {self.NAME}"
+        yield ""
 
     def render_method(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a method."""
@@ -300,13 +285,9 @@ class RstRenderer(RendererBase):
                 yield f"   :{prop}:"
         yield ""
 
-        if item["doc"]:
-            for line in item["doc"].splitlines():
-                if line.strip():
-                    yield f"   {line}"
-                else:
-                    yield line
-            yield ""
+        yield f"   .. autodoc2-docstring:: {item['full_name']}"
+        yield f"      :renderer: {self.NAME}"
+        yield ""
 
     def render_attribute(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for an attribute."""
@@ -343,13 +324,9 @@ class RstRenderer(RendererBase):
             yield f"   :value: {value}"
 
         yield ""
-        if item["doc"]:
-            for line in item["doc"].splitlines():
-                if line.strip():
-                    yield f"   {line}"
-                else:
-                    yield line
-            yield ""
+        yield f"   .. autodoc2-docstring:: {item['full_name']}"
+        yield f"      :renderer: {self.NAME}"
+        yield ""
 
     def _reformat_cls_base_rst(self, value: str) -> str:
         """Reformat the base of a class for RST.

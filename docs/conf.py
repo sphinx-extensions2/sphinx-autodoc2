@@ -74,6 +74,7 @@ autodoc2_replace_annotations = [
 nitpick_ignore_regex = [
     (r"py:.*", r"typing_extensions.*"),
     (r"py:.*", r"astroid.*"),
+    (r"py:.*", r"docutils.*"),
     # TODO for some reason in:
     # .. py:function:: format_args(args_info: autodoc2.utils.ARGS_TYPE ...
     # ARGS_TYPE is treated as a class rather than data
@@ -170,19 +171,21 @@ class CreateConfigPkgDirective(SphinxDirective):
 def type_to_string(type_: t.Any) -> str:
     """Convert a type to a string."""
     # TODO just keeping it simple for now but can we do this with astroid!?
-    if type_ is str or type_ is (str,):
+    if isinstance(type_, tuple):
+        return " or ".join(type_to_string(t) for t in type_)
+    if type_ is type(None):
+        return "``None``"
+    if type_ is str:
         return "``str``"
-    if type_ is int or type_ is (int,):
+    if type_ is int:
         return "``int``"
-    if type_ is bool or type_ is (bool,):
+    if type_ is bool:
         return "``bool``"
-    if type_ is float or type_ is (float,):
+    if type_ is float:
         return "``float``"
-    if type_ is list or type_ is (list,):
+    if type_ is list:
         return "``list``"
     type_string = str(type_)
-    if type_string == "typing.Optional[str]":
-        return "``str`` or ``None``"
     if "RstRender" in type_string:
         return '``"rst"``'
     return type_string

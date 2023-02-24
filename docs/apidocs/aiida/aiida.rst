@@ -7,17 +7,9 @@
 Description
 -----------
 
-AiiDA is a flexible and scalable informatics' infrastructure to manage,
-preserve, and disseminate the simulations, data, and workflows of
-modern-day computational science.
-
-Able to store the full provenance of each object, and based on a
-tailored database built for efficient data mining of heterogeneous results,
-AiiDA gives the user the ability to interact seamlessly with any number of
-remote HPC resources and codes, thanks to its flexible plugin interface
-and workflow engine for the automation of complex sequences of simulations.
-
-More information at http://www.aiida.net
+.. autodoc2-docstring:: aiida
+   :renderer: rst
+   :allowtitles:
 
 Subpackages
 -----------
@@ -49,15 +41,25 @@ Functions
    :align: left
 
    * - :py:obj:`get_strict_version <aiida.get_strict_version>`
-     - Return a distutils StrictVersion instance with the current distribution version
+     - .. autodoc2-docstring:: aiida.get_strict_version
+          :renderer: rst
+          :summary:
    * - :py:obj:`get_version <aiida.get_version>`
-     - Return the current AiiDA distribution version
+     - .. autodoc2-docstring:: aiida.get_version
+          :renderer: rst
+          :summary:
    * - :py:obj:`_get_raw_file_header <aiida._get_raw_file_header>`
-     - Get the default header for source AiiDA source code files. Note: is not preceded by comment character.
+     - .. autodoc2-docstring:: aiida._get_raw_file_header
+          :renderer: rst
+          :summary:
    * - :py:obj:`get_file_header <aiida.get_file_header>`
-     - Get the default header for source AiiDA source code files.
+     - .. autodoc2-docstring:: aiida.get_file_header
+          :renderer: rst
+          :summary:
    * - :py:obj:`load_ipython_extension <aiida.load_ipython_extension>`
-     - Load the AiiDA IPython extension, using ``%load_ext aiida``.
+     - .. autodoc2-docstring:: aiida.load_ipython_extension
+          :renderer: rst
+          :summary:
 
 Data
 ~~~~
@@ -67,17 +69,29 @@ Data
    :align: left
 
    * - :py:obj:`__copyright__ <aiida.__copyright__>`
-     - 
+     - .. autodoc2-docstring:: aiida.__copyright__
+          :renderer: rst
+          :summary:
    * - :py:obj:`__license__ <aiida.__license__>`
-     - 
+     - .. autodoc2-docstring:: aiida.__license__
+          :renderer: rst
+          :summary:
    * - :py:obj:`__version__ <aiida.__version__>`
-     - 
+     - .. autodoc2-docstring:: aiida.__version__
+          :renderer: rst
+          :summary:
    * - :py:obj:`__authors__ <aiida.__authors__>`
-     - 
+     - .. autodoc2-docstring:: aiida.__authors__
+          :renderer: rst
+          :summary:
    * - :py:obj:`__paper__ <aiida.__paper__>`
-     - 
+     - .. autodoc2-docstring:: aiida.__paper__
+          :renderer: rst
+          :summary:
    * - :py:obj:`__paper_short__ <aiida.__paper_short__>`
-     - 
+     - .. autodoc2-docstring:: aiida.__paper_short__
+          :renderer: rst
+          :summary:
 
 API
 ~~~
@@ -86,63 +100,70 @@ API
    :canonical: aiida.__copyright__
    :value: 'Copyright (c), This file is part of the AiiDA platform. For further information please visit http://...'
 
+   .. autodoc2-docstring:: aiida.__copyright__
+      :renderer: rst
+
 .. py:data:: __license__
    :canonical: aiida.__license__
    :value: 'MIT license, see LICENSE.txt file.'
+
+   .. autodoc2-docstring:: aiida.__license__
+      :renderer: rst
 
 .. py:data:: __version__
    :canonical: aiida.__version__
    :value: '2.2.2'
 
+   .. autodoc2-docstring:: aiida.__version__
+      :renderer: rst
+
 .. py:data:: __authors__
    :canonical: aiida.__authors__
    :value: 'The AiiDA team.'
+
+   .. autodoc2-docstring:: aiida.__authors__
+      :renderer: rst
 
 .. py:data:: __paper__
    :canonical: aiida.__paper__
    :value: 'S. P. Huber et al., "AiiDA 1.0, a scalable computational infrastructure for automated reproducible w...'
 
+   .. autodoc2-docstring:: aiida.__paper__
+      :renderer: rst
+
 .. py:data:: __paper_short__
    :canonical: aiida.__paper_short__
    :value: 'S. P. Huber et al., Scientific Data 7, 300 (2020).'
 
+   .. autodoc2-docstring:: aiida.__paper_short__
+      :renderer: rst
+
 .. py:function:: get_strict_version()
    :canonical: aiida.get_strict_version
 
-   Return a distutils StrictVersion instance with the current distribution version
-
-   :returns: StrictVersion instance with the current version
-   :rtype: :class:`!distutils.version.StrictVersion`
+   .. autodoc2-docstring:: aiida.get_strict_version
+      :renderer: rst
 
 .. py:function:: get_version() -> str
    :canonical: aiida.get_version
 
-   Return the current AiiDA distribution version
-
-   :returns: the current version
+   .. autodoc2-docstring:: aiida.get_version
+      :renderer: rst
 
 .. py:function:: _get_raw_file_header() -> str
    :canonical: aiida._get_raw_file_header
 
-   Get the default header for source AiiDA source code files.
-   Note: is not preceded by comment character.
-
-   :return: default AiiDA source file header
+   .. autodoc2-docstring:: aiida._get_raw_file_header
+      :renderer: rst
 
 .. py:function:: get_file_header(comment_char: str = '# ') -> str
    :canonical: aiida.get_file_header
 
-   Get the default header for source AiiDA source code files.
-
-   .. note::
-
-       Prepend by comment character.
-
-   :param comment_char: string put in front of each line
-
-   :return: default AiiDA source file header
+   .. autodoc2-docstring:: aiida.get_file_header
+      :renderer: rst
 
 .. py:function:: load_ipython_extension(ipython)
    :canonical: aiida.load_ipython_extension
 
-   Load the AiiDA IPython extension, using ``%load_ext aiida``.
+   .. autodoc2-docstring:: aiida.load_ipython_extension
+      :renderer: rst

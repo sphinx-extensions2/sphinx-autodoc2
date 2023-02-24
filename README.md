@@ -58,7 +58,7 @@ I've use a lot of their code, for the `astroid` static analysis, but I've made a
 - fixed `a | b` annotations inference
 - added analysis of `functools.singledispatch` and their registers
 - handling of `__all__`
-- the summary only got the first line, not first paragraph
+- docstrings (and summaries) are now parsed with the correct source/line, i.e. warnings point to the correct location in the source file
 - added `:canonical:` to `py` directives
 - Moved away from using jinja templates, to using python functions
   - IMO the templates were too complex and hard to read,

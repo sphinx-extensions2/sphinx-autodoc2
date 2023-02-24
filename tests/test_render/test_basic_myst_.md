@@ -5,7 +5,10 @@
 
 ## Description
 
-This is a test package.
+```{autodoc2-docstring} package
+:renderer: myst
+   :allowtitles:
+```
 
 ## Subpackages
 
@@ -20,96 +23,125 @@ package.a
 
 ### Classes
 
-```{list-table}
+````{list-table}
 :class: autosummary longtable
 :align: left
 
 * - {py:obj}`Class <package.Class>`
-  - This is a class.
-```
+  - ```{autodoc2-docstring} package.Class
+    :renderer: myst
+    :summary:
+    ```
+````
 
 ### Functions
 
-```{list-table}
+````{list-table}
 :class: autosummary longtable
 :align: left
 
 * - {py:obj}`func <package.func>`
-  - This is a function.
-```
+  - ```{autodoc2-docstring} package.func
+    :renderer: myst
+    :summary:
+    ```
+````
 
 ### Data
 
-```{list-table}
+````{list-table}
 :class: autosummary longtable
 :align: left
 
 * - {py:obj}`__all__ <package.__all__>`
-  - 
+  - ```{autodoc2-docstring} package.__all__
+    :renderer: myst
+    :summary:
+    ```
 * - {py:obj}`p <package.p>`
-  - p can be documented here.
-```
+  - ```{autodoc2-docstring} package.p
+    :renderer: myst
+    :summary:
+    ```
+````
 
 ### API
 
-```{py:data} __all__
+````{py:data} __all__
 :canonical: package.__all__
 :value: >
    ['p', 'a1', 'alias']
 
+```{autodoc2-docstring} package.__all__
+:renderer: myst
 ```
 
-```{py:data} p
+````
+
+````{py:data} p
 :canonical: package.p
 :value: >
    1
 
-p can be documented here.
-
+```{autodoc2-docstring} package.p
+:renderer: myst
 ```
 
-```{py:function} func(a: str, b: int) -> package.a.c.ac1
+````
+
+````{py:function} func(a: str, b: int) -> package.a.c.ac1
 :canonical: package.func
 
-This is a function.
-
+```{autodoc2-docstring} package.func
+:renderer: myst
 ```
+````
 
-````{py:class} Class
+`````{py:class} Class
 :canonical: package.Class
 
-This is a class.
+```{autodoc2-docstring} package.Class
+:renderer: myst
+```
 
-```{py:attribute} x
+````{py:attribute} x
 :canonical: package.Class.x
 :type: int
 :value: >
    1
 
-x can be documented here.
-
-```
-
-```{py:method} method(a: str, b: int) -> ...
-:canonical: package.Class.method
-
-This is a method.
-
-```
-
-```{py:property} prop
-:canonical: package.Class.prop
-:type: package.a.c.ac1 | None
-
-This is a property.
-
-```
-
-```{py:class} Nested
-:canonical: package.Class.Nested
-
-This is a nested class.
-
+```{autodoc2-docstring} package.Class.x
+:renderer: myst
 ```
 
 ````
+
+````{py:method} method(a: str, b: int) -> ...
+:canonical: package.Class.method
+
+```{autodoc2-docstring} package.Class.method
+:renderer: myst
+```
+
+````
+
+````{py:property} prop
+:canonical: package.Class.prop
+:type: package.a.c.ac1 | None
+
+```{autodoc2-docstring} package.Class.prop
+:renderer: myst
+```
+
+````
+
+````{py:class} Nested
+:canonical: package.Class.Nested
+
+```{autodoc2-docstring} package.Class.Nested
+:renderer: myst
+```
+
+````
+
+`````

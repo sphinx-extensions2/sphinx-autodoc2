@@ -7,7 +7,9 @@
 Description
 -----------
 
-Renderer for reStructuredText.
+.. autodoc2-docstring:: autodoc2.render.rst_
+   :renderer: rst
+   :allowtitles:
 
 Module Contents
 ---------------
@@ -20,7 +22,9 @@ Classes
    :align: left
 
    * - :py:obj:`RstRenderer <autodoc2.render.rst_.RstRenderer>`
-     - Render the documentation as reStructuredText.
+     - .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer
+          :renderer: rst
+          :summary:
 
 Data
 ~~~~
@@ -30,7 +34,9 @@ Data
    :align: left
 
    * - :py:obj:`_RE_DELIMS <autodoc2.render.rst_._RE_DELIMS>`
-     - 
+     - .. autodoc2-docstring:: autodoc2.render.rst_._RE_DELIMS
+          :renderer: rst
+          :summary:
 
 API
 ~~~
@@ -39,88 +45,104 @@ API
    :canonical: autodoc2.render.rst_._RE_DELIMS
    :value: None
 
+   .. autodoc2-docstring:: autodoc2.render.rst_._RE_DELIMS
+      :renderer: rst
+
 .. py:class:: RstRenderer(db: autodoc2.db.Database, config: autodoc2.config.RenderConfig, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
    :canonical: autodoc2.render.rst_.RstRenderer
 
    Bases: :py:obj:`autodoc2.render.base.RendererBase`
 
-   Render the documentation as reStructuredText.
+   .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer
+      :renderer: rst
 
    .. rubric:: Initialization
 
-   Initialise the renderer.
+   .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.__init__
+      :renderer: rst
+
+   .. py:attribute:: NAME
+      :canonical: autodoc2.render.rst_.RstRenderer.NAME
+      :value: 'rst'
+
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.NAME
+         :renderer: rst
 
    .. py:attribute:: EXTENSION
       :canonical: autodoc2.render.rst_.RstRenderer.EXTENSION
       :value: '.rst'
 
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.EXTENSION
+         :renderer: rst
+
    .. py:method:: render_item(full_name: str) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_item
 
-      Yield the content for a single item.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_item
+         :renderer: rst
 
    .. py:method:: generate_summary(items: list[autodoc2.utils.ItemData]) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.generate_summary
 
-      Generate a summary of the items.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.generate_summary
+         :renderer: rst
 
    .. py:method:: render_package(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_package
 
-      Create the content for a package.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_package
+         :renderer: rst
 
    .. py:method:: render_module(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_module
 
-      Create the content for a module.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_module
+         :renderer: rst
 
    .. py:method:: render_function(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_function
 
-      Create the content for a function.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_function
+         :renderer: rst
 
    .. py:method:: render_exception(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_exception
 
-      Create the content for an exception.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_exception
+         :renderer: rst
 
    .. py:method:: render_class(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_class
 
-      Create the content for a class.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_class
+         :renderer: rst
 
    .. py:method:: render_property(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_property
 
-      Create the content for a property.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_property
+         :renderer: rst
 
    .. py:method:: render_method(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_method
 
-      Create the content for a method.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_method
+         :renderer: rst
 
    .. py:method:: render_attribute(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_attribute
 
-      Create the content for an attribute.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_attribute
+         :renderer: rst
 
    .. py:method:: render_data(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_data
 
-      Create the content for a data item.
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_data
+         :renderer: rst
 
    .. py:method:: _reformat_cls_base_rst(value: str) -> str
       :canonical: autodoc2.render.rst_.RstRenderer._reformat_cls_base_rst
 
-      Reformat the base of a class for RST.
-
-      Base annotations can come in the form::
-
-          A[B, C, D]
-
-      which we want to reformat as::
-
-          :py:obj:`A`\ [\ :py:obj:`B`\ , :py:obj:`C`\ , :py:obj:`D`\ ]
-
-      The backslash escapes are needed because of:
-      https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#character-level-inline-markup-1
+      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer._reformat_cls_base_rst
+         :renderer: rst

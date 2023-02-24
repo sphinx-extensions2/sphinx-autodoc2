@@ -2,4 +2,5 @@
    :canonical: package.func
    :noindex:
 
-   This is a function.
+   .. autodoc2-docstring:: package.func
+      :renderer: rst
