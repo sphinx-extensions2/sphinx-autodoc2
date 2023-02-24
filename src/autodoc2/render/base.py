@@ -213,7 +213,9 @@ class RendererBase(abc.ABC):
             for p in self.config.deprecated_module_regexes
         )
 
-    # TODO allow for adding :noindex:
+    def no_index(self, item: ItemData) -> bool:
+        """Whether this item should be excluded from search engines."""
+        return self.config.no_index
 
     def show_module_summary(self, item: ItemData) -> bool:
         """Whether to show a summary for this module/package."""

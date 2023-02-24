@@ -30,6 +30,7 @@ class RenderConfig:
     hidden_objects: set[t.Literal["undoc", "dunder", "private", "inherited"]]
     hidden_regexes: list[re.Pattern[str]]
     deprecated_module_regexes: list[re.Pattern[str]]
+    no_index: bool
     module_summary: bool
     class_docstring: t.Literal["merge", "both"]
     class_inheritance: bool
@@ -386,6 +387,15 @@ class Config:
         },
     )
 
+    no_index: bool = dc.field(
+        default=False,
+        metadata={
+            "help": "Do not generate a cross-reference index.",
+            "sphinx_type": (bool,),
+            "category": "render",
+        },
+    )
+
     deprecated_module_regexes: list[t.Pattern[str]] = dc.field(
         default_factory=list,
         metadata={
@@ -508,6 +518,7 @@ class Config:
                 skip_module_regexes=self.skip_module_regexes,
                 hidden_objects=self.hidden_objects,
                 hidden_regexes=self.hidden_regexes,
+                no_index=self.no_index,
                 deprecated_module_regexes=self.deprecated_module_regexes,
                 module_summary=self.module_summary,
                 class_docstring=self.class_docstring,
@@ -529,6 +540,7 @@ class Config:
             hidden_regexes=self.hidden_regexes
             if pkg.hidden_regexes is None
             else pkg.hidden_regexes,
+            no_index=self.no_index,
             deprecated_module_regexes=self.deprecated_module_regexes
             if pkg.deprecated_module_regexes is None
             else pkg.deprecated_module_regexes,
