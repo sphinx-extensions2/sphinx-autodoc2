@@ -489,7 +489,7 @@ class Config:
             "   {{ package }}\n"
             "{%- endfor %}\n"
             "\n"
-            ".. [#f1] Created with `sphinx-autodoc2`\n"
+            ".. [#f1] Created with `sphinx-autodoc2 <https://github.com/chrisjsewell/sphinx-autodoc2>`_\n"
             "\n"
         ),
         metadata={

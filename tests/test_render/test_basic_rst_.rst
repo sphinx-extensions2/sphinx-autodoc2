@@ -7,7 +7,9 @@
 Description
 -----------
 
-This is a test package.
+.. autodoc2-docstring:: package
+   :renderer: rst
+   :allowtitles:
 
 Subpackages
 -----------
@@ -29,7 +31,9 @@ Classes
    :align: left
 
    * - :py:obj:`Class <package.Class>`
-     - This is a class.
+     - .. autodoc2-docstring:: package.Class
+          :renderer: rst
+          :summary:
 
 Functions
 ~~~~~~~~~
@@ -39,7 +43,9 @@ Functions
    :align: left
 
    * - :py:obj:`func <package.func>`
-     - This is a function.
+     - .. autodoc2-docstring:: package.func
+          :renderer: rst
+          :summary:
 
 Data
 ~~~~
@@ -49,9 +55,13 @@ Data
    :align: left
 
    * - :py:obj:`__all__ <package.__all__>`
-     - 
+     - .. autodoc2-docstring:: package.__all__
+          :renderer: rst
+          :summary:
    * - :py:obj:`p <package.p>`
-     - p can be documented here.
+     - .. autodoc2-docstring:: package.p
+          :renderer: rst
+          :summary:
 
 API
 ~~~
@@ -60,41 +70,51 @@ API
    :canonical: package.__all__
    :value: ['p', 'a1', 'alias']
 
+   .. autodoc2-docstring:: package.__all__
+      :renderer: rst
+
 .. py:data:: p
    :canonical: package.p
    :value: 1
 
-   p can be documented here.
+   .. autodoc2-docstring:: package.p
+      :renderer: rst
 
 .. py:function:: func(a: str, b: int) -> package.a.c.ac1
    :canonical: package.func
 
-   This is a function.
+   .. autodoc2-docstring:: package.func
+      :renderer: rst
 
 .. py:class:: Class
    :canonical: package.Class
 
-   This is a class.
+   .. autodoc2-docstring:: package.Class
+      :renderer: rst
 
    .. py:attribute:: x
       :canonical: package.Class.x
       :type: int
       :value: 1
 
-      x can be documented here.
+      .. autodoc2-docstring:: package.Class.x
+         :renderer: rst
 
    .. py:method:: method(a: str, b: int) -> ...
       :canonical: package.Class.method
 
-      This is a method.
+      .. autodoc2-docstring:: package.Class.method
+         :renderer: rst
 
    .. py:property:: prop
       :canonical: package.Class.prop
       :type: package.a.c.ac1 | None
 
-      This is a property.
+      .. autodoc2-docstring:: package.Class.prop
+         :renderer: rst
 
    .. py:class:: Nested
       :canonical: package.Class.Nested
 
-      This is a nested class.
+      .. autodoc2-docstring:: package.Class.Nested
+         :renderer: rst

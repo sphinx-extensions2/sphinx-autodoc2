@@ -9,14 +9,25 @@ import subprocess
 from time import sleep
 import typing as t
 
+from docutils import nodes
+from docutils.parsers.rst import directives
+from docutils.parsers.rst.states import RSTStateMachine
+from docutils.statemachine import StringList
 from sphinx.application import Sphinx
 from sphinx.util import logging
+from sphinx.util.docutils import SphinxDirective
 
 from autodoc2 import __version__
 from autodoc2.analysis import analyse_module
 from autodoc2.config import CONFIG_PREFIX, Config, ValidationError
 from autodoc2.db import InMemoryDb, UniqueError
-from autodoc2.utils import ResolvedDict, WarningSubtypes, resolve_all, yield_modules
+from autodoc2.utils import (
+    ItemData,
+    ResolvedDict,
+    WarningSubtypes,
+    resolve_all,
+    yield_modules,
+)
 
 try:
     from sphinx.util.display import status_iterator
@@ -48,6 +59,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
 
     # create the main event
     app.connect("builder-inited", run_autodoc)
+    app.add_directive("autodoc2-docstring", DocstringRenderer)
 
     # TODO support viewcode, when a package is not installed
 
@@ -287,3 +299,105 @@ class EnvCache(t.TypedDict):
 
     hash: str  # the hash of the package files
     db: InMemoryDb
+
+
+class DocstringRenderer(SphinxDirective):
+    """Render a docstring of an object."""
+
+    has_content = False
+    required_arguments = 1  # the full name
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {
+        "renderer": directives.unchanged_required,  # TODO at the moment this is ignored
+        "allowtitles": directives.flag,  # used for module docstrings
+        "summary": directives.flag,  # return first child only
+    }
+
+    def run(self) -> list[nodes.Node]:
+        """Run the directive."""
+
+        # find the database item for this object
+        name = self.arguments[0]
+        dbs: dict[str, EnvCache] = self.env.autodoc2_cache  # type: ignore
+        item: ItemData | None = None
+        for cache in dbs.values():
+            item = cache["db"].get_item(name)
+            if item:
+                break
+
+        if item is None:
+            if "summary" not in self.options:
+                # summaries can include items imported from external modules
+                # which may not be in the database, so we don't warn about those
+                warn(f"Could not find {name}", WarningSubtypes.DOCSTRING_NOT_FOUND)
+            return []
+
+        # find the source path for this object,
+        # by walking up the parent tree
+        source_path = None
+        parts = name.split(".")
+        while parts:
+            parent = cache["db"].get_item(".".join(parts))
+            if parent and "file_path" in parent:
+                source_path = parent["file_path"]
+                break
+            parts.pop()
+
+        state: RSTStateMachine = self.state
+
+        if source_path:
+            # ensure rebuilds when the source file changes
+            self.env.note_dependency(source_path)
+            # self.state.document.settings.record_dependencies.add(source_path)
+
+        if not item["doc"]:
+            return []
+
+        line_offset = 0
+        if "range" in item:
+            line_offset = item["range"][0]
+
+        base = nodes.Element()
+        content = StringList(item["doc"].splitlines())
+
+        if source_path:
+            # Here we perform a nested render, but temporarily setup the document/reporter
+            # with the correct document path and lineno for the included file.
+            source = state.document["source"]
+            rsource = state.reporter.source
+            line_func = getattr(state.reporter, "get_source_and_line", None)
+            try:
+                state.document["source"] = source_path
+                state.reporter.source = source_path
+                state.reporter.get_source_and_line = lambda li: (
+                    source_path,
+                    li + line_offset,
+                )
+
+                state.nested_parse(
+                    content, 0, base, match_titles=self.options.get("allowtitles")
+                )
+            finally:
+                state.document["source"] = source
+                state.reporter.source = rsource
+                if line_func is not None:
+                    state.reporter.get_source_and_line = line_func
+                else:
+                    del state.reporter.get_source_and_line
+
+        else:
+            state.nested_parse(
+                content,
+                self.content_offset,
+                base,
+                match_titles=self.options.get("allowtitles"),
+            )
+
+        if not base.children:
+            return []
+
+        if "summary" in self.options:
+            return [base.children[0]]
+
+        return base.children or []

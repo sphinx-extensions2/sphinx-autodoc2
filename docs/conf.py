@@ -74,6 +74,7 @@ autodoc2_replace_annotations = [
 nitpick_ignore_regex = [
     (r"py:.*", r"typing_extensions.*"),
     (r"py:.*", r"astroid.*"),
+    (r"py:.*", r"docutils.*"),
     # TODO for some reason in:
     # .. py:function:: format_args(args_info: autodoc2.utils.ARGS_TYPE ...
     # ARGS_TYPE is treated as a class rather than data

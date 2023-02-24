@@ -70,6 +70,7 @@ class WarningSubtypes(enum.Enum):
     """__all__ attribute missing or empty in a module."""
     ALL_RESOLUTION = "all_resolve"
     """Issue with resolution of an item in a module's __all__ attribute."""
+    DOCSTRING_NOT_FOUND = "docstring"
 
 
 def yield_modules(

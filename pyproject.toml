@@ -76,7 +76,7 @@ testpaths = [
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = cli-py38
+envlist = py38
 
 [testenv]
 usedevelop = true

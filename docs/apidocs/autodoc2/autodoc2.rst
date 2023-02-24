@@ -7,7 +7,9 @@
 Description
 -----------
 
-Analyse a python project and create documentation for it.
+.. autodoc2-docstring:: autodoc2
+   :renderer: rst
+   :allowtitles:
 
 Subpackages
 -----------
@@ -44,7 +46,9 @@ Functions
    :align: left
 
    * - :py:obj:`setup <autodoc2.setup>`
-     - Entrypoint for sphinx.
+     - .. autodoc2-docstring:: autodoc2.setup
+          :renderer: rst
+          :summary:
 
 Data
 ~~~~
@@ -54,7 +58,9 @@ Data
    :align: left
 
    * - :py:obj:`__version__ <autodoc2.__version__>`
-     - 
+     - .. autodoc2-docstring:: autodoc2.__version__
+          :renderer: rst
+          :summary:
 
 API
 ~~~
@@ -63,7 +69,11 @@ API
    :canonical: autodoc2.__version__
    :value: '0.3.0'
 
+   .. autodoc2-docstring:: autodoc2.__version__
+      :renderer: rst
+
 .. py:function:: setup(app)
    :canonical: autodoc2.setup
 
-   Entrypoint for sphinx.
+   .. autodoc2-docstring:: autodoc2.setup
+      :renderer: rst

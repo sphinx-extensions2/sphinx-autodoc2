@@ -5,31 +5,43 @@
 
 ## Description
 
-A database interface for storing and querying the analysis items.
+```{autodoc2-docstring} autodoc2.db
+:renderer: myst
+   :allowtitles:
+```
 
 ## Module Contents
 
 ### Classes
 
-```{list-table}
+````{list-table}
 :class: autosummary longtable
 :align: left
 
 * - {py:obj}`Database <autodoc2.db.Database>`
-  - A simple interface for storing and querying the analysis items, from a single package.
+  - ```{autodoc2-docstring} autodoc2.db.Database
+    :renderer: myst
+    :summary:
+    ```
 * - {py:obj}`InMemoryDb <autodoc2.db.InMemoryDb>`
-  - A simple in-memory database for storing and querying the analysis items.
-```
+  - ```{autodoc2-docstring} autodoc2.db.InMemoryDb
+    :renderer: myst
+    :summary:
+    ```
+````
 
 ### Data
 
-```{list-table}
+````{list-table}
 :class: autosummary longtable
 :align: left
 
 * - {py:obj}`_LIKE_REGEX <autodoc2.db._LIKE_REGEX>`
-  - 
-```
+  - ```{autodoc2-docstring} autodoc2.db._LIKE_REGEX
+    :renderer: myst
+    :summary:
+    ```
+````
 
 ### API
 
@@ -38,205 +50,236 @@ A database interface for storing and querying the analysis items.
 
 Bases: {py:obj}`KeyError`
 
-An error raised when a unique constraint is violated.
+```{autodoc2-docstring} autodoc2.db.UniqueError
+:renderer: myst
+```
 
 ```{rubric} Initialization
 ```
 
-Initialize self.  See help(type(self)) for accurate signature.
+```{autodoc2-docstring} autodoc2.db.UniqueError
+:renderer: myst
+```
 
 ````
 
-````{py:class} Database
+`````{py:class} Database
 :canonical: autodoc2.db.Database
 
 Bases: {py:obj}`typing.Protocol`
 
-A simple interface for storing and querying the analysis items, from a single package.
+```{autodoc2-docstring} autodoc2.db.Database
+:renderer: myst
+```
 
-This allows for potential extensibility in the future,
-e.g. using a persistent sqlite database.
-
-```{py:method} add(item: autodoc2.utils.ItemData) -> None
+````{py:method} add(item: autodoc2.utils.ItemData) -> None
 :canonical: autodoc2.db.Database.add
 
-Add an item to the database.
-
-```
-
-```{py:method} __contains__(full_name: str) -> bool
-:canonical: autodoc2.db.Database.__contains__
-
-Check if an item is in the database, by full_name.
-
-```
-
-```{py:method} get_item(full_name: str) -> typing.Optional[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.Database.get_item
-
-Get an item from the database, by full_name.
-
-```
-
-```{py:method} get_items_like(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.Database.get_items_like
-
-Get an item from the database, matching the wildcards `*` and `?`.
-
-`*` matches any number of characters, and `?` matches any single character.
-
-```
-
-```{py:method} get_type(full_name: str) -> None | str
-:canonical: autodoc2.db.Database.get_type
-
-Get the type of an item from the database, by full_name.
-
-```
-
-```{py:method} get_by_type(type_: str) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.Database.get_by_type
-
-Get all items from the database, by type.
-
-```
-
-```{py:method} get_overloads(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.Database.get_overloads
-
-Get all function overloads for this name.
-
-```
-
-```{py:method} get_children(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.Database.get_children
-
-Get all items that are direct children of this name, i.e. `{full_name}.{name}`.
-
-:param full_name: The full name of the item.
-:param types: If given, only return items of these types.
-:param sort_name: If True, sort the names alphabetically.
-
-```
-
-```{py:method} get_children_names(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[str]
-:canonical: autodoc2.db.Database.get_children_names
-
-Get all names of direct children of this name, i.e. `{full_name}.{name}`.
-
-:param full_name: The full name of the item.
-:param types: If given, only return items of these types.
-:param sort_name: If True, sort the names alphabetically.
-
+```{autodoc2-docstring} autodoc2.db.Database.add
+:renderer: myst
 ```
 
 ````
 
-```{py:data} _LIKE_REGEX
+````{py:method} __contains__(full_name: str) -> bool
+:canonical: autodoc2.db.Database.__contains__
+
+```{autodoc2-docstring} autodoc2.db.Database.__contains__
+:renderer: myst
+```
+
+````
+
+````{py:method} get_item(full_name: str) -> typing.Optional[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.Database.get_item
+
+```{autodoc2-docstring} autodoc2.db.Database.get_item
+:renderer: myst
+```
+
+````
+
+````{py:method} get_items_like(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.Database.get_items_like
+
+```{autodoc2-docstring} autodoc2.db.Database.get_items_like
+:renderer: myst
+```
+
+````
+
+````{py:method} get_type(full_name: str) -> None | str
+:canonical: autodoc2.db.Database.get_type
+
+```{autodoc2-docstring} autodoc2.db.Database.get_type
+:renderer: myst
+```
+
+````
+
+````{py:method} get_by_type(type_: str) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.Database.get_by_type
+
+```{autodoc2-docstring} autodoc2.db.Database.get_by_type
+:renderer: myst
+```
+
+````
+
+````{py:method} get_overloads(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.Database.get_overloads
+
+```{autodoc2-docstring} autodoc2.db.Database.get_overloads
+:renderer: myst
+```
+
+````
+
+````{py:method} get_children(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.Database.get_children
+
+```{autodoc2-docstring} autodoc2.db.Database.get_children
+:renderer: myst
+```
+
+````
+
+````{py:method} get_children_names(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[str]
+:canonical: autodoc2.db.Database.get_children_names
+
+```{autodoc2-docstring} autodoc2.db.Database.get_children_names
+:renderer: myst
+```
+
+````
+
+`````
+
+````{py:data} _LIKE_REGEX
 :canonical: autodoc2.db._LIKE_REGEX
 :value: >
    None
 
+```{autodoc2-docstring} autodoc2.db._LIKE_REGEX
+:renderer: myst
 ```
 
-````{py:class} InMemoryDb()
+````
+
+`````{py:class} InMemoryDb()
 :canonical: autodoc2.db.InMemoryDb
 
 Bases: {py:obj}`autodoc2.db.Database`
 
-A simple in-memory database for storing and querying the analysis items.
+```{autodoc2-docstring} autodoc2.db.InMemoryDb
+:renderer: myst
+```
 
 ```{rubric} Initialization
 ```
 
-Create the database.
+```{autodoc2-docstring} autodoc2.db.InMemoryDb
+:renderer: myst
+```
 
-```{py:method} add(item: autodoc2.utils.ItemData) -> None
+````{py:method} add(item: autodoc2.utils.ItemData) -> None
 :canonical: autodoc2.db.InMemoryDb.add
 
-Add an item to the database.
-
-```
-
-```{py:method} __contains__(full_name: str) -> bool
-:canonical: autodoc2.db.InMemoryDb.__contains__
-
-Check if an item is in the database, by full_name.
-
-```
-
-```{py:method} get_item(full_name: str) -> typing.Optional[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.InMemoryDb.get_item
-
-Get an item from the database, by full_name.
-
-```
-
-```{py:method} get_items_like(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.InMemoryDb.get_items_like
-
-Get an item from the database, matching the wildcards `*` and `?`.
-
-`*` matches any number of characters, and `?` matches any single character.
-
-```
-
-```{py:method} get_type(full_name: str) -> None | str
-:canonical: autodoc2.db.InMemoryDb.get_type
-
-Get the type of an item from the database, by full_name.
-
-```
-
-```{py:method} get_by_type(type_: str) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.InMemoryDb.get_by_type
-
-Get all items from the database, by type.
-
-```
-
-```{py:method} get_overloads(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.InMemoryDb.get_overloads
-
-Get all function overloads for this name.
-
-```
-
-```{py:method} get_children(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[autodoc2.utils.ItemData]
-:canonical: autodoc2.db.InMemoryDb.get_children
-
-Get all items that are direct children of this name, i.e. `{full_name}.{name}`.
-
-:param full_name: The full name of the item.
-:param types: If given, only return items of these types.
-:param sort_name: If True, sort the names alphabetically.
-
-```
-
-```{py:method} get_children_names(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[str]
-:canonical: autodoc2.db.InMemoryDb.get_children_names
-
-Get all names of direct children of this name, i.e. `{full_name}.{name}`.
-
-:param full_name: The full name of the item.
-:param types: If given, only return items of these types.
-:param sort_name: If True, sort the names alphabetically.
-
-```
-
-```{py:method} write(stream: typing.TextIO) -> None
-:canonical: autodoc2.db.InMemoryDb.write
-
-Write the database to a file.
-
-```
-
-```{py:method} read(stream: typing.TextIO) -> autodoc2.db.InMemoryDb
-:canonical: autodoc2.db.InMemoryDb.read
-:classmethod:
-
-Read the database from a file.
-
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.add
+:renderer: myst
 ```
 
 ````
+
+````{py:method} __contains__(full_name: str) -> bool
+:canonical: autodoc2.db.InMemoryDb.__contains__
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.__contains__
+:renderer: myst
+```
+
+````
+
+````{py:method} get_item(full_name: str) -> typing.Optional[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.InMemoryDb.get_item
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_item
+:renderer: myst
+```
+
+````
+
+````{py:method} get_items_like(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.InMemoryDb.get_items_like
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_items_like
+:renderer: myst
+```
+
+````
+
+````{py:method} get_type(full_name: str) -> None | str
+:canonical: autodoc2.db.InMemoryDb.get_type
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_type
+:renderer: myst
+```
+
+````
+
+````{py:method} get_by_type(type_: str) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.InMemoryDb.get_by_type
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_by_type
+:renderer: myst
+```
+
+````
+
+````{py:method} get_overloads(full_name: str) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.InMemoryDb.get_overloads
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_overloads
+:renderer: myst
+```
+
+````
+
+````{py:method} get_children(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[autodoc2.utils.ItemData]
+:canonical: autodoc2.db.InMemoryDb.get_children
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_children
+:renderer: myst
+```
+
+````
+
+````{py:method} get_children_names(full_name: str, types: None | set[str] = None, *, sort_name: bool = False) -> typing.Iterable[str]
+:canonical: autodoc2.db.InMemoryDb.get_children_names
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_children_names
+:renderer: myst
+```
+
+````
+
+````{py:method} write(stream: typing.TextIO) -> None
+:canonical: autodoc2.db.InMemoryDb.write
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.write
+:renderer: myst
+```
+
+````
+
+````{py:method} read(stream: typing.TextIO) -> autodoc2.db.InMemoryDb
+:canonical: autodoc2.db.InMemoryDb.read
+:classmethod:
+
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.read
+:renderer: myst
+```
+
+````
+
+`````

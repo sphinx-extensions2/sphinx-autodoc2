@@ -10,13 +10,13 @@ if t.TYPE_CHECKING:
     from autodoc2.utils import ItemData
 
 
-_MD_HEAD_RE = re.compile(r"^[#]+\s")
 _RE_DELIMS = re.compile(r"(\s*[\[\]\(\),]\s*)")
 
 
 class MystRenderer(RendererBase):
     """Render the documentation as MyST."""
 
+    NAME = "myst"
     EXTENSION = ".md"
 
     def render_item(self, full_name: str) -> t.Iterable[str]:
@@ -49,16 +49,12 @@ class MystRenderer(RendererBase):
         """Generate a summary of the items."""
         for item in items:
             short_name = item["full_name"].split(".")[-1]
-            summary = ""
-            # get the first paragraph, allowing for the first line to be blank
-            for i, line in enumerate(item["doc"].splitlines()):
-                if i > 0 and not line.strip():
-                    break
-                summary += line.rstrip() + " "
-            summary = summary.strip()
             # TODO get signature (for functions, etc), plus sphinx also runs rst.escape
             yield f"* - {{py:obj}}`{short_name} <{item['full_name']}>`"
-            yield f"  - {summary}"
+            yield f"  - ```{{autodoc2-docstring}} {item['full_name']}"
+            yield f"    :renderer: {self.NAME}"
+            yield "    :summary:"
+            yield "    ```"
 
     @staticmethod
     def enclosing_backticks(text: str) -> str:
@@ -85,17 +81,15 @@ class MystRenderer(RendererBase):
             yield ":deprecated:"
         yield from ["```", ""]
 
-        if item["doc"]:
-            yield "## Description"
-            yield ""
-            for line in item["doc"].splitlines():
-                if _MD_HEAD_RE.match(line):
-                    # if its a heading, then we want to make sure it will be
-                    # a sub heading of description
-                    yield "##" + line
-                else:
-                    yield line
-            yield ""
+        yield from [
+            "## Description",
+            "",
+            f"```{{autodoc2-docstring}} {item['full_name']}",
+            f":renderer: {self.NAME}",
+            "   :allowtitles:",
+            "```",
+            "",
+        ]
 
         visible_subpackages = [
             i["full_name"] for i in self.get_children(item, {"package"})
@@ -154,13 +148,13 @@ class MystRenderer(RendererBase):
                     yield from [
                         f"### {heading}",
                         "",
-                        "```{list-table}",
+                        "````{list-table}",
                         ":class: autosummary longtable",
                         ":align: left",
                         "",
                     ]
                     yield from self.generate_summary(visible_items)
-                    yield "```"
+                    yield "````"
                     yield ""
 
             yield from ["### API", ""]
@@ -182,9 +176,7 @@ class MystRenderer(RendererBase):
         if show_annotations and item.get("return_annotation"):
             sig += f" -> {self.format_annotation(item['return_annotation'])}"
 
-        backticks = self.enclosing_backticks(item["doc"] or "")
-
-        yield f"{backticks}{{py:function}} {sig}"
+        yield f"````{{py:function}} {sig}"
         yield f":canonical: {item['full_name']}"
         if self.no_index(item):
             yield ":noindex:"
@@ -194,10 +186,10 @@ class MystRenderer(RendererBase):
             # TODO it would also be good to highlight if singledispatch decorated,
             # or, more broadly speaking, decorated at all
         yield ""
-        if item["doc"]:
-            yield from item["doc"].splitlines()
-            yield ""
-        yield backticks
+        yield f"```{{autodoc2-docstring}} {item['full_name']}"
+        yield f":renderer: {self.NAME}"
+        yield "```"
+        yield "````"
         yield ""
 
     def render_exception(self, item: ItemData) -> t.Iterable[str]:
@@ -239,16 +231,29 @@ class MystRenderer(RendererBase):
 
         # TODO inheritance diagram
 
-        if item["doc"]:
-            lines += item["doc"].splitlines()
-            lines.append("")
+        lines.extend(
+            [
+                f"```{{autodoc2-docstring}} {item['full_name']}",
+                f":renderer: {self.NAME}",
+                "```",
+                "",
+            ]
+        )
 
         if self.config.class_docstring == "merge":
             init_item = self.get_item(f"{item['full_name']}.__init__")
-            if init_item and init_item["doc"]:
-                lines.extend(["```{rubric} Initialization", "```", ""])
-                lines.extend(init_item["doc"].splitlines())
-                lines.append("")
+            if init_item:
+                lines.extend(
+                    [
+                        "```{rubric} Initialization",
+                        "```",
+                        "",
+                        f"```{{autodoc2-docstring}} {item['full_name']}",
+                        f":renderer: {self.NAME}",
+                        "```",
+                        "",
+                    ]
+                )
 
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
@@ -273,10 +278,8 @@ class MystRenderer(RendererBase):
         if self.is_hidden(item):
             return
 
-        backticks = self.enclosing_backticks(item["doc"] or "")
-
         short_name = item["full_name"].split(".")[-1]
-        yield f"{backticks}{{py:property}} {short_name}"
+        yield f"````{{py:property}} {short_name}"
         yield f":canonical: {item['full_name']}"
         if self.no_index(item):
             yield ":noindex:"
@@ -285,14 +288,18 @@ class MystRenderer(RendererBase):
                 yield f":{prop}:"
         if item.get("return_annotation"):
             yield f":type: {self.format_annotation(item['return_annotation'])}"
-        yield ""
 
-        if item["doc"]:
-            yield from item["doc"].splitlines()
-            yield ""
-
-        yield backticks
-        yield ""
+        yield from (
+            [
+                "",
+                f"```{{autodoc2-docstring}} {item['full_name']}",
+                f":renderer: {self.NAME}",
+                "```",
+                "",
+                "````",
+                "",
+            ]
+        )
 
     def render_method(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a method."""
@@ -305,9 +312,7 @@ class MystRenderer(RendererBase):
         if show_annotations and item.get("return_annotation"):
             sig += f" -> {self.format_annotation(item['return_annotation'])}"
 
-        backticks = self.enclosing_backticks(item["doc"] or "")
-
-        yield f"{backticks}{{py:method}} {sig}"
+        yield f"````{{py:method}} {sig}"
         yield f":canonical: {item['full_name']}"
         if self.no_index(item):
             yield ":noindex:"
@@ -316,14 +321,18 @@ class MystRenderer(RendererBase):
         for prop in ("abstractmethod", "async", "classmethod", "final", "staticmethod"):
             if prop in item.get("properties", []):
                 yield f":{prop}:"
-        yield ""
 
-        if item["doc"]:
-            yield from item["doc"].splitlines()
-            yield ""
-
-        yield backticks
-        yield ""
+        yield from (
+            [
+                "",
+                f"```{{autodoc2-docstring}} {item['full_name']}",
+                f":renderer: {self.NAME}",
+                "```",
+                "",
+                "````",
+                "",
+            ]
+        )
 
     def render_attribute(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for an attribute."""
@@ -334,10 +343,9 @@ class MystRenderer(RendererBase):
         if self.is_hidden(item):
             return
 
-        backticks = self.enclosing_backticks(item["doc"] or "")
         short_name = item["full_name"].split(".")[-1]
 
-        yield f"{backticks}{{py:{item['type']}}} {short_name}"
+        yield f"````{{py:{item['type']}}} {short_name}"
         yield f":canonical: {item['full_name']}"
         if self.no_index(item):
             yield ":noindex:"
@@ -363,13 +371,17 @@ class MystRenderer(RendererBase):
             yield ":value: >"
             yield f"   {value}"
 
-        yield ""
-        if item["doc"]:
-            yield from item["doc"].splitlines()
-            yield ""
-
-        yield backticks
-        yield ""
+        yield from (
+            [
+                "",
+                f"```{{autodoc2-docstring}} {item['full_name']}",
+                f":renderer: {self.NAME}",
+                "```",
+                "",
+                "````",
+                "",
+            ]
+        )
 
     def _reformat_cls_base_myst(self, value: str) -> str:
         """Reformat the base of a class for RST.
