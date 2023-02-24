@@ -3,10 +3,6 @@
 
 .. py:module:: aiida.schedulers
 
-
-Description
------------
-
 .. autodoc2-docstring:: aiida.schedulers
    :renderer: rst
    :allowtitles:

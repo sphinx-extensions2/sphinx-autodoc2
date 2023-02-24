@@ -3,10 +3,6 @@
 
 .. py:module:: aiida.transports
 
-
-Description
------------
-
 .. autodoc2-docstring:: aiida.transports
    :renderer: rst
    :allowtitles:

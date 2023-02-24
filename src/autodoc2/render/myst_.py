@@ -82,8 +82,6 @@ class MystRenderer(RendererBase):
         yield from ["```", ""]
 
         yield from [
-            "## Description",
-            "",
             f"```{{autodoc2-docstring}} {item['full_name']}",
             f":renderer: {self.NAME}",
             "   :allowtitles:",

@@ -3,8 +3,6 @@
 ```{py:module} autodoc2.db
 ```
 
-## Description
-
 ```{autodoc2-docstring} autodoc2.db
 :renderer: myst
    :allowtitles:

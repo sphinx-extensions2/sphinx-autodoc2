@@ -3,10 +3,6 @@
 
 .. py:module:: autodoc2.render.myst_
 
-
-Description
------------
-
 .. autodoc2-docstring:: autodoc2.render.myst_
    :renderer: rst
    :allowtitles:
