@@ -36,6 +36,28 @@ def test_basic(renderer: RendererBase, extension: str, tmp_path: Path, file_regr
 
 
 @pytest.mark.parametrize(
+    "renderer,extension",
+    [
+        (RstRenderer, ".rst"),
+        (MystRenderer, ".md"),
+    ],
+    ids=["rst", "myst"],
+)
+def test_config_options(
+    renderer: RendererBase, extension: str, tmp_path: Path, file_regression
+):
+    """Test basic rendering."""
+    package = build_package(tmp_path)
+    db = InMemoryDb()
+    for path, modname in yield_modules(package):
+        for item in analyse_module(path, modname):
+            db.add(item)
+    config = Config(no_index=True)
+    content = "\n".join(renderer(db, config).render_item(package.name + ".func"))
+    file_regression.check(content, extension=extension)
+
+
+@pytest.mark.parametrize(
     "with_rebuild",
     [True, False],
     ids=["with_rebuild", "without_rebuild"],

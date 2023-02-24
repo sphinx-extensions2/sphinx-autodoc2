@@ -74,6 +74,8 @@ class RstRenderer(RendererBase):
         yield from [line, "=" * len(line), ""]
 
         yield f".. py:module:: {full_name}"
+        if self.no_index(item):
+            yield "   :noindex:"
         if self.is_module_deprecated(item):
             yield "   :deprecated:"
         yield from ["", ""]
@@ -171,6 +173,8 @@ class RstRenderer(RendererBase):
 
         yield f".. py:function:: {sig}"
         yield f"   :canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield "   :noindex:"
         # TODO overloads
         if "async" in item.get("properties", []):
             yield "   :async:"
@@ -205,6 +209,8 @@ class RstRenderer(RendererBase):
 
         yield f".. py:{item['type']}:: {sig}"
         yield f"   :canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield "   :noindex:"
         yield ""
 
         # TODO overloads
@@ -255,6 +261,8 @@ class RstRenderer(RendererBase):
         short_name = item["full_name"].split(".")[-1]
         yield f".. py:property:: {short_name}"
         yield f"   :canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield "   :noindex:"
         for prop in ("abstractmethod", "classmethod"):
             if prop in item.get("properties", []):
                 yield f"   :{prop}:"
@@ -283,6 +291,8 @@ class RstRenderer(RendererBase):
 
         yield f".. py:method:: {sig}"
         yield f"   :canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield "   :noindex:"
         # TODO overloads
         # TODO collect final decorated in analysis
         for prop in ("abstractmethod", "async", "classmethod", "final", "staticmethod"):
@@ -310,6 +320,8 @@ class RstRenderer(RendererBase):
         short_name = item["full_name"].split(".")[-1]
         yield f".. py:{item['type']}:: {short_name}"
         yield f"   :canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield "   :noindex:"
         for prop in ("abstractmethod", "classmethod"):
             if prop in item.get("properties", []):
                 yield f"   :{prop}:"

@@ -79,6 +79,8 @@ class MystRenderer(RendererBase):
         yield ""
 
         yield f"```{{py:module}} {full_name}"
+        if self.no_index(item):
+            yield ":noindex:"
         if self.is_module_deprecated(item):
             yield ":deprecated:"
         yield from ["```", ""]
@@ -184,6 +186,8 @@ class MystRenderer(RendererBase):
 
         yield f"{backticks}{{py:function}} {sig}"
         yield f":canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield ":noindex:"
         # TODO overloads
         if "async" in item.get("properties", []):
             yield ":async:"
@@ -217,12 +221,10 @@ class MystRenderer(RendererBase):
         # note, here we can cannot yield by line,
         # because we need to look ahead to know the length of the backticks
 
-        lines: list[str] = []
-
-        lines += [
-            f":canonical: {item['full_name']}",
-            "",
-        ]
+        lines: list[str] = [f":canonical: {item['full_name']}"]
+        if self.no_index(item):
+            lines += [":noindex:"]
+        lines += [""]
 
         # TODO overloads
 
@@ -276,6 +278,8 @@ class MystRenderer(RendererBase):
         short_name = item["full_name"].split(".")[-1]
         yield f"{backticks}{{py:property}} {short_name}"
         yield f":canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield ":noindex:"
         for prop in ("abstractmethod", "classmethod"):
             if prop in item.get("properties", []):
                 yield f":{prop}:"
@@ -305,6 +309,8 @@ class MystRenderer(RendererBase):
 
         yield f"{backticks}{{py:method}} {sig}"
         yield f":canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield ":noindex:"
         # TODO overloads
         # TODO collect final decorated in analysis
         for prop in ("abstractmethod", "async", "classmethod", "final", "staticmethod"):
@@ -333,6 +339,8 @@ class MystRenderer(RendererBase):
 
         yield f"{backticks}{{py:{item['type']}}} {short_name}"
         yield f":canonical: {item['full_name']}"
+        if self.no_index(item):
+            yield ":noindex:"
         for prop in ("abstractmethod", "classmethod"):
             if prop in item.get("properties", []):
                 yield f":{prop}:"
