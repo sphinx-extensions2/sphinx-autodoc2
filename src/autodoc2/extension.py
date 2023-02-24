@@ -47,14 +47,18 @@ def warn(msg: str, subtype: WarningSubtypes) -> None:
 
 def setup(app: Sphinx) -> dict[str, str | bool]:
     """Entry point for sphinx."""
-
     # create the configuration options
     for name, default, field in Config().as_triple():
+        sphinx_type = t.Any
+        if "sphinx_type" in field.metadata:
+            sphinx_type = field.metadata["sphinx_type"]
+            if sphinx_type in (str, int, float, bool):
+                sphinx_type = (sphinx_type,)
         app.add_config_value(
             f"{CONFIG_PREFIX}{name}",
             field.metadata.get("sphinx_default", default),
             "env",
-            types=field.metadata.get("sphinx_type", t.Any),
+            types=sphinx_type,
         )
 
     # create the main event
