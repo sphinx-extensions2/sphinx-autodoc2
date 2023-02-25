@@ -58,7 +58,7 @@ class RstRenderer(RendererBase):
 
     def render_package(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a package."""
-        if self.is_hidden(item):
+        if self.standalone and self.is_hidden(item):
             yield from [":orphan:", ""]
 
         full_name = item["full_name"]
@@ -154,9 +154,6 @@ class RstRenderer(RendererBase):
 
     def render_function(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a function."""
-        if self.is_hidden(item):
-            return
-
         short_name = item["full_name"].split(".")[-1]
         show_annotations = self.show_annotations(item)
         sig = f"{short_name}({self.format_args(item['args'], show_annotations)})"
@@ -184,9 +181,6 @@ class RstRenderer(RendererBase):
 
     def render_class(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a class."""
-        if self.is_hidden(item):
-            return
-
         short_name = item["full_name"].split(".")[-1]
         constructor = self.get_item(f"{item['full_name']}.__init__")
         sig = short_name
@@ -240,9 +234,6 @@ class RstRenderer(RendererBase):
 
     def render_property(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a property."""
-        if self.is_hidden(item):
-            return
-
         short_name = item["full_name"].split(".")[-1]
         yield f".. py:property:: {short_name}"
         yield f"   :canonical: {item['full_name']}"
@@ -261,9 +252,6 @@ class RstRenderer(RendererBase):
 
     def render_method(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a method."""
-        if self.is_hidden(item):
-            return
-
         short_name = item["full_name"].split(".")[-1]
         show_annotations = self.show_annotations(item)
         sig = f"{short_name}({self.format_args(item['args'], show_annotations, ignore_self='self')})"
@@ -292,9 +280,6 @@ class RstRenderer(RendererBase):
 
     def render_data(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a data item."""
-        if self.is_hidden(item):
-            return
-
         short_name = item["full_name"].split(".")[-1]
         yield f".. py:{item['type']}:: {short_name}"
         yield f"   :canonical: {item['full_name']}"

@@ -27,10 +27,19 @@ class RendererBase(abc.ABC):
         config: Config,
         warn: t.Callable[[str, WarningSubtypes], None] | None = None,
         resolved_all: dict[str, ResolvedDict] | None = None,
+        standalone: bool = True,
     ) -> None:
-        """Initialise the renderer."""
+        """Initialise the renderer.
+
+        :param db: The database to obtain objects from.
+        :param config: The configuration.
+        :param warn: A function to call when a warning is encountered.
+        :param resolved_all: A dictionary of full_name -> __all__ resolution.
+        :param standalone: If True, this renderer is being used to create a standalone document
+        """
         self._db = db
         self._config = config
+        self._standalone = standalone
         self._warn = warn or (lambda msg, type_: None)
         self._resolved_all = resolved_all
         self._resolve_all_warned: set[str] = set()
@@ -42,6 +51,11 @@ class RendererBase(abc.ABC):
     def config(self) -> Config:
         """The configuration."""
         return self._config
+
+    @property
+    def standalone(self) -> bool:
+        """If True, this renderer is being used to create a standalone document."""
+        return self._standalone
 
     def warn(
         self, msg: str, type_: WarningSubtypes = WarningSubtypes.RENDER_ERROR
