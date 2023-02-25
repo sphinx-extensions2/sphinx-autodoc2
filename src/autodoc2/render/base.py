@@ -10,7 +10,7 @@ import typing as t
 from autodoc2.utils import WarningSubtypes
 
 if t.TYPE_CHECKING:
-    from autodoc2.config import RenderConfig
+    from autodoc2.config import Config
     from autodoc2.db import Database
     from autodoc2.utils import ARGS_TYPE, ItemData, ResolvedDict
 
@@ -24,7 +24,7 @@ class RendererBase(abc.ABC):
     def __init__(
         self,
         db: Database,
-        config: RenderConfig,
+        config: Config,
         warn: t.Callable[[str, WarningSubtypes], None] | None = None,
         resolved_all: dict[str, ResolvedDict] | None = None,
     ) -> None:
@@ -39,7 +39,7 @@ class RendererBase(abc.ABC):
         """Cache for the is_hidden function: full_name -> bool."""
 
     @property
-    def config(self) -> RenderConfig:
+    def config(self) -> Config:
         """The configuration."""
         return self._config
 

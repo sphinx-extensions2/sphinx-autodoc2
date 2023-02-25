@@ -40,7 +40,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.render.myst_._RE_DELIMS
 
-.. py:class:: MystRenderer(db: autodoc2.db.Database, config: autodoc2.config.RenderConfig, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
+.. py:class:: MystRenderer(db: autodoc2.db.Database, config: autodoc2.config.Config, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
    :canonical: autodoc2.render.myst_.MystRenderer
 
    Bases: :py:obj:`autodoc2.render.base.RendererBase`

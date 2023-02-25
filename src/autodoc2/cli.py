@@ -254,9 +254,7 @@ def write(
         for mod_name in to_write:
             progress.update(task, advance=1, description=mod_name)
             content = "\n".join(
-                config.render_plugin(
-                    db, config.to_render_config(None), _warn
-                ).render_item(mod_name)
+                config.render_plugin(db, config, _warn).render_item(mod_name)
             )
             out_path = output / (mod_name + config.render_plugin.EXTENSION)
             paths.append(out_path)

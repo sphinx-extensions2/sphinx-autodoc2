@@ -19,33 +19,9 @@ CONFIG_PREFIX = "autodoc2_"
 
 
 @dc.dataclass
-class RenderConfig:
-    """The configuration for rendering.
-
-    This uses the global, with package level overrides.
-    """
-
-    module_all_regexes: list[re.Pattern[str]]
-    skip_module_regexes: list[re.Pattern[str]]
-    hidden_objects: set[t.Literal["undoc", "dunder", "private", "inherited"]]
-    hidden_regexes: list[re.Pattern[str]]
-    deprecated_module_regexes: list[re.Pattern[str]]
-    no_index: bool
-    module_summary: bool
-    class_docstring: t.Literal["merge", "both"]
-    class_inheritance: bool
-    annotations: bool
-    sort_names: bool
-    replace_annotations: list[tuple[str, str]]
-    replace_bases: list[tuple[str, str]]
-    docstring_parser_regexes: list[tuple[t.Pattern[str], str]]
-
-
-@dc.dataclass
 class PackageConfig:
     """A package-level config item."""
 
-    # package specific
     path: str = dc.field(
         metadata={
             "help": "The path to the package, "
@@ -67,21 +43,19 @@ class PackageConfig:
         },
     )
 
-    # global overrides
-    exclude_dirs: list[str] | None = None
-    exclude_files: list[str] | None = None
-    module_all_regexes: list[re.Pattern[str]] | None = None
-    skip_module_regexes: list[re.Pattern[str]] | None = None
-    hidden_objects: set[
-        t.Literal["undoc", "dunder", "private", "inherited"]
-    ] | None = None
-    hidden_regexes: list[re.Pattern[str]] | None = None
-    deprecated_module_regexes: list[re.Pattern[str]] | None = None
-    module_summary: bool | None = None
-    class_inheritance: bool | None = None
-    class_docstring: t.Literal["merge", "both"] | None = None
-    annotations: bool | None = None
-    sort_names: bool | None = None
+    exclude_dirs: list[str] = dc.field(
+        default_factory=lambda: ["__pycache__"],
+        metadata={
+            "help": "Directories to exclude from module analysis (matched by fnmatch).",
+        },
+    )
+
+    exclude_files: list[str] = dc.field(
+        default_factory=list,
+        metadata={
+            "help": "Files to exclude from module gathering (matched by fnmatch).",
+        },
+    )
 
     def as_triple(self) -> t.Iterable[tuple[str, t.Any, dc.Field]]:  # type: ignore[type-arg]
         """Yield triples of (name, value, field)."""
@@ -131,44 +105,8 @@ def _coerce_packages(name: str, item: t.Any) -> list[PackageConfig]:
                 or not all(isinstance(x, str) for x in package[key])
             ):
                 raise ValidationError(f"{name}[{i}][{key!r}] must be a list of strings")
-        for key in (
-            "module_summary",
-            "class_inheritance",
-            "annotations",
-            "sort_names",
-        ):
-            if key in package and not isinstance(package[key], bool):
-                raise ValidationError(f"{name}[{i}][{key!r}] must be a boolean")
-        if "class_docstring" in package and package["class_docstring"] not in (
-            "merge",
-            "both",
-        ):
-            raise ValidationError(
-                f"{name}[{i}]['class_docstring'] must be 'merge' or 'both'"
-            )
-        for key in (
-            "skip_module_regexes",
-            "hidden_regexes",
-            "deprecated_module_regexes",
-            "module_all_regexes",
-        ):
-            if key in package:
-                package[key] = _validate_regex_list(
-                    f"{name}[{i}][{key!r}]", package[key]
-                )
-        if "hidden_objects" in package:
-            package["hidden_objects"] = _validate_hidden_objects(
-                f"{name}[{i}]['hidden_objects']", package["hidden_objects"]
-            )
 
     return [PackageConfig(**p) for p in new]
-
-
-def _validate_string_list(name: str, item: t.Any) -> list[str]:
-    """Validate that an item is a string."""
-    if not isinstance(item, list) or not all(isinstance(x, str) for x in item):
-        raise ValidationError(f"{name!r} must be a list of string")
-    return item
 
 
 def _validate_replace_list(name: str, item: t.Any) -> list[t.Tuple[str, str]]:
@@ -283,7 +221,7 @@ class Config:
         default_factory=list,
         metadata={
             "help": (
-                "The packages to document. "
+                "The packages to analyse. "
                 "Each item can be a simple string, "
                 "pointing to the package path, "
                 "relative to the source directory (in POSIX format), "
@@ -305,26 +243,6 @@ class Config:
             ),
             "sphinx_type": str,
             "category": "render",
-        },
-    )
-
-    exclude_dirs: list[str] = dc.field(
-        default_factory=lambda: ["__pycache__"],
-        metadata={
-            "help": "Directories to exclude from module analysis (matched by fnmatch).",
-            "sphinx_type": list,
-            "sphinx_validate": _validate_string_list,
-            "category": "analysis",
-        },
-    )
-
-    exclude_files: list[str] = dc.field(
-        default_factory=list,
-        metadata={
-            "help": "Files to exclude from module gathering (matched by fnmatch).",
-            "sphinx_type": list,
-            "sphinx_validate": _validate_string_list,
-            "category": "analysis",
         },
     )
 
@@ -358,8 +276,9 @@ class Config:
     module_all_regexes: list[t.Pattern[str]] = dc.field(
         default_factory=list,
         metadata={
-            "help": "Whether to use the `__all__` in a module, "
-            "to determine what children to document",
+            "help": "Regexes which match fully qualified module names, "
+            "to specify they should use the `__all__` when "
+            "determining which children to document",
             "sphinx_type": list,
             "sphinx_validate": _validate_regex_list,
             "category": "render",
@@ -369,7 +288,7 @@ class Config:
     skip_module_regexes: list[t.Pattern[str]] = dc.field(
         default_factory=list,
         metadata={
-            "help": "Regexes which match against module/package names, to skip them",
+            "help": "Regexes which match fully qualified module/package names, to skip them",
             "sphinx_type": list,
             "sphinx_validate": _validate_regex_list,
             "category": "render",
@@ -398,7 +317,7 @@ class Config:
     hidden_regexes: list[t.Pattern[str]] = dc.field(
         default_factory=list,
         metadata={
-            "help": "Regexes which match against object names, to mark them as hidden",
+            "help": "Regexes which match against fully qualified names, to mark them as hidden",
             "sphinx_type": list,
             "sphinx_validate": _validate_regex_list,
             "category": "render",
@@ -534,64 +453,15 @@ class Config:
         },
     )
 
+    # TODO regexes
+    # module_summary: bool | None = None
+    # class_inheritance: bool | None = None
+    # class_docstring: t.Literal["merge", "both"] | None = None
+    # annotations: bool | None = None
+    # sort_names: bool | None = None
+
     def as_triple(self) -> t.Iterable[tuple[str, t.Any, dc.Field]]:  # type: ignore[type-arg]
         """Yield triples of (name, value, field)."""
         fields = {f.name: f for f in dc.fields(self.__class__)}
         for name, value in dc.asdict(self).items():
             yield name, value, fields[name]
-
-    def to_render_config(self, pkg_index: int | None) -> RenderConfig:
-        """Convert a module level render config."""
-        # TODO config could also be specific to the module?
-        if pkg_index is None:
-            return RenderConfig(
-                skip_module_regexes=self.skip_module_regexes,
-                hidden_objects=self.hidden_objects,
-                hidden_regexes=self.hidden_regexes,
-                no_index=self.no_index,
-                deprecated_module_regexes=self.deprecated_module_regexes,
-                module_summary=self.module_summary,
-                class_docstring=self.class_docstring,
-                class_inheritance=self.class_inheritance,
-                annotations=self.annotations,
-                sort_names=self.sort_names,
-                module_all_regexes=self.module_all_regexes,
-                replace_annotations=self.replace_annotations,
-                replace_bases=self.replace_bases,
-                docstring_parser_regexes=self.docstring_parser_regexes,
-            )
-        pkg = self.packages[pkg_index]
-        return RenderConfig(
-            skip_module_regexes=self.skip_module_regexes
-            if pkg.skip_module_regexes is None
-            else pkg.skip_module_regexes,
-            hidden_objects=self.hidden_objects
-            if pkg.hidden_objects is None
-            else pkg.hidden_objects,
-            hidden_regexes=self.hidden_regexes
-            if pkg.hidden_regexes is None
-            else pkg.hidden_regexes,
-            no_index=self.no_index,
-            deprecated_module_regexes=self.deprecated_module_regexes
-            if pkg.deprecated_module_regexes is None
-            else pkg.deprecated_module_regexes,
-            module_summary=self.module_summary
-            if pkg.module_summary is None
-            else pkg.module_summary,
-            class_docstring=self.class_docstring
-            if pkg.class_docstring is None
-            else pkg.class_docstring,
-            class_inheritance=self.class_inheritance
-            if pkg.class_inheritance is None
-            else pkg.class_inheritance,
-            annotations=self.annotations
-            if pkg.annotations is None
-            else pkg.annotations,
-            sort_names=self.sort_names if pkg.sort_names is None else pkg.sort_names,
-            module_all_regexes=self.module_all_regexes
-            if pkg.module_all_regexes is None
-            else pkg.module_all_regexes,
-            replace_annotations=self.replace_annotations,
-            replace_bases=self.replace_bases,
-            docstring_parser_regexes=self.docstring_parser_regexes,
-        )

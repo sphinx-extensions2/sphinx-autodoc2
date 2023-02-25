@@ -50,16 +50,6 @@ autodoc2_packages = [
             "https://github.com/aiidateam/aiida-core.git",
             "v2.2.2",
         ),
-        "skip_module_regexes": [
-            r"aiida\.[^\.]+\..*",
-            r"aiida\.(__main__|calculations|restapi|sphinxext|storage|workflows)",
-        ],
-        "module_all_regexes": [
-            r"aiida\.[^\.]+",
-        ],
-        "deprecated_module_regexes": [
-            r"aiida\.parsers\.parser",
-        ],
         "exclude_dirs": [
             "__pycache__",
             # "migrations",
@@ -72,6 +62,14 @@ autodoc2_replace_annotations = [
 ]
 autodoc2_docstring_parser_regexes = [
     (r"autodoc2\.sphinx\.docstring\._example", "myst"),
+]
+autodoc2_deprecated_module_regexes = [
+    r"aiida\.parsers\.parser",
+]
+autodoc2_module_all_regexes = [r"aiida\.[^\.]+"]
+autodoc2_skip_module_regexes = [
+    r"aiida\.[^\.]+\..*",
+    r"aiida\.(__main__|calculations|restapi|sphinxext|storage|workflows)",
 ]
 
 nitpick_ignore_regex = [
