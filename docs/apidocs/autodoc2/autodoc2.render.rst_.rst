@@ -40,7 +40,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.render.rst_._RE_DELIMS
 
-.. py:class:: RstRenderer(db: autodoc2.db.Database, config: autodoc2.config.Config, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
+.. py:class:: RstRenderer(db: autodoc2.db.Database, config: autodoc2.config.Config, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None, standalone: bool = True)
    :canonical: autodoc2.render.rst_.RstRenderer
 
    Bases: :py:obj:`autodoc2.render.base.RendererBase`
