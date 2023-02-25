@@ -4,7 +4,6 @@
 .. py:module:: aiida
 
 .. autodoc2-docstring:: aiida
-   :renderer: rst
    :allowtitles:
 
 Subpackages
@@ -38,23 +37,18 @@ Functions
 
    * - :py:obj:`get_strict_version <aiida.get_strict_version>`
      - .. autodoc2-docstring:: aiida.get_strict_version
-          :renderer: rst
           :summary:
    * - :py:obj:`get_version <aiida.get_version>`
      - .. autodoc2-docstring:: aiida.get_version
-          :renderer: rst
           :summary:
    * - :py:obj:`_get_raw_file_header <aiida._get_raw_file_header>`
      - .. autodoc2-docstring:: aiida._get_raw_file_header
-          :renderer: rst
           :summary:
    * - :py:obj:`get_file_header <aiida.get_file_header>`
      - .. autodoc2-docstring:: aiida.get_file_header
-          :renderer: rst
           :summary:
    * - :py:obj:`load_ipython_extension <aiida.load_ipython_extension>`
      - .. autodoc2-docstring:: aiida.load_ipython_extension
-          :renderer: rst
           :summary:
 
 Data
@@ -66,27 +60,21 @@ Data
 
    * - :py:obj:`__copyright__ <aiida.__copyright__>`
      - .. autodoc2-docstring:: aiida.__copyright__
-          :renderer: rst
           :summary:
    * - :py:obj:`__license__ <aiida.__license__>`
      - .. autodoc2-docstring:: aiida.__license__
-          :renderer: rst
           :summary:
    * - :py:obj:`__version__ <aiida.__version__>`
      - .. autodoc2-docstring:: aiida.__version__
-          :renderer: rst
           :summary:
    * - :py:obj:`__authors__ <aiida.__authors__>`
      - .. autodoc2-docstring:: aiida.__authors__
-          :renderer: rst
           :summary:
    * - :py:obj:`__paper__ <aiida.__paper__>`
      - .. autodoc2-docstring:: aiida.__paper__
-          :renderer: rst
           :summary:
    * - :py:obj:`__paper_short__ <aiida.__paper_short__>`
      - .. autodoc2-docstring:: aiida.__paper_short__
-          :renderer: rst
           :summary:
 
 API
@@ -97,69 +85,63 @@ API
    :value: 'Copyright (c), This file is part of the AiiDA platform. For further information please visit http://...'
 
    .. autodoc2-docstring:: aiida.__copyright__
-      :renderer: rst
 
 .. py:data:: __license__
    :canonical: aiida.__license__
    :value: 'MIT license, see LICENSE.txt file.'
 
    .. autodoc2-docstring:: aiida.__license__
-      :renderer: rst
 
 .. py:data:: __version__
    :canonical: aiida.__version__
    :value: '2.2.2'
 
    .. autodoc2-docstring:: aiida.__version__
-      :renderer: rst
 
 .. py:data:: __authors__
    :canonical: aiida.__authors__
    :value: 'The AiiDA team.'
 
    .. autodoc2-docstring:: aiida.__authors__
-      :renderer: rst
 
 .. py:data:: __paper__
    :canonical: aiida.__paper__
    :value: 'S. P. Huber et al., "AiiDA 1.0, a scalable computational infrastructure for automated reproducible w...'
 
    .. autodoc2-docstring:: aiida.__paper__
-      :renderer: rst
 
 .. py:data:: __paper_short__
    :canonical: aiida.__paper_short__
    :value: 'S. P. Huber et al., Scientific Data 7, 300 (2020).'
 
    .. autodoc2-docstring:: aiida.__paper_short__
-      :renderer: rst
 
 .. py:function:: get_strict_version()
    :canonical: aiida.get_strict_version
 
    .. autodoc2-docstring:: aiida.get_strict_version
-      :renderer: rst
+      :parser: 
 
 .. py:function:: get_version() -> str
    :canonical: aiida.get_version
 
    .. autodoc2-docstring:: aiida.get_version
-      :renderer: rst
+      :parser: 
 
 .. py:function:: _get_raw_file_header() -> str
    :canonical: aiida._get_raw_file_header
 
    .. autodoc2-docstring:: aiida._get_raw_file_header
-      :renderer: rst
+      :parser: 
 
 .. py:function:: get_file_header(comment_char: str = '# ') -> str
    :canonical: aiida.get_file_header
 
    .. autodoc2-docstring:: aiida.get_file_header
-      :renderer: rst
+      :parser: 
 
 .. py:function:: load_ipython_extension(ipython)
    :canonical: aiida.load_ipython_extension
 
    .. autodoc2-docstring:: aiida.load_ipython_extension
-      :renderer: rst
+      :parser: 

@@ -4,7 +4,6 @@
 .. py:module:: aiida.plugins
 
 .. autodoc2-docstring:: aiida.plugins
-   :renderer: rst
    :allowtitles:
 
 Package Contents
@@ -19,7 +18,6 @@ Classes
 
    * - :py:obj:`PluginVersionProvider <aiida.plugins.utils.PluginVersionProvider>`
      - .. autodoc2-docstring:: aiida.plugins.utils.PluginVersionProvider
-          :renderer: rst
           :summary:
 
 Functions
@@ -31,67 +29,51 @@ Functions
 
    * - :py:obj:`BaseFactory <aiida.plugins.factories.BaseFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.BaseFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`CalcJobImporterFactory <aiida.plugins.factories.CalcJobImporterFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.CalcJobImporterFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`CalculationFactory <aiida.plugins.factories.CalculationFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.CalculationFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`DataFactory <aiida.plugins.factories.DataFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.DataFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`DbImporterFactory <aiida.plugins.factories.DbImporterFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.DbImporterFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`GroupFactory <aiida.plugins.factories.GroupFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.GroupFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`OrbitalFactory <aiida.plugins.factories.OrbitalFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.OrbitalFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`ParserFactory <aiida.plugins.factories.ParserFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.ParserFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`SchedulerFactory <aiida.plugins.factories.SchedulerFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.SchedulerFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`StorageFactory <aiida.plugins.factories.StorageFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.StorageFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`TransportFactory <aiida.plugins.factories.TransportFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.TransportFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`WorkflowFactory <aiida.plugins.factories.WorkflowFactory>`
      - .. autodoc2-docstring:: aiida.plugins.factories.WorkflowFactory
-          :renderer: rst
           :summary:
    * - :py:obj:`get_entry_points <aiida.plugins.entry_point.get_entry_points>`
      - .. autodoc2-docstring:: aiida.plugins.entry_point.get_entry_points
-          :renderer: rst
           :summary:
    * - :py:obj:`load_entry_point <aiida.plugins.entry_point.load_entry_point>`
      - .. autodoc2-docstring:: aiida.plugins.entry_point.load_entry_point
-          :renderer: rst
           :summary:
    * - :py:obj:`load_entry_point_from_string <aiida.plugins.entry_point.load_entry_point_from_string>`
      - .. autodoc2-docstring:: aiida.plugins.entry_point.load_entry_point_from_string
-          :renderer: rst
           :summary:
    * - :py:obj:`parse_entry_point <aiida.plugins.entry_point.parse_entry_point>`
      - .. autodoc2-docstring:: aiida.plugins.entry_point.parse_entry_point
-          :renderer: rst
           :summary:
 
 API
@@ -101,118 +83,115 @@ API
    :canonical: aiida.plugins.factories.BaseFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.BaseFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: CalcJobImporterFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.CalcJobImporter]]
    :canonical: aiida.plugins.factories.CalcJobImporterFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.CalcJobImporterFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: CalculationFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.CalcJob], typing.Callable]
    :canonical: aiida.plugins.factories.CalculationFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.CalculationFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: DataFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.Data]]
    :canonical: aiida.plugins.factories.DataFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.DataFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: DbImporterFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.tools.dbimporters.DbImporter]]
    :canonical: aiida.plugins.factories.DbImporterFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.DbImporterFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: GroupFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.Group]]
    :canonical: aiida.plugins.factories.GroupFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.GroupFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: OrbitalFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.tools.data.orbital.Orbital]]
    :canonical: aiida.plugins.factories.OrbitalFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.OrbitalFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: ParserFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.parsers.Parser]]
    :canonical: aiida.plugins.factories.ParserFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.ParserFactory
-      :renderer: rst
+      :parser: 
 
 .. py:class:: PluginVersionProvider()
    :canonical: aiida.plugins.utils.PluginVersionProvider
 
    .. autodoc2-docstring:: aiida.plugins.utils.PluginVersionProvider
-      :renderer: rst
 
    .. rubric:: Initialization
 
    .. autodoc2-docstring:: aiida.plugins.utils.PluginVersionProvider.__init__
-      :renderer: rst
 
    .. py:property:: logger
       :canonical: aiida.plugins.utils.PluginVersionProvider.logger
       :type: logging.Logger
 
       .. autodoc2-docstring:: aiida.plugins.utils.PluginVersionProvider.logger
-         :renderer: rst
+         :parser: 
 
    .. py:method:: get_version_info(plugin: str | type) -> dict[typing.Any, dict[typing.Any, typing.Any]]
       :canonical: aiida.plugins.utils.PluginVersionProvider.get_version_info
 
       .. autodoc2-docstring:: aiida.plugins.utils.PluginVersionProvider.get_version_info
-         :renderer: rst
 
 .. py:function:: SchedulerFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.schedulers.Scheduler]]
    :canonical: aiida.plugins.factories.SchedulerFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.SchedulerFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: StorageFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.implementation.StorageBackend]]
    :canonical: aiida.plugins.factories.StorageFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.StorageFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: TransportFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.transports.Transport]]
    :canonical: aiida.plugins.factories.TransportFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.TransportFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: WorkflowFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.WorkChain], typing.Callable]
    :canonical: aiida.plugins.factories.WorkflowFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.WorkflowFactory
-      :renderer: rst
+      :parser: 
 
 .. py:function:: get_entry_points(group: str) -> importlib_metadata.EntryPoints
    :canonical: aiida.plugins.entry_point.get_entry_points
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.get_entry_points
-      :renderer: rst
+      :parser: 
 
 .. py:function:: load_entry_point(group: str, name: str) -> typing.Any
    :canonical: aiida.plugins.entry_point.load_entry_point
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.load_entry_point
-      :renderer: rst
+      :parser: 
 
 .. py:function:: load_entry_point_from_string(entry_point_string: str) -> typing.Any
    :canonical: aiida.plugins.entry_point.load_entry_point_from_string
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.load_entry_point_from_string
-      :renderer: rst
+      :parser: 
 
 .. py:function:: parse_entry_point(group: str, spec: str) -> importlib_metadata.EntryPoint
    :canonical: aiida.plugins.entry_point.parse_entry_point
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.parse_entry_point
-      :renderer: rst
+      :parser: 

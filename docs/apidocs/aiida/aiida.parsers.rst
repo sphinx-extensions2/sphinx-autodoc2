@@ -4,7 +4,6 @@
 .. py:module:: aiida.parsers
 
 .. autodoc2-docstring:: aiida.parsers
-   :renderer: rst
    :allowtitles:
 
 Package Contents
@@ -19,7 +18,6 @@ Classes
 
    * - :py:obj:`Parser <aiida.parsers.parser.Parser>`
      - .. autodoc2-docstring:: aiida.parsers.parser.Parser
-          :renderer: rst
           :summary:
 
 API
@@ -31,68 +29,62 @@ API
    Bases: :py:obj:`abc.ABC`
 
    .. autodoc2-docstring:: aiida.parsers.parser.Parser
-      :renderer: rst
 
    .. rubric:: Initialization
 
    .. autodoc2-docstring:: aiida.parsers.parser.Parser.__init__
-      :renderer: rst
 
    .. py:property:: logger
       :canonical: aiida.parsers.parser.Parser.logger
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.logger
-         :renderer: rst
+         :parser: 
 
    .. py:property:: node
       :canonical: aiida.parsers.parser.Parser.node
       :type: aiida.orm.CalcJobNode
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.node
-         :renderer: rst
+         :parser: 
 
    .. py:property:: exit_codes
       :canonical: aiida.parsers.parser.Parser.exit_codes
       :type: aiida.engine.ExitCodesNamespace
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.exit_codes
-         :renderer: rst
+         :parser: 
 
    .. py:property:: retrieved
       :canonical: aiida.parsers.parser.Parser.retrieved
       :type: aiida.orm.FolderData
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.retrieved
-         :renderer: rst
+         :parser: 
 
    .. py:property:: outputs
       :canonical: aiida.parsers.parser.Parser.outputs
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.outputs
-         :renderer: rst
+         :parser: 
 
    .. py:method:: out(link_label: str, node: aiida.orm.Data) -> None
       :canonical: aiida.parsers.parser.Parser.out
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.out
-         :renderer: rst
 
    .. py:method:: get_outputs_for_parsing()
       :canonical: aiida.parsers.parser.Parser.get_outputs_for_parsing
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.get_outputs_for_parsing
-         :renderer: rst
 
    .. py:method:: parse_from_node(node: aiida.orm.CalcJobNode, store_provenance=True, retrieved_temporary_folder=None) -> typing.Tuple[typing.Optional[typing.Dict[str, typing.Any]], aiida.orm.CalcFunctionNode]
       :canonical: aiida.parsers.parser.Parser.parse_from_node
       :classmethod:
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.parse_from_node
-         :renderer: rst
 
    .. py:method:: parse(**kwargs) -> typing.Optional[aiida.engine.ExitCode]
       :canonical: aiida.parsers.parser.Parser.parse
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.parse
-         :renderer: rst

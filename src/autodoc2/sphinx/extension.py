@@ -10,39 +10,21 @@ from time import sleep
 import typing as t
 
 from docutils import nodes
-from docutils.parsers.rst import directives
-from docutils.parsers.rst.states import RSTStateMachine
-from docutils.statemachine import StringList
 from sphinx.application import Sphinx
-from sphinx.util import logging
-from sphinx.util.docutils import SphinxDirective
 
 from autodoc2 import __version__
 from autodoc2.analysis import analyse_module
 from autodoc2.config import CONFIG_PREFIX, Config, ValidationError
 from autodoc2.db import InMemoryDb, UniqueError
-from autodoc2.utils import (
-    ItemData,
-    ResolvedDict,
-    WarningSubtypes,
-    resolve_all,
-    yield_modules,
-)
+from autodoc2.sphinx.docstring import DocstringRenderer
+from autodoc2.sphinx.logging_ import LOGGER, warn_sphinx
+from autodoc2.utils import ResolvedDict, WarningSubtypes, resolve_all, yield_modules
 
 try:
     from sphinx.util.display import status_iterator
 except ImportError:
     # sphinx <6 compatibility
     from sphinx.util import status_iterator  # type: ignore
-
-LOGGER = logging.getLogger("autodoc2")
-
-
-def warn(msg: str, subtype: WarningSubtypes) -> None:
-    """Log a warning."""
-    LOGGER.warning(
-        f"{msg} [autodoc2.{subtype.value}]", type="autodoc2", subtype=subtype.value
-    )
 
 
 def setup(app: Sphinx) -> dict[str, str | bool]:
@@ -75,22 +57,32 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
     }
 
 
-def run_autodoc(app: Sphinx) -> None:
-    """The primary sphinx call back event for sphinx."""
-
-    # load the configuration
+def load_config(
+    app: Sphinx,
+    *,
+    overrides: None | dict[str, t.Any] = None,
+    location: None | nodes.Element = None,
+) -> Config:
+    """Load the configuration."""
     values: dict[str, t.Any] = {}
+    overrides = overrides or {}
     for name, _, field in Config().as_triple():
         sphinx_name = f"{CONFIG_PREFIX}{name}"
-        value = app.config[sphinx_name]
+        value = overrides.get(name, app.config[sphinx_name])
         if "sphinx_validate" in field.metadata:
             try:
                 value = field.metadata["sphinx_validate"](sphinx_name, value)
             except ValidationError as err:
-                warn(str(err), WarningSubtypes.CONFIG_ERROR)
+                warn_sphinx(str(err), WarningSubtypes.CONFIG_ERROR, location)
                 continue
         values[name] = value
-    config = Config(**values)
+    return Config(**values)
+
+
+def run_autodoc(app: Sphinx) -> None:
+    """The primary sphinx call back event for sphinx."""
+
+    config = load_config(app)
 
     top_level_modules = []
     for i, _ in enumerate(config.packages):
@@ -148,7 +140,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
             )
         )
     else:
-        warn(f"Package {path} does not exist", WarningSubtypes.MISSING_MODULE)
+        warn_sphinx(f"Package {path} does not exist", WarningSubtypes.MISSING_MODULE)
         return None
 
     # compute the hash of the modules,
@@ -183,7 +175,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
                 try:
                     db.add(data)
                 except UniqueError:
-                    warn(
+                    warn_sphinx(
                         f"Duplicate item {data['full_name']} ({data['type']})",
                         WarningSubtypes.DUPLICATE_ITEM,
                     )
@@ -217,7 +209,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         }
 
     def _warn_render(msg: str, type_: WarningSubtypes) -> None:
-        warn(msg, type_)
+        warn_sphinx(msg, type_)
 
     # write the files
     output = Path(app.srcdir) / PurePosixPath(config.output_dir) / root_module
@@ -293,7 +285,9 @@ def get_git_clone(
             sleep(2)
             retries -= 1
     else:
-        warn(f"Failed to clone {url}@{branch_tag}", WarningSubtypes.GIT_CLONE_FAILED)
+        warn_sphinx(
+            f"Failed to clone {url}@{branch_tag}", WarningSubtypes.GIT_CLONE_FAILED
+        )
         return None
     return path
 
@@ -303,105 +297,3 @@ class EnvCache(t.TypedDict):
 
     hash: str  # the hash of the package files
     db: InMemoryDb
-
-
-class DocstringRenderer(SphinxDirective):
-    """Render a docstring of an object."""
-
-    has_content = False
-    required_arguments = 1  # the full name
-    optional_arguments = 0
-    final_argument_whitespace = True
-    option_spec = {
-        "renderer": directives.unchanged_required,  # TODO at the moment this is ignored
-        "allowtitles": directives.flag,  # used for module docstrings
-        "summary": directives.flag,  # return first child only
-    }
-
-    def run(self) -> list[nodes.Node]:
-        """Run the directive."""
-
-        # find the database item for this object
-        name = self.arguments[0]
-        dbs: dict[str, EnvCache] = self.env.autodoc2_cache  # type: ignore
-        item: ItemData | None = None
-        for cache in dbs.values():
-            item = cache["db"].get_item(name)
-            if item:
-                break
-
-        if item is None:
-            if "summary" not in self.options:
-                # summaries can include items imported from external modules
-                # which may not be in the database, so we don't warn about those
-                warn(f"Could not find {name}", WarningSubtypes.DOCSTRING_NOT_FOUND)
-            return []
-
-        # find the source path for this object,
-        # by walking up the parent tree
-        source_path = None
-        parts = name.split(".")
-        while parts:
-            parent = cache["db"].get_item(".".join(parts))
-            if parent and "file_path" in parent:
-                source_path = parent["file_path"]
-                break
-            parts.pop()
-
-        state: RSTStateMachine = self.state
-
-        if source_path:
-            # ensure rebuilds when the source file changes
-            self.env.note_dependency(source_path)
-            # self.state.document.settings.record_dependencies.add(source_path)
-
-        if not item["doc"]:
-            return []
-
-        line_offset = 0
-        if "range" in item:
-            line_offset = item["range"][0]
-
-        base = nodes.Element()
-        content = StringList(item["doc"].splitlines())
-
-        if source_path:
-            # Here we perform a nested render, but temporarily setup the document/reporter
-            # with the correct document path and lineno for the included file.
-            source = state.document["source"]
-            rsource = state.reporter.source
-            line_func = getattr(state.reporter, "get_source_and_line", None)
-            try:
-                state.document["source"] = source_path
-                state.reporter.source = source_path
-                state.reporter.get_source_and_line = lambda li: (
-                    source_path,
-                    li + line_offset,
-                )
-
-                state.nested_parse(
-                    content, 0, base, match_titles=self.options.get("allowtitles")
-                )
-            finally:
-                state.document["source"] = source
-                state.reporter.source = rsource
-                if line_func is not None:
-                    state.reporter.get_source_and_line = line_func
-                else:
-                    del state.reporter.get_source_and_line
-
-        else:
-            state.nested_parse(
-                content,
-                self.content_offset,
-                base,
-                match_titles=self.options.get("allowtitles"),
-            )
-
-        if not base.children:
-            return []
-
-        if "summary" in self.options:
-            return [base.children[0]]
-
-        return base.children or []

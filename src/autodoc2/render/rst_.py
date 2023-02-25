@@ -17,7 +17,6 @@ _RE_DELIMS = re.compile(r"(\s*[\[\]\(\),]\s*)")
 class RstRenderer(RendererBase):
     """Render the documentation as reStructuredText."""
 
-    NAME = "rst"
     EXTENSION = ".rst"
 
     def render_item(self, full_name: str) -> t.Iterable[str]:
@@ -53,7 +52,8 @@ class RstRenderer(RendererBase):
             # TODO get signature (for functions, etc), plus sphinx also runs rst.escape
             yield f"   * - :py:obj:`{short_name} <{item['full_name']}>`"
             yield f"     - .. autodoc2-docstring:: {item['full_name']}"
-            yield f"          :renderer: {self.NAME}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"          :parser: {parser_name}"
             yield "          :summary:"
 
     def render_package(self, item: ItemData) -> t.Iterable[str]:
@@ -72,12 +72,11 @@ class RstRenderer(RendererBase):
         if self.is_module_deprecated(item):
             yield "   :deprecated:"
         yield ""
-        yield from [
-            f".. autodoc2-docstring:: {item['full_name']}",
-            f"   :renderer: {self.NAME}",
-            "   :allowtitles:",
-            "",
-        ]
+        yield f".. autodoc2-docstring:: {item['full_name']}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f"   :parser: {parser_name}"
+        yield "   :allowtitles:"
+        yield ""
 
         visible_subpackages = [
             i["full_name"] for i in self.get_children(item, {"package"})
@@ -175,7 +174,8 @@ class RstRenderer(RendererBase):
             # or, more broadly speaking, decorated at all
         yield ""
         yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        yield f"      :renderer: {self.NAME}"
+
+        yield f"      :parser: {self.get_doc_parser(item['full_name'])}"
         yield ""
 
     def render_exception(self, item: ItemData) -> t.Iterable[str]:
@@ -213,19 +213,19 @@ class RstRenderer(RendererBase):
         # TODO inheritance diagram
 
         yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        yield f"      :renderer: {self.NAME}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f"      :parser: {parser_name}"
         yield ""
 
         if self.config.class_docstring == "merge":
             init_item = self.get_item(f"{item['full_name']}.__init__")
             if init_item:
-                yield from [
-                    "   .. rubric:: Initialization",
-                    "",
-                    f"   .. autodoc2-docstring:: {item['full_name']}.__init__",
-                    f"      :renderer: {self.NAME}",
-                    "",
-                ]
+                yield "   .. rubric:: Initialization"
+                yield ""
+                yield f"   .. autodoc2-docstring:: {init_item['full_name']}"
+                if parser_name := self.get_doc_parser(item["full_name"]):
+                    yield f"      :parser: {parser_name}"
+                yield ""
 
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
@@ -256,7 +256,7 @@ class RstRenderer(RendererBase):
         yield ""
 
         yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        yield f"      :renderer: {self.NAME}"
+        yield f"      :parser: {self.get_doc_parser(item['full_name'])}"
         yield ""
 
     def render_method(self, item: ItemData) -> t.Iterable[str]:
@@ -282,7 +282,8 @@ class RstRenderer(RendererBase):
         yield ""
 
         yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        yield f"      :renderer: {self.NAME}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f"      :parser: {parser_name}"
         yield ""
 
     def render_attribute(self, item: ItemData) -> t.Iterable[str]:
@@ -321,7 +322,8 @@ class RstRenderer(RendererBase):
 
         yield ""
         yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        yield f"      :renderer: {self.NAME}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f"      :parser: {parser_name}"
         yield ""
 
     def _reformat_cls_base_rst(self, value: str) -> str:

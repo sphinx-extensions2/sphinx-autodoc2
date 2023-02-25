@@ -4,8 +4,7 @@
 ```
 
 ```{autodoc2-docstring} package
-:renderer: myst
-   :allowtitles:
+:allowtitles:
 ```
 
 ## Subpackages
@@ -27,7 +26,6 @@ package.a
 
 * - {py:obj}`Class <package.Class>`
   - ```{autodoc2-docstring} package.Class
-    :renderer: myst
     :summary:
     ```
 ````
@@ -40,7 +38,6 @@ package.a
 
 * - {py:obj}`func <package.func>`
   - ```{autodoc2-docstring} package.func
-    :renderer: myst
     :summary:
     ```
 ````
@@ -53,12 +50,10 @@ package.a
 
 * - {py:obj}`__all__ <package.__all__>`
   - ```{autodoc2-docstring} package.__all__
-    :renderer: myst
     :summary:
     ```
 * - {py:obj}`p <package.p>`
   - ```{autodoc2-docstring} package.p
-    :renderer: myst
     :summary:
     ```
 ````
@@ -71,7 +66,7 @@ package.a
    ['p', 'a1', 'alias']
 
 ```{autodoc2-docstring} package.__all__
-:renderer: myst
+:parser: 
 ```
 
 ````
@@ -82,7 +77,7 @@ package.a
    1
 
 ```{autodoc2-docstring} package.p
-:renderer: myst
+:parser: 
 ```
 
 ````
@@ -91,7 +86,6 @@ package.a
 :canonical: package.func
 
 ```{autodoc2-docstring} package.func
-:renderer: myst
 ```
 ````
 
@@ -99,7 +93,6 @@ package.a
 :canonical: package.Class
 
 ```{autodoc2-docstring} package.Class
-:renderer: myst
 ```
 
 ````{py:attribute} x
@@ -109,7 +102,7 @@ package.a
    1
 
 ```{autodoc2-docstring} package.Class.x
-:renderer: myst
+:parser: 
 ```
 
 ````
@@ -118,7 +111,6 @@ package.a
 :canonical: package.Class.method
 
 ```{autodoc2-docstring} package.Class.method
-:renderer: myst
 ```
 
 ````
@@ -128,7 +120,6 @@ package.a
 :type: package.a.c.ac1 | None
 
 ```{autodoc2-docstring} package.Class.prop
-:renderer: myst
 ```
 
 ````
@@ -137,7 +128,6 @@ package.a
 :canonical: package.Class.Nested
 
 ```{autodoc2-docstring} package.Class.Nested
-:renderer: myst
 ```
 
 ````

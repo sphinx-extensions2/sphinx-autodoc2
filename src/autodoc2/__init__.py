@@ -5,6 +5,6 @@ __version__ = "0.3.0"
 
 def setup(app):  # type: ignore
     """Entrypoint for sphinx."""
-    from .extension import setup as _setup
+    from .sphinx.extension import setup as _setup
 
     return _setup(app)

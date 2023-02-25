@@ -3,4 +3,4 @@
    :noindex:
 
    .. autodoc2-docstring:: package.func
-      :renderer: rst
+      :parser: 
