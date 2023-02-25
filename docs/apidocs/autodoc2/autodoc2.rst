@@ -4,7 +4,6 @@
 .. py:module:: autodoc2
 
 .. autodoc2-docstring:: autodoc2
-   :renderer: rst
    :allowtitles:
 
 Subpackages
@@ -15,6 +14,7 @@ Subpackages
    :maxdepth: 3
 
    autodoc2.render
+   autodoc2.sphinx
 
 Submodules
 ----------
@@ -28,7 +28,6 @@ Submodules
    autodoc2.analysis
    autodoc2.cli
    autodoc2.utils
-   autodoc2.extension
    autodoc2.astroid_utils
 
 Package Contents
@@ -43,7 +42,6 @@ Functions
 
    * - :py:obj:`setup <autodoc2.setup>`
      - .. autodoc2-docstring:: autodoc2.setup
-          :renderer: rst
           :summary:
 
 Data
@@ -55,7 +53,6 @@ Data
 
    * - :py:obj:`__version__ <autodoc2.__version__>`
      - .. autodoc2-docstring:: autodoc2.__version__
-          :renderer: rst
           :summary:
 
 API
@@ -66,10 +63,9 @@ API
    :value: '0.3.0'
 
    .. autodoc2-docstring:: autodoc2.__version__
-      :renderer: rst
 
 .. py:function:: setup(app)
    :canonical: autodoc2.setup
 
    .. autodoc2-docstring:: autodoc2.setup
-      :renderer: rst
+      :parser: 

@@ -18,9 +18,6 @@ if t.TYPE_CHECKING:
 class RendererBase(abc.ABC):
     """The base renderer."""
 
-    NAME: t.ClassVar[str] = "base"
-    """The name of the renderer."""
-
     EXTENSION: t.ClassVar[str] = ".txt"
     """The extension for the output files."""
 
@@ -280,3 +277,13 @@ class RendererBase(abc.ABC):
             for in_, out_ in self.config.replace_bases:
                 base = base.replace(in_, out_)
         return base or ""
+
+    def get_doc_parser(self, full_name: str) -> str:
+        """Get the parser for the docstring of this item.
+
+        Returns `""` if it should be parsed using the current parser.
+        """
+        for pattern, parser in self.config.docstring_parser_regexes:
+            if pattern.fullmatch(full_name):
+                return parser
+        return ""

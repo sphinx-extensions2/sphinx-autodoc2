@@ -70,6 +70,9 @@ autodoc2_render_plugin_regexes = [(r"autodoc2\.db", "myst")]
 autodoc2_replace_annotations = [
     ("re.Pattern", "typing.Pattern"),
 ]
+autodoc2_docstring_parser_regexes = [
+    (r"autodoc2\.sphinx\.docstring\._example", "myst"),
+]
 
 nitpick_ignore_regex = [
     (r"py:.*", r"typing_extensions.*"),

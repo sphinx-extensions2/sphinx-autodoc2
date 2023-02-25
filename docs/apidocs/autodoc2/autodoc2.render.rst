@@ -4,7 +4,6 @@
 .. py:module:: autodoc2.render
 
 .. autodoc2-docstring:: autodoc2.render
-   :renderer: rst
    :allowtitles:
 
 Submodules

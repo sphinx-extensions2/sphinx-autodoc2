@@ -34,6 +34,7 @@ Or checkout the the [Example API Documentation](apidocs/index.rst) ✨
 :maxdepth: 2
 
 quickstart
+docstrings
 config
 apidocs/index
 ```

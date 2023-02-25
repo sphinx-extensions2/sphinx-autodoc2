@@ -4,8 +4,7 @@
 ```
 
 ```{autodoc2-docstring} autodoc2.db
-:renderer: myst
-   :allowtitles:
+:allowtitles:
 ```
 
 ## Module Contents
@@ -18,12 +17,10 @@
 
 * - {py:obj}`Database <autodoc2.db.Database>`
   - ```{autodoc2-docstring} autodoc2.db.Database
-    :renderer: myst
     :summary:
     ```
 * - {py:obj}`InMemoryDb <autodoc2.db.InMemoryDb>`
   - ```{autodoc2-docstring} autodoc2.db.InMemoryDb
-    :renderer: myst
     :summary:
     ```
 ````
@@ -36,7 +33,6 @@
 
 * - {py:obj}`_LIKE_REGEX <autodoc2.db._LIKE_REGEX>`
   - ```{autodoc2-docstring} autodoc2.db._LIKE_REGEX
-    :renderer: myst
     :summary:
     ```
 ````
@@ -49,14 +45,12 @@
 Bases: {py:obj}`KeyError`
 
 ```{autodoc2-docstring} autodoc2.db.UniqueError
-:renderer: myst
 ```
 
 ```{rubric} Initialization
 ```
 
-```{autodoc2-docstring} autodoc2.db.UniqueError
-:renderer: myst
+```{autodoc2-docstring} autodoc2.db.UniqueError.__init__
 ```
 
 ````
@@ -67,14 +61,12 @@ Bases: {py:obj}`KeyError`
 Bases: {py:obj}`typing.Protocol`
 
 ```{autodoc2-docstring} autodoc2.db.Database
-:renderer: myst
 ```
 
 ````{py:method} add(item: autodoc2.utils.ItemData) -> None
 :canonical: autodoc2.db.Database.add
 
 ```{autodoc2-docstring} autodoc2.db.Database.add
-:renderer: myst
 ```
 
 ````
@@ -83,7 +75,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.__contains__
 
 ```{autodoc2-docstring} autodoc2.db.Database.__contains__
-:renderer: myst
 ```
 
 ````
@@ -92,7 +83,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.get_item
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_item
-:renderer: myst
 ```
 
 ````
@@ -101,7 +91,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.get_items_like
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_items_like
-:renderer: myst
 ```
 
 ````
@@ -110,7 +99,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.get_type
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_type
-:renderer: myst
 ```
 
 ````
@@ -119,7 +107,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.get_by_type
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_by_type
-:renderer: myst
 ```
 
 ````
@@ -128,7 +115,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.get_overloads
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_overloads
-:renderer: myst
 ```
 
 ````
@@ -137,7 +123,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.get_children
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_children
-:renderer: myst
 ```
 
 ````
@@ -146,7 +131,6 @@ Bases: {py:obj}`typing.Protocol`
 :canonical: autodoc2.db.Database.get_children_names
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_children_names
-:renderer: myst
 ```
 
 ````
@@ -159,7 +143,7 @@ Bases: {py:obj}`typing.Protocol`
    None
 
 ```{autodoc2-docstring} autodoc2.db._LIKE_REGEX
-:renderer: myst
+:parser: 
 ```
 
 ````
@@ -170,21 +154,18 @@ Bases: {py:obj}`typing.Protocol`
 Bases: {py:obj}`autodoc2.db.Database`
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb
-:renderer: myst
 ```
 
 ```{rubric} Initialization
 ```
 
-```{autodoc2-docstring} autodoc2.db.InMemoryDb
-:renderer: myst
+```{autodoc2-docstring} autodoc2.db.InMemoryDb.__init__
 ```
 
 ````{py:method} add(item: autodoc2.utils.ItemData) -> None
 :canonical: autodoc2.db.InMemoryDb.add
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.add
-:renderer: myst
 ```
 
 ````
@@ -193,7 +174,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.__contains__
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.__contains__
-:renderer: myst
 ```
 
 ````
@@ -202,7 +182,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.get_item
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_item
-:renderer: myst
 ```
 
 ````
@@ -211,7 +190,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.get_items_like
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_items_like
-:renderer: myst
 ```
 
 ````
@@ -220,7 +198,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.get_type
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_type
-:renderer: myst
 ```
 
 ````
@@ -229,7 +206,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.get_by_type
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_by_type
-:renderer: myst
 ```
 
 ````
@@ -238,7 +214,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.get_overloads
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_overloads
-:renderer: myst
 ```
 
 ````
@@ -247,7 +222,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.get_children
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_children
-:renderer: myst
 ```
 
 ````
@@ -256,7 +230,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.get_children_names
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.get_children_names
-:renderer: myst
 ```
 
 ````
@@ -265,7 +238,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :canonical: autodoc2.db.InMemoryDb.write
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.write
-:renderer: myst
 ```
 
 ````
@@ -275,7 +247,6 @@ Bases: {py:obj}`autodoc2.db.Database`
 :classmethod:
 
 ```{autodoc2-docstring} autodoc2.db.InMemoryDb.read
-:renderer: myst
 ```
 
 ````

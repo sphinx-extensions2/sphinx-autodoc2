@@ -16,7 +16,6 @@ _RE_DELIMS = re.compile(r"(\s*[\[\]\(\),]\s*)")
 class MystRenderer(RendererBase):
     """Render the documentation as MyST."""
 
-    NAME = "myst"
     EXTENSION = ".md"
 
     def render_item(self, full_name: str) -> t.Iterable[str]:
@@ -52,7 +51,8 @@ class MystRenderer(RendererBase):
             # TODO get signature (for functions, etc), plus sphinx also runs rst.escape
             yield f"* - {{py:obj}}`{short_name} <{item['full_name']}>`"
             yield f"  - ```{{autodoc2-docstring}} {item['full_name']}"
-            yield f"    :renderer: {self.NAME}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"    :parser: {parser_name}"
             yield "    :summary:"
             yield "    ```"
 
@@ -81,13 +81,12 @@ class MystRenderer(RendererBase):
             yield ":deprecated:"
         yield from ["```", ""]
 
-        yield from [
-            f"```{{autodoc2-docstring}} {item['full_name']}",
-            f":renderer: {self.NAME}",
-            "   :allowtitles:",
-            "```",
-            "",
-        ]
+        yield f"```{{autodoc2-docstring}} {item['full_name']}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f":parser: {parser_name}"
+        yield ":allowtitles:"
+        yield "```"
+        yield ""
 
         visible_subpackages = [
             i["full_name"] for i in self.get_children(item, {"package"})
@@ -185,7 +184,8 @@ class MystRenderer(RendererBase):
             # or, more broadly speaking, decorated at all
         yield ""
         yield f"```{{autodoc2-docstring}} {item['full_name']}"
-        yield f":renderer: {self.NAME}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f":parser: {parser_name}"
         yield "```"
         yield "````"
         yield ""
@@ -229,14 +229,11 @@ class MystRenderer(RendererBase):
 
         # TODO inheritance diagram
 
-        lines.extend(
-            [
-                f"```{{autodoc2-docstring}} {item['full_name']}",
-                f":renderer: {self.NAME}",
-                "```",
-                "",
-            ]
-        )
+        lines.append(f"```{{autodoc2-docstring}} {item['full_name']}")
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            lines.append(f":parser: {parser_name}")
+        lines.append("```")
+        lines.append("")
 
         if self.config.class_docstring == "merge":
             init_item = self.get_item(f"{item['full_name']}.__init__")
@@ -246,12 +243,12 @@ class MystRenderer(RendererBase):
                         "```{rubric} Initialization",
                         "```",
                         "",
-                        f"```{{autodoc2-docstring}} {item['full_name']}",
-                        f":renderer: {self.NAME}",
-                        "```",
-                        "",
+                        f"```{{autodoc2-docstring}} {init_item['full_name']}",
                     ]
                 )
+                if parser_name := self.get_doc_parser(init_item["full_name"]):
+                    lines.append(f":parser: {parser_name}")
+                lines.extend(["```", ""])
 
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
@@ -287,17 +284,14 @@ class MystRenderer(RendererBase):
         if item.get("return_annotation"):
             yield f":type: {self.format_annotation(item['return_annotation'])}"
 
-        yield from (
-            [
-                "",
-                f"```{{autodoc2-docstring}} {item['full_name']}",
-                f":renderer: {self.NAME}",
-                "```",
-                "",
-                "````",
-                "",
-            ]
-        )
+        yield ""
+        yield f"```{{autodoc2-docstring}} {item['full_name']}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f":parser: {parser_name}"
+        yield "```"
+        yield ""
+        yield "````"
+        yield ""
 
     def render_method(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a method."""
@@ -320,17 +314,14 @@ class MystRenderer(RendererBase):
             if prop in item.get("properties", []):
                 yield f":{prop}:"
 
-        yield from (
-            [
-                "",
-                f"```{{autodoc2-docstring}} {item['full_name']}",
-                f":renderer: {self.NAME}",
-                "```",
-                "",
-                "````",
-                "",
-            ]
-        )
+        yield ""
+        yield f"```{{autodoc2-docstring}} {item['full_name']}"
+        if parser_name := self.get_doc_parser(item["full_name"]):
+            yield f":parser: {parser_name}"
+        yield "```"
+        yield ""
+        yield "````"
+        yield ""
 
     def render_attribute(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for an attribute."""
@@ -373,7 +364,7 @@ class MystRenderer(RendererBase):
             [
                 "",
                 f"```{{autodoc2-docstring}} {item['full_name']}",
-                f":renderer: {self.NAME}",
+                f":parser: {self.get_doc_parser(item['full_name'])}",
                 "```",
                 "",
                 "````",

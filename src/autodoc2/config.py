@@ -38,6 +38,7 @@ class RenderConfig:
     sort_names: bool
     replace_annotations: list[tuple[str, str]]
     replace_bases: list[tuple[str, str]]
+    docstring_parser_regexes: list[tuple[t.Pattern[str], str]]
 
 
 @dc.dataclass
@@ -200,6 +201,23 @@ def _validate_regex_list(name: str, item: t.Any) -> list[t.Pattern[str]]:
     for i, regex in enumerate(set(item)):
         try:
             compiled.append(re.compile(regex))
+        except re.error as exc:
+            raise ValidationError(f"{name}[{i}] is not a valid regex: {exc}")
+    return compiled
+
+
+def _validate_list_tuple_regex_str(
+    name: str, item: t.Any
+) -> list[tuple[t.Pattern[str], str]]:
+    """Validate that an item is a list of (regex, str) tuples."""
+    if not isinstance(item, list) or not all(
+        isinstance(x, (list, tuple)) and len(x) == 2 for x in item
+    ):
+        raise ValidationError(f"{name!r} must be a list of (string, string) tuples")
+    compiled = []
+    for i, (regex, replacement) in enumerate(item):
+        try:
+            compiled.append((re.compile(regex), replacement))
         except re.error as exc:
             raise ValidationError(f"{name}[{i}] is not a valid regex: {exc}")
     return compiled
@@ -415,6 +433,18 @@ class Config:
         },
     )
 
+    docstring_parser_regexes: list[tuple[t.Pattern[str], str]] = dc.field(
+        default_factory=list,
+        metadata={
+            "help": "Match fully qualified names against regexes to use a specific parser. "
+            "The parser can be one of 'rst', 'myst', or the fully qualified name of a custom parser class. "
+            "The first match is used. ",
+            "sphinx_type": list,
+            "sphinx_validate": _validate_list_tuple_regex_str,
+            "category": "render",
+        },
+    )
+
     class_docstring: t.Literal["merge", "both"] = dc.field(
         default="merge",
         metadata={
@@ -528,6 +558,7 @@ class Config:
                 module_all_regexes=self.module_all_regexes,
                 replace_annotations=self.replace_annotations,
                 replace_bases=self.replace_bases,
+                docstring_parser_regexes=self.docstring_parser_regexes,
             )
         pkg = self.packages[pkg_index]
         return RenderConfig(
@@ -562,4 +593,5 @@ class Config:
             else pkg.module_all_regexes,
             replace_annotations=self.replace_annotations,
             replace_bases=self.replace_bases,
+            docstring_parser_regexes=self.docstring_parser_regexes,
         )

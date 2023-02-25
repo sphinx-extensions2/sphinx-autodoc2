@@ -4,7 +4,6 @@
 .. py:module:: package
 
 .. autodoc2-docstring:: package
-   :renderer: rst
    :allowtitles:
 
 Subpackages
@@ -28,7 +27,6 @@ Classes
 
    * - :py:obj:`Class <package.Class>`
      - .. autodoc2-docstring:: package.Class
-          :renderer: rst
           :summary:
 
 Functions
@@ -40,7 +38,6 @@ Functions
 
    * - :py:obj:`func <package.func>`
      - .. autodoc2-docstring:: package.func
-          :renderer: rst
           :summary:
 
 Data
@@ -52,11 +49,9 @@ Data
 
    * - :py:obj:`__all__ <package.__all__>`
      - .. autodoc2-docstring:: package.__all__
-          :renderer: rst
           :summary:
    * - :py:obj:`p <package.p>`
      - .. autodoc2-docstring:: package.p
-          :renderer: rst
           :summary:
 
 API
@@ -67,26 +62,23 @@ API
    :value: ['p', 'a1', 'alias']
 
    .. autodoc2-docstring:: package.__all__
-      :renderer: rst
 
 .. py:data:: p
    :canonical: package.p
    :value: 1
 
    .. autodoc2-docstring:: package.p
-      :renderer: rst
 
 .. py:function:: func(a: str, b: int) -> package.a.c.ac1
    :canonical: package.func
 
    .. autodoc2-docstring:: package.func
-      :renderer: rst
+      :parser: 
 
 .. py:class:: Class
    :canonical: package.Class
 
    .. autodoc2-docstring:: package.Class
-      :renderer: rst
 
    .. py:attribute:: x
       :canonical: package.Class.x
@@ -94,23 +86,20 @@ API
       :value: 1
 
       .. autodoc2-docstring:: package.Class.x
-         :renderer: rst
 
    .. py:method:: method(a: str, b: int) -> ...
       :canonical: package.Class.method
 
       .. autodoc2-docstring:: package.Class.method
-         :renderer: rst
 
    .. py:property:: prop
       :canonical: package.Class.prop
       :type: package.a.c.ac1 | None
 
       .. autodoc2-docstring:: package.Class.prop
-         :renderer: rst
+         :parser: 
 
    .. py:class:: Nested
       :canonical: package.Class.Nested
 
       .. autodoc2-docstring:: package.Class.Nested
-         :renderer: rst

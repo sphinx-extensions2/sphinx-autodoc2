@@ -3,6 +3,5 @@
 :noindex:
 
 ```{autodoc2-docstring} package.func
-:renderer: myst
 ```
 ````

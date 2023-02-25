@@ -4,7 +4,6 @@
 .. py:module:: aiida.transports
 
 .. autodoc2-docstring:: aiida.transports
-   :renderer: rst
    :allowtitles:
 
 Package Contents
@@ -19,11 +18,9 @@ Classes
 
    * - :py:obj:`SshTransport <aiida.transports.plugins.ssh.SshTransport>`
      - .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport
-          :renderer: rst
           :summary:
    * - :py:obj:`Transport <aiida.transports.transport.Transport>`
      - .. autodoc2-docstring:: aiida.transports.transport.Transport
-          :renderer: rst
           :summary:
 
 Functions
@@ -35,11 +32,9 @@ Functions
 
    * - :py:obj:`convert_to_bool <aiida.transports.plugins.ssh.convert_to_bool>`
      - .. autodoc2-docstring:: aiida.transports.plugins.ssh.convert_to_bool
-          :renderer: rst
           :summary:
    * - :py:obj:`parse_sshconfig <aiida.transports.plugins.ssh.parse_sshconfig>`
      - .. autodoc2-docstring:: aiida.transports.plugins.ssh.parse_sshconfig
-          :renderer: rst
           :summary:
 
 API
@@ -51,394 +46,334 @@ API
    Bases: :py:obj:`aiida.transports.transport.Transport`
 
    .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport
-      :renderer: rst
 
    .. rubric:: Initialization
 
    .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.__init__
-      :renderer: rst
 
    .. py:attribute:: _valid_connect_options
       :canonical: aiida.transports.plugins.ssh.SshTransport._valid_connect_options
       :value: [('username',), ('port',), ('look_for_keys',), ('key_filename',), ('timeout',), ('allow_agent',), ('...
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._valid_connect_options
-         :renderer: rst
 
    .. py:attribute:: _valid_connect_params
       :canonical: aiida.transports.plugins.ssh.SshTransport._valid_connect_params
       :value: None
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._valid_connect_params
-         :renderer: rst
 
    .. py:attribute:: _valid_auth_options
       :canonical: aiida.transports.plugins.ssh.SshTransport._valid_auth_options
       :value: None
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._valid_auth_options
-         :renderer: rst
 
    .. py:attribute:: _MAX_EXEC_COMMAND_LOG_SIZE
       :canonical: aiida.transports.plugins.ssh.SshTransport._MAX_EXEC_COMMAND_LOG_SIZE
       :value: None
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._MAX_EXEC_COMMAND_LOG_SIZE
-         :renderer: rst
 
    .. py:method:: _get_username_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_username_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_username_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_port_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_port_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_port_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_key_filename_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_key_filename_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_key_filename_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_timeout_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_timeout_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_timeout_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_allow_agent_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_allow_agent_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_allow_agent_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_look_for_keys_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_look_for_keys_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_look_for_keys_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_proxy_command_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_proxy_command_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_proxy_command_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_proxy_jump_suggestion_string(_)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_proxy_jump_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_proxy_jump_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_compress_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_compress_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_compress_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_load_system_host_keys_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_load_system_host_keys_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_load_system_host_keys_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_key_policy_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_key_policy_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_key_policy_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_gss_auth_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_auth_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_gss_auth_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_gss_kex_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_kex_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_gss_kex_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_gss_deleg_creds_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_deleg_creds_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_gss_deleg_creds_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_gss_host_suggestion_string(computer)
       :canonical: aiida.transports.plugins.ssh.SshTransport._get_gss_host_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._get_gss_host_suggestion_string
-         :renderer: rst
 
    .. py:method:: open()
       :canonical: aiida.transports.plugins.ssh.SshTransport.open
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.open
-         :renderer: rst
 
    .. py:method:: _close_proxies()
       :canonical: aiida.transports.plugins.ssh.SshTransport._close_proxies
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._close_proxies
-         :renderer: rst
 
    .. py:method:: close()
       :canonical: aiida.transports.plugins.ssh.SshTransport.close
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.close
-         :renderer: rst
 
    .. py:property:: sshclient
       :canonical: aiida.transports.plugins.ssh.SshTransport.sshclient
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.sshclient
-         :renderer: rst
+         :parser: 
 
    .. py:property:: sftp
       :canonical: aiida.transports.plugins.ssh.SshTransport.sftp
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.sftp
-         :renderer: rst
+         :parser: 
 
    .. py:method:: __str__()
       :canonical: aiida.transports.plugins.ssh.SshTransport.__str__
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.__str__
-         :renderer: rst
 
    .. py:method:: chdir(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.chdir
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.chdir
-         :renderer: rst
 
    .. py:method:: normalize(path='.')
       :canonical: aiida.transports.plugins.ssh.SshTransport.normalize
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.normalize
-         :renderer: rst
 
    .. py:method:: stat(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.stat
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.stat
-         :renderer: rst
 
    .. py:method:: lstat(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.lstat
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.lstat
-         :renderer: rst
 
    .. py:method:: getcwd()
       :canonical: aiida.transports.plugins.ssh.SshTransport.getcwd
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.getcwd
-         :renderer: rst
 
    .. py:method:: makedirs(path, ignore_existing=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.makedirs
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.makedirs
-         :renderer: rst
 
    .. py:method:: mkdir(path, ignore_existing=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.mkdir
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.mkdir
-         :renderer: rst
 
    .. py:method:: rmtree(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.rmtree
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.rmtree
-         :renderer: rst
 
    .. py:method:: rmdir(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.rmdir
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.rmdir
-         :renderer: rst
 
    .. py:method:: chown(path, uid, gid)
       :canonical: aiida.transports.plugins.ssh.SshTransport.chown
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.chown
-         :renderer: rst
 
    .. py:method:: isdir(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.isdir
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.isdir
-         :renderer: rst
 
    .. py:method:: chmod(path, mode)
       :canonical: aiida.transports.plugins.ssh.SshTransport.chmod
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.chmod
-         :renderer: rst
 
    .. py:method:: _os_path_split_asunder(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport._os_path_split_asunder
       :staticmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._os_path_split_asunder
-         :renderer: rst
 
    .. py:method:: put(localpath, remotepath, callback=None, dereference=True, overwrite=True, ignore_nonexisting=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.put
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.put
-         :renderer: rst
 
    .. py:method:: putfile(localpath, remotepath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.putfile
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.putfile
-         :renderer: rst
 
    .. py:method:: puttree(localpath, remotepath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.puttree
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.puttree
-         :renderer: rst
 
    .. py:method:: get(remotepath, localpath, callback=None, dereference=True, overwrite=True, ignore_nonexisting=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.get
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.get
-         :renderer: rst
 
    .. py:method:: getfile(remotepath, localpath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.getfile
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.getfile
-         :renderer: rst
 
    .. py:method:: gettree(remotepath, localpath, callback=None, dereference=True, overwrite=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.gettree
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.gettree
-         :renderer: rst
 
    .. py:method:: get_attribute(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.get_attribute
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.get_attribute
-         :renderer: rst
 
    .. py:method:: copyfile(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copyfile
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.copyfile
-         :renderer: rst
 
    .. py:method:: copytree(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copytree
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.copytree
-         :renderer: rst
 
    .. py:method:: copy(remotesource, remotedestination, dereference=False, recursive=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copy
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.copy
-         :renderer: rst
 
    .. py:method:: _exec_cp(cp_exe, cp_flags, src, dst)
       :canonical: aiida.transports.plugins.ssh.SshTransport._exec_cp
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._exec_cp
-         :renderer: rst
 
    .. py:method:: _local_listdir(path, pattern=None)
       :canonical: aiida.transports.plugins.ssh.SshTransport._local_listdir
       :staticmethod:
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._local_listdir
-         :renderer: rst
 
    .. py:method:: listdir(path='.', pattern=None)
       :canonical: aiida.transports.plugins.ssh.SshTransport.listdir
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.listdir
-         :renderer: rst
 
    .. py:method:: remove(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.remove
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.remove
-         :renderer: rst
 
    .. py:method:: rename(oldpath, newpath)
       :canonical: aiida.transports.plugins.ssh.SshTransport.rename
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.rename
-         :renderer: rst
 
    .. py:method:: isfile(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.isfile
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.isfile
-         :renderer: rst
 
    .. py:method:: _exec_command_internal(command, combine_stderr=False, bufsize=-1)
       :canonical: aiida.transports.plugins.ssh.SshTransport._exec_command_internal
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._exec_command_internal
-         :renderer: rst
 
    .. py:method:: exec_command_wait_bytes(command, stdin=None, combine_stderr=False, bufsize=-1)
       :canonical: aiida.transports.plugins.ssh.SshTransport.exec_command_wait_bytes
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.exec_command_wait_bytes
-         :renderer: rst
 
    .. py:method:: gotocomputer_command(remotedir)
       :canonical: aiida.transports.plugins.ssh.SshTransport.gotocomputer_command
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.gotocomputer_command
-         :renderer: rst
 
    .. py:method:: _symlink(source, dest)
       :canonical: aiida.transports.plugins.ssh.SshTransport._symlink
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport._symlink
-         :renderer: rst
 
    .. py:method:: symlink(remotesource, remotedestination)
       :canonical: aiida.transports.plugins.ssh.SshTransport.symlink
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.symlink
-         :renderer: rst
 
    .. py:method:: path_exists(path)
       :canonical: aiida.transports.plugins.ssh.SshTransport.path_exists
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.path_exists
-         :renderer: rst
 
 .. py:class:: Transport(*args, **kwargs)
    :canonical: aiida.transports.transport.Transport
@@ -446,40 +381,34 @@ API
    Bases: :py:obj:`abc.ABC`
 
    .. autodoc2-docstring:: aiida.transports.transport.Transport
-      :renderer: rst
 
    .. rubric:: Initialization
 
    .. autodoc2-docstring:: aiida.transports.transport.Transport.__init__
-      :renderer: rst
 
    .. py:attribute:: DEFAULT_MINIMUM_JOB_POLL_INTERVAL
       :canonical: aiida.transports.transport.Transport.DEFAULT_MINIMUM_JOB_POLL_INTERVAL
       :value: 10
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.DEFAULT_MINIMUM_JOB_POLL_INTERVAL
-         :renderer: rst
 
    .. py:attribute:: _DEFAULT_SAFE_OPEN_INTERVAL
       :canonical: aiida.transports.transport.Transport._DEFAULT_SAFE_OPEN_INTERVAL
       :value: 30.0
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._DEFAULT_SAFE_OPEN_INTERVAL
-         :renderer: rst
 
    .. py:attribute:: _valid_auth_params
       :canonical: aiida.transports.transport.Transport._valid_auth_params
       :value: None
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._valid_auth_params
-         :renderer: rst
 
    .. py:attribute:: _MAGIC_CHECK
       :canonical: aiida.transports.transport.Transport._MAGIC_CHECK
       :value: None
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._MAGIC_CHECK
-         :renderer: rst
 
    .. py:attribute:: _valid_auth_options
       :canonical: aiida.transports.transport.Transport._valid_auth_options
@@ -487,388 +416,333 @@ API
       :value: []
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._valid_auth_options
-         :renderer: rst
 
    .. py:attribute:: _common_auth_options
       :canonical: aiida.transports.transport.Transport._common_auth_options
       :value: [('use_login_shell',), ('safe_interval',)]
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._common_auth_options
-         :renderer: rst
 
    .. py:method:: __enter__()
       :canonical: aiida.transports.transport.Transport.__enter__
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.__enter__
-         :renderer: rst
 
    .. py:method:: __exit__(type_, value, traceback)
       :canonical: aiida.transports.transport.Transport.__exit__
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.__exit__
-         :renderer: rst
 
    .. py:property:: is_open
       :canonical: aiida.transports.transport.Transport.is_open
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.is_open
-         :renderer: rst
+         :parser: 
 
    .. py:method:: open()
       :canonical: aiida.transports.transport.Transport.open
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.open
-         :renderer: rst
 
    .. py:method:: close()
       :canonical: aiida.transports.transport.Transport.close
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.close
-         :renderer: rst
 
    .. py:method:: __repr__()
       :canonical: aiida.transports.transport.Transport.__repr__
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.__repr__
-         :renderer: rst
 
    .. py:method:: __str__()
       :canonical: aiida.transports.transport.Transport.__str__
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.__str__
-         :renderer: rst
 
    .. py:method:: set_logger_extra(logger_extra)
       :canonical: aiida.transports.transport.Transport.set_logger_extra
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.set_logger_extra
-         :renderer: rst
 
    .. py:method:: get_short_doc()
       :canonical: aiida.transports.transport.Transport.get_short_doc
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.get_short_doc
-         :renderer: rst
 
    .. py:method:: get_valid_auth_params()
       :canonical: aiida.transports.transport.Transport.get_valid_auth_params
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.get_valid_auth_params
-         :renderer: rst
 
    .. py:method:: auth_options() -> collections.OrderedDict
       :canonical: aiida.transports.transport.Transport.auth_options
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.auth_options
-         :renderer: rst
 
    .. py:method:: _get_safe_interval_suggestion_string(computer)
       :canonical: aiida.transports.transport.Transport._get_safe_interval_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._get_safe_interval_suggestion_string
-         :renderer: rst
 
    .. py:method:: _get_use_login_shell_suggestion_string(computer)
       :canonical: aiida.transports.transport.Transport._get_use_login_shell_suggestion_string
       :classmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._get_use_login_shell_suggestion_string
-         :renderer: rst
 
    .. py:property:: logger
       :canonical: aiida.transports.transport.Transport.logger
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.logger
-         :renderer: rst
+         :parser: 
 
    .. py:method:: get_safe_open_interval()
       :canonical: aiida.transports.transport.Transport.get_safe_open_interval
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.get_safe_open_interval
-         :renderer: rst
 
    .. py:method:: chdir(path)
       :canonical: aiida.transports.transport.Transport.chdir
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.chdir
-         :renderer: rst
 
    .. py:method:: chmod(path, mode)
       :canonical: aiida.transports.transport.Transport.chmod
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.chmod
-         :renderer: rst
 
    .. py:method:: chown(path, uid, gid)
       :canonical: aiida.transports.transport.Transport.chown
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.chown
-         :renderer: rst
 
    .. py:method:: copy(remotesource, remotedestination, dereference=False, recursive=True)
       :canonical: aiida.transports.transport.Transport.copy
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.copy
-         :renderer: rst
 
    .. py:method:: copyfile(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.transport.Transport.copyfile
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.copyfile
-         :renderer: rst
 
    .. py:method:: copytree(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.transport.Transport.copytree
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.copytree
-         :renderer: rst
 
    .. py:method:: copy_from_remote_to_remote(transportdestination, remotesource, remotedestination, **kwargs)
       :canonical: aiida.transports.transport.Transport.copy_from_remote_to_remote
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.copy_from_remote_to_remote
-         :renderer: rst
 
    .. py:method:: _exec_command_internal(command, **kwargs)
       :canonical: aiida.transports.transport.Transport._exec_command_internal
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._exec_command_internal
-         :renderer: rst
 
    .. py:method:: exec_command_wait_bytes(command, stdin=None, **kwargs)
       :canonical: aiida.transports.transport.Transport.exec_command_wait_bytes
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.exec_command_wait_bytes
-         :renderer: rst
 
    .. py:method:: exec_command_wait(command, stdin=None, encoding='utf-8', **kwargs)
       :canonical: aiida.transports.transport.Transport.exec_command_wait
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.exec_command_wait
-         :renderer: rst
 
    .. py:method:: get(remotepath, localpath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.get
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.get
-         :renderer: rst
 
    .. py:method:: getfile(remotepath, localpath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.getfile
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.getfile
-         :renderer: rst
 
    .. py:method:: gettree(remotepath, localpath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.gettree
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.gettree
-         :renderer: rst
 
    .. py:method:: getcwd()
       :canonical: aiida.transports.transport.Transport.getcwd
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.getcwd
-         :renderer: rst
 
    .. py:method:: get_attribute(path)
       :canonical: aiida.transports.transport.Transport.get_attribute
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.get_attribute
-         :renderer: rst
 
    .. py:method:: get_mode(path)
       :canonical: aiida.transports.transport.Transport.get_mode
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.get_mode
-         :renderer: rst
 
    .. py:method:: isdir(path)
       :canonical: aiida.transports.transport.Transport.isdir
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.isdir
-         :renderer: rst
 
    .. py:method:: isfile(path)
       :canonical: aiida.transports.transport.Transport.isfile
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.isfile
-         :renderer: rst
 
    .. py:method:: listdir(path='.', pattern=None)
       :canonical: aiida.transports.transport.Transport.listdir
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.listdir
-         :renderer: rst
 
    .. py:method:: listdir_withattributes(path='.', pattern=None)
       :canonical: aiida.transports.transport.Transport.listdir_withattributes
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.listdir_withattributes
-         :renderer: rst
 
    .. py:method:: makedirs(path, ignore_existing=False)
       :canonical: aiida.transports.transport.Transport.makedirs
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.makedirs
-         :renderer: rst
 
    .. py:method:: mkdir(path, ignore_existing=False)
       :canonical: aiida.transports.transport.Transport.mkdir
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.mkdir
-         :renderer: rst
 
    .. py:method:: normalize(path='.')
       :canonical: aiida.transports.transport.Transport.normalize
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.normalize
-         :renderer: rst
 
    .. py:method:: put(localpath, remotepath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.put
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.put
-         :renderer: rst
 
    .. py:method:: putfile(localpath, remotepath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.putfile
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.putfile
-         :renderer: rst
 
    .. py:method:: puttree(localpath, remotepath, *args, **kwargs)
       :canonical: aiida.transports.transport.Transport.puttree
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.puttree
-         :renderer: rst
 
    .. py:method:: remove(path)
       :canonical: aiida.transports.transport.Transport.remove
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.remove
-         :renderer: rst
 
    .. py:method:: rename(oldpath, newpath)
       :canonical: aiida.transports.transport.Transport.rename
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.rename
-         :renderer: rst
 
    .. py:method:: rmdir(path)
       :canonical: aiida.transports.transport.Transport.rmdir
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.rmdir
-         :renderer: rst
 
    .. py:method:: rmtree(path)
       :canonical: aiida.transports.transport.Transport.rmtree
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.rmtree
-         :renderer: rst
 
    .. py:method:: gotocomputer_command(remotedir)
       :canonical: aiida.transports.transport.Transport.gotocomputer_command
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.gotocomputer_command
-         :renderer: rst
 
    .. py:method:: symlink(remotesource, remotedestination)
       :canonical: aiida.transports.transport.Transport.symlink
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.symlink
-         :renderer: rst
 
    .. py:method:: whoami()
       :canonical: aiida.transports.transport.Transport.whoami
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.whoami
-         :renderer: rst
 
    .. py:method:: path_exists(path)
       :canonical: aiida.transports.transport.Transport.path_exists
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.path_exists
-         :renderer: rst
 
    .. py:method:: glob(pathname)
       :canonical: aiida.transports.transport.Transport.glob
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.glob
-         :renderer: rst
 
    .. py:method:: iglob(pathname)
       :canonical: aiida.transports.transport.Transport.iglob
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.iglob
-         :renderer: rst
 
    .. py:method:: glob1(dirname, pattern)
       :canonical: aiida.transports.transport.Transport.glob1
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.glob1
-         :renderer: rst
 
    .. py:method:: glob0(dirname, basename)
       :canonical: aiida.transports.transport.Transport.glob0
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.glob0
-         :renderer: rst
 
    .. py:method:: has_magic(string)
       :canonical: aiida.transports.transport.Transport.has_magic
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.has_magic
-         :renderer: rst
 
    .. py:method:: _gotocomputer_string(remotedir)
       :canonical: aiida.transports.transport.Transport._gotocomputer_string
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport._gotocomputer_string
-         :renderer: rst
 
 .. py:function:: convert_to_bool(string)
    :canonical: aiida.transports.plugins.ssh.convert_to_bool
 
    .. autodoc2-docstring:: aiida.transports.plugins.ssh.convert_to_bool
-      :renderer: rst
+      :parser: 
 
 .. py:function:: parse_sshconfig(computername)
    :canonical: aiida.transports.plugins.ssh.parse_sshconfig
 
    .. autodoc2-docstring:: aiida.transports.plugins.ssh.parse_sshconfig
-      :renderer: rst
+      :parser: 
