@@ -16,9 +16,6 @@ Classes
    :class: autosummary longtable
    :align: left
 
-   * - :py:obj:`RenderConfig <autodoc2.config.RenderConfig>`
-     - .. autodoc2-docstring:: autodoc2.config.RenderConfig
-          :summary:
    * - :py:obj:`PackageConfig <autodoc2.config.PackageConfig>`
      - .. autodoc2-docstring:: autodoc2.config.PackageConfig
           :summary:
@@ -35,9 +32,6 @@ Functions
 
    * - :py:obj:`_coerce_packages <autodoc2.config._coerce_packages>`
      - .. autodoc2-docstring:: autodoc2.config._coerce_packages
-          :summary:
-   * - :py:obj:`_validate_string_list <autodoc2.config._validate_string_list>`
-     - .. autodoc2-docstring:: autodoc2.config._validate_string_list
           :summary:
    * - :py:obj:`_validate_replace_list <autodoc2.config._validate_replace_list>`
      - .. autodoc2-docstring:: autodoc2.config._validate_replace_list
@@ -89,109 +83,6 @@ API
 
    .. autodoc2-docstring:: autodoc2.config.CONFIG_PREFIX
 
-.. py:class:: RenderConfig
-   :canonical: autodoc2.config.RenderConfig
-
-   .. autodoc2-docstring:: autodoc2.config.RenderConfig
-
-   .. py:attribute:: module_all_regexes
-      :canonical: autodoc2.config.RenderConfig.module_all_regexes
-      :type: list[typing.Pattern[str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.module_all_regexes
-
-   .. py:attribute:: skip_module_regexes
-      :canonical: autodoc2.config.RenderConfig.skip_module_regexes
-      :type: list[typing.Pattern[str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.skip_module_regexes
-
-   .. py:attribute:: hidden_objects
-      :canonical: autodoc2.config.RenderConfig.hidden_objects
-      :type: set[typing.Literal[undoc, dunder, private, inherited]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.hidden_objects
-
-   .. py:attribute:: hidden_regexes
-      :canonical: autodoc2.config.RenderConfig.hidden_regexes
-      :type: list[typing.Pattern[str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.hidden_regexes
-
-   .. py:attribute:: deprecated_module_regexes
-      :canonical: autodoc2.config.RenderConfig.deprecated_module_regexes
-      :type: list[typing.Pattern[str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.deprecated_module_regexes
-
-   .. py:attribute:: no_index
-      :canonical: autodoc2.config.RenderConfig.no_index
-      :type: bool
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.no_index
-
-   .. py:attribute:: module_summary
-      :canonical: autodoc2.config.RenderConfig.module_summary
-      :type: bool
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.module_summary
-
-   .. py:attribute:: class_docstring
-      :canonical: autodoc2.config.RenderConfig.class_docstring
-      :type: typing.Literal[merge, both]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.class_docstring
-
-   .. py:attribute:: class_inheritance
-      :canonical: autodoc2.config.RenderConfig.class_inheritance
-      :type: bool
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.class_inheritance
-
-   .. py:attribute:: annotations
-      :canonical: autodoc2.config.RenderConfig.annotations
-      :type: bool
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.annotations
-
-   .. py:attribute:: sort_names
-      :canonical: autodoc2.config.RenderConfig.sort_names
-      :type: bool
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.sort_names
-
-   .. py:attribute:: replace_annotations
-      :canonical: autodoc2.config.RenderConfig.replace_annotations
-      :type: list[tuple[str, str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.replace_annotations
-
-   .. py:attribute:: replace_bases
-      :canonical: autodoc2.config.RenderConfig.replace_bases
-      :type: list[tuple[str, str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.replace_bases
-
-   .. py:attribute:: docstring_parser_regexes
-      :canonical: autodoc2.config.RenderConfig.docstring_parser_regexes
-      :type: list[tuple[typing.Pattern[str], str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.RenderConfig.docstring_parser_regexes
-
 .. py:class:: PackageConfig
    :canonical: autodoc2.config.PackageConfig
 
@@ -220,87 +111,17 @@ API
 
    .. py:attribute:: exclude_dirs
       :canonical: autodoc2.config.PackageConfig.exclude_dirs
-      :type: list[str] | None
+      :type: list[str]
       :value: None
 
       .. autodoc2-docstring:: autodoc2.config.PackageConfig.exclude_dirs
 
    .. py:attribute:: exclude_files
       :canonical: autodoc2.config.PackageConfig.exclude_files
-      :type: list[str] | None
+      :type: list[str]
       :value: None
 
       .. autodoc2-docstring:: autodoc2.config.PackageConfig.exclude_files
-
-   .. py:attribute:: module_all_regexes
-      :canonical: autodoc2.config.PackageConfig.module_all_regexes
-      :type: list[typing.Pattern[str]] | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.module_all_regexes
-
-   .. py:attribute:: skip_module_regexes
-      :canonical: autodoc2.config.PackageConfig.skip_module_regexes
-      :type: list[typing.Pattern[str]] | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.skip_module_regexes
-
-   .. py:attribute:: hidden_objects
-      :canonical: autodoc2.config.PackageConfig.hidden_objects
-      :type: set[typing.Literal[undoc, dunder, private, inherited]] | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.hidden_objects
-
-   .. py:attribute:: hidden_regexes
-      :canonical: autodoc2.config.PackageConfig.hidden_regexes
-      :type: list[typing.Pattern[str]] | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.hidden_regexes
-
-   .. py:attribute:: deprecated_module_regexes
-      :canonical: autodoc2.config.PackageConfig.deprecated_module_regexes
-      :type: list[typing.Pattern[str]] | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.deprecated_module_regexes
-
-   .. py:attribute:: module_summary
-      :canonical: autodoc2.config.PackageConfig.module_summary
-      :type: bool | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.module_summary
-
-   .. py:attribute:: class_inheritance
-      :canonical: autodoc2.config.PackageConfig.class_inheritance
-      :type: bool | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.class_inheritance
-
-   .. py:attribute:: class_docstring
-      :canonical: autodoc2.config.PackageConfig.class_docstring
-      :type: typing.Literal[merge, both] | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.class_docstring
-
-   .. py:attribute:: annotations
-      :canonical: autodoc2.config.PackageConfig.annotations
-      :type: bool | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.annotations
-
-   .. py:attribute:: sort_names
-      :canonical: autodoc2.config.PackageConfig.sort_names
-      :type: bool | None
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.sort_names
 
    .. py:method:: as_triple() -> typing.Iterable[tuple[str, typing.Any, dataclasses.Field]]
       :canonical: autodoc2.config.PackageConfig.as_triple
@@ -311,12 +132,6 @@ API
    :canonical: autodoc2.config._coerce_packages
 
    .. autodoc2-docstring:: autodoc2.config._coerce_packages
-      :parser: 
-
-.. py:function:: _validate_string_list(name: str, item: typing.Any) -> list[str]
-   :canonical: autodoc2.config._validate_string_list
-
-   .. autodoc2-docstring:: autodoc2.config._validate_string_list
       :parser: 
 
 .. py:function:: _validate_replace_list(name: str, item: typing.Any) -> list[typing.Tuple[str, str]]
@@ -373,20 +188,6 @@ API
       :value: None
 
       .. autodoc2-docstring:: autodoc2.config.Config.output_dir
-
-   .. py:attribute:: exclude_dirs
-      :canonical: autodoc2.config.Config.exclude_dirs
-      :type: list[str]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.Config.exclude_dirs
-
-   .. py:attribute:: exclude_files
-      :canonical: autodoc2.config.Config.exclude_files
-      :type: list[str]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.config.Config.exclude_files
 
    .. py:attribute:: render_plugin
       :canonical: autodoc2.config.Config.render_plugin
@@ -511,8 +312,3 @@ API
       :canonical: autodoc2.config.Config.as_triple
 
       .. autodoc2-docstring:: autodoc2.config.Config.as_triple
-
-   .. py:method:: to_render_config(pkg_index: int | None) -> autodoc2.config.RenderConfig
-      :canonical: autodoc2.config.Config.to_render_config
-
-      .. autodoc2-docstring:: autodoc2.config.Config.to_render_config

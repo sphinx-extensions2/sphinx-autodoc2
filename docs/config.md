@@ -9,7 +9,7 @@ This section describes the configuration options for `sphinx-autodoc2`, that you
 ```
 
 (config:package)=
-## By package
+## Package analysis
 
 In the `autodoc2_packages` configuration option, an item can be a string, or a dictionary such as:
 

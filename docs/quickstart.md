@@ -138,7 +138,7 @@ def my_function(): ...
 The [Python import documentation](https://docs.python.org/3/reference/simple_stmts.html#import)
 ```
 
-To enable this feature, set the {confval}`autodoc2_module_all_regexes` (or {confval}`autodoc2_packages[module_all_regexes]`) configuration option in your `conf.py`:
+To enable this feature, set the {confval}`autodoc2_module_all_regexes` configuration option in your `conf.py`:
 
 ```python
 autodoc2_module_all_regexes = [

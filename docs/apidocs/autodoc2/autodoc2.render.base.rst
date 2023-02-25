@@ -23,7 +23,7 @@ Classes
 API
 ~~~
 
-.. py:class:: RendererBase(db: autodoc2.db.Database, config: autodoc2.config.RenderConfig, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
+.. py:class:: RendererBase(db: autodoc2.db.Database, config: autodoc2.config.Config, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, resolved_all: dict[str, autodoc2.utils.ResolvedDict] | None = None)
    :canonical: autodoc2.render.base.RendererBase
 
    Bases: :py:obj:`abc.ABC`
@@ -57,7 +57,7 @@ API
 
    .. py:property:: config
       :canonical: autodoc2.render.base.RendererBase.config
-      :type: autodoc2.config.RenderConfig
+      :type: autodoc2.config.Config
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.config
          :parser: 

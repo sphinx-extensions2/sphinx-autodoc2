@@ -110,7 +110,6 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
     """
 
     package = config.packages[pkg_index]
-    render_config = config.to_render_config(pkg_index)
 
     # find all the modules to analyse
     root_path: None | Path = Path(app.srcdir)
@@ -131,12 +130,8 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
             yield_modules(
                 path,
                 root_module=root_module,
-                exclude_dirs=config.exclude_dirs
-                if package.exclude_dirs is None
-                else package.exclude_dirs,
-                exclude_files=config.exclude_files
-                if package.exclude_files is None
-                else package.exclude_files,
+                exclude_dirs=package.exclude_dirs,
+                exclude_files=package.exclude_files,
             )
         )
     else:
@@ -193,19 +188,17 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
             [
                 mod
                 for mod in db.get_children_names(item, {"package", "module"})
-                if not any(
-                    pat.fullmatch(mod) for pat in render_config.skip_module_regexes
-                )
+                if not any(pat.fullmatch(mod) for pat in config.skip_module_regexes)
             ]
         )
 
     resolved_all: None | t.Dict[str, ResolvedDict] = None
-    if render_config.module_all_regexes:
+    if config.module_all_regexes:
         LOGGER.info("[Autodoc2] Resolving __all__ imports ...")
         resolved_all = {
             k: v
             for k, v in resolve_all(db, root_module).items()
-            if any(pat.fullmatch(k) for pat in render_config.module_all_regexes)
+            if any(pat.fullmatch(k) for pat in config.module_all_regexes)
         }
 
     def _warn_render(msg: str, type_: WarningSubtypes) -> None:
@@ -227,9 +220,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
                 render_cls = cls
                 break
         content = "\n".join(
-            render_cls(db, render_config, _warn_render, resolved_all).render_item(
-                mod_name
-            )
+            render_cls(db, config, _warn_render, resolved_all).render_item(mod_name)
         )
         out_path = output / (mod_name + render_cls.EXTENSION)
         paths.append(out_path)
