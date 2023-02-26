@@ -30,9 +30,6 @@ Functions
    * - :py:obj:`setup <autodoc2.sphinx.extension.setup>`
      - .. autodoc2-docstring:: autodoc2.sphinx.extension.setup
           :summary:
-   * - :py:obj:`load_config <autodoc2.sphinx.extension.load_config>`
-     - .. autodoc2-docstring:: autodoc2.sphinx.extension.load_config
-          :summary:
    * - :py:obj:`run_autodoc <autodoc2.sphinx.extension.run_autodoc>`
      - .. autodoc2-docstring:: autodoc2.sphinx.extension.run_autodoc
           :summary:
@@ -50,31 +47,21 @@ API
    :canonical: autodoc2.sphinx.extension.setup
 
    .. autodoc2-docstring:: autodoc2.sphinx.extension.setup
-      :parser: 
-
-.. py:function:: load_config(app: sphinx.application.Sphinx, *, overrides: None | dict[str, typing.Any] = None, location: None | docutils.nodes.Element = None) -> autodoc2.config.Config
-   :canonical: autodoc2.sphinx.extension.load_config
-
-   .. autodoc2-docstring:: autodoc2.sphinx.extension.load_config
-      :parser: 
 
 .. py:function:: run_autodoc(app: sphinx.application.Sphinx) -> None
    :canonical: autodoc2.sphinx.extension.run_autodoc
 
    .. autodoc2-docstring:: autodoc2.sphinx.extension.run_autodoc
-      :parser: 
 
 .. py:function:: run_autodoc_package(app: sphinx.application.Sphinx, config: autodoc2.config.Config, pkg_index: int) -> str | None
    :canonical: autodoc2.sphinx.extension.run_autodoc_package
 
    .. autodoc2-docstring:: autodoc2.sphinx.extension.run_autodoc_package
-      :parser: 
 
 .. py:function:: get_git_clone(app: sphinx.application.Sphinx, url: str, branch_tag: str, config: autodoc2.config.Config) -> None | pathlib.Path
    :canonical: autodoc2.sphinx.extension.get_git_clone
 
    .. autodoc2-docstring:: autodoc2.sphinx.extension.get_git_clone
-      :parser: 
 
 .. py:class:: EnvCache()
    :canonical: autodoc2.sphinx.extension.EnvCache

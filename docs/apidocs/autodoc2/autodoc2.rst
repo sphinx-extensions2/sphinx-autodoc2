@@ -68,4 +68,3 @@ API
    :canonical: autodoc2.setup
 
    .. autodoc2-docstring:: autodoc2.setup
-      :parser: 

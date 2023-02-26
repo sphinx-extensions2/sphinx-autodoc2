@@ -143,7 +143,6 @@ Bases: {py:obj}`typing.Protocol`
    None
 
 ```{autodoc2-docstring} autodoc2.db._LIKE_REGEX
-:parser: 
 ```
 
 ````

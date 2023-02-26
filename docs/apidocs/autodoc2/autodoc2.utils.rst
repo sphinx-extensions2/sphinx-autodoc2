@@ -244,7 +244,6 @@ API
    :canonical: autodoc2.utils.yield_modules
 
    .. autodoc2-docstring:: autodoc2.utils.yield_modules
-      :parser: 
 
 .. py:class:: ResolvedDict()
    :canonical: autodoc2.utils.ResolvedDict
@@ -296,4 +295,3 @@ API
    :canonical: autodoc2.utils.resolve_all
 
    .. autodoc2-docstring:: autodoc2.utils.resolve_all
-      :parser: 

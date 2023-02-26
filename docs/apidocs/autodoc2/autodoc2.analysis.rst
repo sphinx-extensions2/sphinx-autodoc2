@@ -91,7 +91,6 @@ API
    :canonical: autodoc2.analysis.analyse_module
 
    .. autodoc2-docstring:: autodoc2.analysis.analyse_module
-      :parser: 
 
 .. py:data:: _dc_kwargs
    :canonical: autodoc2.analysis._dc_kwargs
@@ -135,61 +134,51 @@ API
    :canonical: autodoc2.analysis._get_full_name
 
    .. autodoc2-docstring:: autodoc2.analysis._get_full_name
-      :parser: 
 
 .. py:function:: _get_parent_name(name: str) -> str
    :canonical: autodoc2.analysis._get_parent_name
 
    .. autodoc2-docstring:: autodoc2.analysis._get_parent_name
-      :parser: 
 
 .. py:function:: fix_docstring_indent(s: None | str, tabsize: int = 8) -> str
    :canonical: autodoc2.analysis.fix_docstring_indent
 
    .. autodoc2-docstring:: autodoc2.analysis.fix_docstring_indent
-      :parser: 
 
 .. py:function:: walk_node(node: astroid.nodes.NodeNG, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis.walk_node
 
    .. autodoc2-docstring:: autodoc2.analysis.walk_node
-      :parser: 
 
 .. py:function:: yield_module(node: astroid.nodes.Module, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis.yield_module
 
    .. autodoc2-docstring:: autodoc2.analysis.yield_module
-      :parser: 
 
 .. py:function:: yield_annotation_assign(node: astroid.nodes.AnnAssign, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis.yield_annotation_assign
 
    .. autodoc2-docstring:: autodoc2.analysis.yield_annotation_assign
-      :parser: 
 
 .. py:function:: yield_assign(node: astroid.nodes.Assign, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis.yield_assign
 
    .. autodoc2-docstring:: autodoc2.analysis.yield_assign
-      :parser: 
 
 .. py:function:: _yield_assign(node: astroid.nodes.Assign | astroid.nodes.AnnAssign, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis._yield_assign
 
    .. autodoc2-docstring:: autodoc2.analysis._yield_assign
-      :parser: 
 
 .. py:function:: yield_function_def(node: astroid.nodes.FunctionDef | astroid.nodes.AsyncFunctionDef, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis.yield_function_def
 
    .. autodoc2-docstring:: autodoc2.analysis.yield_function_def
-      :parser: 
 
 .. py:function:: yield_class_def(node: astroid.nodes.ClassDef, state: autodoc2.analysis.State) -> typing.Iterable[autodoc2.utils.ItemData]
    :canonical: autodoc2.analysis.yield_class_def
 
    .. autodoc2-docstring:: autodoc2.analysis.yield_class_def
-      :parser: 
 
 .. py:data:: _FUNC_MAPPER
    :canonical: autodoc2.analysis._FUNC_MAPPER

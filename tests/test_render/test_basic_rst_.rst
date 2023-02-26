@@ -73,7 +73,6 @@ API
    :canonical: package.func
 
    .. autodoc2-docstring:: package.func
-      :parser: 
 
 .. py:class:: Class
    :canonical: package.Class
@@ -97,7 +96,6 @@ API
       :type: package.a.c.ac1 | None
 
       .. autodoc2-docstring:: package.Class.prop
-         :parser: 
 
    .. py:class:: Nested
       :canonical: package.Class.Nested

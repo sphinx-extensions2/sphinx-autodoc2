@@ -60,14 +60,12 @@ API
       :type: autodoc2.config.Config
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.config
-         :parser: 
 
    .. py:property:: standalone
       :canonical: autodoc2.render.base.RendererBase.standalone
       :type: bool
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.standalone
-         :parser: 
 
    .. py:method:: warn(msg: str, type_: autodoc2.utils.WarningSubtypes = WarningSubtypes.RENDER_ERROR) -> None
       :canonical: autodoc2.render.base.RendererBase.warn
@@ -113,6 +111,11 @@ API
       :canonical: autodoc2.render.base.RendererBase.show_annotations
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.show_annotations
+
+   .. py:method:: show_docstring(item: autodoc2.utils.ItemData) -> bool
+      :canonical: autodoc2.render.base.RendererBase.show_docstring
+
+      .. autodoc2-docstring:: autodoc2.render.base.RendererBase.show_docstring
 
    .. py:method:: render_item(full_name: str) -> typing.Iterable[str]
       :canonical: autodoc2.render.base.RendererBase.render_item

@@ -48,7 +48,6 @@ API
    :canonical: autodoc2.sphinx.docstring.parser_name
 
    .. autodoc2-docstring:: autodoc2.sphinx.docstring.parser_name
-      :parser: 
 
 .. py:class:: DocstringRenderer(name, arguments, options, content, lineno, content_offset, block_text, state, state_machine)
    :canonical: autodoc2.sphinx.docstring.DocstringRenderer
@@ -100,15 +99,13 @@ API
    :canonical: autodoc2.sphinx.docstring.parsing_context
 
    .. autodoc2-docstring:: autodoc2.sphinx.docstring.parsing_context
-      :parser: 
 
 .. py:function:: change_source(state: docutils.parsers.rst.states.RSTStateMachine, source_path: str, line_offset: int) -> typing.Generator[None, None, None]
    :canonical: autodoc2.sphinx.docstring.change_source
 
    .. autodoc2-docstring:: autodoc2.sphinx.docstring.change_source
-      :parser: 
 
-.. py:function:: _example() -> None
+.. py:function:: _example(a: int, b: str) -> None
    :canonical: autodoc2.sphinx.docstring._example
 
    .. autodoc2-docstring:: autodoc2.sphinx.docstring._example

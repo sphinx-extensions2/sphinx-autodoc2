@@ -72,11 +72,12 @@ class RstRenderer(RendererBase):
         if self.is_module_deprecated(item):
             yield "   :deprecated:"
         yield ""
-        yield f".. autodoc2-docstring:: {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f"   :parser: {parser_name}"
-        yield "   :allowtitles:"
-        yield ""
+        if self.show_docstring(item):
+            yield f".. autodoc2-docstring:: {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"   :parser: {parser_name}"
+            yield "   :allowtitles:"
+            yield ""
 
         visible_subpackages = [
             i["full_name"] for i in self.get_children(item, {"package"})
@@ -170,10 +171,11 @@ class RstRenderer(RendererBase):
             # TODO it would also be good to highlight if singledispatch decorated,
             # or, more broadly speaking, decorated at all
         yield ""
-        yield f"   .. autodoc2-docstring:: {item['full_name']}"
-
-        yield f"      :parser: {self.get_doc_parser(item['full_name'])}"
-        yield ""
+        if self.show_docstring(item):
+            yield f"   .. autodoc2-docstring:: {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"      :parser: {parser_name}"
+            yield ""
 
     def render_exception(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for an exception."""
@@ -206,20 +208,21 @@ class RstRenderer(RendererBase):
 
         # TODO inheritance diagram
 
-        yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f"      :parser: {parser_name}"
-        yield ""
+        if self.show_docstring(item):
+            yield f"   .. autodoc2-docstring:: {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"      :parser: {parser_name}"
+            yield ""
 
-        if self.config.class_docstring == "merge":
-            init_item = self.get_item(f"{item['full_name']}.__init__")
-            if init_item:
-                yield "   .. rubric:: Initialization"
-                yield ""
-                yield f"   .. autodoc2-docstring:: {init_item['full_name']}"
-                if parser_name := self.get_doc_parser(item["full_name"]):
-                    yield f"      :parser: {parser_name}"
-                yield ""
+            if self.config.class_docstring == "merge":
+                init_item = self.get_item(f"{item['full_name']}.__init__")
+                if init_item:
+                    yield "   .. rubric:: Initialization"
+                    yield ""
+                    yield f"   .. autodoc2-docstring:: {init_item['full_name']}"
+                    if parser_name := self.get_doc_parser(item["full_name"]):
+                        yield f"      :parser: {parser_name}"
+                    yield ""
 
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
@@ -246,9 +249,11 @@ class RstRenderer(RendererBase):
             yield f"   :type: {self.format_annotation(item['return_annotation'])}"
         yield ""
 
-        yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        yield f"      :parser: {self.get_doc_parser(item['full_name'])}"
-        yield ""
+        if self.show_docstring(item):
+            yield f"   .. autodoc2-docstring:: {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"      :parser: {parser_name}"
+            yield ""
 
     def render_method(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a method."""
@@ -269,10 +274,11 @@ class RstRenderer(RendererBase):
                 yield f"   :{prop}:"
         yield ""
 
-        yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f"      :parser: {parser_name}"
-        yield ""
+        if self.show_docstring(item):
+            yield f"   .. autodoc2-docstring:: {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"      :parser: {parser_name}"
+            yield ""
 
     def render_attribute(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for an attribute."""
@@ -306,10 +312,12 @@ class RstRenderer(RendererBase):
             yield f"   :value: {value}"
 
         yield ""
-        yield f"   .. autodoc2-docstring:: {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f"      :parser: {parser_name}"
-        yield ""
+
+        if self.show_docstring(item):
+            yield f"   .. autodoc2-docstring:: {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f"      :parser: {parser_name}"
+            yield ""
 
     def _reformat_cls_base_rst(self, value: str) -> str:
         """Reformat the base of a class for RST.

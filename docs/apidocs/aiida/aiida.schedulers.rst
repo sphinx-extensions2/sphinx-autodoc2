@@ -392,7 +392,6 @@ API
       :canonical: aiida.schedulers.scheduler.Scheduler.logger
 
       .. autodoc2-docstring:: aiida.schedulers.scheduler.Scheduler.logger
-         :parser: 
 
    .. py:method:: job_resource_class() -> typing.Type[aiida.schedulers.datastructures.JobResource]
       :canonical: aiida.schedulers.scheduler.Scheduler.job_resource_class
@@ -462,7 +461,6 @@ API
       :canonical: aiida.schedulers.scheduler.Scheduler.transport
 
       .. autodoc2-docstring:: aiida.schedulers.scheduler.Scheduler.transport
-         :parser: 
 
    .. py:method:: set_transport(transport)
       :canonical: aiida.schedulers.scheduler.Scheduler.set_transport

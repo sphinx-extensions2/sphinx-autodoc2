@@ -83,49 +83,41 @@ API
    :canonical: aiida.plugins.factories.BaseFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.BaseFactory
-      :parser: 
 
 .. py:function:: CalcJobImporterFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.CalcJobImporter]]
    :canonical: aiida.plugins.factories.CalcJobImporterFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.CalcJobImporterFactory
-      :parser: 
 
 .. py:function:: CalculationFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.CalcJob], typing.Callable]
    :canonical: aiida.plugins.factories.CalculationFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.CalculationFactory
-      :parser: 
 
 .. py:function:: DataFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.Data]]
    :canonical: aiida.plugins.factories.DataFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.DataFactory
-      :parser: 
 
 .. py:function:: DbImporterFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.tools.dbimporters.DbImporter]]
    :canonical: aiida.plugins.factories.DbImporterFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.DbImporterFactory
-      :parser: 
 
 .. py:function:: GroupFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.Group]]
    :canonical: aiida.plugins.factories.GroupFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.GroupFactory
-      :parser: 
 
 .. py:function:: OrbitalFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.tools.data.orbital.Orbital]]
    :canonical: aiida.plugins.factories.OrbitalFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.OrbitalFactory
-      :parser: 
 
 .. py:function:: ParserFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.parsers.Parser]]
    :canonical: aiida.plugins.factories.ParserFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.ParserFactory
-      :parser: 
 
 .. py:class:: PluginVersionProvider()
    :canonical: aiida.plugins.utils.PluginVersionProvider
@@ -141,7 +133,6 @@ API
       :type: logging.Logger
 
       .. autodoc2-docstring:: aiida.plugins.utils.PluginVersionProvider.logger
-         :parser: 
 
    .. py:method:: get_version_info(plugin: str | type) -> dict[typing.Any, dict[typing.Any, typing.Any]]
       :canonical: aiida.plugins.utils.PluginVersionProvider.get_version_info
@@ -152,46 +143,38 @@ API
    :canonical: aiida.plugins.factories.SchedulerFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.SchedulerFactory
-      :parser: 
 
 .. py:function:: StorageFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.orm.implementation.StorageBackend]]
    :canonical: aiida.plugins.factories.StorageFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.StorageFactory
-      :parser: 
 
 .. py:function:: TransportFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.transports.Transport]]
    :canonical: aiida.plugins.factories.TransportFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.TransportFactory
-      :parser: 
 
 .. py:function:: WorkflowFactory(entry_point_name: str, load: bool = True) -> typing.Union[importlib_metadata.EntryPoint, typing.Type[aiida.engine.WorkChain], typing.Callable]
    :canonical: aiida.plugins.factories.WorkflowFactory
 
    .. autodoc2-docstring:: aiida.plugins.factories.WorkflowFactory
-      :parser: 
 
 .. py:function:: get_entry_points(group: str) -> importlib_metadata.EntryPoints
    :canonical: aiida.plugins.entry_point.get_entry_points
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.get_entry_points
-      :parser: 
 
 .. py:function:: load_entry_point(group: str, name: str) -> typing.Any
    :canonical: aiida.plugins.entry_point.load_entry_point
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.load_entry_point
-      :parser: 
 
 .. py:function:: load_entry_point_from_string(entry_point_string: str) -> typing.Any
    :canonical: aiida.plugins.entry_point.load_entry_point_from_string
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.load_entry_point_from_string
-      :parser: 
 
 .. py:function:: parse_entry_point(group: str, spec: str) -> importlib_metadata.EntryPoint
    :canonical: aiida.plugins.entry_point.parse_entry_point
 
    .. autodoc2-docstring:: aiida.plugins.entry_point.parse_entry_point
-      :parser: 

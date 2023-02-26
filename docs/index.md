@@ -1,5 +1,8 @@
 # sphinx-autodoc2
 
+[![GitHub Repo stars](https://img.shields.io/github/stars/chrisjsewell/sphinx-autodoc2?label=Like%20and%20Share%21&style=social)](https://github.com/chrisjsewell/sphinx-autodoc2)
+[![PyPI](https://img.shields.io/pypi/v/sphinx-autodoc2?label=PyPI&logo=pypi&style=social)](https://pypi.org/project/sphinx-autodoc2/)
+
 `sphinx-autodoc2` is a Sphinx extension that automatically generates API documentation for your Python packages.
 
 Static analysis of Python code
@@ -27,14 +30,12 @@ Get started with the [Quickstart Guide](quickstart.md) ⏩
 
 Or checkout the the [Example API Documentation](apidocs/index.rst) ✨
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/chrisjsewell/sphinx-autodoc2?label=Like%20and%20Share%21&style=social)](https://github.com/chrisjsewell/sphinx-autodoc2)
-[![PyPI](https://img.shields.io/pypi/v/sphinx-autodoc2?label=PyPI&logo=pypi&style=social)](https://pypi.org/project/sphinx-autodoc2/)
-
 ```{toctree}
 :maxdepth: 2
 
 quickstart
 docstrings
+autodoc
 config
 apidocs/index
 ```

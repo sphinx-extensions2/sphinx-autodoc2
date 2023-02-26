@@ -3,4 +3,3 @@
    :noindex:
 
    .. autodoc2-docstring:: package.func
-      :parser: 

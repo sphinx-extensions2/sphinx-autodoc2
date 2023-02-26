@@ -38,34 +38,29 @@ API
       :canonical: aiida.parsers.parser.Parser.logger
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.logger
-         :parser: 
 
    .. py:property:: node
       :canonical: aiida.parsers.parser.Parser.node
       :type: aiida.orm.CalcJobNode
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.node
-         :parser: 
 
    .. py:property:: exit_codes
       :canonical: aiida.parsers.parser.Parser.exit_codes
       :type: aiida.engine.ExitCodesNamespace
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.exit_codes
-         :parser: 
 
    .. py:property:: retrieved
       :canonical: aiida.parsers.parser.Parser.retrieved
       :type: aiida.orm.FolderData
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.retrieved
-         :parser: 
 
    .. py:property:: outputs
       :canonical: aiida.parsers.parser.Parser.outputs
 
       .. autodoc2-docstring:: aiida.parsers.parser.Parser.outputs
-         :parser: 
 
    .. py:method:: out(link_label: str, node: aiida.orm.Data) -> None
       :canonical: aiida.parsers.parser.Parser.out

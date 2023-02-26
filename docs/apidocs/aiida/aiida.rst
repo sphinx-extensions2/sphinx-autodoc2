@@ -120,28 +120,23 @@ API
    :canonical: aiida.get_strict_version
 
    .. autodoc2-docstring:: aiida.get_strict_version
-      :parser: 
 
 .. py:function:: get_version() -> str
    :canonical: aiida.get_version
 
    .. autodoc2-docstring:: aiida.get_version
-      :parser: 
 
 .. py:function:: _get_raw_file_header() -> str
    :canonical: aiida._get_raw_file_header
 
    .. autodoc2-docstring:: aiida._get_raw_file_header
-      :parser: 
 
 .. py:function:: get_file_header(comment_char: str = '# ') -> str
    :canonical: aiida.get_file_header
 
    .. autodoc2-docstring:: aiida.get_file_header
-      :parser: 
 
 .. py:function:: load_ipython_extension(ipython)
    :canonical: aiida.load_ipython_extension
 
    .. autodoc2-docstring:: aiida.load_ipython_extension
-      :parser: 

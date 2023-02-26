@@ -1,0 +1,54 @@
+<document source="index.rst">
+    <section ids="test" names="test">
+        <title>
+            Test
+        <literal_block highlight_args="{'linenostart': 9}" language="restructuredtext" linenos="True" xml:space="preserve">
+            This is a function.
+        <paragraph>
+            This is a function.
+        <literal_block language="restructuredtext" xml:space="preserve">
+            .. py:function:: func(a: str, b: int) -> package.a.c.ac1
+               :canonical: package.func
+
+               .. autodoc2-docstring:: package.func
+        <literal_block xml:space="preserve">
+            ````{py:function} func(a: str, b: int) -> package.a.c.ac1
+            :canonical: package.func
+
+            ```{autodoc2-docstring} package.func
+            ```
+            ````
+        <index entries="('single',\ 'func()\ (in\ module\ package)',\ 'package.func',\ '',\ None)">
+        <desc classes="py function" desctype="function" domain="py" nocontentsentry="False" noindex="False" noindexentry="False" objtype="function">
+            <desc_signature _toc_name="func()" _toc_parts="('package', 'func')" class="" classes="sig sig-object" fullname="func" ids="package.func" module="package">
+                <desc_addname classes="sig-prename descclassname" xml:space="preserve">
+                    package.
+                <desc_name classes="sig-name descname" xml:space="preserve">
+                    func
+                <desc_parameterlist xml:space="preserve">
+                    <desc_parameter xml:space="preserve">
+                        <desc_sig_name classes="n">
+                            a
+                        <desc_sig_punctuation classes="p">
+                            :
+                        <desc_sig_space classes="w">
+
+                        <desc_sig_name classes="n">
+                            <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="False" reftarget="str" reftype="class">
+                                str
+                    <desc_parameter xml:space="preserve">
+                        <desc_sig_name classes="n">
+                            b
+                        <desc_sig_punctuation classes="p">
+                            :
+                        <desc_sig_space classes="w">
+
+                        <desc_sig_name classes="n">
+                            <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="False" reftarget="int" reftype="class">
+                                int
+                <desc_returns xml:space="preserve">
+                    <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="False" reftarget="package.a.c.ac1" reftype="class">
+                        package.a.c.ac1
+            <desc_content>
+                <paragraph>
+                    This is a function.

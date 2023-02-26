@@ -9,15 +9,15 @@ import subprocess
 from time import sleep
 import typing as t
 
-from docutils import nodes
 from sphinx.application import Sphinx
 
 from autodoc2 import __version__
 from autodoc2.analysis import analyse_module
-from autodoc2.config import CONFIG_PREFIX, Config, ValidationError
+from autodoc2.config import CONFIG_PREFIX, Config
 from autodoc2.db import InMemoryDb, UniqueError
+from autodoc2.sphinx.autodoc import AutodocObject
 from autodoc2.sphinx.docstring import DocstringRenderer
-from autodoc2.sphinx.logging_ import LOGGER, warn_sphinx
+from autodoc2.sphinx.utils import LOGGER, load_config, warn_sphinx
 from autodoc2.utils import WarningSubtypes, yield_modules
 
 try:
@@ -46,6 +46,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
     # create the main event
     app.connect("builder-inited", run_autodoc)
     app.add_directive("autodoc2-docstring", DocstringRenderer)
+    app.add_directive("autodoc2-object", AutodocObject)
 
     # TODO support viewcode, when a package is not installed
 
@@ -55,28 +56,6 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
-
-
-def load_config(
-    app: Sphinx,
-    *,
-    overrides: None | dict[str, t.Any] = None,
-    location: None | nodes.Element = None,
-) -> Config:
-    """Load the configuration."""
-    values: dict[str, t.Any] = {}
-    overrides = overrides or {}
-    for name, _, field in Config().as_triple():
-        sphinx_name = f"{CONFIG_PREFIX}{name}"
-        value = overrides.get(name, app.config[sphinx_name])
-        if "sphinx_validate" in field.metadata:
-            try:
-                value = field.metadata["sphinx_validate"](sphinx_name, value)
-            except ValidationError as err:
-                warn_sphinx(str(err), WarningSubtypes.CONFIG_ERROR, location)
-                continue
-        values[name] = value
-    return Config(**values)
 
 
 def run_autodoc(app: Sphinx) -> None:
@@ -91,7 +70,7 @@ def run_autodoc(app: Sphinx) -> None:
             top_level_modules.append(mod_path)
 
     # create the index page
-    if config.index_template:
+    if top_level_modules and config.index_template:
         import jinja2
 
         content_str = jinja2.Template(config.index_template).render(
@@ -178,7 +157,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
 
     output = Path(app.srcdir) / PurePosixPath(config.output_dir) / root_module
 
-    if not package.autodoc:
+    if not package.auto_mode:
         if output.exists() and output.is_dir():
             shutil.rmtree(output)
         return None

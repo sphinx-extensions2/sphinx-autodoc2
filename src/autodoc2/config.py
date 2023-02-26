@@ -25,14 +25,15 @@ class PackageConfig:
     path: str = dc.field(
         metadata={
             "help": "The path to the package, "
-            "relative to the source directory (POSIX format)."
+            "relative to the source directory (POSIX format).",
+            "sphinx_type": str,
         }
     )
     from_git_clone: tuple[str, str] | None = dc.field(
         default=None,
         metadata={
             "help": "Clone a git (url, branch/tag)/ "
-            "If using this option the 'path' will be relative to root of the cloned repository."
+            "If using this option the 'path' will be relative to root of the cloned repository.",
         },
     )
     module: str | None = dc.field(
@@ -57,10 +58,10 @@ class PackageConfig:
         },
     )
 
-    autodoc: bool = dc.field(
+    auto_mode: bool = dc.field(
         default=True,
         metadata={
-            "help": "Whether to generate documentation for the package.",
+            "help": "Whether to automatically generate documentation for the package.",
         },
     )
 
@@ -240,6 +241,7 @@ class Config:
             ),
             "sphinx_type": list,
             "sphinx_validate": _coerce_packages,
+            "doc_type": "list[str | dict]",
             "category": "required",
         },
     )
@@ -269,6 +271,7 @@ class Config:
             "sphinx_type": str,
             "sphinx_default": "rst",
             "sphinx_validate": _load_renderer,
+            "doc_type": "str",
             "category": "render",
         },
     )
@@ -279,6 +282,7 @@ class Config:
             "help": "A list of (regex, renderer) to use for specific modules",
             "sphinx_type": list,
             "sphinx_validate": _load_regex_renderers,
+            "doc_type": "list[tuple[str, str]]",
             "category": "render",
         },
     )
@@ -291,6 +295,7 @@ class Config:
             "determining which children to document",
             "sphinx_type": list,
             "sphinx_validate": _validate_regex_list,
+            "doc_type": "list[str]",
             "category": "render",
         },
     )
@@ -301,6 +306,7 @@ class Config:
             "help": "Regexes which match fully qualified module/package names, to skip them",
             "sphinx_type": list,
             "sphinx_validate": _validate_regex_list,
+            "doc_type": "list[str]",
             "category": "render",
         },
     )
@@ -320,6 +326,7 @@ class Config:
             ),
             "sphinx_type": list,
             "sphinx_validate": _validate_hidden_objects,
+            "doc_type": 'list["undoc" | "dunder" | "private" | "inherited"]',
             "category": "render",
         },
     )
@@ -330,6 +337,7 @@ class Config:
             "help": "Regexes which match against fully qualified names, to mark them as hidden",
             "sphinx_type": list,
             "sphinx_validate": _validate_regex_list,
+            "doc_type": "list[str]",
             "category": "render",
         },
     )
@@ -349,6 +357,7 @@ class Config:
             "help": "Regexes which match against module names, to mark them as deprecated",
             "sphinx_type": list,
             "sphinx_validate": _validate_regex_list,
+            "doc_type": "list[str]",
             "category": "render",
         },
     )
@@ -370,6 +379,7 @@ class Config:
             "The first match is used. ",
             "sphinx_type": list,
             "sphinx_validate": _validate_list_tuple_regex_str,
+            "doc_type": "list[tuple[str, str]]",
             "category": "render",
         },
     )
@@ -384,6 +394,7 @@ class Config:
                 "If `both`, then the `__init__` method is included separately."
             ),
             "sphinx_type": str,
+            "doc_type": '"merge" | "both"',
             "category": "render",
         },
     )
@@ -401,6 +412,15 @@ class Config:
         default=True,
         metadata={
             "help": "Whether to include annotations.",
+            "sphinx_type": bool,
+            "category": "render",
+        },
+    )
+
+    docstrings: bool = dc.field(
+        default=True,
+        metadata={
+            "help": "Whether to include docstrings.",
             "sphinx_type": bool,
             "category": "render",
         },
@@ -469,6 +489,7 @@ class Config:
     # class_docstring: t.Literal["merge", "both"] | None = None
     # annotations: bool | None = None
     # sort_names: bool | None = None
+    # docstrings
 
     def as_triple(self) -> t.Iterable[tuple[str, t.Any, dc.Field]]:  # type: ignore[type-arg]
         """Yield triples of (name, value, field)."""
