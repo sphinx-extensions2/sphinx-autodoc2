@@ -7,7 +7,7 @@ import abc
 from collections import OrderedDict
 import typing as t
 
-from autodoc2.utils import WarningSubtypes
+from autodoc2.utils import WarningSubtypes, resolve_all
 
 if t.TYPE_CHECKING:
     from autodoc2.config import Config
@@ -26,7 +26,6 @@ class RendererBase(abc.ABC):
         db: Database,
         config: Config,
         warn: t.Callable[[str, WarningSubtypes], None] | None = None,
-        resolved_all: dict[str, ResolvedDict] | None = None,
         standalone: bool = True,
     ) -> None:
         """Initialise the renderer.
@@ -41,7 +40,7 @@ class RendererBase(abc.ABC):
         self._config = config
         self._standalone = standalone
         self._warn = warn or (lambda msg, type_: None)
-        self._resolved_all = resolved_all
+        self._resolved_all: dict[str, ResolvedDict] = {}
         self._resolve_all_warned: set[str] = set()
         """The full_names of modules that have already been warned about, regarding __all__ resolution"""
         self._is_hidden_cache: OrderedDict[str, bool] = OrderedDict()
@@ -92,6 +91,18 @@ class RendererBase(abc.ABC):
                 self.warn(
                     f"__all__ missing or empty in {item['full_name']}",
                     WarningSubtypes.ALL_MISSING,
+                )
+
+            if item["full_name"] not in self._resolved_all:
+                # TODO perhaps here we should find the "highest ancestor" available in the db and use that?
+                self._resolved_all.update(
+                    {
+                        k: v
+                        for k, v in resolve_all(self._db, item["full_name"]).items()
+                        if any(
+                            pat.fullmatch(k) for pat in self.config.module_all_regexes
+                        )
+                    }
                 )
             resolved_data = (
                 self._resolved_all.get(item["full_name"])

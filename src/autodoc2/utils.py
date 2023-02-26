@@ -138,11 +138,11 @@ class ResolvedDict(t.TypedDict):
 
 
 def resolve_all(db: Database, package_name: str) -> dict[str, ResolvedDict]:
-    """Give a module name, yield all names that would be imported by star."""
+    """Given a module name, yield all names that would be imported by star."""
     # see: https://docs.python.org/3/reference/simple_stmts.html#import
 
     # gather all the packages and modules in the database,
-    # that are, or begin with package_name
+    # that are/begin with package_name
     modules = {
         i["full_name"]: i
         for i in itertools.chain(db.get_by_type("module"), db.get_by_type("package"))
