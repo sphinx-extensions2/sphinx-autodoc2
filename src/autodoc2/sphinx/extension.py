@@ -176,6 +176,13 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
                     )
         autodoc2_cache[path.as_posix()] = {"hash": hash_str, "db": db}
 
+    output = Path(app.srcdir) / PurePosixPath(config.output_dir) / root_module
+
+    if not package.autodoc:
+        if output.exists() and output.is_dir():
+            shutil.rmtree(output)
+        return None
+
     # find all the package/module, so we know what files to write
     LOGGER.info("[Autodoc2] Determining files to write ...")
     to_write: t.List[str] = []
@@ -195,7 +202,6 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         warn_sphinx(msg, type_)
 
     # write the files
-    output = Path(app.srcdir) / PurePosixPath(config.output_dir) / root_module
     output.mkdir(parents=True, exist_ok=True)
     paths = []
     for mod_name in status_iterator(
