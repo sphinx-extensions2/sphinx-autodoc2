@@ -10,9 +10,9 @@ Install from PyPI:
 pip install sphinx-autodoc2
 ```
 
-## Sphinx Extension
+## Enabling the extension
 
-Add `autodoc2` to the `extensions` list in your `conf.py` file and, as as a minimum, set the `autodoc2_packages` configuration option to the list of packages you want to document:
+Add `autodoc2` to the `extensions` list in your `conf.py` file and, as as a minimum, set the {confval}`autodoc2_packages` configuration option to the list of packages you want to document:
 
 ```python
 extensions = [
@@ -42,14 +42,29 @@ If you don't want to include the `apidocs` directory in your repository,
 you may want to add a `.gitignore` in the `apidocs` folder with `*` in it.
 ```
 
-## Command Line Tool
+## Manually documenting select objects
 
-If installed with the `cli` extra, `sphinx-autodoc2` will install the `autodoc2` command line tool.
+`sphinx-autodoc2` can be used in one or both of two "modes":
 
-```console
-$ pip install sphinx-autodoc2[cli]
-$ autodoc2 --help
+1. **auto mode** (default) - Automatically generate files for all modules and packages specified by the {confval}`autodoc2_packages` configuration option.
+
+2. **manual mode** - Use the [`autodoc2-object` directive](autodoc.md) to manually specify which objects to document.
+
+To turn off auto mode, set the {confval}`autodoc2_packages[auto_mode]` configuration option to `False`:
+
+```python
+extensions = [
+    "autodoc2",
+]
+autodoc2_packages = [
+    {
+        "path": "../my_package",
+        "auto_mode": False,
+    },
+]
 ```
+
+You can even render only the docstring of any object, see: [](docstrings.md).
 
 ## Ignoring autodoc2 warnings
 
@@ -165,18 +180,30 @@ Then you will be able to reference `MyClass` in your documentation as either `my
 
 ## Using Markdown (MyST) docstrings
 
-By default, `sphinx-autodoc2` will render the file of each module/package as `.rst`.
-This means that the docstrings of each object within that module will also be interpreted as `.rst`.
+By default, `sphinx-autodoc2` will generate the file for each module/package as `.rst`,
+and the docstrings of each object within that module will also be interpreted as `rst`.
 
-If you want to use Markdown ([MyST](https://myst-parser.readthedocs.io)) docstrings, you can set the {confval}`autodoc2_render_plugin` configuration option in your `conf.py`:
+If you want to use Markdown ([MyST](https://myst-parser.readthedocs.io)) docstrings,
+you can set the {confval}`autodoc2_docstring_parser_regexes` for objects that use Markdown docstrings:
+
+```python
+autodoc2_docstring_parser_regexes = [
+    # this will render all docstrings as Markdown
+    (r".*", "myst"),
+    # this will render select docstrings as Markdown
+    (r"autodoc2\..*", "myst"),
+]
+```
+
+Alternatively, you can set the {confval}`autodoc2_render_plugin` configuration option in your `conf.py`:
 
 ```python
 autodoc2_render_plugin = "myst"
 ```
 
-This will now create all files with the ".md" extension, and thus the docstrings will be interpreted as Markdown.
+This will now create all files with the ".md" extension, and thus the docstrings will be interpreted as MyST by default.
 
-To specify at a module level which docstrings to render as Markdown or RestructuredText, you can set the {confval}`autodoc2_render_plugin_regexes` configuration option in your `conf.py`:
+To specify at a module level which files to render as Markdown or RestructuredText, you can set the {confval}`autodoc2_render_plugin_regexes` configuration option in your `conf.py`:
 
 ```python
 autodoc2_render_plugin_regexes = [
@@ -213,3 +240,12 @@ since this version introduces improvements to the `fieldlist` extension
 ```
 
 ````
+
+## Command Line Tool
+
+If installed with the `cli` extra, `sphinx-autodoc2` will install the `autodoc2` command line tool.
+
+```console
+$ pip install sphinx-autodoc2[cli]
+$ autodoc2 --help
+```

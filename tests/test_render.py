@@ -67,6 +67,16 @@ def test_sphinx_build(tmp_path: Path, with_rebuild: bool):
     build_package(tmp_path)
     source = tmp_path / "source"
     source.mkdir()
+    source.joinpath("conf.py").write_text(
+        dedent(
+            """\
+        project = "tester"
+        extensions = ["autodoc2"]
+        autodoc2_packages = ["../package"]
+        """
+        ),
+        "utf-8",
+    )
     source.joinpath("index.rst").write_text(
         dedent(
             """\
@@ -76,16 +86,6 @@ def test_sphinx_build(tmp_path: Path, with_rebuild: bool):
         .. toctree::
 
             apidocs/index
-        """
-        ),
-        "utf-8",
-    )
-    source.joinpath("conf.py").write_text(
-        dedent(
-            """\
-        project = "tester"
-        extensions = ["autodoc2"]
-        autodoc2_packages = ["../package"]
         """
         ),
         "utf-8",
@@ -152,6 +152,74 @@ def test_sphinx_build(tmp_path: Path, with_rebuild: bool):
         pytest.fail("Rebuild did not use cached source")
     if package_html.stat().st_mtime != package_html_mtime:
         pytest.fail("Rebuild did not use cached html")
+
+
+def test_sphinx_build_directives(tmp_path: Path, file_regression):
+    """Test building the Sphinx docs, using directives."""
+    build_package(tmp_path)
+    source = tmp_path / "source"
+    source.mkdir()
+    source.joinpath("conf.py").write_text(
+        dedent(
+            """\
+        project = "tester"
+        extensions = ["autodoc2"]
+        autodoc2_packages = [
+            {
+                "path": "../package",
+                "auto_mode": False,
+            }
+        ]
+        """
+        ),
+        "utf-8",
+    )
+    source.joinpath("index.rst").write_text(
+        dedent(
+            """\
+        Test
+        ====
+
+        .. autodoc2-docstring:: package.func
+           :literal:
+           :literal-linenos:
+           :literal-lexer: restructuredtext
+
+        .. autodoc2-docstring:: package.func
+
+        .. autodoc2-object:: package.func
+           :literal:
+           :literal-lexer: restructuredtext
+
+        .. autodoc2-object:: package.func
+           :literal:
+
+           render_plugin = "myst"
+
+        .. autodoc2-object:: package.func
+        """
+        ),
+        "utf-8",
+    )
+    warnings = io.StringIO()
+    build = tmp_path / "build"
+    app = SphinxTestApp(
+        buildername="html",
+        srcdir=sphinx_path(source),
+        builddir=sphinx_path(build),
+        warning=warnings,
+    )
+    try:
+        app.build()
+    finally:
+        app.cleanup()
+
+    assert not warnings.getvalue()
+
+    doctree = app.env.get_doctree("index")
+    doctree["source"] = "index.rst"
+    content = "\n".join([line.rstrip() for line in doctree.pformat().splitlines()])
+    file_regression.check(content, extension=".xml")
 
 
 def build_package(tmp_path: Path) -> Path:

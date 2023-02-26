@@ -113,25 +113,21 @@ API
       :type: aiida.orm.implementation.StorageBackend
 
       .. autodoc2-docstring:: aiida.tools.visualization.graph.Graph.backend
-         :parser: 
 
    .. py:property:: graphviz
       :canonical: aiida.tools.visualization.graph.Graph.graphviz
 
       .. autodoc2-docstring:: aiida.tools.visualization.graph.Graph.graphviz
-         :parser: 
 
    .. py:property:: nodes
       :canonical: aiida.tools.visualization.graph.Graph.nodes
 
       .. autodoc2-docstring:: aiida.tools.visualization.graph.Graph.nodes
-         :parser: 
 
    .. py:property:: edges
       :canonical: aiida.tools.visualization.graph.Graph.edges
 
       .. autodoc2-docstring:: aiida.tools.visualization.graph.Graph.edges
-         :parser: 
 
    .. py:method:: _load_node(node)
       :canonical: aiida.tools.visualization.graph.Graph._load_node
@@ -246,42 +242,36 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.path
-         :parser: 
 
    .. py:property:: path_list
       :canonical: aiida.tools.groups.paths.GroupPath.path_list
       :type: typing.List[str]
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.path_list
-         :parser: 
 
    .. py:property:: key
       :canonical: aiida.tools.groups.paths.GroupPath.key
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.key
-         :parser: 
 
    .. py:property:: delimiter
       :canonical: aiida.tools.groups.paths.GroupPath.delimiter
       :type: str
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.delimiter
-         :parser: 
 
    .. py:property:: cls
       :canonical: aiida.tools.groups.paths.GroupPath.cls
       :type: aiida.orm.groups.GroupMeta
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.cls
-         :parser: 
 
    .. py:property:: parent
       :canonical: aiida.tools.groups.paths.GroupPath.parent
       :type: typing.Optional[aiida.tools.groups.paths.GroupPath]
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.parent
-         :parser: 
 
    .. py:method:: __truediv__(path: str) -> aiida.tools.groups.paths.GroupPath
       :canonical: aiida.tools.groups.paths.GroupPath.__truediv__
@@ -303,14 +293,12 @@ API
       :type: typing.List[int]
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.group_ids
-         :parser: 
 
    .. py:property:: is_virtual
       :canonical: aiida.tools.groups.paths.GroupPath.is_virtual
       :type: bool
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.is_virtual
-         :parser: 
 
    .. py:method:: get_or_create_group() -> typing.Tuple[aiida.orm.Group, bool]
       :canonical: aiida.tools.groups.paths.GroupPath.get_or_create_group
@@ -327,7 +315,6 @@ API
       :type: typing.Iterator[aiida.tools.groups.paths.GroupPath]
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.children
-         :parser: 
 
    .. py:method:: __iter__() -> typing.Iterator[aiida.tools.groups.paths.GroupPath]
       :canonical: aiida.tools.groups.paths.GroupPath.__iter__
@@ -358,7 +345,6 @@ API
       :canonical: aiida.tools.groups.paths.GroupPath.browse
 
       .. autodoc2-docstring:: aiida.tools.groups.paths.GroupPath.browse
-         :parser: 
 
 .. py:exception:: InvalidPath()
    :canonical: aiida.tools.groups.paths.InvalidPath
@@ -473,58 +459,48 @@ API
    :canonical: aiida.tools.visualization.graph.default_link_styles
 
    .. autodoc2-docstring:: aiida.tools.visualization.graph.default_link_styles
-      :parser: 
 
 .. py:function:: default_node_styles(node)
    :canonical: aiida.tools.visualization.graph.default_node_styles
 
    .. autodoc2-docstring:: aiida.tools.visualization.graph.default_node_styles
-      :parser: 
 
 .. py:function:: default_node_sublabels(node)
    :canonical: aiida.tools.visualization.graph.default_node_sublabels
 
    .. autodoc2-docstring:: aiida.tools.visualization.graph.default_node_sublabels
-      :parser: 
 
 .. py:function:: delete_group_nodes(pks: typing.Iterable[int], dry_run: typing.Union[bool, typing.Callable[[typing.Set[int]], bool]] = True, backend=None, **traversal_rules: bool) -> typing.Tuple[typing.Set[int], bool]
    :canonical: aiida.tools.graph.deletions.delete_group_nodes
 
    .. autodoc2-docstring:: aiida.tools.graph.deletions.delete_group_nodes
-      :parser: 
 
 .. py:function:: delete_nodes(pks: typing.Iterable[int], dry_run: typing.Union[bool, typing.Callable[[typing.Set[int]], bool]] = True, backend=None, **traversal_rules: bool) -> typing.Tuple[typing.Set[int], bool]
    :canonical: aiida.tools.graph.deletions.delete_nodes
 
    .. autodoc2-docstring:: aiida.tools.graph.deletions.delete_nodes
-      :parser: 
 
 .. py:function:: get_explicit_kpoints_path(structure, method='seekpath', **kwargs)
    :canonical: aiida.tools.data.array.kpoints.main.get_explicit_kpoints_path
 
    .. autodoc2-docstring:: aiida.tools.data.array.kpoints.main.get_explicit_kpoints_path
-      :parser: 
 
 .. py:function:: get_kpoints_path(structure, method='seekpath', **kwargs)
    :canonical: aiida.tools.data.array.kpoints.main.get_kpoints_path
 
    .. autodoc2-docstring:: aiida.tools.data.array.kpoints.main.get_kpoints_path
-      :parser: 
 
 .. py:function:: pstate_node_styles(node)
    :canonical: aiida.tools.visualization.graph.pstate_node_styles
 
    .. autodoc2-docstring:: aiida.tools.visualization.graph.pstate_node_styles
-      :parser: 
 
 .. py:function:: spglib_tuple_to_structure(structure_tuple, kind_info=None, kinds=None)
    :canonical: aiida.tools.data.structure.spglib_tuple_to_structure
 
    .. autodoc2-docstring:: aiida.tools.data.structure.spglib_tuple_to_structure
-      :parser: 
 
 .. py:function:: structure_to_spglib_tuple(structure)
    :canonical: aiida.tools.data.structure.structure_to_spglib_tuple
 
    .. autodoc2-docstring:: aiida.tools.data.structure.structure_to_spglib_tuple
-      :parser: 

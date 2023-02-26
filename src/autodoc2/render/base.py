@@ -254,6 +254,10 @@ class RendererBase(abc.ABC):
         """Whether to show type annotations."""
         return self.config.annotations
 
+    def show_docstring(self, item: ItemData) -> bool:
+        """Whether to show the docstring."""
+        return self.config.docstrings
+
     @abc.abstractmethod
     def render_item(self, full_name: str) -> t.Iterable[str]:
         """Yield the content for a single item."""

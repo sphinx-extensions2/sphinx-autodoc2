@@ -81,12 +81,13 @@ class MystRenderer(RendererBase):
             yield ":deprecated:"
         yield from ["```", ""]
 
-        yield f"```{{autodoc2-docstring}} {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f":parser: {parser_name}"
-        yield ":allowtitles:"
-        yield "```"
-        yield ""
+        if self.show_docstring(item):
+            yield f"```{{autodoc2-docstring}} {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f":parser: {parser_name}"
+            yield ":allowtitles:"
+            yield "```"
+            yield ""
 
         visible_subpackages = [
             i["full_name"] for i in self.get_children(item, {"package"})
@@ -180,10 +181,11 @@ class MystRenderer(RendererBase):
             # TODO it would also be good to highlight if singledispatch decorated,
             # or, more broadly speaking, decorated at all
         yield ""
-        yield f"```{{autodoc2-docstring}} {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f":parser: {parser_name}"
-        yield "```"
+        if self.show_docstring(item):
+            yield f"```{{autodoc2-docstring}} {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f":parser: {parser_name}"
+            yield "```"
         yield "````"
         yield ""
 
@@ -223,26 +225,27 @@ class MystRenderer(RendererBase):
 
         # TODO inheritance diagram
 
-        lines.append(f"```{{autodoc2-docstring}} {item['full_name']}")
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            lines.append(f":parser: {parser_name}")
-        lines.append("```")
-        lines.append("")
+        if self.show_docstring(item):
+            lines.append(f"```{{autodoc2-docstring}} {item['full_name']}")
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                lines.append(f":parser: {parser_name}")
+            lines.append("```")
+            lines.append("")
 
-        if self.config.class_docstring == "merge":
-            init_item = self.get_item(f"{item['full_name']}.__init__")
-            if init_item:
-                lines.extend(
-                    [
-                        "```{rubric} Initialization",
-                        "```",
-                        "",
-                        f"```{{autodoc2-docstring}} {init_item['full_name']}",
-                    ]
-                )
-                if parser_name := self.get_doc_parser(init_item["full_name"]):
-                    lines.append(f":parser: {parser_name}")
-                lines.extend(["```", ""])
+            if self.config.class_docstring == "merge":
+                init_item = self.get_item(f"{item['full_name']}.__init__")
+                if init_item:
+                    lines.extend(
+                        [
+                            "```{rubric} Initialization",
+                            "```",
+                            "",
+                            f"```{{autodoc2-docstring}} {init_item['full_name']}",
+                        ]
+                    )
+                    if parser_name := self.get_doc_parser(init_item["full_name"]):
+                        lines.append(f":parser: {parser_name}")
+                    lines.extend(["```", ""])
 
         for child in self.get_children(
             item, {"class", "property", "attribute", "method"}
@@ -276,11 +279,12 @@ class MystRenderer(RendererBase):
             yield f":type: {self.format_annotation(item['return_annotation'])}"
 
         yield ""
-        yield f"```{{autodoc2-docstring}} {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f":parser: {parser_name}"
-        yield "```"
-        yield ""
+        if self.show_docstring(item):
+            yield f"```{{autodoc2-docstring}} {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f":parser: {parser_name}"
+            yield "```"
+            yield ""
         yield "````"
         yield ""
 
@@ -303,11 +307,12 @@ class MystRenderer(RendererBase):
                 yield f":{prop}:"
 
         yield ""
-        yield f"```{{autodoc2-docstring}} {item['full_name']}"
-        if parser_name := self.get_doc_parser(item["full_name"]):
-            yield f":parser: {parser_name}"
-        yield "```"
-        yield ""
+        if self.show_docstring(item):
+            yield f"```{{autodoc2-docstring}} {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f":parser: {parser_name}"
+            yield "```"
+            yield ""
         yield "````"
         yield ""
 
@@ -345,17 +350,15 @@ class MystRenderer(RendererBase):
             yield ":value: >"
             yield f"   {value}"
 
-        yield from (
-            [
-                "",
-                f"```{{autodoc2-docstring}} {item['full_name']}",
-                f":parser: {self.get_doc_parser(item['full_name'])}",
-                "```",
-                "",
-                "````",
-                "",
-            ]
-        )
+        yield ""
+        if self.show_docstring(item):
+            yield f"```{{autodoc2-docstring}} {item['full_name']}"
+            if parser_name := self.get_doc_parser(item["full_name"]):
+                yield f":parser: {parser_name}"
+            yield "```"
+            yield ""
+        yield "````"
+        yield ""
 
     def _reformat_cls_base_myst(self, value: str) -> str:
         """Reformat the base of a class for RST.

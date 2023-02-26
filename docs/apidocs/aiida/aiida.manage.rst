@@ -232,55 +232,46 @@ API
       :type: dict
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.dictionary
-         :parser: 
 
    .. py:property:: version
       :canonical: aiida.manage.configuration.config.Config.version
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.version
-         :parser: 
 
    .. py:property:: version_oldest_compatible
       :canonical: aiida.manage.configuration.config.Config.version_oldest_compatible
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.version_oldest_compatible
-         :parser: 
 
    .. py:property:: version_settings
       :canonical: aiida.manage.configuration.config.Config.version_settings
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.version_settings
-         :parser: 
 
    .. py:property:: filepath
       :canonical: aiida.manage.configuration.config.Config.filepath
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.filepath
-         :parser: 
 
    .. py:property:: dirpath
       :canonical: aiida.manage.configuration.config.Config.dirpath
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.dirpath
-         :parser: 
 
    .. py:property:: default_profile_name
       :canonical: aiida.manage.configuration.config.Config.default_profile_name
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.default_profile_name
-         :parser: 
 
    .. py:property:: profile_names
       :canonical: aiida.manage.configuration.config.Config.profile_names
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.profile_names
-         :parser: 
 
    .. py:property:: profiles
       :canonical: aiida.manage.configuration.config.Config.profiles
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.profiles
-         :parser: 
 
    .. py:method:: validate_profile(name)
       :canonical: aiida.manage.configuration.config.Config.validate_profile
@@ -321,7 +312,6 @@ API
       :canonical: aiida.manage.configuration.config.Config.options
 
       .. autodoc2-docstring:: aiida.manage.configuration.config.Config.options
-         :parser: 
 
    .. py:method:: set_option(option_name, option_value, scope=None, override=True)
       :canonical: aiida.manage.configuration.config.Config.set_option
@@ -411,42 +401,36 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.manage.configuration.options.Option.name
-         :parser: 
 
    .. py:property:: schema
       :canonical: aiida.manage.configuration.options.Option.schema
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.manage.configuration.options.Option.schema
-         :parser: 
 
    .. py:property:: valid_type
       :canonical: aiida.manage.configuration.options.Option.valid_type
       :type: typing.Any
 
       .. autodoc2-docstring:: aiida.manage.configuration.options.Option.valid_type
-         :parser: 
 
    .. py:property:: default
       :canonical: aiida.manage.configuration.options.Option.default
       :type: typing.Any
 
       .. autodoc2-docstring:: aiida.manage.configuration.options.Option.default
-         :parser: 
 
    .. py:property:: description
       :canonical: aiida.manage.configuration.options.Option.description
       :type: str
 
       .. autodoc2-docstring:: aiida.manage.configuration.options.Option.description
-         :parser: 
 
    .. py:property:: global_only
       :canonical: aiida.manage.configuration.options.Option.global_only
       :type: bool
 
       .. autodoc2-docstring:: aiida.manage.configuration.options.Option.global_only
-         :parser: 
 
    .. py:method:: validate(value: typing.Any, cast: bool = True) -> typing.Any
       :canonical: aiida.manage.configuration.options.Option.validate
@@ -524,19 +508,16 @@ API
       :canonical: aiida.manage.external.postgres.Postgres.host_for_psycopg2
 
       .. autodoc2-docstring:: aiida.manage.external.postgres.Postgres.host_for_psycopg2
-         :parser: 
 
    .. py:property:: port_for_psycopg2
       :canonical: aiida.manage.external.postgres.Postgres.port_for_psycopg2
 
       .. autodoc2-docstring:: aiida.manage.external.postgres.Postgres.port_for_psycopg2
-         :parser: 
 
    .. py:property:: dbinfo
       :canonical: aiida.manage.external.postgres.Postgres.dbinfo
 
       .. autodoc2-docstring:: aiida.manage.external.postgres.Postgres.dbinfo
-         :parser: 
 
 .. py:class:: ProcessLauncher
    :canonical: aiida.manage.external.rmq.launcher.ProcessLauncher
@@ -647,28 +628,24 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.uuid
-         :parser: 
 
    .. py:property:: default_user_email
       :canonical: aiida.manage.configuration.profile.Profile.default_user_email
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.default_user_email
-         :parser: 
 
    .. py:property:: storage_backend
       :canonical: aiida.manage.configuration.profile.Profile.storage_backend
       :type: str
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.storage_backend
-         :parser: 
 
    .. py:property:: storage_config
       :canonical: aiida.manage.configuration.profile.Profile.storage_config
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.storage_config
-         :parser: 
 
    .. py:method:: set_storage(name: str, config: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.manage.configuration.profile.Profile.set_storage
@@ -680,21 +657,18 @@ API
       :type: typing.Type[aiida.orm.implementation.StorageBackend]
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.storage_cls
-         :parser: 
 
    .. py:property:: process_control_backend
       :canonical: aiida.manage.configuration.profile.Profile.process_control_backend
       :type: str
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.process_control_backend
-         :parser: 
 
    .. py:property:: process_control_config
       :canonical: aiida.manage.configuration.profile.Profile.process_control_config
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.process_control_config
-         :parser: 
 
    .. py:method:: set_process_controller(name: str, config: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.manage.configuration.profile.Profile.set_process_controller
@@ -705,7 +679,6 @@ API
       :canonical: aiida.manage.configuration.profile.Profile.options
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.options
-         :parser: 
 
    .. py:method:: get_option(option_key, default=None)
       :canonical: aiida.manage.configuration.profile.Profile.get_option
@@ -726,35 +699,30 @@ API
       :canonical: aiida.manage.configuration.profile.Profile.name
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.name
-         :parser: 
 
    .. py:property:: dictionary
       :canonical: aiida.manage.configuration.profile.Profile.dictionary
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.dictionary
-         :parser: 
 
    .. py:property:: is_test_profile
       :canonical: aiida.manage.configuration.profile.Profile.is_test_profile
       :type: bool
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.is_test_profile
-         :parser: 
 
    .. py:property:: repository_path
       :canonical: aiida.manage.configuration.profile.Profile.repository_path
       :type: pathlib.Path
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.repository_path
-         :parser: 
 
    .. py:property:: rmq_prefix
       :canonical: aiida.manage.configuration.profile.Profile.rmq_prefix
       :type: str
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.rmq_prefix
-         :parser: 
 
    .. py:method:: get_rmq_url() -> str
       :canonical: aiida.manage.configuration.profile.Profile.get_rmq_url
@@ -765,7 +733,6 @@ API
       :canonical: aiida.manage.configuration.profile.Profile.filepaths
 
       .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.filepaths
-         :parser: 
 
 .. py:class:: RabbitmqManagementClient(username: str, password: str, hostname: str, virtual_host: str)
    :canonical: aiida.manage.external.rmq.client.RabbitmqManagementClient
@@ -791,106 +758,88 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.manage.external.rmq.client.RabbitmqManagementClient.is_connected
-         :parser: 
 
 .. py:function:: check_and_migrate_config(config, filepath: typing.Optional[str] = None)
    :canonical: aiida.manage.configuration.migrations.migrations.check_and_migrate_config
 
    .. autodoc2-docstring:: aiida.manage.configuration.migrations.migrations.check_and_migrate_config
-      :parser: 
 
 .. py:function:: config_needs_migrating(config, filepath: typing.Optional[str] = None)
    :canonical: aiida.manage.configuration.migrations.migrations.config_needs_migrating
 
    .. autodoc2-docstring:: aiida.manage.configuration.migrations.migrations.config_needs_migrating
-      :parser: 
 
 .. py:function:: config_schema() -> typing.Dict[str, typing.Any]
    :canonical: aiida.manage.configuration.config.config_schema
 
    .. autodoc2-docstring:: aiida.manage.configuration.config.config_schema
-      :parser: 
 
 .. py:function:: disable_caching(*, identifier=None)
    :canonical: aiida.manage.caching.disable_caching
 
    .. autodoc2-docstring:: aiida.manage.caching.disable_caching
-      :parser: 
 
 .. py:function:: downgrade_config(config: aiida.manage.configuration.migrations.migrations.ConfigType, target: int, migrations: typing.Iterable[typing.Type[aiida.manage.configuration.migrations.migrations.SingleMigration]] = MIGRATIONS) -> aiida.manage.configuration.migrations.migrations.ConfigType
    :canonical: aiida.manage.configuration.migrations.migrations.downgrade_config
 
    .. autodoc2-docstring:: aiida.manage.configuration.migrations.migrations.downgrade_config
-      :parser: 
 
 .. py:function:: enable_caching(*, identifier=None)
    :canonical: aiida.manage.caching.enable_caching
 
    .. autodoc2-docstring:: aiida.manage.caching.enable_caching
-      :parser: 
 
 .. py:function:: get_current_version(config)
    :canonical: aiida.manage.configuration.migrations.migrations.get_current_version
 
    .. autodoc2-docstring:: aiida.manage.configuration.migrations.migrations.get_current_version
-      :parser: 
 
 .. py:function:: get_launch_queue_name(prefix=None)
    :canonical: aiida.manage.external.rmq.utils.get_launch_queue_name
 
    .. autodoc2-docstring:: aiida.manage.external.rmq.utils.get_launch_queue_name
-      :parser: 
 
 .. py:function:: get_manager() -> Manager
    :canonical: aiida.manage.manager.get_manager
 
    .. autodoc2-docstring:: aiida.manage.manager.get_manager
-      :parser: 
 
 .. py:function:: get_message_exchange_name(prefix)
    :canonical: aiida.manage.external.rmq.utils.get_message_exchange_name
 
    .. autodoc2-docstring:: aiida.manage.external.rmq.utils.get_message_exchange_name
-      :parser: 
 
 .. py:function:: get_option(name: str) -> aiida.manage.configuration.options.Option
    :canonical: aiida.manage.configuration.options.get_option
 
    .. autodoc2-docstring:: aiida.manage.configuration.options.get_option
-      :parser: 
 
 .. py:function:: get_option_names() -> typing.List[str]
    :canonical: aiida.manage.configuration.options.get_option_names
 
    .. autodoc2-docstring:: aiida.manage.configuration.options.get_option_names
-      :parser: 
 
 .. py:function:: get_rmq_url(protocol=None, username=None, password=None, host=None, port=None, virtual_host=None, **kwargs)
    :canonical: aiida.manage.external.rmq.utils.get_rmq_url
 
    .. autodoc2-docstring:: aiida.manage.external.rmq.utils.get_rmq_url
-      :parser: 
 
 .. py:function:: get_task_exchange_name(prefix)
    :canonical: aiida.manage.external.rmq.utils.get_task_exchange_name
 
    .. autodoc2-docstring:: aiida.manage.external.rmq.utils.get_task_exchange_name
-      :parser: 
 
 .. py:function:: get_use_cache(*, identifier=None)
    :canonical: aiida.manage.caching.get_use_cache
 
    .. autodoc2-docstring:: aiida.manage.caching.get_use_cache
-      :parser: 
 
 .. py:function:: parse_option(option_name: str, option_value: typing.Any) -> typing.Tuple[aiida.manage.configuration.options.Option, typing.Any]
    :canonical: aiida.manage.configuration.options.parse_option
 
    .. autodoc2-docstring:: aiida.manage.configuration.options.parse_option
-      :parser: 
 
 .. py:function:: upgrade_config(config: aiida.manage.configuration.migrations.migrations.ConfigType, target: int = CURRENT_CONFIG_VERSION, migrations: typing.Iterable[typing.Type[aiida.manage.configuration.migrations.migrations.SingleMigration]] = MIGRATIONS) -> aiida.manage.configuration.migrations.migrations.ConfigType
    :canonical: aiida.manage.configuration.migrations.migrations.upgrade_config
 
    .. autodoc2-docstring:: aiida.manage.configuration.migrations.migrations.upgrade_config
-      :parser: 

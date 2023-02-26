@@ -20,6 +20,7 @@ urls = {Home = "https://github.com/chrisjsewell/sphinx-autodoc2"}
 requires-python = ">=3.8"
 dependencies = [
     "astroid>=2.7",
+    "tomli; python_version<'3.11'",
     "typing-extensions"
 ]
 
@@ -65,8 +66,16 @@ exclude = ['^tests/.*']
 module = [
     "astroid.*",  # https://github.com/PyCQA/astroid/issues/1287
     "docutils.*",
+    "tomllib.*",
+    "tomli.*",
 ]
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["autodoc2.sphinx.autodoc"]
+# the try/except for tomllib/tomli causes different behaviour
+# on different python versions
+warn_unused_ignores = false
 
 [tool.pytest.ini_options]
 testpaths = [

@@ -92,7 +92,6 @@ nitpick_ignore_regex = [
 
 # --- Additional configuration ----
 
-from dataclasses import fields  # noqa: E402
 import typing as t  # noqa: E402
 
 from docutils import nodes  # noqa: E402
@@ -124,13 +123,12 @@ class CreateConfigDirective(SphinxDirective):
             text.append(f"``````{{confval}} {CONFIG_PREFIX}{name}")
             text.append(f'{field.metadata.get("help", "")}')
             text.append("")
-            if "category" in field.metadata:
-                text.append(f"**category**: { field.metadata['category']}")
-                text.append("")
-            if "sphinx_type" in field.metadata:
-                type_ = type_to_string(field.metadata["sphinx_type"])
-                text.append(f"**type**: {type_}")
-                text.append("")
+            # if "category" in field.metadata:
+            #     text.append(f"**category**: { field.metadata['category']}")
+            #     text.append("")
+            type_ = type_to_string(field.metadata.get("doc_type", field.type))
+            text.append(f"**type**: {type_}")
+            text.append("")
             default_str = value if isinstance(value, str) else repr(value)
             if len(default_str.splitlines()) == 1:
                 text.append(f"**default**: ``{default_str}``")
@@ -155,15 +153,24 @@ class CreateConfigPkgDirective(SphinxDirective):
         base_node = nodes.Element()
         text = []
         pkg_config = PackageConfig("")
-        config_fields = {f.name: f for f in fields(Config)}
-        for name, _, field in pkg_config.as_triple():
+        for name, value, field in pkg_config.as_triple():
             text.append(f"``````{{confval}} {CONFIG_PREFIX}packages[{name}]")
-            if name in config_fields:
-                text.append("*global override*")
-                text.append("")
-                text.append(f'{config_fields[name].metadata.get("help", "")}')
+            text.append(f'{field.metadata.get("help", "")}')
+            text.append("")
+            type_ = type_to_string(field.type)
+            text.append(f"**type**: {type_}")
+            text.append("")
+            default_str = value if isinstance(value, str) else repr(value)
+            if not default_str:
+                pass
+            elif len(default_str.splitlines()) < 2:
+                text.append(f"**default**: ``{default_str}``")
             else:
-                text.append(f'{field.metadata.get("help", "")}')
+                text.append("**default**:")
+                text.append("")
+                text.append("```")
+                text.append(default_str)
+                text.append("```")
             text.append("``````")
         self.state.nested_parse(text, self.content_offset, base_node)
         return base_node.children  # type: ignore

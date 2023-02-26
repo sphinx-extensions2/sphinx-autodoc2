@@ -7,15 +7,16 @@ import typing as t
 from docutils import nodes
 from docutils.parsers import Parser, get_parser_class
 from docutils.parsers.rst import directives, roles
-from docutils.parsers.rst.states import RSTStateMachine
 from docutils.statemachine import StringList
 from docutils.utils import new_document
 from sphinx.util.docutils import SphinxDirective
 
-from autodoc2.sphinx.logging_ import warn_sphinx
+from autodoc2.sphinx.utils import warn_sphinx
 from autodoc2.utils import ItemData, WarningSubtypes
 
 if t.TYPE_CHECKING:
+    from docutils.parsers.rst.states import RSTStateMachine
+
     from autodoc2.sphinx.extension import EnvCache
 
 
@@ -55,7 +56,10 @@ class DocstringRenderer(SphinxDirective):
     }
 
     def run(self) -> list[nodes.Node]:
-        """Run the directive."""
+        """Run the directive {a}`1`."""
+        _, line = self.get_source_info()
+        # warnings take the docname and line number
+        warning_loc = (self.env.docname, line)
 
         # find the database item for this object
         name = self.arguments[0]
@@ -73,7 +77,7 @@ class DocstringRenderer(SphinxDirective):
                 warn_sphinx(
                     f"Could not find {name}",
                     WarningSubtypes.NAME_NOT_FOUND,
-                    location=self.get_source_info(),
+                    location=warning_loc,
                 )
             return []
 
@@ -99,6 +103,7 @@ class DocstringRenderer(SphinxDirective):
         if "literal" in self.options:
             # return the literal docstring
             literal = nodes.literal_block(text=item["doc"])
+            self.set_source_info(literal)
             if "literal-lexer" in self.options:
                 literal["language"] = self.options["literal-lexer"]
             if "literal-linenos" in self.options:
@@ -133,7 +138,7 @@ class DocstringRenderer(SphinxDirective):
             if source_path:
                 # Here we perform a nested render, but temporarily setup the document/reporter
                 # with the correct document path and lineno for the included file.
-                with change_source(self.state, source_path, line_offset):
+                with change_source(self.state, source_path, line_offset - line):
                     lines = item["doc"].splitlines()
                     content = StringList(
                         lines,
@@ -199,7 +204,7 @@ def change_source(
             del state.reporter.get_source_and_line
 
 
-def _example() -> None:
+def _example(a: int, b: str) -> None:
     """This is an example docstring, written in MyST.
 
     It has a code fence:

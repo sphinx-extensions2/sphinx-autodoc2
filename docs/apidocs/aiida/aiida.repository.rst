@@ -49,7 +49,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.repository.backend.abstract.AbstractRepositoryBackend.uuid
-         :parser: 
 
    .. py:property:: key_format
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.key_format
@@ -57,7 +56,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.repository.backend.abstract.AbstractRepositoryBackend.key_format
-         :parser: 
 
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.initialise
@@ -71,7 +69,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.repository.backend.abstract.AbstractRepositoryBackend.is_initialised
-         :parser: 
 
    .. py:method:: erase() -> None
       :canonical: aiida.repository.backend.abstract.AbstractRepositoryBackend.erase
@@ -183,14 +180,12 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.uuid
-         :parser: 
 
    .. py:property:: key_format
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.key_format
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.key_format
-         :parser: 
 
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.initialise
@@ -202,7 +197,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.is_initialised
-         :parser: 
 
    .. py:method:: erase()
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.erase
@@ -279,14 +273,12 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.repository.common.File.name
-         :parser: 
 
    .. py:property:: file_type
       :canonical: aiida.repository.common.File.file_type
       :type: aiida.repository.common.FileType
 
       .. autodoc2-docstring:: aiida.repository.common.File.file_type
-         :parser: 
 
    .. py:method:: is_file() -> bool
       :canonical: aiida.repository.common.File.is_file
@@ -303,14 +295,12 @@ API
       :type: typing.Union[str, None]
 
       .. autodoc2-docstring:: aiida.repository.common.File.key
-         :parser: 
 
    .. py:property:: objects
       :canonical: aiida.repository.common.File.objects
       :type: typing.Dict[str, aiida.repository.common.File]
 
       .. autodoc2-docstring:: aiida.repository.common.File.objects
-         :parser: 
 
    .. py:method:: __eq__(other) -> bool
       :canonical: aiida.repository.common.File.__eq__
@@ -366,14 +356,12 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.repository.repository.Repository.uuid
-         :parser: 
 
    .. py:property:: is_initialised
       :canonical: aiida.repository.repository.Repository.is_initialised
       :type: bool
 
       .. autodoc2-docstring:: aiida.repository.repository.Repository.is_initialised
-         :parser: 
 
    .. py:method:: from_serialized(backend: aiida.repository.backend.AbstractRepositoryBackend, serialized: typing.Dict[str, typing.Any]) -> aiida.repository.repository.Repository
       :canonical: aiida.repository.repository.Repository.from_serialized
@@ -413,7 +401,6 @@ API
       :type: aiida.repository.backend.AbstractRepositoryBackend
 
       .. autodoc2-docstring:: aiida.repository.repository.Repository.backend
-         :parser: 
 
    .. py:method:: set_backend(backend: aiida.repository.backend.AbstractRepositoryBackend) -> None
       :canonical: aiida.repository.repository.Repository.set_backend
@@ -556,14 +543,12 @@ API
       :type: str | None
 
       .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.uuid
-         :parser: 
 
    .. py:property:: key_format
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.key_format
       :type: str | None
 
       .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.key_format
-         :parser: 
 
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.initialise
@@ -575,13 +560,11 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.is_initialised
-         :parser: 
 
    .. py:property:: sandbox
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.sandbox
 
       .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.sandbox
-         :parser: 
 
    .. py:method:: erase()
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.erase

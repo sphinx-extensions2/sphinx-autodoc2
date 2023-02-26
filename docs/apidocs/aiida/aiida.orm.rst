@@ -385,49 +385,42 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.abstract.AbstractCode.full_label
-         :parser: 
 
    .. py:property:: label
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.label
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.abstract.AbstractCode.label
-         :parser: 
 
    .. py:property:: default_calc_job_plugin
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.default_calc_job_plugin
       :type: str | None
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.abstract.AbstractCode.default_calc_job_plugin
-         :parser: 
 
    .. py:property:: append_text
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.append_text
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.abstract.AbstractCode.append_text
-         :parser: 
 
    .. py:property:: prepend_text
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.prepend_text
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.abstract.AbstractCode.prepend_text
-         :parser: 
 
    .. py:property:: use_double_quotes
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.use_double_quotes
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.abstract.AbstractCode.use_double_quotes
-         :parser: 
 
    .. py:property:: is_hidden
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.is_hidden
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.abstract.AbstractCode.is_hidden
-         :parser: 
 
    .. py:method:: get_builder() -> aiida.engine.ProcessBuilder
       :canonical: aiida.orm.nodes.data.code.abstract.AbstractCode.get_builder
@@ -624,21 +617,18 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.authinfos.AuthInfo.enabled
-         :parser: 
 
    .. py:property:: computer
       :canonical: aiida.orm.authinfos.AuthInfo.computer
       :type: aiida.orm.Computer
 
       .. autodoc2-docstring:: aiida.orm.authinfos.AuthInfo.computer
-         :parser: 
 
    .. py:property:: user
       :canonical: aiida.orm.authinfos.AuthInfo.user
       :type: aiida.orm.User
 
       .. autodoc2-docstring:: aiida.orm.authinfos.AuthInfo.user
-         :parser: 
 
    .. py:method:: get_auth_params() -> typing.Dict[str, typing.Any]
       :canonical: aiida.orm.authinfos.AuthInfo.get_auth_params
@@ -707,13 +697,11 @@ API
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.array_labels
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.bands.BandsData.array_labels
-         :parser: 
 
    .. py:property:: units
       :canonical: aiida.orm.nodes.data.array.bands.BandsData.units
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.bands.BandsData.units
-         :parser: 
 
    .. py:method:: _set_pbc(value)
       :canonical: aiida.orm.nodes.data.array.bands.BandsData._set_pbc
@@ -816,7 +804,6 @@ API
       :canonical: aiida.orm.nodes.data.base.BaseType.value
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.base.BaseType.value
-         :parser: 
 
    .. py:method:: __str__()
       :canonical: aiida.orm.nodes.data.base.BaseType.__str__
@@ -947,7 +934,6 @@ API
       :type: aiida.tools.calculations.CalculationTools
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.tools
-         :parser: 
 
    .. py:method:: _updatable_attributes() -> typing.Tuple[str, ...]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode._updatable_attributes
@@ -969,7 +955,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.is_imported
-         :parser: 
 
    .. py:method:: get_option(name: str) -> typing.Optional[typing.Any]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_option
@@ -1107,7 +1092,6 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.link_label_retrieved
-         :parser: 
 
    .. py:method:: get_retrieved_node() -> typing.Optional[aiida.orm.FolderData]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_retrieved_node
@@ -1119,7 +1103,6 @@ API
       :type: aiida.orm.utils.calcjob.CalcJobResultManager
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.res
-         :parser: 
 
    .. py:method:: get_scheduler_stdout() -> typing.Optional[typing.AnyStr]
       :canonical: aiida.orm.nodes.process.calculation.calcjob.CalcJobNode.get_scheduler_stdout
@@ -1149,7 +1132,6 @@ API
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager.node
 
       .. autodoc2-docstring:: aiida.orm.utils.calcjob.CalcJobResultManager.node
-         :parser: 
 
    .. py:method:: _load_results()
       :canonical: aiida.orm.utils.calcjob.CalcJobResultManager._load_results
@@ -1233,14 +1215,12 @@ API
       :type: aiida.orm.utils.managers.NodeLinksManager
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.calculation.calculation.CalculationNode.inputs
-         :parser: 
 
    .. py:property:: outputs
       :canonical: aiida.orm.nodes.process.calculation.calculation.CalculationNode.outputs
       :type: aiida.orm.utils.managers.NodeLinksManager
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.calculation.calculation.CalculationNode.outputs
-         :parser: 
 
 .. py:class:: CifData(ase=None, file=None, filename=None, values=None, scan_type=None, parse_policy=None, **kwargs)
    :canonical: aiida.orm.nodes.data.cif.CifData
@@ -1317,7 +1297,6 @@ API
       :canonical: aiida.orm.nodes.data.cif.CifData.ase
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.cif.CifData.ase
-         :parser: 
 
    .. py:method:: get_ase(**kwargs)
       :canonical: aiida.orm.nodes.data.cif.CifData.get_ase
@@ -1333,7 +1312,6 @@ API
       :canonical: aiida.orm.nodes.data.cif.CifData.values
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.cif.CifData.values
-         :parser: 
 
    .. py:method:: set_values(values)
       :canonical: aiida.orm.nodes.data.cif.CifData.set_values
@@ -1379,31 +1357,26 @@ API
       :canonical: aiida.orm.nodes.data.cif.CifData.has_partial_occupancies
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.cif.CifData.has_partial_occupancies
-         :parser: 
 
    .. py:property:: has_attached_hydrogens
       :canonical: aiida.orm.nodes.data.cif.CifData.has_attached_hydrogens
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.cif.CifData.has_attached_hydrogens
-         :parser: 
 
    .. py:property:: has_undefined_atomic_sites
       :canonical: aiida.orm.nodes.data.cif.CifData.has_undefined_atomic_sites
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.cif.CifData.has_undefined_atomic_sites
-         :parser: 
 
    .. py:property:: has_atomic_sites
       :canonical: aiida.orm.nodes.data.cif.CifData.has_atomic_sites
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.cif.CifData.has_atomic_sites
-         :parser: 
 
    .. py:property:: has_unknown_species
       :canonical: aiida.orm.nodes.data.cif.CifData.has_unknown_species
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.cif.CifData.has_unknown_species
-         :parser: 
 
    .. py:method:: generate_md5()
       :canonical: aiida.orm.nodes.data.cif.CifData.generate_md5
@@ -1476,7 +1449,6 @@ API
       :canonical: aiida.orm.nodes.data.code.legacy.Code.hidden
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.legacy.Code.hidden
-         :parser: 
 
    .. py:method:: set_files(files)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.set_files
@@ -1497,7 +1469,6 @@ API
       :canonical: aiida.orm.nodes.data.code.legacy.Code.full_label
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.legacy.Code.full_label
-         :parser: 
 
    .. py:method:: relabel(new_label)
       :canonical: aiida.orm.nodes.data.code.legacy.Code.relabel
@@ -1685,14 +1656,12 @@ API
       :type: typing.Type[aiida.orm.entities.EntityType]
 
       .. autodoc2-docstring:: aiida.orm.entities.Collection.entity_type
-         :parser: 
 
    .. py:property:: backend
       :canonical: aiida.orm.entities.Collection.backend
       :type: aiida.orm.implementation.StorageBackend
 
       .. autodoc2-docstring:: aiida.orm.entities.Collection.backend
-         :parser: 
 
    .. py:method:: query(filters: typing.Optional[aiida.orm.querybuilder.FilterType] = None, order_by: typing.Optional[aiida.orm.querybuilder.OrderByType] = None, limit: typing.Optional[int] = None, offset: typing.Optional[int] = None) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.entities.Collection.query
@@ -1746,21 +1715,18 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.comments.Comment.uuid
-         :parser: 
 
    .. py:property:: ctime
       :canonical: aiida.orm.comments.Comment.ctime
       :type: datetime.datetime
 
       .. autodoc2-docstring:: aiida.orm.comments.Comment.ctime
-         :parser: 
 
    .. py:property:: mtime
       :canonical: aiida.orm.comments.Comment.mtime
       :type: datetime.datetime
 
       .. autodoc2-docstring:: aiida.orm.comments.Comment.mtime
-         :parser: 
 
    .. py:method:: set_mtime(value: datetime.datetime) -> None
       :canonical: aiida.orm.comments.Comment.set_mtime
@@ -1772,14 +1738,12 @@ API
       :type: aiida.orm.Node
 
       .. autodoc2-docstring:: aiida.orm.comments.Comment.node
-         :parser: 
 
    .. py:property:: user
       :canonical: aiida.orm.comments.Comment.user
       :type: aiida.orm.User
 
       .. autodoc2-docstring:: aiida.orm.comments.Comment.user
-         :parser: 
 
    .. py:method:: set_user(value: aiida.orm.User) -> None
       :canonical: aiida.orm.comments.Comment.set_user
@@ -1791,7 +1755,6 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.comments.Comment.content
-         :parser: 
 
    .. py:method:: set_content(value: str) -> None
       :canonical: aiida.orm.comments.Comment.set_content
@@ -1860,14 +1823,12 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.uuid
-         :parser: 
 
    .. py:property:: logger
       :canonical: aiida.orm.computers.Computer.logger
       :type: logging.Logger
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.logger
-         :parser: 
 
    .. py:method:: _label_validator(label: str) -> None
       :canonical: aiida.orm.computers.Computer._label_validator
@@ -1954,42 +1915,36 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.label
-         :parser: 
 
    .. py:property:: description
       :canonical: aiida.orm.computers.Computer.description
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.description
-         :parser: 
 
    .. py:property:: hostname
       :canonical: aiida.orm.computers.Computer.hostname
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.hostname
-         :parser: 
 
    .. py:property:: scheduler_type
       :canonical: aiida.orm.computers.Computer.scheduler_type
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.scheduler_type
-         :parser: 
 
    .. py:property:: transport_type
       :canonical: aiida.orm.computers.Computer.transport_type
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.transport_type
-         :parser: 
 
    .. py:property:: metadata
       :canonical: aiida.orm.computers.Computer.metadata
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.metadata
-         :parser: 
 
    .. py:method:: delete_property(name: str, raise_exception: bool = True) -> None
       :canonical: aiida.orm.computers.Computer.delete_property
@@ -2106,7 +2061,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.computers.Computer.is_configured
-         :parser: 
 
    .. py:method:: is_user_configured(user: aiida.orm.User) -> bool
       :canonical: aiida.orm.computers.Computer.is_user_configured
@@ -2191,21 +2145,18 @@ API
       :type: pathlib.PurePosixPath
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.containerized.ContainerizedCode.filepath_executable
-         :parser: 
 
    .. py:property:: engine_command
       :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.engine_command
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.containerized.ContainerizedCode.engine_command
-         :parser: 
 
    .. py:property:: image_name
       :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.image_name
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.containerized.ContainerizedCode.image_name
-         :parser: 
 
    .. py:method:: get_prepend_cmdline_params(mpi_args: list[str] | None = None, extra_mpirun_params: list[str] | None = None) -> list[str]
       :canonical: aiida.orm.nodes.data.code.containerized.ContainerizedCode.get_prepend_cmdline_params
@@ -2279,7 +2230,6 @@ API
       :canonical: aiida.orm.nodes.data.data.Data.source
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.data.Data.source
-         :parser: 
 
    .. py:method:: set_source(source)
       :canonical: aiida.orm.nodes.data.data.Data.set_source
@@ -2290,7 +2240,6 @@ API
       :canonical: aiida.orm.nodes.data.data.Data.creator
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.data.Data.creator
-         :parser: 
 
    .. py:method:: _exportcontent(fileformat, main_file_name='', **kwargs)
       :canonical: aiida.orm.nodes.data.data.Data._exportcontent
@@ -2398,7 +2347,6 @@ API
       :canonical: aiida.orm.nodes.data.dict.Dict.dict
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.dict.Dict.dict
-         :parser: 
 
 .. py:class:: Entity(backend_entity: aiida.orm.entities.BackendEntityType)
    :canonical: aiida.orm.entities.Entity
@@ -2455,14 +2403,12 @@ API
       :type: int
 
       .. autodoc2-docstring:: aiida.orm.entities.Entity.id
-         :parser: 
 
    .. py:property:: pk
       :canonical: aiida.orm.entities.Entity.pk
       :type: int
 
       .. autodoc2-docstring:: aiida.orm.entities.Entity.pk
-         :parser: 
 
    .. py:method:: store() -> aiida.orm.entities.EntityType
       :canonical: aiida.orm.entities.Entity.store
@@ -2474,21 +2420,18 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.entities.Entity.is_stored
-         :parser: 
 
    .. py:property:: backend
       :canonical: aiida.orm.entities.Entity.backend
       :type: aiida.orm.implementation.StorageBackend
 
       .. autodoc2-docstring:: aiida.orm.entities.Entity.backend
-         :parser: 
 
    .. py:property:: backend_entity
       :canonical: aiida.orm.entities.Entity.backend_entity
       :type: aiida.orm.entities.BackendEntityType
 
       .. autodoc2-docstring:: aiida.orm.entities.Entity.backend_entity
-         :parser: 
 
 .. py:class:: EntityExtras(entity: typing.Union[aiida.orm.nodes.node.Node, aiida.orm.groups.Group])
    :canonical: aiida.orm.extras.EntityExtras
@@ -2509,7 +2452,6 @@ API
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.orm.extras.EntityExtras.all
-         :parser: 
 
    .. py:method:: get(key: str, default: typing.Any = _NO_DEFAULT) -> typing.Any
       :canonical: aiida.orm.extras.EntityExtras.get
@@ -2656,14 +2598,12 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.enum.EnumData.name
-         :parser: 
 
    .. py:property:: value
       :canonical: aiida.orm.nodes.data.enum.EnumData.value
       :type: typing.Any
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.enum.EnumData.value
-         :parser: 
 
    .. py:method:: get_enum() -> typing.Type[aiida.orm.nodes.data.enum.EnumType]
       :canonical: aiida.orm.nodes.data.enum.EnumData.get_enum
@@ -2758,35 +2698,30 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.groups.Group.uuid
-         :parser: 
 
    .. py:property:: label
       :canonical: aiida.orm.groups.Group.label
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.groups.Group.label
-         :parser: 
 
    .. py:property:: description
       :canonical: aiida.orm.groups.Group.description
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.groups.Group.description
-         :parser: 
 
    .. py:property:: type_string
       :canonical: aiida.orm.groups.Group.type_string
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.groups.Group.type_string
-         :parser: 
 
    .. py:property:: user
       :canonical: aiida.orm.groups.Group.user
       :type: aiida.orm.User
 
       .. autodoc2-docstring:: aiida.orm.groups.Group.user
-         :parser: 
 
    .. py:method:: count() -> int
       :canonical: aiida.orm.groups.Group.count
@@ -2798,14 +2733,12 @@ API
       :type: aiida.orm.convert.ConvertIterator
 
       .. autodoc2-docstring:: aiida.orm.groups.Group.nodes
-         :parser: 
 
    .. py:property:: is_empty
       :canonical: aiida.orm.groups.Group.is_empty
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.groups.Group.is_empty
-         :parser: 
 
    .. py:method:: clear() -> None
       :canonical: aiida.orm.groups.Group.clear
@@ -2910,21 +2843,18 @@ API
       :type: aiida.orm.Computer
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.installed.InstalledCode.computer
-         :parser: 
 
    .. py:property:: full_label
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.full_label
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.installed.InstalledCode.full_label
-         :parser: 
 
    .. py:property:: filepath_executable
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.filepath_executable
       :type: pathlib.PurePosixPath
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.installed.InstalledCode.filepath_executable
-         :parser: 
 
    .. py:method:: cli_validate_label_uniqueness(ctx, _, value)
       :canonical: aiida.orm.nodes.data.code.installed.InstalledCode.cli_validate_label_uniqueness
@@ -2978,7 +2908,6 @@ API
       :type: aiida.orm.nodes.data.jsonable.JsonSerializableProtocol
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.jsonable.JsonableData.obj
-         :parser: 
 
 .. py:class:: Kind(**kwargs)
    :canonical: aiida.orm.nodes.data.structure.Kind
@@ -3003,7 +2932,6 @@ API
       :canonical: aiida.orm.nodes.data.structure.Kind.name
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.name
-         :parser: 
 
    .. py:method:: set_automatic_kind_name(tag=None)
       :canonical: aiida.orm.nodes.data.structure.Kind.set_automatic_kind_name
@@ -3019,13 +2947,11 @@ API
       :canonical: aiida.orm.nodes.data.structure.Kind.mass
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.mass
-         :parser: 
 
    .. py:property:: weights
       :canonical: aiida.orm.nodes.data.structure.Kind.weights
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.weights
-         :parser: 
 
    .. py:method:: get_symbols_string()
       :canonical: aiida.orm.nodes.data.structure.Kind.get_symbols_string
@@ -3036,13 +2962,11 @@ API
       :canonical: aiida.orm.nodes.data.structure.Kind.symbol
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.symbol
-         :parser: 
 
    .. py:property:: symbols
       :canonical: aiida.orm.nodes.data.structure.Kind.symbols
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.symbols
-         :parser: 
 
    .. py:method:: set_symbols_and_weights(symbols, weights)
       :canonical: aiida.orm.nodes.data.structure.Kind.set_symbols_and_weights
@@ -3053,13 +2977,11 @@ API
       :canonical: aiida.orm.nodes.data.structure.Kind.is_alloy
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.is_alloy
-         :parser: 
 
    .. py:property:: has_vacancies
       :canonical: aiida.orm.nodes.data.structure.Kind.has_vacancies
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.has_vacancies
-         :parser: 
 
    .. py:method:: __repr__()
       :canonical: aiida.orm.nodes.data.structure.Kind.__repr__
@@ -3087,7 +3009,6 @@ API
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.cell
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.kpoints.KpointsData.cell
-         :parser: 
 
    .. py:method:: _set_cell(value)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._set_cell
@@ -3098,7 +3019,6 @@ API
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.pbc
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.kpoints.KpointsData.pbc
-         :parser: 
 
    .. py:method:: _set_pbc(value)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._set_pbc
@@ -3109,7 +3029,6 @@ API
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.labels
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.kpoints.KpointsData.labels
-         :parser: 
 
    .. py:method:: _set_labels(value)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._set_labels
@@ -3135,7 +3054,6 @@ API
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.reciprocal_cell
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.kpoints.KpointsData.reciprocal_cell
-         :parser: 
 
    .. py:method:: set_kpoints_mesh(mesh, offset=None)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData.set_kpoints_mesh
@@ -3156,7 +3074,6 @@ API
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._dimension
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.kpoints.KpointsData._dimension
-         :parser: 
 
    .. py:method:: _validate_kpoints_weights(kpoints, weights)
       :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData._validate_kpoints_weights
@@ -3420,49 +3337,42 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.logs.Log.uuid
-         :parser: 
 
    .. py:property:: time
       :canonical: aiida.orm.logs.Log.time
       :type: datetime.datetime
 
       .. autodoc2-docstring:: aiida.orm.logs.Log.time
-         :parser: 
 
    .. py:property:: loggername
       :canonical: aiida.orm.logs.Log.loggername
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.logs.Log.loggername
-         :parser: 
 
    .. py:property:: levelname
       :canonical: aiida.orm.logs.Log.levelname
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.logs.Log.levelname
-         :parser: 
 
    .. py:property:: dbnode_id
       :canonical: aiida.orm.logs.Log.dbnode_id
       :type: int
 
       .. autodoc2-docstring:: aiida.orm.logs.Log.dbnode_id
-         :parser: 
 
    .. py:property:: message
       :canonical: aiida.orm.logs.Log.message
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.logs.Log.message
-         :parser: 
 
    .. py:property:: metadata
       :canonical: aiida.orm.logs.Log.metadata
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.orm.logs.Log.metadata
-         :parser: 
 
 .. py:class:: Node(backend: typing.Optional[aiida.orm.implementation.StorageBackend] = None, user: typing.Optional[aiida.orm.users.User] = None, computer: typing.Optional[aiida.orm.computers.Computer] = None, **kwargs: typing.Any)
    :canonical: aiida.orm.nodes.node.Node
@@ -3611,70 +3521,60 @@ API
       :type: typing.Optional[logging.Logger]
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.logger
-         :parser: 
 
    .. py:property:: uuid
       :canonical: aiida.orm.nodes.node.Node.uuid
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.uuid
-         :parser: 
 
    .. py:property:: node_type
       :canonical: aiida.orm.nodes.node.Node.node_type
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.node_type
-         :parser: 
 
    .. py:property:: process_type
       :canonical: aiida.orm.nodes.node.Node.process_type
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.process_type
-         :parser: 
 
    .. py:property:: label
       :canonical: aiida.orm.nodes.node.Node.label
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.label
-         :parser: 
 
    .. py:property:: description
       :canonical: aiida.orm.nodes.node.Node.description
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.description
-         :parser: 
 
    .. py:property:: computer
       :canonical: aiida.orm.nodes.node.Node.computer
       :type: typing.Optional[aiida.orm.computers.Computer]
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.computer
-         :parser: 
 
    .. py:property:: user
       :canonical: aiida.orm.nodes.node.Node.user
       :type: aiida.orm.users.User
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.user
-         :parser: 
 
    .. py:property:: ctime
       :canonical: aiida.orm.nodes.node.Node.ctime
       :type: datetime.datetime
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.ctime
-         :parser: 
 
    .. py:property:: mtime
       :canonical: aiida.orm.nodes.node.Node.mtime
       :type: datetime.datetime
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.mtime
-         :parser: 
 
    .. py:method:: store_all(with_transaction: bool = True) -> aiida.orm.nodes.node.Node
       :canonical: aiida.orm.nodes.node.Node.store_all
@@ -3716,7 +3616,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.node.Node.is_valid_cache
-         :parser: 
 
    .. py:attribute:: _deprecated_repo_methods
       :canonical: aiida.orm.nodes.node.Node._deprecated_repo_methods
@@ -3783,7 +3682,6 @@ API
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.orm.nodes.attributes.NodeAttributes.all
-         :parser: 
 
    .. py:method:: get(key: str, default=_NO_DEFAULT) -> typing.Any
       :canonical: aiida.orm.nodes.attributes.NodeAttributes.get
@@ -3932,7 +3830,6 @@ API
       :type: typing.Dict[str, typing.Any]
 
       .. autodoc2-docstring:: aiida.orm.nodes.repository.NodeRepository.metadata
-         :parser: 
 
    .. py:method:: _update_repository_metadata()
       :canonical: aiida.orm.nodes.repository.NodeRepository._update_repository_metadata
@@ -3949,7 +3846,6 @@ API
       :type: aiida.repository.Repository
 
       .. autodoc2-docstring:: aiida.orm.nodes.repository.NodeRepository._repository
-         :parser: 
 
    .. py:method:: _store() -> None
       :canonical: aiida.orm.nodes.repository.NodeRepository._store
@@ -4184,7 +4080,6 @@ API
    :canonical: aiida.orm.logs.OrderSpecifier
 
    .. autodoc2-docstring:: aiida.orm.logs.OrderSpecifier
-      :parser: 
 
 .. py:class:: OrmEntityLoader
    :canonical: aiida.orm.utils.loaders.OrmEntityLoader
@@ -4295,14 +4190,12 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.portable.PortableCode.full_label
-         :parser: 
 
    .. py:property:: filepath_executable
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode.filepath_executable
       :type: pathlib.PurePosixPath
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.code.portable.PortableCode.filepath_executable
-         :parser: 
 
    .. py:method:: _get_cli_options() -> dict
       :canonical: aiida.orm.nodes.data.code.portable.PortableCode._get_cli_options
@@ -4401,7 +4294,6 @@ API
       :canonical: aiida.orm.nodes.process.process.ProcessNode.logger
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.logger
-         :parser: 
 
    .. py:method:: get_builder_restart() -> aiida.engine.processes.builder.ProcessBuilder
       :canonical: aiida.orm.nodes.process.process.ProcessNode.get_builder_restart
@@ -4413,7 +4305,6 @@ API
       :type: typing.Type[aiida.engine.processes.Process]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.process_class
-         :parser: 
 
    .. py:method:: set_process_type(process_type_string: str) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_type
@@ -4425,7 +4316,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.process_label
-         :parser: 
 
    .. py:method:: set_process_label(label: str) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_label
@@ -4437,7 +4327,6 @@ API
       :type: typing.Optional[plumpy.process_states.ProcessState]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.process_state
-         :parser: 
 
    .. py:method:: set_process_state(state: typing.Union[str, plumpy.process_states.ProcessState, None])
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_state
@@ -4449,7 +4338,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.process_status
-         :parser: 
 
    .. py:method:: set_process_status(status: typing.Optional[str]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_process_status
@@ -4461,49 +4349,42 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.is_terminated
-         :parser: 
 
    .. py:property:: is_excepted
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_excepted
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.is_excepted
-         :parser: 
 
    .. py:property:: is_killed
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_killed
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.is_killed
-         :parser: 
 
    .. py:property:: is_finished
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_finished
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.is_finished
-         :parser: 
 
    .. py:property:: is_finished_ok
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_finished_ok
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.is_finished_ok
-         :parser: 
 
    .. py:property:: is_failed
       :canonical: aiida.orm.nodes.process.process.ProcessNode.is_failed
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.is_failed
-         :parser: 
 
    .. py:property:: exit_status
       :canonical: aiida.orm.nodes.process.process.ProcessNode.exit_status
       :type: typing.Optional[int]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.exit_status
-         :parser: 
 
    .. py:method:: set_exit_status(status: typing.Union[None, enum.Enum, int]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_exit_status
@@ -4515,7 +4396,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.exit_message
-         :parser: 
 
    .. py:method:: set_exit_message(message: typing.Optional[str]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_exit_message
@@ -4527,7 +4407,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.exception
-         :parser: 
 
    .. py:method:: set_exception(exception: str) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_exception
@@ -4539,7 +4418,6 @@ API
       :type: typing.Optional[typing.Dict[str, typing.Any]]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.checkpoint
-         :parser: 
 
    .. py:method:: set_checkpoint(checkpoint: typing.Dict[str, typing.Any]) -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.set_checkpoint
@@ -4556,7 +4434,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.paused
-         :parser: 
 
    .. py:method:: pause() -> None
       :canonical: aiida.orm.nodes.process.process.ProcessNode.pause
@@ -4573,21 +4450,18 @@ API
       :type: typing.List[aiida.orm.nodes.process.process.ProcessNode]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.called
-         :parser: 
 
    .. py:property:: called_descendants
       :canonical: aiida.orm.nodes.process.process.ProcessNode.called_descendants
       :type: typing.List[aiida.orm.nodes.process.process.ProcessNode]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.called_descendants
-         :parser: 
 
    .. py:property:: caller
       :canonical: aiida.orm.nodes.process.process.ProcessNode.caller
       :type: typing.Optional[aiida.orm.nodes.process.process.ProcessNode]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.caller
-         :parser: 
 
 .. py:class:: ProjectionData(*args, source=None, **kwargs)
    :canonical: aiida.orm.nodes.data.array.projection.ProjectionData
@@ -4673,7 +4547,6 @@ API
       :type: aiida.orm.implementation.StorageBackend
 
       .. autodoc2-docstring:: aiida.orm.querybuilder.QueryBuilder.backend
-         :parser: 
 
    .. py:method:: as_dict(copy: bool = True) -> aiida.orm.implementation.querybuilder.QueryDictType
       :canonical: aiida.orm.querybuilder.QueryBuilder.as_dict
@@ -4685,7 +4558,6 @@ API
       :type: aiida.orm.implementation.querybuilder.QueryDictType
 
       .. autodoc2-docstring:: aiida.orm.querybuilder.QueryBuilder.queryhelp
-         :parser: 
 
    .. py:method:: from_dict(dct: typing.Dict[str, typing.Any]) -> aiida.orm.querybuilder.QueryBuilder
       :canonical: aiida.orm.querybuilder.QueryBuilder.from_dict
@@ -4886,7 +4758,6 @@ API
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.is_empty
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.remote.base.RemoteData.is_empty
-         :parser: 
 
    .. py:method:: getfile(relpath, destpath)
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.getfile
@@ -4940,7 +4811,6 @@ API
       :type: aiida.common.datastructures.StashMode
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.remote.stash.base.RemoteStashData.stash_mode
-         :parser: 
 
 .. py:class:: RemoteStashFolderData(stash_mode: aiida.common.datastructures.StashMode, target_basepath: str, source_list: typing.List, **kwargs)
    :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData
@@ -4964,14 +4834,12 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData.target_basepath
-         :parser: 
 
    .. py:property:: source_list
       :canonical: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData.source_list
       :type: typing.Union[typing.List, typing.Tuple]
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.remote.stash.folder.RemoteStashFolderData.source_list
-         :parser: 
 
 .. py:class:: SinglefileData(file, filename=None, **kwargs)
    :canonical: aiida.orm.nodes.data.singlefile.SinglefileData
@@ -4994,7 +4862,6 @@ API
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.filename
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.singlefile.SinglefileData.filename
-         :parser: 
 
    .. py:method:: open(path=None, mode='r')
       :canonical: aiida.orm.nodes.data.singlefile.SinglefileData.open
@@ -5039,13 +4906,11 @@ API
       :canonical: aiida.orm.nodes.data.structure.Site.kind_name
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Site.kind_name
-         :parser: 
 
    .. py:property:: position
       :canonical: aiida.orm.nodes.data.structure.Site.position
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Site.position
-         :parser: 
 
    .. py:method:: __repr__()
       :canonical: aiida.orm.nodes.data.structure.Site.__repr__
@@ -5233,13 +5098,11 @@ API
       :canonical: aiida.orm.nodes.data.structure.StructureData.sites
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.sites
-         :parser: 
 
    .. py:property:: kinds
       :canonical: aiida.orm.nodes.data.structure.StructureData.kinds
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.kinds
-         :parser: 
 
    .. py:method:: get_kind(kind_name)
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_kind
@@ -5255,7 +5118,6 @@ API
       :canonical: aiida.orm.nodes.data.structure.StructureData.cell
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.cell
-         :parser: 
 
    .. py:method:: set_cell(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_cell
@@ -5276,7 +5138,6 @@ API
       :canonical: aiida.orm.nodes.data.structure.StructureData.pbc
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.pbc
-         :parser: 
 
    .. py:method:: set_pbc(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_pbc
@@ -5287,7 +5148,6 @@ API
       :canonical: aiida.orm.nodes.data.structure.StructureData.cell_lengths
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.cell_lengths
-         :parser: 
 
    .. py:method:: set_cell_lengths(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_cell_lengths
@@ -5299,7 +5159,6 @@ API
       :canonical: aiida.orm.nodes.data.structure.StructureData.cell_angles
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.cell_angles
-         :parser: 
 
    .. py:method:: set_cell_angles(value)
       :canonical: aiida.orm.nodes.data.structure.StructureData.set_cell_angles
@@ -5311,13 +5170,11 @@ API
       :canonical: aiida.orm.nodes.data.structure.StructureData.is_alloy
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.is_alloy
-         :parser: 
 
    .. py:property:: has_vacancies
       :canonical: aiida.orm.nodes.data.structure.StructureData.has_vacancies
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.structure.StructureData.has_vacancies
-         :parser: 
 
    .. py:method:: get_cell_volume()
       :canonical: aiida.orm.nodes.data.structure.StructureData.get_cell_volume
@@ -5389,13 +5246,11 @@ API
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.numsteps
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.trajectory.TrajectoryData.numsteps
-         :parser: 
 
    .. py:property:: numsites
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.numsites
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.trajectory.TrajectoryData.numsites
-         :parser: 
 
    .. py:method:: get_stepids()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_stepids
@@ -5416,7 +5271,6 @@ API
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.symbols
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.array.trajectory.TrajectoryData.symbols
-         :parser: 
 
    .. py:method:: get_positions()
       :canonical: aiida.orm.nodes.data.array.trajectory.TrajectoryData.get_positions
@@ -5525,13 +5379,11 @@ API
       :canonical: aiida.orm.nodes.data.upf.UpfData.element
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.upf.UpfData.element
-         :parser: 
 
    .. py:property:: md5sum
       :canonical: aiida.orm.nodes.data.upf.UpfData.md5sum
 
       .. autodoc2-docstring:: aiida.orm.nodes.data.upf.UpfData.md5sum
-         :parser: 
 
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.upf.UpfData._validate
@@ -5604,28 +5456,24 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.users.User.email
-         :parser: 
 
    .. py:property:: first_name
       :canonical: aiida.orm.users.User.first_name
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.users.User.first_name
-         :parser: 
 
    .. py:property:: last_name
       :canonical: aiida.orm.users.User.last_name
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.users.User.last_name
-         :parser: 
 
    .. py:property:: institution
       :canonical: aiida.orm.users.User.institution
       :type: str
 
       .. autodoc2-docstring:: aiida.orm.users.User.institution
-         :parser: 
 
    .. py:method:: get_full_name() -> str
       :canonical: aiida.orm.users.User.get_full_name
@@ -5642,7 +5490,6 @@ API
       :type: None
 
       .. autodoc2-docstring:: aiida.orm.users.User.uuid
-         :parser: 
 
 .. py:class:: WorkChainNode
    :canonical: aiida.orm.nodes.process.workflow.workchain.WorkChainNode
@@ -5667,7 +5514,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.workflow.workchain.WorkChainNode.stepper_state_info
-         :parser: 
 
    .. py:method:: set_stepper_state_info(stepper_state_info: str) -> None
       :canonical: aiida.orm.nodes.process.workflow.workchain.WorkChainNode.set_stepper_state_info
@@ -5721,14 +5567,12 @@ API
       :type: aiida.orm.utils.managers.NodeLinksManager
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.workflow.workflow.WorkflowNode.inputs
-         :parser: 
 
    .. py:property:: outputs
       :canonical: aiida.orm.nodes.process.workflow.workflow.WorkflowNode.outputs
       :type: aiida.orm.utils.managers.NodeLinksManager
 
       .. autodoc2-docstring:: aiida.orm.nodes.process.workflow.workflow.WorkflowNode.outputs
-         :parser: 
 
 .. py:class:: XyData
    :canonical: aiida.orm.nodes.data.array.xy.XyData
@@ -5767,88 +5611,73 @@ API
    :canonical: aiida.orm.nodes.data.cif.cif_from_ase
 
    .. autodoc2-docstring:: aiida.orm.nodes.data.cif.cif_from_ase
-      :parser: 
 
 .. py:function:: find_bandgap(bandsdata, number_electrons=None, fermi_energy=None)
    :canonical: aiida.orm.nodes.data.array.bands.find_bandgap
 
    .. autodoc2-docstring:: aiida.orm.nodes.data.array.bands.find_bandgap
-      :parser: 
 
 .. py:function:: get_loader(orm_class)
    :canonical: aiida.orm.utils.loaders.get_loader
 
    .. autodoc2-docstring:: aiida.orm.utils.loaders.get_loader
-      :parser: 
 
 .. py:function:: get_query_type_from_type_string(type_string)
    :canonical: aiida.orm.utils.node.get_query_type_from_type_string
 
    .. autodoc2-docstring:: aiida.orm.utils.node.get_query_type_from_type_string
-      :parser: 
 
 .. py:function:: get_type_string_from_class(class_module, class_name)
    :canonical: aiida.orm.utils.node.get_type_string_from_class
 
    .. autodoc2-docstring:: aiida.orm.utils.node.get_type_string_from_class
-      :parser: 
 
 .. py:function:: has_pycifrw()
    :canonical: aiida.orm.nodes.data.cif.has_pycifrw
 
    .. autodoc2-docstring:: aiida.orm.nodes.data.cif.has_pycifrw
-      :parser: 
 
 .. py:function:: load_code(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Code
    :canonical: aiida.orm.utils.loaders.load_code
 
    .. autodoc2-docstring:: aiida.orm.utils.loaders.load_code
-      :parser: 
 
 .. py:function:: load_computer(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Computer
    :canonical: aiida.orm.utils.loaders.load_computer
 
    .. autodoc2-docstring:: aiida.orm.utils.loaders.load_computer
-      :parser: 
 
 .. py:function:: load_entity(entity_loader=None, identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True)
    :canonical: aiida.orm.utils.loaders.load_entity
 
    .. autodoc2-docstring:: aiida.orm.utils.loaders.load_entity
-      :parser: 
 
 .. py:function:: load_group(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Group
    :canonical: aiida.orm.utils.loaders.load_group
 
    .. autodoc2-docstring:: aiida.orm.utils.loaders.load_group
-      :parser: 
 
 .. py:function:: load_node(identifier=None, pk=None, uuid=None, label=None, sub_classes=None, query_with_dashes=True) -> aiida.orm.Node
    :canonical: aiida.orm.utils.loaders.load_node
 
    .. autodoc2-docstring:: aiida.orm.utils.loaders.load_node
-      :parser: 
 
 .. py:function:: load_node_class(type_string)
    :canonical: aiida.orm.utils.node.load_node_class
 
    .. autodoc2-docstring:: aiida.orm.utils.node.load_node_class
-      :parser: 
 
 .. py:function:: pycifrw_from_cif(datablocks, loops=None, names=None)
    :canonical: aiida.orm.nodes.data.cif.pycifrw_from_cif
 
    .. autodoc2-docstring:: aiida.orm.nodes.data.cif.pycifrw_from_cif
-      :parser: 
 
 .. py:function:: to_aiida_type(value)
    :canonical: aiida.orm.nodes.data.base.to_aiida_type
 
    .. autodoc2-docstring:: aiida.orm.nodes.data.base.to_aiida_type
-      :parser: 
 
 .. py:function:: validate_link(source: aiida.orm.Node, target: aiida.orm.Node, link_type: aiida.common.links.LinkType, link_label: str, backend: typing.Optional[aiida.orm.implementation.storage_backend.StorageBackend] = None) -> None
    :canonical: aiida.orm.utils.links.validate_link
 
    .. autodoc2-docstring:: aiida.orm.utils.links.validate_link
-      :parser: 

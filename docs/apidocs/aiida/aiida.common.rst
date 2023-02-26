@@ -801,21 +801,18 @@ API
       :type: int
 
       .. autodoc2-docstring:: aiida.common.progress_reporter.ProgressReporterAbstract.total
-         :parser: 
 
    .. py:property:: desc
       :canonical: aiida.common.progress_reporter.ProgressReporterAbstract.desc
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.common.progress_reporter.ProgressReporterAbstract.desc
-         :parser: 
 
    .. py:property:: n
       :canonical: aiida.common.progress_reporter.ProgressReporterAbstract.n
       :type: int
 
       .. autodoc2-docstring:: aiida.common.progress_reporter.ProgressReporterAbstract.n
-         :parser: 
 
    .. py:method:: __enter__() -> aiida.common.progress_reporter.ProgressReporterAbstract
       :canonical: aiida.common.progress_reporter.ProgressReporterAbstract.__enter__
@@ -953,34 +950,28 @@ API
    :canonical: aiida.common.progress_reporter.create_callback
 
    .. autodoc2-docstring:: aiida.common.progress_reporter.create_callback
-      :parser: 
 
 .. py:function:: get_progress_reporter() -> typing.Type[aiida.common.progress_reporter.ProgressReporterAbstract]
    :canonical: aiida.common.progress_reporter.get_progress_reporter
 
    .. autodoc2-docstring:: aiida.common.progress_reporter.get_progress_reporter
-      :parser: 
 
 .. py:function:: override_log_level(level=logging.CRITICAL)
    :canonical: aiida.common.log.override_log_level
 
    .. autodoc2-docstring:: aiida.common.log.override_log_level
-      :parser: 
 
 .. py:function:: set_progress_bar_tqdm(bar_format: typing.Optional[str] = TQDM_BAR_FORMAT, leave: typing.Optional[bool] = False, **kwargs: typing.Any)
    :canonical: aiida.common.progress_reporter.set_progress_bar_tqdm
 
    .. autodoc2-docstring:: aiida.common.progress_reporter.set_progress_bar_tqdm
-      :parser: 
 
 .. py:function:: set_progress_reporter(reporter: typing.Optional[typing.Type[aiida.common.progress_reporter.ProgressReporterAbstract]] = None, **kwargs: typing.Any)
    :canonical: aiida.common.progress_reporter.set_progress_reporter
 
    .. autodoc2-docstring:: aiida.common.progress_reporter.set_progress_reporter
-      :parser: 
 
 .. py:function:: validate_link_label(link_label)
    :canonical: aiida.common.links.validate_link_label
 
    .. autodoc2-docstring:: aiida.common.links.validate_link_label
-      :parser: 

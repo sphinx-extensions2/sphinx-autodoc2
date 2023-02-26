@@ -296,7 +296,6 @@ API
       :type: typing.Type[aiida.engine.processes.process.Process]
 
       .. autodoc2-docstring:: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.process_class
-         :parser: 
 
    .. py:method:: define(spec: aiida.engine.processes.ProcessSpec) -> None
       :canonical: aiida.engine.processes.workchains.restart.BaseRestartWorkChain.define
@@ -413,7 +412,6 @@ API
       :type: aiida.common.AttributeDict
 
       .. autodoc2-docstring:: aiida.engine.processes.calcjobs.calcjob.CalcJob.options
-         :parser: 
 
    .. py:method:: get_state_classes() -> typing.Dict[typing.Hashable, typing.Type[plumpy.process_states.State]]
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.get_state_classes
@@ -426,7 +424,6 @@ API
       :type: aiida.orm.CalcJobNode
 
       .. autodoc2-docstring:: aiida.engine.processes.calcjobs.calcjob.CalcJob.node
-         :parser: 
 
    .. py:method:: on_terminated() -> None
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.on_terminated
@@ -520,7 +517,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.engine.processes.ports.CalcJobOutputPort.pass_to_parser
-         :parser: 
 
 .. py:class:: CalcJobProcessSpec()
    :canonical: aiida.engine.processes.process_spec.CalcJobProcessSpec
@@ -544,7 +540,6 @@ API
       :type: typing.Optional[str]
 
       .. autodoc2-docstring:: aiida.engine.processes.process_spec.CalcJobProcessSpec.default_output_node
-         :parser: 
 
 .. py:class:: DaemonClient(profile: aiida.manage.configuration.profile.Profile)
    :canonical: aiida.engine.daemon.client.DaemonClient
@@ -584,21 +579,18 @@ API
       :type: aiida.manage.configuration.profile.Profile
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.profile
-         :parser: 
 
    .. py:property:: daemon_name
       :canonical: aiida.engine.daemon.client.DaemonClient.daemon_name
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.daemon_name
-         :parser: 
 
    .. py:property:: _verdi_bin
       :canonical: aiida.engine.daemon.client.DaemonClient._verdi_bin
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient._verdi_bin
-         :parser: 
 
    .. py:method:: cmd_start_daemon(number_workers: int = 1, foreground: bool = False) -> list[str]
       :canonical: aiida.engine.daemon.client.DaemonClient.cmd_start_daemon
@@ -610,70 +602,60 @@ API
       :type: list[str]
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.cmd_start_daemon_worker
-         :parser: 
 
    .. py:property:: loglevel
       :canonical: aiida.engine.daemon.client.DaemonClient.loglevel
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.loglevel
-         :parser: 
 
    .. py:property:: virtualenv
       :canonical: aiida.engine.daemon.client.DaemonClient.virtualenv
       :type: str | None
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.virtualenv
-         :parser: 
 
    .. py:property:: circus_log_file
       :canonical: aiida.engine.daemon.client.DaemonClient.circus_log_file
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.circus_log_file
-         :parser: 
 
    .. py:property:: circus_pid_file
       :canonical: aiida.engine.daemon.client.DaemonClient.circus_pid_file
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.circus_pid_file
-         :parser: 
 
    .. py:property:: circus_port_file
       :canonical: aiida.engine.daemon.client.DaemonClient.circus_port_file
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.circus_port_file
-         :parser: 
 
    .. py:property:: circus_socket_file
       :canonical: aiida.engine.daemon.client.DaemonClient.circus_socket_file
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.circus_socket_file
-         :parser: 
 
    .. py:property:: circus_socket_endpoints
       :canonical: aiida.engine.daemon.client.DaemonClient.circus_socket_endpoints
       :type: dict[str, str]
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.circus_socket_endpoints
-         :parser: 
 
    .. py:property:: daemon_log_file
       :canonical: aiida.engine.daemon.client.DaemonClient.daemon_log_file
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.daemon_log_file
-         :parser: 
 
    .. py:property:: daemon_pid_file
       :canonical: aiida.engine.daemon.client.DaemonClient.daemon_pid_file
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.daemon_pid_file
-         :parser: 
 
    .. py:method:: get_circus_port() -> int
       :canonical: aiida.engine.daemon.client.DaemonClient.get_circus_port
@@ -701,7 +683,6 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.engine.daemon.client.DaemonClient.is_daemon_running
-         :parser: 
 
    .. py:method:: delete_circus_socket_directory() -> None
       :canonical: aiida.engine.daemon.client.DaemonClient.delete_circus_socket_directory
@@ -913,7 +894,6 @@ API
       :type: typing.Callable[..., typing.Any]
 
       .. autodoc2-docstring:: aiida.engine.processes.functions.FunctionProcess.process_class
-         :parser: 
 
    .. py:method:: execute() -> typing.Optional[typing.Dict[str, typing.Any]]
       :canonical: aiida.engine.processes.functions.FunctionProcess.execute
@@ -1001,7 +981,6 @@ API
       :type: logging.Logger
 
       .. autodoc2-docstring:: aiida.engine.processes.calcjobs.manager.JobsList.logger
-         :parser: 
 
    .. py:method:: get_minimum_update_interval() -> float
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList.get_minimum_update_interval
@@ -1013,7 +992,6 @@ API
       :type: typing.Optional[float]
 
       .. autodoc2-docstring:: aiida.engine.processes.calcjobs.manager.JobsList.last_updated
-         :parser: 
 
    .. py:method:: _get_jobs_from_scheduler() -> typing.Dict[typing.Hashable, aiida.schedulers.datastructures.JobInfo]
       :canonical: aiida.engine.processes.calcjobs.manager.JobsList._get_jobs_from_scheduler
@@ -1214,21 +1192,18 @@ API
       :type: aiida.orm.ProcessNode
 
       .. autodoc2-docstring:: aiida.engine.processes.process.Process.node
-         :parser: 
 
    .. py:property:: uuid
       :canonical: aiida.engine.processes.process.Process.uuid
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.processes.process.Process.uuid
-         :parser: 
 
    .. py:property:: metadata
       :canonical: aiida.engine.processes.process.Process.metadata
       :type: aiida.common.extendeddicts.AttributeDict
 
       .. autodoc2-docstring:: aiida.engine.processes.process.Process.metadata
-         :parser: 
 
    .. py:method:: _save_checkpoint() -> None
       :canonical: aiida.engine.processes.process.Process._save_checkpoint
@@ -1320,7 +1295,6 @@ API
       :type: aiida.engine.runners.Runner
 
       .. autodoc2-docstring:: aiida.engine.processes.process.Process.runner
-         :parser: 
 
    .. py:method:: get_parent_calc() -> typing.Optional[aiida.orm.ProcessNode]
       :canonical: aiida.engine.processes.process.Process.get_parent_calc
@@ -1441,7 +1415,6 @@ API
       :type: typing.Type[aiida.engine.processes.process.Process]
 
       .. autodoc2-docstring:: aiida.engine.processes.builder.ProcessBuilder.process_class
-         :parser: 
 
    .. py:method:: _repr_pretty_(p, _) -> str
       :canonical: aiida.engine.processes.builder.ProcessBuilder._repr_pretty_
@@ -1620,21 +1593,18 @@ API
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.processes.process_spec.ProcessSpec.metadata_key
-         :parser: 
 
    .. py:property:: options_key
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.options_key
       :type: str
 
       .. autodoc2-docstring:: aiida.engine.processes.process_spec.ProcessSpec.options_key
-         :parser: 
 
    .. py:property:: exit_codes
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.exit_codes
       :type: aiida.engine.processes.exit_code.ExitCodesNamespace
 
       .. autodoc2-docstring:: aiida.engine.processes.process_spec.ProcessSpec.exit_codes
-         :parser: 
 
    .. py:method:: exit_code(status: int, label: str, message: str, invalidates_cache: bool = False) -> None
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.exit_code
@@ -1646,21 +1616,18 @@ API
       :type: aiida.engine.processes.ports.PortNamespace
 
       .. autodoc2-docstring:: aiida.engine.processes.process_spec.ProcessSpec.ports
-         :parser: 
 
    .. py:property:: inputs
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.inputs
       :type: aiida.engine.processes.ports.PortNamespace
 
       .. autodoc2-docstring:: aiida.engine.processes.process_spec.ProcessSpec.inputs
-         :parser: 
 
    .. py:property:: outputs
       :canonical: aiida.engine.processes.process_spec.ProcessSpec.outputs
       :type: aiida.engine.processes.ports.PortNamespace
 
       .. autodoc2-docstring:: aiida.engine.processes.process_spec.ProcessSpec.outputs
-         :parser: 
 
 .. py:class:: Runner(poll_interval: typing.Union[int, float] = 0, loop: typing.Optional[asyncio.AbstractEventLoop] = None, communicator: typing.Optional[kiwipy.Communicator] = None, rmq_submit: bool = False, persister: typing.Optional[plumpy.persistence.Persister] = None)
    :canonical: aiida.engine.runners.Runner
@@ -1714,56 +1681,48 @@ API
       :type: asyncio.AbstractEventLoop
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.loop
-         :parser: 
 
    .. py:property:: transport
       :canonical: aiida.engine.runners.Runner.transport
       :type: aiida.engine.transports.TransportQueue
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.transport
-         :parser: 
 
    .. py:property:: persister
       :canonical: aiida.engine.runners.Runner.persister
       :type: typing.Optional[plumpy.persistence.Persister]
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.persister
-         :parser: 
 
    .. py:property:: communicator
       :canonical: aiida.engine.runners.Runner.communicator
       :type: typing.Optional[kiwipy.Communicator]
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.communicator
-         :parser: 
 
    .. py:property:: plugin_version_provider
       :canonical: aiida.engine.runners.Runner.plugin_version_provider
       :type: aiida.plugins.utils.PluginVersionProvider
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.plugin_version_provider
-         :parser: 
 
    .. py:property:: job_manager
       :canonical: aiida.engine.runners.Runner.job_manager
       :type: aiida.engine.processes.calcjobs.manager.JobManager
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.job_manager
-         :parser: 
 
    .. py:property:: controller
       :canonical: aiida.engine.runners.Runner.controller
       :type: typing.Optional[plumpy.process_comms.RemoteProcessThreadController]
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.controller
-         :parser: 
 
    .. py:property:: is_daemon_runner
       :canonical: aiida.engine.runners.Runner.is_daemon_runner
       :type: bool
 
       .. autodoc2-docstring:: aiida.engine.runners.Runner.is_daemon_runner
-         :parser: 
 
    .. py:method:: is_closed() -> bool
       :canonical: aiida.engine.runners.Runner.is_closed
@@ -1860,14 +1819,12 @@ API
       :type: bool
 
       .. autodoc2-docstring:: aiida.engine.processes.ports.WithNonDb.non_db_explicitly_set
-         :parser: 
 
    .. py:property:: non_db
       :canonical: aiida.engine.processes.ports.WithNonDb.non_db
       :type: bool
 
       .. autodoc2-docstring:: aiida.engine.processes.ports.WithNonDb.non_db
-         :parser: 
 
 .. py:class:: WithSerialize(*args, **kwargs)
    :canonical: aiida.engine.processes.ports.WithSerialize
@@ -1929,14 +1886,12 @@ API
       :type: aiida.orm.WorkChainNode
 
       .. autodoc2-docstring:: aiida.engine.processes.workchains.workchain.WorkChain.node
-         :parser: 
 
    .. py:property:: ctx
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.ctx
       :type: aiida.common.extendeddicts.AttributeDict
 
       .. autodoc2-docstring:: aiida.engine.processes.workchains.workchain.WorkChain.ctx
-         :parser: 
 
    .. py:method:: save_instance_state(out_state, save_context)
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.save_instance_state
@@ -2017,76 +1972,63 @@ API
    :canonical: aiida.engine.processes.workchains.context.append_
 
    .. autodoc2-docstring:: aiida.engine.processes.workchains.context.append_
-      :parser: 
 
 .. py:function:: assign_(target: typing.Union[aiida.engine.processes.workchains.awaitable.Awaitable, aiida.orm.ProcessNode]) -> aiida.engine.processes.workchains.awaitable.Awaitable
    :canonical: aiida.engine.processes.workchains.context.assign_
 
    .. autodoc2-docstring:: aiida.engine.processes.workchains.context.assign_
-      :parser: 
 
 .. py:function:: calcfunction(function: aiida.engine.processes.functions.FunctionType) -> aiida.engine.processes.functions.FunctionType
    :canonical: aiida.engine.processes.functions.calcfunction
 
    .. autodoc2-docstring:: aiida.engine.processes.functions.calcfunction
-      :parser: 
 
 .. py:function:: construct_awaitable(target: typing.Union[aiida.engine.processes.workchains.awaitable.Awaitable, aiida.orm.ProcessNode]) -> aiida.engine.processes.workchains.awaitable.Awaitable
    :canonical: aiida.engine.processes.workchains.awaitable.construct_awaitable
 
    .. autodoc2-docstring:: aiida.engine.processes.workchains.awaitable.construct_awaitable
-      :parser: 
 
 .. py:function:: get_object_loader() -> aiida.engine.persistence.ObjectLoader
    :canonical: aiida.engine.persistence.get_object_loader
 
    .. autodoc2-docstring:: aiida.engine.persistence.get_object_loader
-      :parser: 
 
 .. py:function:: interruptable_task(coro: typing.Callable[[aiida.engine.utils.InterruptableFuture], typing.Awaitable[typing.Any]], loop: typing.Optional[asyncio.AbstractEventLoop] = None) -> aiida.engine.utils.InterruptableFuture
    :canonical: aiida.engine.utils.interruptable_task
 
    .. autodoc2-docstring:: aiida.engine.utils.interruptable_task
-      :parser: 
 
 .. py:function:: is_process_function(function: typing.Any) -> bool
    :canonical: aiida.engine.utils.is_process_function
 
    .. autodoc2-docstring:: aiida.engine.utils.is_process_function
-      :parser: 
 
 .. py:function:: process_handler(wrapped: typing.Optional[types.FunctionType] = None, *, priority: int = 0, exit_codes: typing.Union[None, aiida.engine.processes.exit_code.ExitCode, typing.List[aiida.engine.processes.exit_code.ExitCode]] = None, enabled: bool = True) -> types.FunctionType
    :canonical: aiida.engine.processes.workchains.utils.process_handler
 
    .. autodoc2-docstring:: aiida.engine.processes.workchains.utils.process_handler
-      :parser: 
 
 .. py:function:: run(process: aiida.engine.launch.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Dict[str, typing.Any]
    :canonical: aiida.engine.launch.run
 
    .. autodoc2-docstring:: aiida.engine.launch.run
-      :parser: 
 
 .. py:function:: run_get_node(process: aiida.engine.launch.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Tuple[typing.Dict[str, typing.Any], aiida.orm.ProcessNode]
    :canonical: aiida.engine.launch.run_get_node
 
    .. autodoc2-docstring:: aiida.engine.launch.run_get_node
-      :parser: 
 
 .. py:function:: run_get_pk(process: aiida.engine.launch.TYPE_RUN_PROCESS, *args: typing.Any, **inputs: typing.Any) -> typing.Tuple[typing.Dict[str, typing.Any], int]
    :canonical: aiida.engine.launch.run_get_pk
 
    .. autodoc2-docstring:: aiida.engine.launch.run_get_pk
-      :parser: 
 
 .. py:function:: submit(process: aiida.engine.launch.TYPE_SUBMIT_PROCESS, **inputs: typing.Any) -> aiida.orm.ProcessNode
    :canonical: aiida.engine.launch.submit
 
    .. autodoc2-docstring:: aiida.engine.launch.submit
-      :parser: 
 
 .. py:function:: workfunction(function: aiida.engine.processes.functions.FunctionType) -> aiida.engine.processes.functions.FunctionType
    :canonical: aiida.engine.processes.functions.workfunction
 
    .. autodoc2-docstring:: aiida.engine.processes.functions.workfunction
-      :parser: 

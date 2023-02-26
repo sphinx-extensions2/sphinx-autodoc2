@@ -123,12 +123,12 @@ API
 
       .. autodoc2-docstring:: autodoc2.config.PackageConfig.exclude_files
 
-   .. py:attribute:: autodoc
-      :canonical: autodoc2.config.PackageConfig.autodoc
+   .. py:attribute:: auto_mode
+      :canonical: autodoc2.config.PackageConfig.auto_mode
       :type: bool
       :value: None
 
-      .. autodoc2-docstring:: autodoc2.config.PackageConfig.autodoc
+      .. autodoc2-docstring:: autodoc2.config.PackageConfig.auto_mode
 
    .. py:method:: as_triple() -> typing.Iterable[tuple[str, typing.Any, dataclasses.Field]]
       :canonical: autodoc2.config.PackageConfig.as_triple
@@ -139,43 +139,36 @@ API
    :canonical: autodoc2.config._coerce_packages
 
    .. autodoc2-docstring:: autodoc2.config._coerce_packages
-      :parser: 
 
 .. py:function:: _validate_replace_list(name: str, item: typing.Any) -> list[typing.Tuple[str, str]]
    :canonical: autodoc2.config._validate_replace_list
 
    .. autodoc2-docstring:: autodoc2.config._validate_replace_list
-      :parser: 
 
 .. py:function:: _validate_hidden_objects(name: str, item: typing.Any) -> set[str]
    :canonical: autodoc2.config._validate_hidden_objects
 
    .. autodoc2-docstring:: autodoc2.config._validate_hidden_objects
-      :parser: 
 
 .. py:function:: _validate_regex_list(name: str, item: typing.Any) -> list[typing.Pattern[str]]
    :canonical: autodoc2.config._validate_regex_list
 
    .. autodoc2-docstring:: autodoc2.config._validate_regex_list
-      :parser: 
 
 .. py:function:: _validate_list_tuple_regex_str(name: str, item: typing.Any) -> list[tuple[typing.Pattern[str], str]]
    :canonical: autodoc2.config._validate_list_tuple_regex_str
 
    .. autodoc2-docstring:: autodoc2.config._validate_list_tuple_regex_str
-      :parser: 
 
 .. py:function:: _load_renderer(name: str, item: typing.Any) -> type[autodoc2.render.base.RendererBase]
    :canonical: autodoc2.config._load_renderer
 
    .. autodoc2-docstring:: autodoc2.config._load_renderer
-      :parser: 
 
 .. py:function:: _load_regex_renderers(name: str, item: typing.Any) -> list[tuple[typing.Pattern[str], type[autodoc2.render.base.RendererBase]]]
    :canonical: autodoc2.config._load_regex_renderers
 
    .. autodoc2-docstring:: autodoc2.config._load_regex_renderers
-      :parser: 
 
 .. py:class:: Config
    :canonical: autodoc2.config.Config
@@ -286,6 +279,13 @@ API
       :value: None
 
       .. autodoc2-docstring:: autodoc2.config.Config.annotations
+
+   .. py:attribute:: docstrings
+      :canonical: autodoc2.config.Config.docstrings
+      :type: bool
+      :value: None
+
+      .. autodoc2-docstring:: autodoc2.config.Config.docstrings
 
    .. py:attribute:: sort_names
       :canonical: autodoc2.config.Config.sort_names

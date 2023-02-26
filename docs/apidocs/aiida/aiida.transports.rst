@@ -184,13 +184,11 @@ API
       :canonical: aiida.transports.plugins.ssh.SshTransport.sshclient
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.sshclient
-         :parser: 
 
    .. py:property:: sftp
       :canonical: aiida.transports.plugins.ssh.SshTransport.sftp
 
       .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.sftp
-         :parser: 
 
    .. py:method:: __str__()
       :canonical: aiida.transports.plugins.ssh.SshTransport.__str__
@@ -437,7 +435,6 @@ API
       :canonical: aiida.transports.transport.Transport.is_open
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.is_open
-         :parser: 
 
    .. py:method:: open()
       :canonical: aiida.transports.transport.Transport.open
@@ -499,7 +496,6 @@ API
       :canonical: aiida.transports.transport.Transport.logger
 
       .. autodoc2-docstring:: aiida.transports.transport.Transport.logger
-         :parser: 
 
    .. py:method:: get_safe_open_interval()
       :canonical: aiida.transports.transport.Transport.get_safe_open_interval
@@ -739,10 +735,8 @@ API
    :canonical: aiida.transports.plugins.ssh.convert_to_bool
 
    .. autodoc2-docstring:: aiida.transports.plugins.ssh.convert_to_bool
-      :parser: 
 
 .. py:function:: parse_sshconfig(computername)
    :canonical: aiida.transports.plugins.ssh.parse_sshconfig
 
    .. autodoc2-docstring:: aiida.transports.plugins.ssh.parse_sshconfig
-      :parser: 

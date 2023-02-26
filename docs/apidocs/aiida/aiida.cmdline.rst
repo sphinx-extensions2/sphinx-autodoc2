@@ -185,7 +185,6 @@ API
       :canonical: aiida.cmdline.params.types.calculation.CalculationParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.calculation.CalculationParamType.orm_class_loader
-         :parser: 
 
 .. py:class:: CodeParamType(sub_classes=None, entry_point=None)
    :canonical: aiida.cmdline.params.types.code.CodeParamType
@@ -208,7 +207,6 @@ API
       :canonical: aiida.cmdline.params.types.code.CodeParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.code.CodeParamType.orm_class_loader
-         :parser: 
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.code.CodeParamType.shell_complete
@@ -237,7 +235,6 @@ API
       :canonical: aiida.cmdline.params.types.computer.ComputerParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.computer.ComputerParamType.orm_class_loader
-         :parser: 
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.computer.ComputerParamType.shell_complete
@@ -288,7 +285,6 @@ API
       :canonical: aiida.cmdline.params.types.data.DataParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.data.DataParamType.orm_class_loader
-         :parser: 
 
 .. py:class:: DynamicEntryPointCommandGroup(command, entry_point_group: str, entry_point_name_filter='.*', **kwargs)
    :canonical: aiida.cmdline.groups.dynamic.DynamicEntryPointCommandGroup
@@ -426,7 +422,6 @@ API
       :canonical: aiida.cmdline.params.types.group.GroupParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.group.GroupParamType.orm_class_loader
-         :parser: 
 
    .. py:method:: shell_complete(ctx, param, incomplete)
       :canonical: aiida.cmdline.params.types.group.GroupParamType.shell_complete
@@ -477,7 +472,6 @@ API
       :abstractmethod:
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.identifier.IdentifierParamType.orm_class_loader
-         :parser: 
 
    .. py:method:: convert(value, param, ctx)
       :canonical: aiida.cmdline.params.types.identifier.IdentifierParamType.convert
@@ -534,13 +528,11 @@ API
       :canonical: aiida.cmdline.params.types.choice.LazyChoice._click_choice
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice._click_choice
-         :parser: 
 
    .. py:property:: choices
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.choices
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.choice.LazyChoice.choices
-         :parser: 
 
    .. py:method:: get_metavar(param)
       :canonical: aiida.cmdline.params.types.choice.LazyChoice.get_metavar
@@ -623,7 +615,6 @@ API
       :canonical: aiida.cmdline.params.types.node.NodeParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.node.NodeParamType.orm_class_loader
-         :parser: 
 
 .. py:class:: NonEmptyStringParamType
    :canonical: aiida.cmdline.params.types.strings.NonEmptyStringParamType
@@ -707,13 +698,11 @@ API
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.groups
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.groups
-         :parser: 
 
    .. py:property:: has_potential_ambiguity
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.has_potential_ambiguity
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.plugin.PluginParamType.has_potential_ambiguity
-         :parser: 
 
    .. py:method:: get_valid_arguments()
       :canonical: aiida.cmdline.params.types.plugin.PluginParamType.get_valid_arguments
@@ -767,7 +756,6 @@ API
       :canonical: aiida.cmdline.params.types.process.ProcessParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.process.ProcessParamType.orm_class_loader
-         :parser: 
 
 .. py:class:: ProfileParamType(*args, **kwargs)
    :canonical: aiida.cmdline.params.types.profile.ProfileParamType
@@ -903,76 +891,63 @@ API
       :canonical: aiida.cmdline.params.types.workflow.WorkflowParamType.orm_class_loader
 
       .. autodoc2-docstring:: aiida.cmdline.params.types.workflow.WorkflowParamType.orm_class_loader
-         :parser: 
 
 .. py:function:: dbenv()
    :canonical: aiida.cmdline.utils.decorators.dbenv
 
    .. autodoc2-docstring:: aiida.cmdline.utils.decorators.dbenv
-      :parser: 
 
 .. py:function:: echo_critical(message: str, bold: bool = False, nl: bool = True, err: bool = True, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_critical
 
    .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_critical
-      :parser: 
 
 .. py:function:: echo_dictionary(dictionary, fmt='json+date', sort_keys=True)
    :canonical: aiida.cmdline.utils.echo.echo_dictionary
 
    .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_dictionary
-      :parser: 
 
 .. py:function:: echo_error(message: str, bold: bool = False, nl: bool = True, err: bool = True, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_error
 
    .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_error
-      :parser: 
 
 .. py:function:: echo_info(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_info
 
    .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_info
-      :parser: 
 
 .. py:function:: echo_report(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_report
 
    .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_report
-      :parser: 
 
 .. py:function:: echo_success(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_success
 
    .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_success
-      :parser: 
 
 .. py:function:: echo_warning(message: str, bold: bool = False, nl: bool = True, err: bool = False, prefix: bool = True) -> None
    :canonical: aiida.cmdline.utils.echo.echo_warning
 
    .. autodoc2-docstring:: aiida.cmdline.utils.echo.echo_warning
-      :parser: 
 
 .. py:function:: format_call_graph(calc_node, max_depth: int = None, info_fn=calc_info)
    :canonical: aiida.cmdline.utils.ascii_vis.format_call_graph
 
    .. autodoc2-docstring:: aiida.cmdline.utils.ascii_vis.format_call_graph
-      :parser: 
 
 .. py:function:: is_verbose()
    :canonical: aiida.cmdline.utils.common.is_verbose
 
    .. autodoc2-docstring:: aiida.cmdline.utils.common.is_verbose
-      :parser: 
 
 .. py:function:: only_if_daemon_running(echo_function=echo.echo_critical, message=None)
    :canonical: aiida.cmdline.utils.decorators.only_if_daemon_running
 
    .. autodoc2-docstring:: aiida.cmdline.utils.decorators.only_if_daemon_running
-      :parser: 
 
 .. py:function:: with_dbenv()
    :canonical: aiida.cmdline.utils.decorators.with_dbenv
 
    .. autodoc2-docstring:: aiida.cmdline.utils.decorators.with_dbenv
-      :parser: 

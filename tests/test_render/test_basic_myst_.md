@@ -66,7 +66,6 @@ package.a
    ['p', 'a1', 'alias']
 
 ```{autodoc2-docstring} package.__all__
-:parser: 
 ```
 
 ````
@@ -77,7 +76,6 @@ package.a
    1
 
 ```{autodoc2-docstring} package.p
-:parser: 
 ```
 
 ````
@@ -102,7 +100,6 @@ package.a
    1
 
 ```{autodoc2-docstring} package.Class.x
-:parser: 
 ```
 
 ````
