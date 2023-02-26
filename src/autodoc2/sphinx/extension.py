@@ -18,7 +18,7 @@ from autodoc2.config import CONFIG_PREFIX, Config, ValidationError
 from autodoc2.db import InMemoryDb, UniqueError
 from autodoc2.sphinx.docstring import DocstringRenderer
 from autodoc2.sphinx.logging_ import LOGGER, warn_sphinx
-from autodoc2.utils import ResolvedDict, WarningSubtypes, resolve_all, yield_modules
+from autodoc2.utils import WarningSubtypes, yield_modules
 
 try:
     from sphinx.util.display import status_iterator
@@ -177,7 +177,6 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         autodoc2_cache[path.as_posix()] = {"hash": hash_str, "db": db}
 
     # find all the package/module, so we know what files to write
-    # To following __all__ strategy
     LOGGER.info("[Autodoc2] Determining files to write ...")
     to_write: t.List[str] = []
     stack = [root_module]
@@ -191,15 +190,6 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
                 if not any(pat.fullmatch(mod) for pat in config.skip_module_regexes)
             ]
         )
-
-    resolved_all: None | t.Dict[str, ResolvedDict] = None
-    if config.module_all_regexes:
-        LOGGER.info("[Autodoc2] Resolving __all__ imports ...")
-        resolved_all = {
-            k: v
-            for k, v in resolve_all(db, root_module).items()
-            if any(pat.fullmatch(k) for pat in config.module_all_regexes)
-        }
 
     def _warn_render(msg: str, type_: WarningSubtypes) -> None:
         warn_sphinx(msg, type_)
@@ -219,9 +209,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
             if pat.fullmatch(mod_name):
                 render_cls = cls
                 break
-        content = "\n".join(
-            render_cls(db, config, _warn_render, resolved_all).render_item(mod_name)
-        )
+        content = "\n".join(render_cls(db, config, _warn_render).render_item(mod_name))
         out_path = output / (mod_name + render_cls.EXTENSION)
         paths.append(out_path)
         if not (out_path.exists() and out_path.read_text("utf8") == content):
