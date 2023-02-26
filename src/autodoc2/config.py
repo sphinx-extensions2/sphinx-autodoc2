@@ -57,6 +57,13 @@ class PackageConfig:
         },
     )
 
+    autodoc: bool = dc.field(
+        default=True,
+        metadata={
+            "help": "Whether to generate documentation for the package.",
+        },
+    )
+
     def as_triple(self) -> t.Iterable[tuple[str, t.Any, dc.Field]]:  # type: ignore[type-arg]
         """Yield triples of (name, value, field)."""
         fields = {f.name: f for f in dc.fields(self.__class__)}
@@ -73,6 +80,7 @@ def _coerce_packages(name: str, item: t.Any) -> list[PackageConfig]:
     # make sure we don't mutate the original (triggers sphinx total rebuild)
     new = [deepcopy(i) for i in item]
     for i, package in enumerate(new[:]):
+        # TODO here we should use the PackageConfig to validate
         if isinstance(package, str):
             new[i] = package = {"path": package}
         if not isinstance(package, dict):
@@ -105,6 +113,8 @@ def _coerce_packages(name: str, item: t.Any) -> list[PackageConfig]:
                 or not all(isinstance(x, str) for x in package[key])
             ):
                 raise ValidationError(f"{name}[{i}][{key!r}] must be a list of strings")
+        if "autodoc" in package and not isinstance(package["autodoc"], bool):
+            raise ValidationError(f"{name}[{i}]['autodoc'] must be a boolean")
 
     return [PackageConfig(**p) for p in new]
 

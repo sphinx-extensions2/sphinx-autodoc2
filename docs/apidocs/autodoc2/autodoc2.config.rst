@@ -123,6 +123,13 @@ API
 
       .. autodoc2-docstring:: autodoc2.config.PackageConfig.exclude_files
 
+   .. py:attribute:: autodoc
+      :canonical: autodoc2.config.PackageConfig.autodoc
+      :type: bool
+      :value: None
+
+      .. autodoc2-docstring:: autodoc2.config.PackageConfig.autodoc
+
    .. py:method:: as_triple() -> typing.Iterable[tuple[str, typing.Any, dataclasses.Field]]
       :canonical: autodoc2.config.PackageConfig.as_triple
 
