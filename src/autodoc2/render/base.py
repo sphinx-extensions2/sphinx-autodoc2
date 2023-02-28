@@ -7,12 +7,13 @@ import abc
 from collections import OrderedDict
 import typing as t
 
-from autodoc2.utils import WarningSubtypes, resolve_all
+from autodoc2.resolve_all import AllResolver
+from autodoc2.utils import WarningSubtypes
 
 if t.TYPE_CHECKING:
     from autodoc2.config import Config
     from autodoc2.db import Database
-    from autodoc2.utils import ARGS_TYPE, ItemData, ResolvedDict
+    from autodoc2.utils import ARGS_TYPE, ItemData
 
 
 class RendererBase(abc.ABC):
@@ -25,24 +26,30 @@ class RendererBase(abc.ABC):
         self,
         db: Database,
         config: Config,
+        *,
         warn: t.Callable[[str, WarningSubtypes], None] | None = None,
+        all_resolver: AllResolver | None = None,
         standalone: bool = True,
     ) -> None:
         """Initialise the renderer.
 
         :param db: The database to obtain objects from.
         :param config: The configuration.
-        :param warn: A function to call when a warning is encountered.
-        :param resolved_all: A dictionary of full_name -> __all__ resolution.
+        :param warn: The function to use to log warnings.
+        :param all_resolver: The resolver to use, for following __all__ children.
         :param standalone: If True, this renderer is being used to create a standalone document
         """
         self._db = db
         self._config = config
         self._standalone = standalone
         self._warn = warn or (lambda msg, type_: None)
-        self._resolved_all: dict[str, ResolvedDict] = {}
-        self._resolve_all_warned: set[str] = set()
-        """The full_names of modules that have already been warned about, regarding __all__ resolution"""
+        self._all_resolver = (
+            AllResolver(
+                self._db, lambda x: self._warn(x, WarningSubtypes.ALL_RESOLUTION)
+            )
+            if all_resolver is None
+            else all_resolver
+        )
         self._is_hidden_cache: OrderedDict[str, bool] = OrderedDict()
         """Cache for the is_hidden function: full_name -> bool."""
 
@@ -85,99 +92,40 @@ class RendererBase(abc.ABC):
         if item["type"] in {"module", "package"} and any(
             pat.fullmatch(item["full_name"]) for pat in self.config.module_all_regexes
         ):
-            warn = item["full_name"] not in self._resolve_all_warned
-            self._resolve_all_warned.add(item["full_name"])
-            if item.get("all") is None and warn:
-                self.warn(
-                    f"__all__ missing or empty in {item['full_name']}",
-                    WarningSubtypes.ALL_MISSING,
-                )
+            resolved = self._all_resolver.get_resolved_all(item["full_name"])[
+                "resolved"
+            ]
 
-            if item["full_name"] not in self._resolved_all:
-                # TODO perhaps here we should find the "highest ancestor" available in the db and use that?
-                self._resolved_all.update(
-                    {
-                        k: v
-                        for k, v in resolve_all(self._db, item["full_name"]).items()
-                        if any(
-                            pat.fullmatch(k) for pat in self.config.module_all_regexes
-                        )
-                    }
-                )
-            resolved_data = (
-                self._resolved_all.get(item["full_name"])
-                if self._resolved_all
-                else None
-            )
-            if resolved_data is None:
-                if warn:
-                    self.warn(
-                        f"Could not resolve {item['full_name']}.__all__",
-                        WarningSubtypes.ALL_RESOLUTION,
-                    )
-                return
-            if warn:
-                for key, message in (
-                    (
-                        "unresolved",
-                        "Could not resolve {names!r}, in {full_name}.__all__",
-                    ),
-                    (
-                        "stars_unknown",
-                        "* imports from unknown {names!r}, in {full_name}.__all__",
-                    ),
-                    (
-                        "stars_no_all",
-                        "* imports from modules with no __all__ {names!r}, in {full_name}.__all__",
-                    ),
-                    (
-                        "stars_unresolved",
-                        "* imports from modules with no resolved __all__ {names!r}, in {full_name}.__all__",
-                    ),
-                ):
-                    names = resolved_data[key]  # type: ignore
-                    if names:
-                        self.warn(
-                            message.format(names=names, full_name=item["full_name"]),
-                            WarningSubtypes.ALL_RESOLUTION,
-                        )
             for all_name in (
                 sorted(item.get("all") or [])
                 if self.config.sort_names
                 else item.get("all") or []
             ):
-                if all_name not in resolved_data["resolved"]:
+                if all_name not in resolved:
                     continue
-                resolved_names = resolved_data["resolved"][all_name]
-                if len(resolved_names) > 1 and warn:
-                    self.warn(
-                        f"Found multiple items for {all_name!r} in "
-                        f"{item['full_name']}.__all__: {resolved_names!r}",
-                        WarningSubtypes.ALL_RESOLUTION,
-                    )
-                for resolved_name in resolved_names:
-                    resolved_item: None | ItemData
-                    if (
-                        types == {"external"}
-                        and resolved_name.split(".")[0]
-                        != item["full_name"].split(".")[0]
-                    ):
-                        # special case, for use only in the summary table
-                        # These are items that are not in the same module as the parent,
-                        # that were exposed via __all__.
-                        resolved_item = {
-                            "full_name": resolved_name,
-                            "type": "external",
-                            "doc": "",
-                        }
-                    else:
-                        resolved_item = self._db.get_item(resolved_name)
-                    if not (
-                        resolved_item is None
-                        or (types is not None and resolved_item["type"] not in types)
-                        or (omit_hidden and self.is_hidden(resolved_item))
-                    ):
-                        yield resolved_item
+                resolved_name = resolved[all_name]
+
+                resolved_item: None | ItemData
+                if (
+                    types == {"external"}
+                    and resolved_name.split(".")[0] != item["full_name"].split(".")[0]
+                ):
+                    # special case, for use only in the summary table
+                    # These are items that are not in the same module as the parent,
+                    # that were exposed via __all__.
+                    resolved_item = {
+                        "full_name": resolved_name,
+                        "type": "external",
+                        "doc": "",
+                    }
+                else:
+                    resolved_item = self._db.get_item(resolved_name)
+                if not (
+                    resolved_item is None
+                    or (types is not None and resolved_item["type"] not in types)
+                    or (omit_hidden and self.is_hidden(resolved_item))
+                ):
+                    yield resolved_item
         else:
             for child in self._db.get_children(
                 item["full_name"], types=types, sort_name=self.config.sort_names
@@ -201,7 +149,7 @@ class RendererBase(abc.ABC):
             return self._is_hidden_cache[item["full_name"]]
         # TODO also whether it is imported, but this is only when following __all__
         short_name = item["full_name"].split(".")[-1]
-        is_hidden = (
+        is_hidden: bool = (
             any(p.fullmatch(item["full_name"]) for p in self.config.hidden_regexes)
             or (
                 item["type"] in ("module", "package")
@@ -213,7 +161,7 @@ class RendererBase(abc.ABC):
             or ("undoc" in self.config.hidden_objects and not item.get("doc", ""))
             or (
                 "inherited" in self.config.hidden_objects
-                and item.get("inherited", False)
+                and bool(item.get("inherited", False))
             )
             or (
                 "dunder" in self.config.hidden_objects
@@ -256,7 +204,13 @@ class RendererBase(abc.ABC):
 
     def show_docstring(self, item: ItemData) -> bool:
         """Whether to show the docstring."""
-        return self.config.docstrings
+        if self.config.docstrings == "all":
+            return True
+        if self.config.docstrings == "direct" and not (
+            (item.get("inherited")) or (item.get("doc_inherited"))
+        ):
+            return True
+        return False
 
     @abc.abstractmethod
     def render_item(self, full_name: str) -> t.Iterable[str]:
@@ -316,3 +270,13 @@ class RendererBase(abc.ABC):
             if pattern.fullmatch(full_name):
                 return parser
         return ""
+
+    @abc.abstractmethod
+    def generate_summary(
+        self, objects: list[ItemData], alias: dict[str, str] | None = None
+    ) -> t.Iterable[str]:
+        """Generate a summary of the objects.
+
+        :param objects: A list of fully qualified names.
+        :param alias: A mapping of fully qualified names to a display alias.
+        """

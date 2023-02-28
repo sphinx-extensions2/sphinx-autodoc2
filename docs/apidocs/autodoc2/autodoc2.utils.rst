@@ -22,9 +22,6 @@ Classes
    * - :py:obj:`WarningSubtypes <autodoc2.utils.WarningSubtypes>`
      - .. autodoc2-docstring:: autodoc2.utils.WarningSubtypes
           :summary:
-   * - :py:obj:`ResolvedDict <autodoc2.utils.ResolvedDict>`
-     - .. autodoc2-docstring:: autodoc2.utils.ResolvedDict
-          :summary:
 
 Functions
 ~~~~~~~~~
@@ -35,9 +32,6 @@ Functions
 
    * - :py:obj:`yield_modules <autodoc2.utils.yield_modules>`
      - .. autodoc2-docstring:: autodoc2.utils.yield_modules
-          :summary:
-   * - :py:obj:`resolve_all <autodoc2.utils.resolve_all>`
-     - .. autodoc2-docstring:: autodoc2.utils.resolve_all
           :summary:
 
 Data
@@ -178,9 +172,16 @@ API
 
       .. autodoc2-docstring:: autodoc2.utils.ItemData.bases
 
+   .. py:attribute:: doc_inherited
+      :canonical: autodoc2.utils.ItemData.doc_inherited
+      :type: str
+      :value: None
+
+      .. autodoc2-docstring:: autodoc2.utils.ItemData.doc_inherited
+
    .. py:attribute:: inherited
       :canonical: autodoc2.utils.ItemData.inherited
-      :type: bool
+      :type: str
       :value: None
 
       .. autodoc2-docstring:: autodoc2.utils.ItemData.inherited
@@ -244,54 +245,3 @@ API
    :canonical: autodoc2.utils.yield_modules
 
    .. autodoc2-docstring:: autodoc2.utils.yield_modules
-
-.. py:class:: ResolvedDict()
-   :canonical: autodoc2.utils.ResolvedDict
-
-   Bases: :py:obj:`typing.TypedDict`
-
-   .. autodoc2-docstring:: autodoc2.utils.ResolvedDict
-
-   .. rubric:: Initialization
-
-   .. autodoc2-docstring:: autodoc2.utils.ResolvedDict.__init__
-
-   .. py:attribute:: resolved
-      :canonical: autodoc2.utils.ResolvedDict.resolved
-      :type: dict[str, set[str]]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.utils.ResolvedDict.resolved
-
-   .. py:attribute:: unresolved
-      :canonical: autodoc2.utils.ResolvedDict.unresolved
-      :type: set[str]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.utils.ResolvedDict.unresolved
-
-   .. py:attribute:: stars_unresolved
-      :canonical: autodoc2.utils.ResolvedDict.stars_unresolved
-      :type: set[str]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.utils.ResolvedDict.stars_unresolved
-
-   .. py:attribute:: stars_no_all
-      :canonical: autodoc2.utils.ResolvedDict.stars_no_all
-      :type: set[str]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.utils.ResolvedDict.stars_no_all
-
-   .. py:attribute:: stars_unknown
-      :canonical: autodoc2.utils.ResolvedDict.stars_unknown
-      :type: set[str]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.utils.ResolvedDict.stars_unknown
-
-.. py:function:: resolve_all(db: autodoc2.db.Database, package_name: str) -> dict[str, autodoc2.utils.ResolvedDict]
-   :canonical: autodoc2.utils.resolve_all
-
-   .. autodoc2-docstring:: autodoc2.utils.resolve_all

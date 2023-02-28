@@ -71,6 +71,7 @@ autodoc2_skip_module_regexes = [
     r"aiida\.[^\.]+\..*",
     r"aiida\.(__main__|calculations|restapi|sphinxext|storage|workflows)",
 ]
+# autodoc2_docstrings = "all"
 
 nitpick_ignore_regex = [
     (r"py:.*", r"typing_extensions.*"),

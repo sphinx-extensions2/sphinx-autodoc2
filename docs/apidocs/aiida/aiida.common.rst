@@ -162,8 +162,6 @@ API
    .. py:method:: __dir__()
       :canonical: aiida.common.extendeddicts.AttributeDict.__dir__
 
-      .. autodoc2-docstring:: aiida.common.extendeddicts.AttributeDict.__dir__
-
 .. py:class:: CalcInfo(dictionary=None)
    :canonical: aiida.common.datastructures.CalcInfo
 
@@ -457,8 +455,6 @@ API
 
    .. py:method:: __dir__()
       :canonical: aiida.common.extendeddicts.FixedFieldsAttributeDict.__dir__
-
-      .. autodoc2-docstring:: aiida.common.extendeddicts.FixedFieldsAttributeDict.__dir__
 
 .. py:data:: GraphTraversalRule
    :canonical: aiida.common.links.GraphTraversalRule

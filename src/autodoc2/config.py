@@ -417,11 +417,13 @@ class Config:
         },
     )
 
-    docstrings: bool = dc.field(
-        default=True,
+    docstrings: t.Literal["all", "direct", "none"] = dc.field(
+        default="direct",
         metadata={
-            "help": "Whether to include docstrings.",
-            "sphinx_type": bool,
+            "help": "Which objects to include docstrings for. "
+            "'direct' means only from objects that are not inherited.",
+            "sphinx_type": str,
+            "doc_type": '"all" | "direct"',
             "category": "render",
         },
     )

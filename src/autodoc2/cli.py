@@ -12,6 +12,7 @@ from autodoc2 import __version__
 from autodoc2.analysis import analyse_module
 from autodoc2.config import Config
 from autodoc2.db import InMemoryDb, UniqueError
+from autodoc2.resolve_all import AllResolver
 from autodoc2.utils import WarningSubtypes, yield_modules
 
 console = Console()
@@ -172,9 +173,11 @@ def analyse_all(
     with path.open("r") as f:
         db = InMemoryDb.read(f)
 
-    from autodoc2.utils import resolve_all
+    resolver = AllResolver(
+        db, lambda x: console.print(f"[yellow]Warning[/yellow]: {x}")
+    )
 
-    data = resolve_all(db, package)
+    data = resolver.get_resolved_all(package)
 
     console.print(data)
 
@@ -254,7 +257,7 @@ def write(
         for mod_name in to_write:
             progress.update(task, advance=1, description=mod_name)
             content = "\n".join(
-                config.render_plugin(db, config, _warn).render_item(mod_name)
+                config.render_plugin(db, config, warn=_warn).render_item(mod_name)
             )
             out_path = output / (mod_name + config.render_plugin.EXTENSION)
             paths.append(out_path)

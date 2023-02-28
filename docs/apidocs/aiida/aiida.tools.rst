@@ -392,12 +392,8 @@ API
    .. py:method:: __repr__()
       :canonical: aiida.tools.data.orbital.orbital.Orbital.__repr__
 
-      .. autodoc2-docstring:: aiida.tools.data.orbital.orbital.Orbital.__repr__
-
    .. py:method:: __str__() -> str
       :canonical: aiida.tools.data.orbital.orbital.Orbital.__str__
-
-      .. autodoc2-docstring:: aiida.tools.data.orbital.orbital.Orbital.__str__
 
    .. py:method:: _validate_keys(input_dict)
       :canonical: aiida.tools.data.orbital.orbital.Orbital._validate_keys

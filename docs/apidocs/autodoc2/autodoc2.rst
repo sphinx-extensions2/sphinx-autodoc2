@@ -28,6 +28,7 @@ Submodules
    autodoc2.analysis
    autodoc2.cli
    autodoc2.utils
+   autodoc2.resolve_all
    autodoc2.astroid_utils
 
 Package Contents

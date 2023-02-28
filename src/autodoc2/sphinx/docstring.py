@@ -8,19 +8,17 @@ from docutils import nodes
 from docutils.parsers import Parser, get_parser_class
 from docutils.parsers.rst import directives, roles
 from docutils.statemachine import StringList
-from docutils.utils import new_document
-from sphinx.util.docutils import SphinxDirective
+from sphinx.util.docutils import SphinxDirective, new_document
+from sphinx.util.logging import prefixed_warnings
 
-from autodoc2.sphinx.utils import warn_sphinx
-from autodoc2.utils import ItemData, WarningSubtypes
+from autodoc2.sphinx.utils import get_database, nested_parse_generated, warn_sphinx
+from autodoc2.utils import WarningSubtypes
 
 if t.TYPE_CHECKING:
     from docutils.parsers.rst.states import RSTStateMachine
 
-    from autodoc2.sphinx.extension import EnvCache
 
-
-def parser_name(argument: str) -> Parser:
+def parser_options(argument: str) -> Parser | None:
     """
     Return a docutils parser whose name matches the argument.
     (Directive option conversion function.)
@@ -39,6 +37,20 @@ def parser_name(argument: str) -> Parser:
         raise ValueError(str(err))
 
 
+def summary_option(argument: str) -> int | None:
+    """Must be empty or a positive integer."""
+    if argument and argument.strip():
+        try:
+            value = int(argument)
+        except ValueError:
+            raise ValueError("non-integer value; must be an integer")
+        if value < 0:
+            raise ValueError("negative value; must be positive or zero")
+        return value
+    else:
+        return None
+
+
 class DocstringRenderer(SphinxDirective):
     """Directive to render a docstring of an object."""
 
@@ -47,9 +59,9 @@ class DocstringRenderer(SphinxDirective):
     optional_arguments = 0
     final_argument_whitespace = True
     option_spec = {
-        "parser": parser_name,
+        "parser": parser_options,
         "allowtitles": directives.flag,  # used for module docstrings
-        "summary": directives.flag,  # return first child only
+        "summary": summary_option,  # number of children to return
         "literal": directives.flag,  # return the literal docstring
         "literal-lexer": directives.unchanged,  # the lexer to use for literal
         "literal-linenos": directives.flag,  # add line numbers to literal
@@ -57,47 +69,46 @@ class DocstringRenderer(SphinxDirective):
 
     def run(self) -> list[nodes.Node]:
         """Run the directive {a}`1`."""
-        _, line = self.get_source_info()
+        directive_source, directive_line = self.get_source_info()
         # warnings take the docname and line number
-        warning_loc = (self.env.docname, line)
+        warning_loc = (self.env.docname, directive_line)
 
         # find the database item for this object
-        name = self.arguments[0]
-        dbs: dict[str, EnvCache] = self.env.autodoc2_cache  # type: ignore
-        item: ItemData | None = None
-        for cache in dbs.values():
-            item = cache["db"].get_item(name)
-            if item:
-                break
+        full_name: str = self.arguments[0]
+        autodoc2_db = get_database(self.env)
+        item = autodoc2_db.get_item(full_name)
 
         if item is None:
             if "summary" not in self.options:
                 # summaries can include items imported from external modules
                 # which may not be in the database, so we don't warn about those
                 warn_sphinx(
-                    f"Could not find {name}",
+                    f"Could not find {full_name}",
                     WarningSubtypes.NAME_NOT_FOUND,
                     location=warning_loc,
                 )
             return []
 
         # find the source path for this object, by walking up the parent tree
-        source_path = None
-        parts = name.split(".")
-        while parts:
-            parent = cache["db"].get_item(".".join(parts))
-            if parent and ("file_path" in parent):
-                source_path = parent["file_path"]
+        source_name = item["doc_inherited"] if item.get("doc_inherited") else full_name
+        source_path: str | None = None
+        for ancestor in autodoc2_db.get_ancestors(source_name, include_self=True):
+            if ancestor is None:
+                break  # should never happen
+            if "file_path" in ancestor:
+                source_path = ancestor["file_path"]
                 break
-            parts.pop()
+        source_item = autodoc2_db.get_item(source_name)
         # also get the line number within the file
-        line_offset = item["range"][0] if "range" in item else 0
+        source_offset = (
+            source_item["range"][0] if source_item and ("range" in source_item) else 0
+        )
 
         if source_path:
             # ensure rebuilds when the source file changes
             self.env.note_dependency(source_path)
 
-        if not item["doc"]:
+        if not item["doc"].strip():
             return []
 
         if "literal" in self.options:
@@ -108,7 +119,7 @@ class DocstringRenderer(SphinxDirective):
                 literal["language"] = self.options["literal-lexer"]
             if "literal-linenos" in self.options:
                 literal["linenos"] = True
-                literal["highlight_args"] = {"linenostart": 1 + line_offset}
+                literal["highlight_args"] = {"linenostart": 1 + source_offset}
             return [literal]
 
         # now we run the actual parsing
@@ -118,52 +129,62 @@ class DocstringRenderer(SphinxDirective):
         # 2. We want to set the source path and line number correctly
         #    so that warnings and errors are reported against the actual source documentation.
 
-        if self.options.get("parser", None):
-            # parse into a dummy document and return created nodes
-            parser: Parser = self.options["parser"]()
-            document = new_document(
-                source_path or self.state.document["source"],
-                self.state.document.settings,
-            )
-            document.reporter.get_source_and_line = lambda li: (
-                source_path,
-                li + line_offset,
-            )
-            with parsing_context():
-                parser.parse(item["doc"], document)
-            children = document.children or []
-
-        else:
-            base = nodes.Element()
-            if source_path:
-                # Here we perform a nested render, but temporarily setup the document/reporter
-                # with the correct document path and lineno for the included file.
-                with change_source(self.state, source_path, line_offset - line):
-                    lines = item["doc"].splitlines()
-                    content = StringList(
-                        lines,
-                        source=source_path,
-                        items=[
-                            (source_path, i + line_offset) for i in range(len(lines))
-                        ],
-                    )
-                    self.state.nested_parse(
-                        content, 0, base, match_titles="allowtitles" in self.options
-                    )
+        with prefixed_warnings("[Autodoc2]:"):
+            if self.options.get("parser", None):
+                # parse into a dummy document and return created nodes
+                parser: Parser = self.options["parser"]()
+                document = new_document(
+                    source_path or self.state.document["source"],
+                    self.state.document.settings,
+                )
+                document.reporter.get_source_and_line = lambda li: (
+                    source_path,
+                    li + source_offset,
+                )
+                with parsing_context():
+                    parser.parse(item["doc"], document)
+                children = document.children or []
 
             else:
-                self.state.nested_parse(
-                    StringList(item["doc"].splitlines()),
-                    self.content_offset,
-                    base,
-                    match_titles="allowtitles" in self.options,
-                )
-            children = base.children or []
+                doc_lines = item["doc"].splitlines()
+                if source_path:
+                    # Here we perform a nested render, but temporarily setup the document/reporter
+                    # with the correct document path and lineno for the included file.
+                    with change_source(
+                        self.state, source_path, source_offset - directive_line
+                    ):
+                        base = nodes.Element()
+                        base.source = source_path
+                        base.line = source_offset
+                        content = StringList(
+                            doc_lines,
+                            source=source_path,
+                            items=[
+                                (source_path, i + source_offset + 1)
+                                for i in range(len(doc_lines))
+                            ],
+                        )
+                        self.state.nested_parse(
+                            content, 0, base, match_titles="allowtitles" in self.options
+                        )
 
-        if children and ("summary" in self.options):
-            return [children[0]]
+                else:
+                    base = nested_parse_generated(
+                        self.state,
+                        doc_lines,
+                        directive_source,
+                        directive_line,
+                        match_titles="allowtitles" in self.options,
+                    )
 
-        return children
+                children = base.children or []
+
+            if children and ("summary" in self.options):
+                if self.options["summary"] in (None, 1):
+                    return [children[0]]
+                return children[: self.options["summary"]]
+
+            return children
 
 
 @contextmanager
@@ -184,6 +205,7 @@ def change_source(
     state: RSTStateMachine, source_path: str, line_offset: int
 ) -> t.Generator[None, None, None]:
     """Temporarily change the source and line number."""
+    # TODO also override the warning message to include the original source
     source = state.document["source"]
     rsource = state.reporter.source
     line_func = getattr(state.reporter, "get_source_and_line", None)

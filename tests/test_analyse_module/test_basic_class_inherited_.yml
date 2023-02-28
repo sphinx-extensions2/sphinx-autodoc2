@@ -28,7 +28,7 @@
 - args: []
   doc: ''
   full_name: test.B.a
-  inherited: true
+  inherited: test.A
   range:
   - 2
   - 2

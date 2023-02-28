@@ -40,7 +40,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.render.rst_._RE_DELIMS
 
-.. py:class:: RstRenderer(db: autodoc2.db.Database, config: autodoc2.config.Config, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, standalone: bool = True)
+.. py:class:: RstRenderer(db: autodoc2.db.Database, config: autodoc2.config.Config, *, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, all_resolver: autodoc2.resolve_all.AllResolver | None = None, standalone: bool = True)
    :canonical: autodoc2.render.rst_.RstRenderer
 
    Bases: :py:obj:`autodoc2.render.base.RendererBase`
@@ -60,12 +60,8 @@ API
    .. py:method:: render_item(full_name: str) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_item
 
-      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.render_item
-
-   .. py:method:: generate_summary(items: list[autodoc2.utils.ItemData]) -> typing.Iterable[str]
+   .. py:method:: generate_summary(objects: list[autodoc2.utils.ItemData], alias: dict[str, str] | None = None) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.generate_summary
-
-      .. autodoc2-docstring:: autodoc2.render.rst_.RstRenderer.generate_summary
 
    .. py:method:: render_package(item: autodoc2.utils.ItemData) -> typing.Iterable[str]
       :canonical: autodoc2.render.rst_.RstRenderer.render_package

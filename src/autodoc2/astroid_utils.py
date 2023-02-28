@@ -386,7 +386,7 @@ def is_decorated_with_property_setter(
     return False
 
 
-def get_class_docstring(node: nodes.ClassDef) -> str:
+def get_class_docstring(node: nodes.ClassDef) -> tuple[str, None | str]:
     """Get the docstring of a node, using a parent docstring if needed."""
     doc = node.doc
 
@@ -399,9 +399,9 @@ def get_class_docstring(node: nodes.ClassDef) -> str:
             ):
                 continue
             if base.doc is not None:
-                return str(base.doc)
+                return str(base.doc), base.qname()
 
-    return doc or ""
+    return doc or "", None
 
 
 def is_exception(node: nodes.ClassDef) -> bool:
@@ -444,7 +444,7 @@ def is_overload_decorator(decorator: astroid.Name | astroid.Attribute) -> bool:
     return False
 
 
-def get_func_docstring(node: nodes.FunctionDef) -> str:
+def get_func_docstring(node: nodes.FunctionDef) -> tuple[str, None | str]:
     """Get the docstring of a node, using a parent docstring if needed."""
     doc = node.doc
 
@@ -462,9 +462,9 @@ def get_func_docstring(node: nodes.FunctionDef) -> str:
                     and child.name == node.name
                     and child.doc is not None
                 ):
-                    return str(child.doc)
+                    return str(child.doc), child.qname()
 
-    return doc or ""
+    return doc or "", None
 
 
 def get_return_annotation(node: nodes.FunctionDef) -> None | str:

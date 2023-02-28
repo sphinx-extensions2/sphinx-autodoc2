@@ -23,7 +23,7 @@ Classes
 API
 ~~~
 
-.. py:class:: RendererBase(db: autodoc2.db.Database, config: autodoc2.config.Config, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, standalone: bool = True)
+.. py:class:: RendererBase(db: autodoc2.db.Database, config: autodoc2.config.Config, *, warn: typing.Callable[[str, autodoc2.utils.WarningSubtypes], None] | None = None, all_resolver: autodoc2.resolve_all.AllResolver | None = None, standalone: bool = True)
    :canonical: autodoc2.render.base.RendererBase
 
    Bases: :py:obj:`abc.ABC`
@@ -40,13 +40,6 @@ API
       :value: '.txt'
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.EXTENSION
-
-   .. py:attribute:: _resolve_all_warned
-      :canonical: autodoc2.render.base.RendererBase._resolve_all_warned
-      :type: set[str]
-      :value: None
-
-      .. autodoc2-docstring:: autodoc2.render.base.RendererBase._resolve_all_warned
 
    .. py:attribute:: _is_hidden_cache
       :canonical: autodoc2.render.base.RendererBase._is_hidden_cache
@@ -142,3 +135,9 @@ API
       :canonical: autodoc2.render.base.RendererBase.get_doc_parser
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.get_doc_parser
+
+   .. py:method:: generate_summary(objects: list[autodoc2.utils.ItemData], alias: dict[str, str] | None = None) -> typing.Iterable[str]
+      :canonical: autodoc2.render.base.RendererBase.generate_summary
+      :abstractmethod:
+
+      .. autodoc2-docstring:: autodoc2.render.base.RendererBase.generate_summary

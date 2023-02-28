@@ -81,9 +81,9 @@ API
 
       .. autodoc2-docstring:: autodoc2.sphinx.extension.EnvCache.hash
 
-   .. py:attribute:: db
-      :canonical: autodoc2.sphinx.extension.EnvCache.db
-      :type: autodoc2.db.InMemoryDb
+   .. py:attribute:: root_module
+      :canonical: autodoc2.sphinx.extension.EnvCache.root_module
+      :type: str
       :value: None
 
-      .. autodoc2-docstring:: autodoc2.sphinx.extension.EnvCache.db
+      .. autodoc2-docstring:: autodoc2.sphinx.extension.EnvCache.root_module

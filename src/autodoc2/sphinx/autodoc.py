@@ -6,11 +6,16 @@ import typing as t
 
 from docutils import nodes
 from docutils.parsers.rst import directives
-from docutils.statemachine import StringList
 from sphinx.environment import BuildEnvironment
 from sphinx.util.docutils import SphinxDirective
 
-from autodoc2.sphinx.utils import load_config, warn_sphinx
+from autodoc2.sphinx.utils import (
+    get_all_analyser,
+    get_database,
+    load_config,
+    nested_parse_generated,
+    warn_sphinx,
+)
 from autodoc2.utils import ItemData, WarningSubtypes
 
 try:
@@ -18,11 +23,6 @@ try:
 except ImportError:
     # python < 3.11
     import tomli as tomllib  # type: ignore
-
-if t.TYPE_CHECKING:
-    from docutils.parsers.rst.states import RSTStateMachine
-
-    from autodoc2.sphinx.extension import EnvCache
 
 
 class AutodocObject(SphinxDirective):
@@ -43,17 +43,12 @@ class AutodocObject(SphinxDirective):
         # warnings take the docname and line number
         warning_loc = (self.env.docname, line)
 
-        name = self.arguments[0]
-        dbs: dict[str, EnvCache] = self.env.autodoc2_cache  # type: ignore
-        item: ItemData | None = None
-        for cache in dbs.values():
-            item = cache["db"].get_item(name)
-            if item:
-                break
+        full_name = self.arguments[0]
+        autodoc2_db = get_database(self.env)
 
-        if item is None:
+        if full_name not in autodoc2_db:
             warn_sphinx(
-                f"Could not find {name}",
+                f"Could not find {full_name}",
                 WarningSubtypes.NAME_NOT_FOUND,
                 location=warning_loc,
             )
@@ -62,19 +57,18 @@ class AutodocObject(SphinxDirective):
         # find the parent class/module
         mod_parent = None
         class_parent = None
-        parts = name.split(".")
-        while parts:
-            candidate = cache["db"].get_item(".".join(parts))
-            if candidate and candidate["type"] == "class":
-                class_parent = candidate
-            if candidate and candidate["type"] in ("module", "package"):
-                mod_parent = candidate
+        for ancestor in autodoc2_db.get_ancestors(full_name, include_self=True):
+            if ancestor is None:
+                break  # should never happen
+            if class_parent is None and ancestor["type"] == "class":
+                class_parent = ancestor
+            if ancestor["type"] in ("module", "package"):
+                mod_parent = ancestor
                 break
-            parts.pop()
 
         if mod_parent is None:
             warn_sphinx(
-                f"Could not find parent module {name}",
+                f"Could not find parent module {full_name}",
                 WarningSubtypes.NAME_NOT_FOUND,
                 location=warning_loc,
             )
@@ -104,8 +98,12 @@ class AutodocObject(SphinxDirective):
         # create the content from the renderer
         content = list(
             config.render_plugin(
-                cache["db"], config, _warn_render, standalone=True
-            ).render_item(item["full_name"])
+                autodoc2_db,
+                config,
+                all_resolver=get_all_analyser(self.env),
+                warn=_warn_render,
+                standalone=True,
+            ).render_item(full_name)
         )
 
         if "literal" in self.options:
@@ -115,40 +113,16 @@ class AutodocObject(SphinxDirective):
                 literal["language"] = self.options["literal-lexer"]
             return [literal]
 
-        base = nodes.Element()
-        with _set_reporter(self.state, source, line), _set_parents(
-            self.env, mod_parent, class_parent
-        ):
-            self.state.nested_parse(
-                StringList(
-                    content,
-                    items=[(source, line) for _ in content],
-                ),
-                self.content_offset,
-                base,
+        with _set_parents(self.env, mod_parent, class_parent):
+            base = nested_parse_generated(
+                self.state,
+                content,
+                source,
+                line,
                 match_titles=True,  # TODO
             )
 
         return base.children or []
-
-
-@contextmanager
-def _set_reporter(
-    state: RSTStateMachine, source: str, line: int
-) -> t.Generator[None, None, None]:
-    """Ensure warnings are reported correctly, to the line of the directive."""
-    line_func = getattr(state.reporter, "get_source_and_line", None)
-    state.reporter.get_source_and_line = lambda li: (
-        source,
-        line,
-    )
-    try:
-        yield
-    finally:
-        if line_func is not None:
-            state.reporter.get_source_and_line = line_func
-        else:
-            del state.reporter.get_source_and_line
 
 
 @contextmanager

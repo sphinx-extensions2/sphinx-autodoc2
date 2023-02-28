@@ -363,8 +363,6 @@ API
    .. py:method:: __str__()
       :canonical: aiida.schedulers.scheduler.Scheduler.__str__
 
-      .. autodoc2-docstring:: aiida.schedulers.scheduler.Scheduler.__str__
-
    .. py:method:: preprocess_resources(resources, default_mpiprocs_per_machine=None)
       :canonical: aiida.schedulers.scheduler.Scheduler.preprocess_resources
       :classmethod:

@@ -10,6 +10,9 @@ Static analysis of Python code
 : Sphinx parse warnings correctly point to the source code line, and not the generated documentation.
 : You can even document packages from outside the project (via `git clone`)!
 
+Integrated API documentation generation
+: Document genration is integrated with the Sphinx build process, rather than requiring the separate `sphinx-apidoc` CLI tool.
+
 Optimized for rebuilds
 : Analysis of packages and file rendering are cached, so you can use `sphinx-autodoc2` in your development workflow.
 
@@ -35,7 +38,9 @@ Or checkout the the [Example API Documentation](apidocs/index.rst) ✨
 
 quickstart
 docstrings
+summary
 autodoc
 config
+autodoc_diff
 apidocs/index
 ```

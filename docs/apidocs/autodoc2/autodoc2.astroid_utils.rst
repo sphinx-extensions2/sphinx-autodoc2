@@ -170,7 +170,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.astroid_utils.is_decorated_with_property_setter
 
-.. py:function:: get_class_docstring(node: astroid.nodes.ClassDef) -> str
+.. py:function:: get_class_docstring(node: astroid.nodes.ClassDef) -> tuple[str, None | str]
    :canonical: autodoc2.astroid_utils.get_class_docstring
 
    .. autodoc2-docstring:: autodoc2.astroid_utils.get_class_docstring
@@ -190,7 +190,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.astroid_utils.is_overload_decorator
 
-.. py:function:: get_func_docstring(node: astroid.nodes.FunctionDef) -> str
+.. py:function:: get_func_docstring(node: astroid.nodes.FunctionDef) -> tuple[str, None | str]
    :canonical: autodoc2.astroid_utils.get_func_docstring
 
    .. autodoc2-docstring:: autodoc2.astroid_utils.get_func_docstring

@@ -238,13 +238,16 @@ def yield_function_def(
     if astroid_utils.is_decorated_with_overload(node):
         type_ = "overload"
 
+    doc, doc_inherited = astroid_utils.get_func_docstring(node)
     data: ItemData = {
         "type": type_,
         "full_name": _get_full_name(node.name, state.name_stack),
-        "doc": fix_docstring_indent(astroid_utils.get_func_docstring(node)),
+        "doc": fix_docstring_indent(doc),
         "args": astroid_utils.get_args_info(node.args),
         "return_annotation": astroid_utils.get_return_annotation(node),
     }
+    if doc_inherited is not None:
+        data["doc_inherited"] = doc_inherited
     if node.fromlineno is not None and node.tolineno is not None:
         data["range"] = (node.fromlineno, node.tolineno)
     if properties:
@@ -269,12 +272,15 @@ def yield_class_def(node: nodes.ClassDef, state: State) -> t.Iterable[ItemData]:
 
     basenames = [astroid_utils.resolve_annotation(base) for base in node.bases]
 
+    doc, doc_inherited = astroid_utils.get_class_docstring(node)
     parent: ItemData = {
         "type": type_,
         "full_name": _get_full_name(node.name, state.name_stack),
         "bases": basenames,
-        "doc": fix_docstring_indent(astroid_utils.get_class_docstring(node)),
+        "doc": fix_docstring_indent(doc),
     }
+    if doc_inherited is not None:
+        parent["doc_inherited"] = doc_inherited
     if node.fromlineno is not None and node.tolineno is not None:
         parent["range"] = (node.fromlineno, node.tolineno)
     yield parent
@@ -306,7 +312,7 @@ def yield_class_def(node: nodes.ClassDef, state: State) -> t.Iterable[ItemData]:
                 if (
                     _get_parent_name(ancestor["full_name"]) == parent["full_name"]
                 ) and (base is not node):
-                    ancestor["inherited"] = True
+                    ancestor["inherited"] = base.qname()
 
                 yield ancestor
 

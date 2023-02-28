@@ -14,10 +14,17 @@ from sphinx.application import Sphinx
 from autodoc2 import __version__
 from autodoc2.analysis import analyse_module
 from autodoc2.config import CONFIG_PREFIX, Config
-from autodoc2.db import InMemoryDb, UniqueError
+from autodoc2.db import UniqueError
 from autodoc2.sphinx.autodoc import AutodocObject
 from autodoc2.sphinx.docstring import DocstringRenderer
-from autodoc2.sphinx.utils import LOGGER, load_config, warn_sphinx
+from autodoc2.sphinx.summary import AutodocSummary
+from autodoc2.sphinx.utils import (
+    LOGGER,
+    get_all_analyser,
+    get_database,
+    load_config,
+    warn_sphinx,
+)
 from autodoc2.utils import WarningSubtypes, yield_modules
 
 try:
@@ -46,6 +53,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
     # create the main event
     app.connect("builder-inited", run_autodoc)
     app.add_directive("autodoc2-docstring", DocstringRenderer)
+    app.add_directive("autodoc2-summary", AutodocSummary)
     app.add_directive("autodoc2-object", AutodocObject)
 
     # TODO support viewcode, when a package is not installed
@@ -117,6 +125,16 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         warn_sphinx(f"Package {path} does not exist", WarningSubtypes.MISSING_MODULE)
         return None
 
+    autodoc2_db = get_database(app.env)
+
+    # store mapping of file paths to root modules and their hashes
+    # this allows us to check if we need to re-analyse a module
+    autodoc2_cache: dict[str, EnvCache]
+    if not hasattr(app.env, "autodoc2_cache"):
+        app.env.autodoc2_cache = autodoc2_cache = {}  # type: ignore
+    else:
+        autodoc2_cache = app.env.autodoc2_cache
+
     # compute the hash of the modules,
     # so we can check if we need to re-analyse them
     hasher = hashlib.sha256()
@@ -124,21 +142,19 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         hasher.update(mod_path.read_bytes())
     hash_str = hasher.hexdigest()
 
-    autodoc2_cache: dict[str, EnvCache]
-    if not hasattr(app.env, "autodoc2_cache"):
-        app.env.autodoc2_cache = autodoc2_cache = {}  # type: ignore
-    else:
-        autodoc2_cache = app.env.autodoc2_cache
-
     if (
         path.as_posix() in autodoc2_cache
         and autodoc2_cache[path.as_posix()]["hash"] == hash_str
+        and autodoc2_cache[path.as_posix()]["root_module"] == root_module
     ):
         LOGGER.info(f"[Autodoc2] Using cached analysis {root_module!r}")
-        db = autodoc2_cache[path.as_posix()]["db"]
+        # TODO perhaps to keep the database upd-to-date we also need to detect
+        # if something has been removed
     else:
+        # clear the current module from the database
+        autodoc2_db.remove(root_module, descendants=True)
+        get_all_analyser(app.env).clear_cache()
         # analyse the modules and write to the database
-        db = InMemoryDb()
         for mod_path, mod_name in status_iterator(
             modules,
             "[Autodoc2] Analysing package...",
@@ -147,13 +163,13 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         ):
             for data in analyse_module(mod_path, mod_name):
                 try:
-                    db.add(data)
+                    autodoc2_db.add(data)
                 except UniqueError:
                     warn_sphinx(
                         f"Duplicate item {data['full_name']} ({data['type']})",
                         WarningSubtypes.DUPLICATE_ITEM,
                     )
-        autodoc2_cache[path.as_posix()] = {"hash": hash_str, "db": db}
+        autodoc2_cache[path.as_posix()] = {"hash": hash_str, "root_module": root_module}
 
     output = Path(app.srcdir) / PurePosixPath(config.output_dir) / root_module
 
@@ -172,7 +188,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         stack.extend(
             [
                 mod
-                for mod in db.get_children_names(item, {"package", "module"})
+                for mod in autodoc2_db.get_children_names(item, {"package", "module"})
                 if not any(pat.fullmatch(mod) for pat in config.skip_module_regexes)
             ]
         )
@@ -194,7 +210,14 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
             if pat.fullmatch(mod_name):
                 render_cls = cls
                 break
-        content = "\n".join(render_cls(db, config, _warn_render).render_item(mod_name))
+        content = "\n".join(
+            render_cls(
+                autodoc2_db,
+                config,
+                all_resolver=get_all_analyser(app.env),
+                warn=_warn_render,
+            ).render_item(mod_name)
+        )
         out_path = output / (mod_name + render_cls.EXTENSION)
         paths.append(out_path)
         if not (out_path.exists() and out_path.read_text("utf8") == content):
@@ -260,4 +283,4 @@ class EnvCache(t.TypedDict):
     """Cache for the environment."""
 
     hash: str  # the hash of the package files
-    db: InMemoryDb
+    root_module: str  # the fully qualified root module name
