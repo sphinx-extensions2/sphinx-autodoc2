@@ -69,9 +69,9 @@
                     <row>
                         <entry>
                             <paragraph>
-                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="False" reftarget="package.a.a1" reftype="obj" refwarn="False">
+                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="True" reftarget="package.a.a1" reftype="obj" refwarn="False">
                                     <literal classes="xref py py-obj">
-                                        package.a.a1
+                                        package.a1
                         <entry>
                             <paragraph>
                                 a1 can be documented here.

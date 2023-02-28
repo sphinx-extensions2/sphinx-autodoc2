@@ -1,6 +1,6 @@
 """Analyse a python project and create documentation for it."""
 
-__version__ = "0.4.1"
+__version__ = "0.4.2"
 
 
 def setup(app):  # type: ignore

@@ -50,6 +50,9 @@ class AutodocSummary(SphinxDirective):
                 continue
             full_name = parts[0]
             alias: str | None = None
+            if full_name.startswith("~"):
+                full_name = full_name[1:]
+                alias = full_name.split(".")[-1]
             if len(parts) > 1:
                 alias = parts[1]
             if (item := db.get_item(full_name)) is None and (
@@ -63,7 +66,9 @@ class AutodocSummary(SphinxDirective):
                             self.env.note_dependency(file_path)
                         break
                 if alias:
-                    aliases[full_name] = alias
+                    aliases[item["full_name"]] = alias
+                elif full_name != item["full_name"]:
+                    aliases[item["full_name"]] = full_name
                 objects.append(item)
             else:
                 warn_sphinx(
