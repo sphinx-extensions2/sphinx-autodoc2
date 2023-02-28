@@ -61,7 +61,7 @@ API
 
 .. py:data:: __version__
    :canonical: autodoc2.__version__
-   :value: '0.3.0'
+   :value: '0.4.2'
 
    .. autodoc2-docstring:: autodoc2.__version__
 
