@@ -41,7 +41,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
         sphinx_type = t.Any
         if "sphinx_type" in field.metadata:
             sphinx_type = field.metadata["sphinx_type"]
-            if sphinx_type in (str, int, float, bool):
+            if sphinx_type in (str, int, float, bool, list):
                 sphinx_type = (sphinx_type,)
         app.add_config_value(
             f"{CONFIG_PREFIX}{name}",
