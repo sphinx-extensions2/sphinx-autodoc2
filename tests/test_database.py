@@ -4,7 +4,8 @@ from textwrap import dedent
 
 from autodoc2.analysis import analyse_module
 from autodoc2.db import InMemoryDb
-from autodoc2.utils import resolve_all, yield_modules
+from autodoc2.resolve_all import AllResolver
+from autodoc2.utils import yield_modules
 
 
 def test_all_resolution(tmp_path: Path, data_regression):
@@ -16,10 +17,11 @@ def test_all_resolution(tmp_path: Path, data_regression):
             """\
         from package.a import a1
         from package.a.c import ac1 as alias
+        from unknown import something
         from .b import *
         from .d import *
         from other import *
-        __all__ = ['p', 'a1', 'alias', 'unknown']
+        __all__ = ['p', 'a1', 'alias', 'something', 'unknown']
         p = 1
         """
         ),
@@ -62,4 +64,9 @@ def test_all_resolution(tmp_path: Path, data_regression):
     for path, modname in yield_modules(package):
         for item in analyse_module(path, modname):
             db.add(item)
-    data_regression.check(resolve_all(db, "package"))
+
+    warnings = []
+    resolver = AllResolver(db, warnings.append)
+    result = resolver.get_resolved_all("package")
+
+    data_regression.check({"result": result, "warnings": warnings})

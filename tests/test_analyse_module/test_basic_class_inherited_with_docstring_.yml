@@ -20,6 +20,7 @@
 - bases:
   - test.A
   doc: Docstring
+  doc_inherited: test.A
   full_name: test.B
   range:
   - 5
@@ -28,7 +29,7 @@
 - args: []
   doc: ''
   full_name: test.B.a
-  inherited: true
+  inherited: test.A
   range:
   - 4
   - 4

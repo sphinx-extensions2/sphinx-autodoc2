@@ -300,12 +300,8 @@ API
    .. py:method:: copyfile(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copyfile
 
-      .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.copyfile
-
    .. py:method:: copytree(remotesource, remotedestination, dereference=False)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copytree
-
-      .. autodoc2-docstring:: aiida.transports.plugins.ssh.SshTransport.copytree
 
    .. py:method:: copy(remotesource, remotedestination, dereference=False, recursive=True)
       :canonical: aiida.transports.plugins.ssh.SshTransport.copy
@@ -451,12 +447,8 @@ API
    .. py:method:: __repr__()
       :canonical: aiida.transports.transport.Transport.__repr__
 
-      .. autodoc2-docstring:: aiida.transports.transport.Transport.__repr__
-
    .. py:method:: __str__()
       :canonical: aiida.transports.transport.Transport.__str__
-
-      .. autodoc2-docstring:: aiida.transports.transport.Transport.__str__
 
    .. py:method:: set_logger_extra(logger_extra)
       :canonical: aiida.transports.transport.Transport.set_logger_extra

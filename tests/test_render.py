@@ -197,6 +197,11 @@ def test_sphinx_build_directives(tmp_path: Path, file_regression):
            render_plugin = "myst"
 
         .. autodoc2-object:: package.func
+
+        .. autodoc2-summary::
+
+            package.func
+            package.a1
         """
         ),
         "utf-8",
@@ -267,6 +272,7 @@ def build_package(tmp_path: Path) -> Path:
         from .d import *
         __all__ = ['a1', 'ac1', 'ad1', 'ade1', 'adf1']
         a1 = 1
+        '''a1 can be documented here.'''
         """
         ),
         "utf-8",

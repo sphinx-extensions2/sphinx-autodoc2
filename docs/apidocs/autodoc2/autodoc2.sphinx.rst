@@ -14,6 +14,7 @@ Submodules
    :maxdepth: 1
 
    autodoc2.sphinx.docstring
+   autodoc2.sphinx.summary
    autodoc2.sphinx.utils
    autodoc2.sphinx.extension
    autodoc2.sphinx.autodoc

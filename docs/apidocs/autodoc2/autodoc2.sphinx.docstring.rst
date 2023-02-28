@@ -27,8 +27,11 @@ Functions
    :class: autosummary longtable
    :align: left
 
-   * - :py:obj:`parser_name <autodoc2.sphinx.docstring.parser_name>`
-     - .. autodoc2-docstring:: autodoc2.sphinx.docstring.parser_name
+   * - :py:obj:`parser_options <autodoc2.sphinx.docstring.parser_options>`
+     - .. autodoc2-docstring:: autodoc2.sphinx.docstring.parser_options
+          :summary:
+   * - :py:obj:`summary_option <autodoc2.sphinx.docstring.summary_option>`
+     - .. autodoc2-docstring:: autodoc2.sphinx.docstring.summary_option
           :summary:
    * - :py:obj:`parsing_context <autodoc2.sphinx.docstring.parsing_context>`
      - .. autodoc2-docstring:: autodoc2.sphinx.docstring.parsing_context
@@ -44,10 +47,15 @@ Functions
 API
 ~~~
 
-.. py:function:: parser_name(argument: str) -> docutils.parsers.Parser
-   :canonical: autodoc2.sphinx.docstring.parser_name
+.. py:function:: parser_options(argument: str) -> docutils.parsers.Parser | None
+   :canonical: autodoc2.sphinx.docstring.parser_options
 
-   .. autodoc2-docstring:: autodoc2.sphinx.docstring.parser_name
+   .. autodoc2-docstring:: autodoc2.sphinx.docstring.parser_options
+
+.. py:function:: summary_option(argument: str) -> int | None
+   :canonical: autodoc2.sphinx.docstring.summary_option
+
+   .. autodoc2-docstring:: autodoc2.sphinx.docstring.summary_option
 
 .. py:class:: DocstringRenderer(name, arguments, options, content, lineno, content_offset, block_text, state, state_machine)
    :canonical: autodoc2.sphinx.docstring.DocstringRenderer

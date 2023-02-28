@@ -45,16 +45,28 @@ class RstRenderer(RendererBase):
         else:
             self.warn(f"Unknown item type {type_!r} for {full_name!r}")
 
-    def generate_summary(self, items: list[ItemData]) -> t.Iterable[str]:
-        """Generate a summary of the items."""
-        for item in items:
-            short_name = item["full_name"].split(".")[-1]
+    def generate_summary(
+        self, objects: list[ItemData], alias: dict[str, str] | None = None
+    ) -> t.Iterable[str]:
+        alias = alias or {}
+        yield ".. list-table::"
+        yield "   :class: autosummary longtable"
+        yield "   :align: left"
+        yield ""
+        for item in objects:
+            full_name = item["full_name"]
             # TODO get signature (for functions, etc), plus sphinx also runs rst.escape
-            yield f"   * - :py:obj:`{short_name} <{item['full_name']}>`"
-            yield f"     - .. autodoc2-docstring:: {item['full_name']}"
-            if parser_name := self.get_doc_parser(item["full_name"]):
-                yield f"          :parser: {parser_name}"
-            yield "          :summary:"
+            if full_name in alias:
+                yield f"   * - :py:obj:`{alias[full_name]} <{full_name}>`"
+            else:
+                yield f"   * - :py:obj:`{full_name}`"
+            if self.show_docstring(item):
+                yield f"     - .. autodoc2-docstring:: {full_name}"
+                if parser_name := self.get_doc_parser(full_name):
+                    yield f"          :parser: {parser_name}"
+                yield "          :summary:"
+            else:
+                yield "     -"
 
     def render_package(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a package."""
@@ -137,12 +149,14 @@ class RstRenderer(RendererBase):
                         heading,
                         "~" * len(heading),
                         "",
-                        ".. list-table::",
-                        "   :class: autosummary longtable",
-                        "   :align: left",
-                        "",
                     ]
-                    yield from self.generate_summary(visible_items)
+                    yield from self.generate_summary(
+                        visible_items,
+                        alias={
+                            i["full_name"]: i["full_name"].split(".")[-1]
+                            for i in visible_items
+                        },
+                    )
                     yield ""
 
             yield from ["API", "~~~", ""]

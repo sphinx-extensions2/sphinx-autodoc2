@@ -27,9 +27,6 @@ Functions
    :class: autosummary longtable
    :align: left
 
-   * - :py:obj:`_set_reporter <autodoc2.sphinx.autodoc._set_reporter>`
-     - .. autodoc2-docstring:: autodoc2.sphinx.autodoc._set_reporter
-          :summary:
    * - :py:obj:`_set_parents <autodoc2.sphinx.autodoc._set_parents>`
      - .. autodoc2-docstring:: autodoc2.sphinx.autodoc._set_parents
           :summary:
@@ -76,11 +73,6 @@ API
       :canonical: autodoc2.sphinx.autodoc.AutodocObject.run
 
       .. autodoc2-docstring:: autodoc2.sphinx.autodoc.AutodocObject.run
-
-.. py:function:: _set_reporter(state: docutils.parsers.rst.states.RSTStateMachine, source: str, line: int) -> typing.Generator[None, None, None]
-   :canonical: autodoc2.sphinx.autodoc._set_reporter
-
-   .. autodoc2-docstring:: autodoc2.sphinx.autodoc._set_reporter
 
 .. py:function:: _set_parents(env: sphinx.environment.BuildEnvironment, mod: autodoc2.utils.ItemData, klass: autodoc2.utils.ItemData | None) -> typing.Generator[None, None, None]
    :canonical: autodoc2.sphinx.autodoc._set_parents

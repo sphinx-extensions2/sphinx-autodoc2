@@ -185,8 +185,6 @@ API
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.key_format
       :type: typing.Optional[str]
 
-      .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.key_format
-
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.initialise
 
@@ -211,8 +209,6 @@ API
    .. py:method:: has_objects(keys: typing.List[str]) -> typing.List[bool]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.has_objects
 
-      .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.has_objects
-
    .. py:method:: open(key: str) -> typing.Iterator[typing.BinaryIO]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.open
 
@@ -221,17 +217,11 @@ API
    .. py:method:: iter_object_streams(keys: typing.List[str]) -> typing.Iterator[typing.Tuple[str, typing.BinaryIO]]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.iter_object_streams
 
-      .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.iter_object_streams
-
    .. py:method:: delete_objects(keys: typing.List[str]) -> None
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.delete_objects
 
-      .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.delete_objects
-
    .. py:method:: list_objects() -> typing.Iterable[str]
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.list_objects
-
-      .. autodoc2-docstring:: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.list_objects
 
    .. py:method:: get_object_hash(key: str) -> str
       :canonical: aiida.repository.backend.disk_object_store.DiskObjectStoreRepositoryBackend.get_object_hash
@@ -309,8 +299,6 @@ API
 
    .. py:method:: __repr__()
       :canonical: aiida.repository.common.File.__repr__
-
-      .. autodoc2-docstring:: aiida.repository.common.File.__repr__
 
 .. py:class:: FileType
    :canonical: aiida.repository.common.FileType
@@ -548,8 +536,6 @@ API
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.key_format
       :type: str | None
 
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.key_format
-
    .. py:method:: initialise(**kwargs) -> None
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.initialise
 
@@ -579,36 +565,22 @@ API
    .. py:method:: has_objects(keys: list[str]) -> list[bool]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.has_objects
 
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.has_objects
-
    .. py:method:: open(key: str) -> typing.Iterator[typing.BinaryIO]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.open
-
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.open
 
    .. py:method:: iter_object_streams(keys: list[str]) -> typing.Iterator[tuple[str, typing.BinaryIO]]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.iter_object_streams
 
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.iter_object_streams
-
    .. py:method:: delete_objects(keys: list[str]) -> None
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.delete_objects
 
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.delete_objects
-
    .. py:method:: list_objects() -> typing.Iterable[str]
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.list_objects
-
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.list_objects
 
    .. py:method:: maintain(dry_run: bool = False, live: bool = True, **kwargs) -> None
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.maintain
       :abstractmethod:
 
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.maintain
-
    .. py:method:: get_info(detailed: bool = False, **kwargs) -> dict
       :canonical: aiida.repository.backend.sandbox.SandboxRepositoryBackend.get_info
       :abstractmethod:
-
-      .. autodoc2-docstring:: aiida.repository.backend.sandbox.SandboxRepositoryBackend.get_info

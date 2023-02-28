@@ -423,8 +423,6 @@ API
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.node
       :type: aiida.orm.CalcJobNode
 
-      .. autodoc2-docstring:: aiida.engine.processes.calcjobs.calcjob.CalcJob.node
-
    .. py:method:: on_terminated() -> None
       :canonical: aiida.engine.processes.calcjobs.calcjob.CalcJob.on_terminated
 
@@ -1440,12 +1438,8 @@ API
    .. py:method:: __repr__()
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace.__repr__
 
-      .. autodoc2-docstring:: aiida.engine.processes.builder.ProcessBuilderNamespace.__repr__
-
    .. py:method:: __dir__()
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace.__dir__
-
-      .. autodoc2-docstring:: aiida.engine.processes.builder.ProcessBuilderNamespace.__dir__
 
    .. py:method:: __iter__()
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace.__iter__
@@ -1474,8 +1468,6 @@ API
 
    .. py:method:: __delattr__(item)
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace.__delattr__
-
-      .. autodoc2-docstring:: aiida.engine.processes.builder.ProcessBuilderNamespace.__delattr__
 
    .. py:method:: _recursive_merge(dictionary, key, value)
       :canonical: aiida.engine.processes.builder.ProcessBuilderNamespace._recursive_merge
@@ -1885,8 +1877,6 @@ API
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.node
       :type: aiida.orm.WorkChainNode
 
-      .. autodoc2-docstring:: aiida.engine.processes.workchains.workchain.WorkChain.node
-
    .. py:property:: ctx
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.ctx
       :type: aiida.common.extendeddicts.AttributeDict
@@ -1900,8 +1890,6 @@ API
 
    .. py:method:: load_instance_state(saved_state, load_context)
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.load_instance_state
-
-      .. autodoc2-docstring:: aiida.engine.processes.workchains.workchain.WorkChain.load_instance_state
 
    .. py:method:: on_run()
       :canonical: aiida.engine.processes.workchains.workchain.WorkChain.on_run

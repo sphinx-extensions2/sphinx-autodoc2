@@ -52,3 +52,26 @@
             <desc_content>
                 <paragraph>
                     This is a function.
+        <table align="left" classes="autosummary longtable">
+            <tgroup cols="2">
+                <colspec colwidth="50">
+                <colspec colwidth="50">
+                <tbody>
+                    <row>
+                        <entry>
+                            <paragraph>
+                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="False" reftarget="package.func" reftype="obj" refwarn="False">
+                                    <literal classes="xref py py-obj">
+                                        package.func
+                        <entry>
+                            <paragraph>
+                                This is a function.
+                    <row>
+                        <entry>
+                            <paragraph>
+                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="False" reftarget="package.a.a1" reftype="obj" refwarn="False">
+                                    <literal classes="xref py py-obj">
+                                        package.a.a1
+                        <entry>
+                            <paragraph>
+                                a1 can be documented here.

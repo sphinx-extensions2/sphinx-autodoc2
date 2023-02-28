@@ -282,7 +282,7 @@ API
 
    .. py:attribute:: docstrings
       :canonical: autodoc2.config.Config.docstrings
-      :type: bool
+      :type: typing.Literal[all, direct, none]
       :value: None
 
       .. autodoc2-docstring:: autodoc2.config.Config.docstrings

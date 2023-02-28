@@ -357,8 +357,6 @@ API
    .. py:method:: __str__() -> str
       :canonical: aiida.manage.configuration.config.ConfigValidationError.__str__
 
-      .. autodoc2-docstring:: aiida.manage.configuration.config.ConfigValidationError.__str__
-
 .. py:data:: MIGRATIONS
    :canonical: aiida.manage.configuration.migrations.migrations.MIGRATIONS
    :value: ()
@@ -393,8 +391,6 @@ API
 
    .. py:method:: __str__() -> str
       :canonical: aiida.manage.configuration.options.Option.__str__
-
-      .. autodoc2-docstring:: aiida.manage.configuration.options.Option.__str__
 
    .. py:property:: name
       :canonical: aiida.manage.configuration.options.Option.name
@@ -615,8 +611,6 @@ API
 
    .. py:method:: __repr__() -> str
       :canonical: aiida.manage.configuration.profile.Profile.__repr__
-
-      .. autodoc2-docstring:: aiida.manage.configuration.profile.Profile.__repr__
 
    .. py:method:: copy()
       :canonical: aiida.manage.configuration.profile.Profile.copy

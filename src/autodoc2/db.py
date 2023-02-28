@@ -23,6 +23,12 @@ class Database(t.Protocol):
     def add(self, item: ItemData) -> None:
         """Add an item to the database."""
 
+    def remove(self, full_name: str, descendants: bool) -> None:
+        """Remove an item from the database, by full_name.
+
+        If `descendants` is True, remove all descendants of this item.
+        """
+
     def __contains__(self, full_name: str) -> bool:
         """Check if an item is in the database, by full_name."""
 
@@ -64,6 +70,17 @@ class Database(t.Protocol):
         :param sort_name: If True, sort the names alphabetically.
         """
 
+    def get_ancestors(
+        self, full_name: str, include_self: bool
+    ) -> t.Iterable[ItemData | None]:
+        """Get all ancestors of this name, e.g. `a.b`, `a` for `a.b.c`.
+
+        The order is guaranteed from closest to furthest ancestor.
+
+        :param full_name: The full name of the item.
+        :param include_self: If True, include the item itself.
+        """
+
 
 _LIKE_REGEX = re.compile(r"([\*\?])")
 
@@ -86,6 +103,17 @@ class InMemoryDb(Database):
         if item["full_name"] in self._items:
             raise UniqueError(f"Item {item['full_name']} already exists")
         self._items[item["full_name"]] = item
+
+    def remove(self, full_name: str, descendants: bool) -> None:
+        # remove the item itself
+        self._items.pop(full_name, None)
+        self._overloads.pop(full_name, None)
+        if descendants:
+            # remove all descendants
+            for name in list(self._items):
+                if name.startswith(full_name + "."):
+                    self._items.pop(name, None)
+                    self._overloads.pop(name, None)
 
     def __contains__(self, full_name: str) -> bool:
         return full_name in self._items
@@ -148,6 +176,16 @@ class InMemoryDb(Database):
         if sort_name:
             return sorted(generator)
         return generator
+
+    def get_ancestors(
+        self, full_name: str, include_self: bool
+    ) -> t.Iterable[ItemData | None]:
+        if include_self:
+            yield self.get_item(full_name)
+        parts = full_name.split(".")[:-1]
+        while parts:
+            yield self.get_item(".".join(parts))
+            parts.pop()
 
     def write(self, stream: t.TextIO) -> None:
         """Write the database to a file."""

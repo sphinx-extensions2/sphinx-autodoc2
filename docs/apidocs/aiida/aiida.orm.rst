@@ -483,8 +483,6 @@ API
    .. py:method:: initialize()
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.initialize
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.array.array.ArrayData.initialize
-
    .. py:method:: delete_array(name)
       :canonical: aiida.orm.nodes.data.array.array.ArrayData.delete_array
 
@@ -576,8 +574,6 @@ API
 
    .. py:method:: __setattr__(name, value)
       :canonical: aiida.orm.utils.managers.AttributeManager.__setattr__
-
-      .. autodoc2-docstring:: aiida.orm.utils.managers.AttributeManager.__setattr__
 
    .. py:method:: __getitem__(name)
       :canonical: aiida.orm.utils.managers.AttributeManager.__getitem__
@@ -1458,8 +1454,6 @@ API
    .. py:method:: __str__()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.__str__
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.code.legacy.Code.__str__
-
    .. py:method:: get_computer_label()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.get_computer_label
 
@@ -1506,8 +1500,6 @@ API
 
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.code.legacy.Code._validate
-
-      .. autodoc2-docstring:: aiida.orm.nodes.data.code.legacy.Code._validate
 
    .. py:method:: validate_remote_exec_path()
       :canonical: aiida.orm.nodes.data.code.legacy.Code.validate_remote_exec_path
@@ -2986,12 +2978,8 @@ API
    .. py:method:: __repr__()
       :canonical: aiida.orm.nodes.data.structure.Kind.__repr__
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.__repr__
-
    .. py:method:: __str__()
       :canonical: aiida.orm.nodes.data.structure.Kind.__str__
-
-      .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Kind.__str__
 
 .. py:class:: KpointsData
    :canonical: aiida.orm.nodes.data.array.kpoints.KpointsData
@@ -3248,32 +3236,20 @@ API
    .. py:method:: __str__()
       :canonical: aiida.orm.nodes.data.list.List.__str__
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.list.List.__str__
-
    .. py:method:: __eq__(other)
       :canonical: aiida.orm.nodes.data.list.List.__eq__
-
-      .. autodoc2-docstring:: aiida.orm.nodes.data.list.List.__eq__
 
    .. py:method:: append(value)
       :canonical: aiida.orm.nodes.data.list.List.append
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.list.List.append
-
    .. py:method:: extend(value)
       :canonical: aiida.orm.nodes.data.list.List.extend
-
-      .. autodoc2-docstring:: aiida.orm.nodes.data.list.List.extend
 
    .. py:method:: insert(i, value)
       :canonical: aiida.orm.nodes.data.list.List.insert
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.list.List.insert
-
    .. py:method:: remove(value)
       :canonical: aiida.orm.nodes.data.list.List.remove
-
-      .. autodoc2-docstring:: aiida.orm.nodes.data.list.List.remove
 
    .. py:method:: pop(**kwargs)
       :canonical: aiida.orm.nodes.data.list.List.pop
@@ -3297,8 +3273,6 @@ API
 
    .. py:method:: reverse()
       :canonical: aiida.orm.nodes.data.list.List.reverse
-
-      .. autodoc2-docstring:: aiida.orm.nodes.data.list.List.reverse
 
    .. py:method:: get_list()
       :canonical: aiida.orm.nodes.data.list.List.get_list
@@ -3479,12 +3453,8 @@ API
    .. py:method:: __repr__() -> str
       :canonical: aiida.orm.nodes.node.Node.__repr__
 
-      .. autodoc2-docstring:: aiida.orm.nodes.node.Node.__repr__
-
    .. py:method:: __str__() -> str
       :canonical: aiida.orm.nodes.node.Node.__str__
-
-      .. autodoc2-docstring:: aiida.orm.nodes.node.Node.__str__
 
    .. py:method:: __copy__()
       :canonical: aiida.orm.nodes.node.Node.__copy__
@@ -3813,8 +3783,6 @@ API
 
    .. py:method:: __repr__()
       :canonical: aiida.orm.utils.managers.NodeLinksManager.__repr__
-
-      .. autodoc2-docstring:: aiida.orm.utils.managers.NodeLinksManager.__repr__
 
 .. py:class:: NodeRepository(node: aiida.orm.nodes.node.Node)
    :canonical: aiida.orm.nodes.repository.NodeRepository
@@ -4282,8 +4250,6 @@ API
 
    .. py:method:: __str__() -> str
       :canonical: aiida.orm.nodes.process.process.ProcessNode.__str__
-
-      .. autodoc2-docstring:: aiida.orm.nodes.process.process.ProcessNode.__str__
 
    .. py:method:: _updatable_attributes() -> typing.Tuple[str, ...]
       :canonical: aiida.orm.nodes.process.process.ProcessNode._updatable_attributes
@@ -4782,8 +4748,6 @@ API
    .. py:method:: _validate()
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData._validate
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.remote.base.RemoteData._validate
-
    .. py:method:: get_authinfo()
       :canonical: aiida.orm.nodes.data.remote.base.RemoteData.get_authinfo
 
@@ -4915,12 +4879,8 @@ API
    .. py:method:: __repr__()
       :canonical: aiida.orm.nodes.data.structure.Site.__repr__
 
-      .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Site.__repr__
-
    .. py:method:: __str__()
       :canonical: aiida.orm.nodes.data.structure.Site.__str__
-
-      .. autodoc2-docstring:: aiida.orm.nodes.data.structure.Site.__str__
 
 .. py:class:: Str
    :canonical: aiida.orm.nodes.data.str.Str
