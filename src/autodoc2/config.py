@@ -485,6 +485,18 @@ class Config:
         },
     )
 
+    index_filename: str = dc.field(
+        default="index.rst",
+        metadata={
+            "help": (
+                "The filename of the index file, "
+                "relative to the output directory (in POSIX format)."
+            ),
+            "sphinx_type": str,
+            "category": "render",
+        },
+    )
+
     # TODO regexes
     # module_summary: bool | None = None
     # class_inheritance: bool | None = None
