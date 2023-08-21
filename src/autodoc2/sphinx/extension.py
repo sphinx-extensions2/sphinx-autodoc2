@@ -196,6 +196,10 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
     def _warn_render(msg: str, type_: WarningSubtypes) -> None:
         warn_sphinx(msg, type_)
 
+    # invoke user-provided fixups
+    if config.db_fixup:
+        config.db_fixup(autodoc2_db)
+
     # write the files
     output.mkdir(parents=True, exist_ok=True)
     paths = []

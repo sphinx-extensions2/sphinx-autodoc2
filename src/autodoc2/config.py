@@ -485,6 +485,14 @@ class Config:
         },
     )
 
+    db_fixup: t.Callable = dc.field(
+        default = None,
+        metadata={
+            "help": "Callback to fixup database, e.g. manually set 'all' if __all__ is dynamic",
+            "category": "render",
+        },
+    )
+
     # TODO regexes
     # module_summary: bool | None = None
     # class_inheritance: bool | None = None
