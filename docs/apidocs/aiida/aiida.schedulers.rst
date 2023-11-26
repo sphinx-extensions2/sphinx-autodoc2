@@ -180,12 +180,16 @@ API
 
       .. autodoc2-docstring:: aiida.schedulers.datastructures.JobResource.get_tot_num_mpiprocs
 
-.. py:class:: JobState
+.. py:class:: JobState(*args, **kwds)
    :canonical: aiida.schedulers.datastructures.JobState
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.schedulers.datastructures.JobState
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.schedulers.datastructures.JobState.__init__
 
    .. py:attribute:: UNDETERMINED
       :canonical: aiida.schedulers.datastructures.JobState.UNDETERMINED

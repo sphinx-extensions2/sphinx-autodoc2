@@ -300,12 +300,16 @@ API
    .. py:method:: __repr__()
       :canonical: aiida.repository.common.File.__repr__
 
-.. py:class:: FileType
+.. py:class:: FileType(*args, **kwds)
    :canonical: aiida.repository.common.FileType
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.repository.common.FileType
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.repository.common.FileType.__init__
 
    .. py:attribute:: DIRECTORY
       :canonical: aiida.repository.common.FileType.DIRECTORY

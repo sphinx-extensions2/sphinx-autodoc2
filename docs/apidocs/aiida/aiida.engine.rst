@@ -235,12 +235,16 @@ API
 
    .. autodoc2-docstring:: aiida.engine.processes.workchains.awaitable.Awaitable
 
-.. py:class:: AwaitableAction
+.. py:class:: AwaitableAction(*args, **kwds)
    :canonical: aiida.engine.processes.workchains.awaitable.AwaitableAction
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.engine.processes.workchains.awaitable.AwaitableAction
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.engine.processes.workchains.awaitable.AwaitableAction.__init__
 
    .. py:attribute:: ASSIGN
       :canonical: aiida.engine.processes.workchains.awaitable.AwaitableAction.ASSIGN
@@ -254,12 +258,16 @@ API
 
       .. autodoc2-docstring:: aiida.engine.processes.workchains.awaitable.AwaitableAction.APPEND
 
-.. py:class:: AwaitableTarget
+.. py:class:: AwaitableTarget(*args, **kwds)
    :canonical: aiida.engine.processes.workchains.awaitable.AwaitableTarget
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.engine.processes.workchains.awaitable.AwaitableTarget
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.engine.processes.workchains.awaitable.AwaitableTarget.__init__
 
    .. py:attribute:: PROCESS
       :canonical: aiida.engine.processes.workchains.awaitable.AwaitableTarget.PROCESS
@@ -1126,12 +1134,16 @@ API
 
       .. autodoc2-docstring:: aiida.engine.processes.process.Process.SINGLE_OUTPUT_LINKNAME
 
-   .. py:class:: SaveKeys
+   .. py:class:: SaveKeys(*args, **kwds)
       :canonical: aiida.engine.processes.process.Process.SaveKeys
 
       Bases: :py:obj:`enum.Enum`
 
       .. autodoc2-docstring:: aiida.engine.processes.process.Process.SaveKeys
+
+      .. rubric:: Initialization
+
+      .. autodoc2-docstring:: aiida.engine.processes.process.Process.SaveKeys.__init__
 
       .. py:attribute:: CALC_ID
          :canonical: aiida.engine.processes.process.Process.SaveKeys.CALC_ID

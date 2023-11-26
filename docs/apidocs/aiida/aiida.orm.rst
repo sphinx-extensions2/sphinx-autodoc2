@@ -2495,12 +2495,16 @@ API
 
       .. autodoc2-docstring:: aiida.orm.extras.EntityExtras.keys
 
-.. py:class:: EntityTypes
+.. py:class:: EntityTypes(*args, **kwds)
    :canonical: aiida.orm.entities.EntityTypes
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.orm.entities.EntityTypes
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.orm.entities.EntityTypes.__init__
 
    .. py:attribute:: AUTHINFO
       :canonical: aiida.orm.entities.EntityTypes.AUTHINFO

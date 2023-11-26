@@ -60,6 +60,7 @@ API
 
    .. py:attribute:: option_spec
       :canonical: autodoc2.sphinx.summary.AutodocSummary.option_spec
+      :type: typing.ClassVar[dict[str, typing.Any]]
       :value: None
 
       .. autodoc2-docstring:: autodoc2.sphinx.summary.AutodocSummary.option_spec

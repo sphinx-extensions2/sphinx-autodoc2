@@ -186,12 +186,16 @@ API
 
       .. autodoc2-docstring:: autodoc2.utils.ItemData.inherited
 
-.. py:class:: WarningSubtypes
+.. py:class:: WarningSubtypes(*args, **kwds)
    :canonical: autodoc2.utils.WarningSubtypes
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: autodoc2.utils.WarningSubtypes
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: autodoc2.utils.WarningSubtypes.__init__
 
    .. py:attribute:: CONFIG_ERROR
       :canonical: autodoc2.utils.WarningSubtypes.CONFIG_ERROR
