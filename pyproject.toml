@@ -44,18 +44,16 @@ docs = [
 [project.scripts]
 autodoc2 = "autodoc2.cli:app_main"
 
-[tool.isort]
-profile = "black"
-force_sort_within_sections = true
-
 [tool.ruff]
-line-length = 110
-extend-select = ["B0", "C4", "ICN", "ISC", "N", "RUF", "SIM", "T20"]
+extend-select = ["B0", "C4", "I", "ICN", "ISC", "N", "RUF", "SIM", "T20", "UP"]
 
 [tool.ruff.per-file-ignores]
 # ignore: Do not perform function call `typer.Option` in argument defaults
 "src/autodoc2/cli.py" = ["B008"]
 "tests/test_analyse_module.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
 
 [tool.mypy]
 show_error_codes = true

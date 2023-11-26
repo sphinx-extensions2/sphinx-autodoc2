@@ -589,7 +589,7 @@ def _iter_args(
     args: list[nodes.NodeNG],
     annotations: list[nodes.NodeNG],
     defaults: list[nodes.NodeNG],
-) -> t.Iterable[t.Tuple[str, None | str, str | None]]:
+) -> t.Iterable[tuple[str, None | str, str | None]]:
     """Iterate over arguments."""
     default_offset = len(args) - len(defaults)
     packed = itertools.zip_longest(args, annotations)

@@ -69,7 +69,7 @@ class RendererBase(abc.ABC):
         """Warn the user."""
         self._warn(msg, type_)
 
-    def get_item(self, full_name: str) -> t.Optional[ItemData]:
+    def get_item(self, full_name: str) -> ItemData | None:
         """Get an item from the database, by full_name."""
         return self._db.get_item(full_name)
 

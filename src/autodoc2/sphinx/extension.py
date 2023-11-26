@@ -107,7 +107,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
         return None
 
     path = root_path / PurePosixPath(package.path)
-    modules: t.Iterable[t.Tuple[Path, str]]
+    modules: t.Iterable[tuple[Path, str]]
     if path.is_file():
         root_module = package.module or path.stem
         modules = [(path, root_module)]
@@ -180,7 +180,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
 
     # find all the package/module, so we know what files to write
     LOGGER.info("[Autodoc2] Determining files to write ...")
-    to_write: t.List[str] = []
+    to_write: list[str] = []
     stack = [root_module]
     while stack:
         item = stack.pop()
