@@ -113,7 +113,9 @@ def yield_module(node: nodes.Module, state: State) -> t.Iterable[ItemData]:
     parent: ItemData = {
         "type": "package" if node.package else "module",
         "full_name": node.name,
-        "doc": fix_docstring_indent(node.doc),
+        "doc": fix_docstring_indent(
+            node.doc_node.value if node.doc_node is not None else None
+        ),
         "file_path": path,
         "encoding": node.file_encoding,
         "all": astroid_utils.get_module_all(node),
