@@ -287,9 +287,9 @@ def yield_class_def(node: nodes.ClassDef, state: State) -> t.Iterable[ItemData]:
 
     new_state = state.copy(name_stack=[*state.name_stack, node.name])
 
-    overridden: t.Set[str] = set()  # a list of methods overridden by class inheritance
+    overridden: set[str] = set()  # a list of methods overridden by class inheritance
     for base in itertools.chain(iter((node,)), node.ancestors()):
-        seen: t.Set[str] = set()
+        seen: set[str] = set()
         if base.qname() in (
             "__builtins__.object",
             "builtins.object",

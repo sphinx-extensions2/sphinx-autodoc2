@@ -58,7 +58,7 @@ class DocstringRenderer(SphinxDirective):
     required_arguments = 1  # the full name
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {
+    option_spec: t.ClassVar[dict[str, t.Any]] = {
         "parser": parser_options,
         "allowtitles": directives.flag,  # used for module docstrings
         "summary": summary_option,  # number of children to return
