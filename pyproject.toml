@@ -15,6 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Framework :: Sphinx :: Extension",
 ]
+readme = "README.md"
 keywords = ["sphinx", "autodoc", "extension", "documentation"]
 urls = {Home = "https://github.com/chrisjsewell/sphinx-autodoc2"}
 requires-python = ">=3.8"
