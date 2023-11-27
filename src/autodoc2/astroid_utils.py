@@ -109,6 +109,9 @@ def get_const_values(node: nodes.NodeNG) -> t.Any:
             value = tuple(new_value)
     elif isinstance(node, nodes.Const):
         value = node.value
+    elif isinstance(node, nodes.Call):
+        # TODO represent also the arguments
+        value = f"{node.func.repr_name()}(...)"
 
     return value
 
