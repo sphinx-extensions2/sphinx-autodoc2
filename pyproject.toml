@@ -34,7 +34,7 @@ testing = [
     "pytest",
     "pytest-regressions",
     "pytest-cov",
-    "sphinx>=4.0.0,<7",
+    "sphinx>=4.0.0,<8",
 ]
 docs = [
     "sphinx>=4.0.0",
