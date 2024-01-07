@@ -103,12 +103,12 @@ but the external project exposes it only as `package.module.MyClass`.
 In this case, you can use the {confval}`autodoc2_replace_annotations` and {confval}`autodoc2_replace_bases` configuration options to replace the annotation/class base with the correct reference.
 
 ```python
-autodoc2_replace_annotations = {
-    "package.MyClass": "package.module.MyClass",
-}
-autodoc2_replace_bases = {
-    "package.MyClass": "package.module.MyClass",
-}
+autodoc2_replace_annotations = [
+    ("package.MyClass", "package.module.MyClass"),
+]
+autodoc2_replace_bases = [
+    ("package.MyClass", "package.module.MyClass"),
+]
 ```
 
 If you cannot, or do not, wish to fix them,
