@@ -365,7 +365,7 @@ class Config:
     module_summary: bool = dc.field(
         default=True,
         metadata={
-            "help": "Whether to include a per-module summary.",
+            "help": "Whether to include tables at the top of each module with the one line summary of each item",
             "sphinx_type": bool,
             "category": "render",
         },
