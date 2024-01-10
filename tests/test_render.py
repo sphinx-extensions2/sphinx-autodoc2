@@ -258,6 +258,9 @@ def build_package(tmp_path: Path) -> Path:
 
             class Nested:
                 '''This is a nested class.'''
+
+            class NestedEx(Exception):
+                '''This is a nested exception.'''
         """
         ),
         "utf-8",
