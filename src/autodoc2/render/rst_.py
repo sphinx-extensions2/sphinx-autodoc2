@@ -159,9 +159,9 @@ class RstRenderer(RendererBase):
                     )
                     yield ""
 
-            yield from ["API", "~~~", ""]
-            for name in visible_children:
-                yield from self.render_item(name)
+        yield from ["API", "~~~", ""]
+        for name in visible_children:
+            yield from self.render_item(name)
 
     def render_module(self, item: ItemData) -> t.Iterable[str]:
         """Create the content for a module."""
