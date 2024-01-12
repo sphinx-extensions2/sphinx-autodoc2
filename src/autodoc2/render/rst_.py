@@ -239,7 +239,7 @@ class RstRenderer(RendererBase):
                     yield ""
 
         for child in self.get_children(
-            item, {"class", "property", "attribute", "method"}
+            item, {"class", "property", "attribute", "method", "exception"}
         ):
             if (
                 child["full_name"].endswith(".__init__")
