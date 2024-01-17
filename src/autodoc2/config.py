@@ -486,7 +486,7 @@ class Config:
     )
 
     db_fixup: t.Callable = dc.field(
-        default = None,
+        default=None,
         metadata={
             "help": "Callback to fixup database, e.g. manually set 'all' if __all__ is dynamic",
             "category": "render",
