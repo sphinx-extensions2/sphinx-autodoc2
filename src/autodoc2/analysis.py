@@ -3,6 +3,7 @@
 The core function though `analyse_module` is agnostic to the implementation,
 It simply yields `ItemData` typed-dicts.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, replace

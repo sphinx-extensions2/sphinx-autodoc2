@@ -1,4 +1,5 @@
 """Renderer for MyST."""
+
 from __future__ import annotations
 
 import re

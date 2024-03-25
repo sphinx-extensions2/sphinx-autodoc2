@@ -1,4 +1,5 @@
 """Tests for the database."""
+
 from pathlib import Path
 from textwrap import dedent
 

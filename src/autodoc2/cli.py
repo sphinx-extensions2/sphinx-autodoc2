@@ -1,4 +1,5 @@
 """CLI for the package."""
+
 from pathlib import Path
 import re
 import typing as t
