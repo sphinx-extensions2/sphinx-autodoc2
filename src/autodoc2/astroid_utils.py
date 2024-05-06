@@ -1,5 +1,5 @@
-"""Utilities for working with astroid nodes.
-"""
+"""Utilities for working with astroid nodes."""
+
 from __future__ import annotations
 
 import builtins

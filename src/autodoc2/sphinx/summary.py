@@ -1,4 +1,5 @@
 """Directive to generate a summary of listed objects."""
+
 from __future__ import annotations
 
 from typing import Any, ClassVar

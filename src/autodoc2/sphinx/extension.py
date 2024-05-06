@@ -1,4 +1,5 @@
 """The sphinx extension for the package."""
+
 from __future__ import annotations
 
 from contextlib import suppress
