@@ -109,6 +109,9 @@ def get_const_values(node: nodes.NodeNG) -> t.Any:
             value = tuple(new_value)
     elif isinstance(node, nodes.Const):
         value = node.value
+    elif isinstance(node, nodes.Call):
+        # TODO represent also the arguments
+        value = f"{node.func.repr_name()}(...)"
 
     return value
 
@@ -142,8 +145,11 @@ def resolve_annotation(annotation: nodes.NodeNG) -> str:
     elif isinstance(annotation, nodes.Subscript):
         value = resolve_annotation(annotation.value)
         slice_node = annotation.slice
-        if isinstance(slice_node, nodes.Index):
-            slice_node = slice_node.value
+        try:
+            if isinstance(slice_node, nodes.Index):
+                slice_node = slice_node.value
+        except AttributeError:
+            pass  # removed in astroid 3
         if isinstance(slice_node, nodes.Tuple):
             slice_ = ", ".join(resolve_annotation(elt) for elt in slice_node.elts)
         else:
@@ -206,10 +212,7 @@ def resolve_qualname(node: nodes.NodeNG, basename: str) -> str:
     full_basename = basename
 
     top_level_name = re.sub(r"\(.*\)", "", basename).split(".", 1)[0]
-    # Disable until pylint uses astroid 2.7
-    lookup_node = (
-        node if isinstance(node, nodes.node_classes.LookupMixIn) else node.scope()
-    )
+    lookup_node = node if isinstance(node, nodes.LocalsDictNodeNG) else node.scope()
 
     assigns = lookup_node.lookup(top_level_name)[1]
 
@@ -386,11 +389,11 @@ def is_decorated_with_property_setter(
     return False
 
 
-def get_class_docstring(node: nodes.ClassDef) -> tuple[str, None | str]:
+def get_class_docstring(node: nodes.ClassDef) -> tuple[str, str | None]:
     """Get the docstring of a node, using a parent docstring if needed."""
-    doc = node.doc
+    doc_node = node.doc_node
 
-    if doc is None:
+    if doc_node is None:
         for base in node.ancestors():
             if base.qname() in (
                 "__builtins__.object",
@@ -398,10 +401,10 @@ def get_class_docstring(node: nodes.ClassDef) -> tuple[str, None | str]:
                 "builtins.type",
             ):
                 continue
-            if base.doc is not None:
-                return str(base.doc), base.qname()
+            if base.doc_node is not None:
+                return base.doc_node.value, base.qname()
 
-    return doc or "", None
+    return doc_node.value if doc_node is not None else "", None
 
 
 def is_exception(node: nodes.ClassDef) -> bool:
@@ -446,9 +449,9 @@ def is_overload_decorator(decorator: astroid.Name | astroid.Attribute) -> bool:
 
 def get_func_docstring(node: nodes.FunctionDef) -> tuple[str, None | str]:
     """Get the docstring of a node, using a parent docstring if needed."""
-    doc = node.doc
+    doc_node = node.doc_node
 
-    if doc is None and isinstance(node.parent, nodes.ClassDef):
+    if doc_node is None and isinstance(node.parent, nodes.ClassDef):
         for base in node.parent.ancestors():
             if node.name in ("__init__", "__new__") and base.qname() in (
                 "__builtins__.object",
@@ -460,11 +463,11 @@ def get_func_docstring(node: nodes.FunctionDef) -> tuple[str, None | str]:
                 if (
                     isinstance(child, node.__class__)
                     and child.name == node.name
-                    and child.doc is not None
+                    and child.doc_node is not None
                 ):
-                    return str(child.doc), child.qname()
+                    return str(child.doc_node.value), child.qname()
 
-    return doc or "", None
+    return doc_node.value if doc_node is not None else "", None
 
 
 def get_return_annotation(node: nodes.FunctionDef) -> None | str:
@@ -589,7 +592,7 @@ def _iter_args(
     args: list[nodes.NodeNG],
     annotations: list[nodes.NodeNG],
     defaults: list[nodes.NodeNG],
-) -> t.Iterable[t.Tuple[str, None | str, str | None]]:
+) -> t.Iterable[tuple[str, None | str, str | None]]:
     """Iterate over arguments."""
     default_offset = len(args) - len(defaults)
     packed = itertools.zip_longest(args, annotations)

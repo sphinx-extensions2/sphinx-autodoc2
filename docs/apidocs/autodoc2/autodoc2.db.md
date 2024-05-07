@@ -87,7 +87,7 @@ Bases: {py:obj}`typing.Protocol`
 
 ````
 
-````{py:method} get_item(full_name: str) -> typing.Optional[autodoc2.utils.ItemData]
+````{py:method} get_item(full_name: str) -> autodoc2.utils.ItemData | None
 :canonical: autodoc2.db.Database.get_item
 
 ```{autodoc2-docstring} autodoc2.db.Database.get_item
@@ -192,7 +192,7 @@ Bases: {py:obj}`autodoc2.db.Database`
 
 ````
 
-````{py:method} get_item(full_name: str) -> typing.Optional[autodoc2.utils.ItemData]
+````{py:method} get_item(full_name: str) -> autodoc2.utils.ItemData | None
 :canonical: autodoc2.db.InMemoryDb.get_item
 
 ````

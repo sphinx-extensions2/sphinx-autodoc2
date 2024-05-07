@@ -65,7 +65,7 @@ API
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.warn
 
-   .. py:method:: get_item(full_name: str) -> typing.Optional[autodoc2.utils.ItemData]
+   .. py:method:: get_item(full_name: str) -> autodoc2.utils.ItemData | None
       :canonical: autodoc2.render.base.RendererBase.get_item
 
       .. autodoc2-docstring:: autodoc2.render.base.RendererBase.get_item

@@ -5,29 +5,21 @@ exclude: ^tests/.*\.md|tests/.*\.rst|tests/.*\.xml|docs/apidocs/.*
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.4.0
+      rev: v4.5.0
       hooks:
           - id: trailing-whitespace
           - id: end-of-file-fixer
           - id: check-yaml
 
-    - repo: https://github.com/pycqa/isort
-      rev: 5.12.0
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.1.11
       hooks:
-          - id: isort
-
-    - repo: https://github.com/psf/black
-      rev: 23.1.0
-      hooks:
-          - id: black
-
-    - repo: https://github.com/charliermarsh/ruff-pre-commit
-      rev: v0.0.249
-      hooks:
-          - id: ruff
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v1.0.1
+      rev: v1.8.0
       hooks:
       - id: mypy
         args: [--config-file=pyproject.toml]

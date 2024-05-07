@@ -3,9 +3,8 @@ from __future__ import annotations
 
 import typing as t
 
-import pytest
-
 from autodoc2.analysis import analyse_module
+import pytest
 
 
 def clean_item(item: dict[str, t.Any]) -> dict[str, t.Any]:
@@ -24,6 +23,8 @@ test_items = {
     # annotation only assign
     "assign_annotation": "a: str",
     "assign_annotation_union": "a: str | int",
+    # assign
+    "assign_class": "class Foo: ...\na = Foo()",
     # assign with annotation
     "assign_string": "a: str = 'Hello World'\n'''Docstring'''",
     "assign_bytes": "a: bytes = b'Hello World'",

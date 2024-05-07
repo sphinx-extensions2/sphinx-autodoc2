@@ -170,7 +170,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.astroid_utils.is_decorated_with_property_setter
 
-.. py:function:: get_class_docstring(node: astroid.nodes.ClassDef) -> tuple[str, None | str]
+.. py:function:: get_class_docstring(node: astroid.nodes.ClassDef) -> tuple[str, str | None]
    :canonical: autodoc2.astroid_utils.get_class_docstring
 
    .. autodoc2-docstring:: autodoc2.astroid_utils.get_class_docstring
@@ -205,7 +205,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.astroid_utils.get_args_info
 
-.. py:function:: _iter_args(args: list[astroid.nodes.NodeNG], annotations: list[astroid.nodes.NodeNG], defaults: list[astroid.nodes.NodeNG]) -> typing.Iterable[typing.Tuple[str, None | str, str | None]]
+.. py:function:: _iter_args(args: list[astroid.nodes.NodeNG], annotations: list[astroid.nodes.NodeNG], defaults: list[astroid.nodes.NodeNG]) -> typing.Iterable[tuple[str, None | str, str | None]]
    :canonical: autodoc2.astroid_utils._iter_args
 
    .. autodoc2-docstring:: autodoc2.astroid_utils._iter_args

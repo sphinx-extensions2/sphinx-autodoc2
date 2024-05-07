@@ -179,12 +179,16 @@ API
 
       .. autodoc2-docstring:: aiida.common.datastructures.CalcInfo._default_fields
 
-.. py:class:: CalcJobState
+.. py:class:: CalcJobState(*args, **kwds)
    :canonical: aiida.common.datastructures.CalcJobState
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.common.datastructures.CalcJobState
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.common.datastructures.CalcJobState.__init__
 
    .. py:attribute:: UPLOADING
       :canonical: aiida.common.datastructures.CalcJobState.UPLOADING
@@ -462,12 +466,16 @@ API
 
    .. autodoc2-docstring:: aiida.common.links.GraphTraversalRule
 
-.. py:class:: GraphTraversalRules
+.. py:class:: GraphTraversalRules(*args, **kwds)
    :canonical: aiida.common.links.GraphTraversalRules
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.common.links.GraphTraversalRules
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.common.links.GraphTraversalRules.__init__
 
    .. py:attribute:: DEFAULT
       :canonical: aiida.common.links.GraphTraversalRules.DEFAULT
@@ -575,12 +583,16 @@ API
 
    .. autodoc2-docstring:: aiida.common.exceptions.LicensingException.__init__
 
-.. py:class:: LinkType
+.. py:class:: LinkType(*args, **kwds)
    :canonical: aiida.common.links.LinkType
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.common.links.LinkType
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.common.links.LinkType.__init__
 
    .. py:attribute:: CREATE
       :canonical: aiida.common.links.LinkType.CREATE
@@ -846,12 +858,16 @@ API
 
    .. autodoc2-docstring:: aiida.common.exceptions.RemoteOperationError.__init__
 
-.. py:class:: StashMode
+.. py:class:: StashMode(*args, **kwds)
    :canonical: aiida.common.datastructures.StashMode
 
    Bases: :py:obj:`enum.Enum`
 
    .. autodoc2-docstring:: aiida.common.datastructures.StashMode
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: aiida.common.datastructures.StashMode.__init__
 
    .. py:attribute:: COPY
       :canonical: aiida.common.datastructures.StashMode.COPY

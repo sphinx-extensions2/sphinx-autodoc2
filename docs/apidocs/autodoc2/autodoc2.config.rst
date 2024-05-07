@@ -140,7 +140,7 @@ API
 
    .. autodoc2-docstring:: autodoc2.config._coerce_packages
 
-.. py:function:: _validate_replace_list(name: str, item: typing.Any) -> list[typing.Tuple[str, str]]
+.. py:function:: _validate_replace_list(name: str, item: typing.Any) -> list[tuple[str, str]]
    :canonical: autodoc2.config._validate_replace_list
 
    .. autodoc2-docstring:: autodoc2.config._validate_replace_list

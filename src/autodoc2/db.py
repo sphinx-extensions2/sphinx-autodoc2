@@ -32,7 +32,7 @@ class Database(t.Protocol):
     def __contains__(self, full_name: str) -> bool:
         """Check if an item is in the database, by full_name."""
 
-    def get_item(self, full_name: str) -> t.Optional[ItemData]:
+    def get_item(self, full_name: str) -> ItemData | None:
         """Get an item from the database, by full_name."""
 
     def get_items_like(self, full_name: str) -> t.Iterable[ItemData]:
@@ -90,8 +90,8 @@ class InMemoryDb(Database):
 
     def __init__(self) -> None:
         """Create the database."""
-        self._items: t.Dict[str, ItemData] = {}
-        self._overloads: t.Dict[str, t.List[ItemData]] = {}
+        self._items: dict[str, ItemData] = {}
+        self._overloads: dict[str, list[ItemData]] = {}
 
     def add(self, item: ItemData) -> None:
         if item["type"] == "overload":
@@ -118,7 +118,7 @@ class InMemoryDb(Database):
     def __contains__(self, full_name: str) -> bool:
         return full_name in self._items
 
-    def get_item(self, full_name: str) -> t.Optional[ItemData]:
+    def get_item(self, full_name: str) -> ItemData | None:
         return self._items.get(full_name)
 
     def get_items_like(self, full_name: str) -> t.Iterable[ItemData]:

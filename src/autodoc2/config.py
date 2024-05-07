@@ -120,7 +120,7 @@ def _coerce_packages(name: str, item: t.Any) -> list[PackageConfig]:
     return [PackageConfig(**p) for p in new]
 
 
-def _validate_replace_list(name: str, item: t.Any) -> list[t.Tuple[str, str]]:
+def _validate_replace_list(name: str, item: t.Any) -> list[tuple[str, str]]:
     """Validate that an item is a list of tuples."""
     if not isinstance(item, list) or not all(
         isinstance(x, (list, tuple)) and len(x) == 2 for x in item

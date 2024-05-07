@@ -1,0 +1,19 @@
+- all: null
+  doc: ''
+  full_name: test
+  type: module
+- bases: []
+  doc: ''
+  full_name: test.Foo
+  range:
+  - 1
+  - 1
+  type: class
+- annotation: null
+  doc: ''
+  full_name: test.a
+  range:
+  - 2
+  - 2
+  type: data
+  value: Foo(...)
