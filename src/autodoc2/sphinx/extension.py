@@ -1,4 +1,5 @@
 """The sphinx extension for the package."""
+
 from __future__ import annotations
 
 from contextlib import suppress
@@ -47,7 +48,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
             f"{CONFIG_PREFIX}{name}",
             field.metadata.get("sphinx_default", default),
             "env",
-            types=sphinx_type,
+            types=sphinx_type,  # type: ignore[arg-type]
         )
 
     # create the main event

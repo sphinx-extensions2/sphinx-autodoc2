@@ -1,4 +1,5 @@
 """Utility functions and types."""
+
 from __future__ import annotations
 
 import enum
@@ -104,7 +105,7 @@ def yield_modules(
         for filename in filenames:
             if any(fnmatch(filename, m) for m in exc_files):
                 continue
-            name, suffix = os.path.splitext(filename)
+            name, suffix = os.path.splitext(filename)  # noqa: PTH122
             if suffix in extensions:
                 to_yield.setdefault(name, []).append(suffix)
         root_path = Path(root)
