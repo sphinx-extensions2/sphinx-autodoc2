@@ -490,7 +490,7 @@ class Config:
         metadata={
             "help": (
                 "The filename of the index file, "
-                "relative to the output directory (in POSIX format)."
+                "relative to `autodocs2_output_dir`(in POSIX format)."
             ),
             "sphinx_type": str,
             "category": "render",
