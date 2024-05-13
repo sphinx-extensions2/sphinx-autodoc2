@@ -85,7 +85,11 @@ def run_autodoc(app: Sphinx) -> None:
         content_str = jinja2.Template(config.index_template).render(
             top_level=top_level_modules
         )
-        index_path = Path(app.srcdir) / PurePosixPath(config.output_dir) / "index.rst"
+        index_path = (
+            Path(app.srcdir)
+            / PurePosixPath(config.output_dir)
+            / PurePosixPath(config.index_filename)
+        )
         if not (index_path.exists() and index_path.read_text("utf8") == content_str):
             index_path.parent.mkdir(parents=True, exist_ok=True)
             index_path.write_text(content_str, "utf8")
