@@ -1,6 +1,6 @@
-# `autodoc-object` directive
+# `autodoc2-object` directive
 
-The `autodoc-object` directive can be used to render the documentation for a single Python object.
+The `autodoc2-object` directive can be used to render the documentation for a single Python object.
 It takes a single argument, the fully qualified name of the object that should be rendered.
 
 Using the `:literal:` option, the pre-rendered content will be rendered as a literal block,
