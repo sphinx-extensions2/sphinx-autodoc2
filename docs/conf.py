@@ -1,4 +1,5 @@
 """The configuration for this packages documentation."""
+
 from datetime import date
 
 from autodoc2 import __version__
