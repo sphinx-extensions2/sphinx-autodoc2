@@ -23,5 +23,5 @@ repos:
       hooks:
       - id: mypy
         args: [--config-file=pyproject.toml]
-        additional_dependencies: ["sphinx", "typer[all]"]
+        additional_dependencies: ["sphinx~=7.3", "typer[all]"]
         exclude: ^tests/.*\.py$
