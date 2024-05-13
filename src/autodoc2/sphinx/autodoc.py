@@ -137,7 +137,7 @@ def _set_parents(
     current_class = env.ref_context.get("py:class")
     env.ref_context["py:module"] = mod["full_name"]
     if klass:
-        env.ref_context["py:class"] = klass["full_name"]
+        env.ref_context["py:class"] = None
     try:
         yield
     finally:
