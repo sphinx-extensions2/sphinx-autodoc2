@@ -101,3 +101,14 @@ API
       :canonical: package.Class.Nested
 
       .. autodoc2-docstring:: package.Class.Nested
+
+   .. py:exception:: NestedEx()
+      :canonical: package.Class.NestedEx
+
+      Bases: :py:obj:`Exception`
+
+      .. autodoc2-docstring:: package.Class.NestedEx
+
+      .. rubric:: Initialization
+
+      .. autodoc2-docstring:: package.Class.NestedEx.__init__
