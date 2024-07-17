@@ -11,7 +11,7 @@ import typer
 from autodoc2 import __name__ as package_name
 from autodoc2 import __version__
 from autodoc2.analysis import analyse_module
-from autodoc2.config import Config
+from autodoc2.config import Config, _load_renderer
 from autodoc2.db import InMemoryDb, UniqueError
 from autodoc2.resolve_all import AllResolver
 from autodoc2.utils import WarningSubtypes, yield_modules
@@ -197,9 +197,18 @@ def write(
     ),
     # TODO read from config file, to populate config object
     output: Path = typer.Option("_autodoc", help="Folder to write to"),
+    renderer: str = typer.Option(
+        "rst",
+        "-r",
+        "--renderer",
+        help="Renderer to use, rst or md",
+        callback=lambda x: _load_renderer("render_plugin", x),
+    ),
     clean: bool = typer.Option(False, "-c", "--clean", help="Remove old files"),
 ) -> None:
     """Create sphinx files for a python module or package."""
+    from autodoc2.render.base import RendererBase
+
     # gather the module
     modules: t.Iterable[t.Tuple[Path, str]]
     if path.is_dir():
@@ -254,7 +263,7 @@ def write(
         def _warn(msg: str, type_: WarningSubtypes) -> None:
             progress.console.print(f"[yellow]Warning[/yellow] {msg} [{type_.value}]")
 
-        config = Config()
+        config = Config(render_plugin=t.cast(type[RendererBase], renderer))
         for mod_name in to_write:
             progress.update(task, advance=1, description=mod_name)
             content = "\n".join(
