@@ -107,8 +107,15 @@ def yield_modules(
             name, suffix = os.path.splitext(filename)
             if suffix in extensions:
                 to_yield.setdefault(name, []).append(suffix)
+
         root_path = Path(root)
         rel_mod = root_path.relative_to(folder).parts
+
+        # This is a namespace module.
+        if "__init__.py" not in filenames:
+            yield (root_path, ".".join([*root_mod, *rel_mod]))
+        # Otherwise, the specific `__init__.py` file will be included
+        # below.
         for name, suffixes in to_yield.items():
             suffix = sorted(suffixes, key=_suffix_sort_key)[0]
             yield (root_path / f"{name}{suffix}", ".".join([*root_mod, *rel_mod, name]))

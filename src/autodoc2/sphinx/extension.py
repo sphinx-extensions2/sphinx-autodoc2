@@ -139,7 +139,8 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
     # so we can check if we need to re-analyse them
     hasher = hashlib.sha256()
     for mod_path, _ in sorted(modules):
-        hasher.update(mod_path.read_bytes())
+        if mod_path.is_file():
+            hasher.update(mod_path.read_bytes())
     hash_str = hasher.hexdigest()
 
     if (
