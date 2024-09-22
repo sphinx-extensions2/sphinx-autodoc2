@@ -140,7 +140,7 @@ class DocstringRenderer(SphinxDirective):
                 )
                 document.reporter.get_source_and_line = lambda li: (
                     source_path,
-                    li + source_offset,
+                    li + source_offset if li is not None else None,
                 )
                 with parsing_context():
                     parser.parse(item["doc"], document)
@@ -215,7 +215,7 @@ def change_source(
         state.reporter.source = source_path
         state.reporter.get_source_and_line = lambda li: (
             source_path,
-            li + line_offset,
+            li + line_offset if li is not None else None,
         )
         yield
     finally:
