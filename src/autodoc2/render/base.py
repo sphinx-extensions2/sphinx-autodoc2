@@ -207,7 +207,7 @@ class RendererBase(abc.ABC):
         """Whether to show the docstring."""
         if self.config.docstrings == "all":
             return True
-        if self.config.docstrings == "direct" and not (
+        if self.config.docstrings == "direct" and not (  # noqa: SIM103
             (item.get("inherited")) or (item.get("doc_inherited"))
         ):
             return True

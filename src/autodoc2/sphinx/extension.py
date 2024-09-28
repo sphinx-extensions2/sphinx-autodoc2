@@ -42,8 +42,8 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
         sphinx_type = t.Any
         if "sphinx_type" in field.metadata:
             sphinx_type = field.metadata["sphinx_type"]
-            if sphinx_type in (str, int, float, bool, list):
-                sphinx_type = (sphinx_type,)
+            if sphinx_type in (str, int, float, bool, list):  # type: ignore[comparison-overlap]
+                sphinx_type = (sphinx_type,)  # type: ignore[assignment]
         app.add_config_value(
             f"{CONFIG_PREFIX}{name}",
             field.metadata.get("sphinx_default", default),
