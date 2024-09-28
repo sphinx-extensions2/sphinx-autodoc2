@@ -41,7 +41,7 @@ def analyse_module(
     if not file_path.is_dir():
         node = AstroidBuilder().file_build(os.fsdecode(file_path), name)
     else:
-        node = build_namespace_package_module(name, file_path.parts)
+        node = build_namespace_package_module(name, [str(file_path)])
     yield from walk_node(
         node, State(node.name.split(".", 1)[0], [], exclude_external_imports)
     )
