@@ -1,4 +1,5 @@
 """Tests for the rendering."""
+
 import io
 from pathlib import Path
 from textwrap import dedent

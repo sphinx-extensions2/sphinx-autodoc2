@@ -1,4 +1,5 @@
 """A database interface for storing and querying the analysis items."""
+
 from __future__ import annotations
 
 import json

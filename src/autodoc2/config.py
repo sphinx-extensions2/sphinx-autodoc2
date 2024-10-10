@@ -1,4 +1,5 @@
 """The configuration for the extension."""
+
 from __future__ import annotations
 
 from copy import deepcopy
@@ -151,7 +152,7 @@ def _validate_regex_list(name: str, item: t.Any) -> list[t.Pattern[str]]:
         try:
             compiled.append(re.compile(regex))
         except re.error as exc:
-            raise ValidationError(f"{name}[{i}] is not a valid regex: {exc}")
+            raise ValidationError(f"{name}[{i}] is not a valid regex: {exc}") from exc
     return compiled
 
 
@@ -168,7 +169,7 @@ def _validate_list_tuple_regex_str(
         try:
             compiled.append((re.compile(regex), replacement))
         except re.error as exc:
-            raise ValidationError(f"{name}[{i}] is not a valid regex: {exc}")
+            raise ValidationError(f"{name}[{i}] is not a valid regex: {exc}") from exc
     return compiled
 
 
@@ -217,7 +218,9 @@ def _load_regex_renderers(
         try:
             pattern = re.compile(child[0])
         except re.error as exc:
-            raise ValidationError(f"{name}[{i}][0] is not a valid regex: {exc}")
+            raise ValidationError(
+                f"{name}[{i}][0] is not a valid regex: {exc}"
+            ) from exc
         klass = _load_renderer(f"{name}[{i}][1]", child[1])
         new.append((pattern, klass))
 
@@ -311,24 +314,24 @@ class Config:
         },
     )
 
-    hidden_objects: set[
-        t.Literal["undoc", "dunder", "private", "inherited"]
-    ] = dc.field(
-        default_factory=lambda: {"inherited"},
-        metadata={
-            "help": (
-                "The default hidden items. "
-                "Can contain:\n"
-                "- `undoc`: undocumented objects\n"
-                "- `dunder`: double-underscore methods, e.g. `__str__`\n"
-                "- `private`: single-underscore methods, e.g. `_private`\n"
-                "- `inherited`: inherited class methods\n"
-            ),
-            "sphinx_type": list,
-            "sphinx_validate": _validate_hidden_objects,
-            "doc_type": 'list["undoc" | "dunder" | "private" | "inherited"]',
-            "category": "render",
-        },
+    hidden_objects: set[t.Literal["undoc", "dunder", "private", "inherited"]] = (
+        dc.field(
+            default_factory=lambda: {"inherited"},
+            metadata={
+                "help": (
+                    "The default hidden items. "
+                    "Can contain:\n"
+                    "- `undoc`: undocumented objects\n"
+                    "- `dunder`: double-underscore methods, e.g. `__str__`\n"
+                    "- `private`: single-underscore methods, e.g. `_private`\n"
+                    "- `inherited`: inherited class methods\n"
+                ),
+                "sphinx_type": list,
+                "sphinx_validate": _validate_hidden_objects,
+                "doc_type": 'list["undoc" | "dunder" | "private" | "inherited"]',
+                "category": "render",
+            },
+        )
     )
 
     hidden_regexes: list[t.Pattern[str]] = dc.field(
