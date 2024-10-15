@@ -43,7 +43,7 @@ I wanted an extension with the following goals:
 - Make it simple and minimise the amount of configuration and rebuilds necessary
 - Support for building public API via `__all__` variable
 
-I am not looking to support other languages tha Python (at least for now).
+I am not looking to support other languages than Python (at least for now).
 
 [sphinx-autoapi](https://github.com/readthedocs/sphinx-autoapi) was a good candidate, but it had a few issues:
 
