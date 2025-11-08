@@ -1,8 +1,8 @@
-<document source="index.rst">
+<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
     <section ids="test" names="test">
         <title>
             Test
-        <literal_block highlight_args="{'linenostart': 9}" language="restructuredtext" linenos="True" xml:space="preserve">
+        <literal_block highlight_args="{'linenostart': 9}" language="restructuredtext" linenos="1" xml:space="preserve">
             This is a function.
         <paragraph>
             This is a function.
@@ -19,13 +19,13 @@
             ```
             ````
         <index entries="('single',\ 'func()\ (in\ module\ package)',\ 'package.func',\ '',\ None)">
-        <desc classes="py function" desctype="function" domain="py" nocontentsentry="False" noindex="False" noindexentry="False" objtype="function">
+        <desc classes="py function" desctype="function" domain="py" no-contents-entry="0" no-index="0" no-index-entry="0" no-typesetting="0" nocontentsentry="0" noindex="0" noindexentry="0" objtype="function">
             <desc_signature _toc_name="func()" _toc_parts="('package', 'func')" class="" classes="sig sig-object" fullname="func" ids="package.func" module="package">
                 <desc_addname classes="sig-prename descclassname" xml:space="preserve">
                     package.
                 <desc_name classes="sig-name descname" xml:space="preserve">
                     func
-                <desc_parameterlist xml:space="preserve">
+                <desc_parameterlist multi_line_parameter_list="0" multi_line_trailing_comma="1" xml:space="preserve">
                     <desc_parameter xml:space="preserve">
                         <desc_sig_name classes="n">
                             a
@@ -34,7 +34,7 @@
                         <desc_sig_space classes="w">
 
                         <desc_sig_name classes="n">
-                            <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="False" reftarget="str" reftype="class">
+                            <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="0" reftarget="str" reftype="class">
                                 str
                     <desc_parameter xml:space="preserve">
                         <desc_sig_name classes="n">
@@ -44,10 +44,10 @@
                         <desc_sig_space classes="w">
 
                         <desc_sig_name classes="n">
-                            <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="False" reftarget="int" reftype="class">
+                            <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="0" reftarget="int" reftype="class">
                                 int
                 <desc_returns xml:space="preserve">
-                    <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="False" reftarget="package.a.c.ac1" reftype="class">
+                    <pending_xref py:class="True" py:module="package" refdomain="py" refspecific="0" reftarget="package.a.c.ac1" reftype="class">
                         package.a.c.ac1
             <desc_content>
                 <paragraph>
@@ -60,7 +60,7 @@
                     <row>
                         <entry>
                             <paragraph>
-                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="False" reftarget="package.func" reftype="obj" refwarn="False">
+                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="0" reftarget="package.func" reftype="obj" refwarn="0">
                                     <literal classes="xref py py-obj">
                                         package.func
                         <entry>
@@ -69,7 +69,7 @@
                     <row>
                         <entry>
                             <paragraph>
-                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="True" reftarget="package.a.a1" reftype="obj" refwarn="False">
+                                <pending_xref py:class="True" py:module="True" refdoc="index" refdomain="py" refexplicit="1" reftarget="package.a.a1" reftype="obj" refwarn="0">
                                     <literal classes="xref py py-obj">
                                         package.a1
                         <entry>

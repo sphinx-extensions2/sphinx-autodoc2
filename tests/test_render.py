@@ -11,9 +11,15 @@ from autodoc2.render.base import RendererBase
 from autodoc2.render.myst_ import MystRenderer
 from autodoc2.render.rst_ import RstRenderer
 from autodoc2.utils import yield_modules
+import docutils
 import pytest
+import sphinx
 from sphinx.testing.util import SphinxTestApp
-from sphinx.testing.util import path as sphinx_path
+
+if sphinx.version_info >= (7, 2):
+    sphinx_path = Path
+else:
+    from sphinx.testing.path import path as sphinx_path
 
 
 @pytest.mark.parametrize(
@@ -224,6 +230,32 @@ def test_sphinx_build_directives(tmp_path: Path, file_regression):
     doctree = app.env.get_doctree("index")
     doctree["source"] = "index.rst"
     content = "\n".join([line.rstrip() for line in doctree.pformat().splitlines()])
+    if sphinx.version_info < (7, 1):
+        content = content.replace(
+            '<document source="index.rst">',
+            "<document source=\"index.rst\" translation_progress=\"{'total': 0, 'translated': 0}\">",
+        )
+        content = content.replace(
+            '<desc_parameterlist xml:space="preserve">',
+            '<desc_parameterlist multi_line_parameter_list="False" xml:space="preserve">',
+        )
+    if sphinx.version_info < (7, 2):
+        content = content.replace(
+            '<desc classes="py function" desctype="function" domain="py"',
+            '<desc classes="py function" desctype="function" domain="py" no-contents-entry="False" no-index="False" no-index-entry="False" no-typesetting="False"',
+        )
+    if sphinx.version_info < (8, 2):
+        content = content.replace(
+            '<desc_parameterlist multi_line_parameter_list="False"',
+            '<desc_parameterlist multi_line_parameter_list="False" multi_line_trailing_comma="True"',
+        )
+    if docutils.__version_info__ < (0, 22):
+        content = content.replace('="False"', '="0"')
+        content = content.replace('linenos="True"', 'linenos="1"')
+        content = content.replace(
+            'multi_line_trailing_comma="True"', 'multi_line_trailing_comma="1"'
+        )
+        content = content.replace('refexplicit="True"', 'refexplicit="1"')
     file_regression.check(content, extension=".xml")
 
 
