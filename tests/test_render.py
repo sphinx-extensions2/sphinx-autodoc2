@@ -11,6 +11,7 @@ from autodoc2.render.base import RendererBase
 from autodoc2.render.myst_ import MystRenderer
 from autodoc2.render.rst_ import RstRenderer
 from autodoc2.utils import yield_modules
+import docutils
 import pytest
 import sphinx
 from sphinx.testing.util import SphinxTestApp
@@ -248,6 +249,13 @@ def test_sphinx_build_directives(tmp_path: Path, file_regression):
             '<desc_parameterlist multi_line_parameter_list="False"',
             '<desc_parameterlist multi_line_parameter_list="False" multi_line_trailing_comma="True"',
         )
+    if docutils.__version_info__ < (0, 22):
+        content = content.replace('="False"', '="0"')
+        content = content.replace('linenos="True"', 'linenos="1"')
+        content = content.replace(
+            'multi_line_trailing_comma="True"', 'multi_line_trailing_comma="1"'
+        )
+        content = content.replace('refexplicit="True"', 'refexplicit="1"')
     file_regression.check(content, extension=".xml")
 
 
