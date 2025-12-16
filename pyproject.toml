@@ -20,7 +20,7 @@ keywords = ["sphinx", "autodoc", "extension", "documentation"]
 urls = {Home = "https://github.com/chrisjsewell/sphinx-autodoc2"}
 requires-python = ">=3.8"
 dependencies = [
-    "astroid>=2.7,<4",
+    "astroid>=2.7,<5",
     "tomli; python_version<'3.11'",
     "typing-extensions"
 ]
