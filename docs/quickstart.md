@@ -142,10 +142,13 @@ For example:
 
 ```python
 from .my_module import MyClass
+
 __all__ = [
     "MyClass",
     "my_function",
 ]
+
+
 def my_function(): ...
 ```
 
@@ -171,6 +174,7 @@ For example, if there is a package `my_package` with the following `__init__.py`
 
 ```python
 from .my_module import MyClass
+
 __all__ = [
     "MyClass",
 ]
@@ -206,9 +210,7 @@ This will now create all files with the ".md" extension, and thus the docstrings
 To specify at a module level which files to render as Markdown or RestructuredText, you can set the {confval}`autodoc2_render_plugin_regexes` configuration option in your `conf.py`:
 
 ```python
-autodoc2_render_plugin_regexes = [
-    (r"autodoc2\.db", "myst")
-]
+autodoc2_render_plugin_regexes = [(r"autodoc2\.db", "myst")]
 ```
 
 Which for example, created this page using Markdown docstrings: {py:mod}`autodoc2.db`

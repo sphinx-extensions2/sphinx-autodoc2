@@ -42,7 +42,7 @@ class Database(t.Protocol):
         `*` matches any number of characters, and `?` matches any single character.
         """
 
-    def get_type(self, full_name: str) -> None | str:
+    def get_type(self, full_name: str) -> str | None:
         """Get the type of an item from the database, by full_name."""
 
     def get_by_type(self, type_: str) -> t.Iterable[ItemData]:
@@ -52,7 +52,7 @@ class Database(t.Protocol):
         """Get all function overloads for this name."""
 
     def get_children(
-        self, full_name: str, types: None | set[str] = None, *, sort_name: bool = False
+        self, full_name: str, types: set[str] | None = None, *, sort_name: bool = False
     ) -> t.Iterable[ItemData]:
         """Get all items that are direct children of this name, i.e. `{full_name}.{name}`.
 
@@ -62,7 +62,7 @@ class Database(t.Protocol):
         """
 
     def get_children_names(
-        self, full_name: str, types: None | set[str] = None, *, sort_name: bool = False
+        self, full_name: str, types: set[str] | None = None, *, sort_name: bool = False
     ) -> t.Iterable[str]:
         """Get all names of direct children of this name, i.e. `{full_name}.{name}`.
 
@@ -138,7 +138,7 @@ class InMemoryDb(Database):
             if pattern.fullmatch(item["full_name"])
         )
 
-    def get_type(self, full_name: str) -> None | str:
+    def get_type(self, full_name: str) -> str | None:
         item = self._items.get(full_name)
         if item is None:
             return None
@@ -151,7 +151,7 @@ class InMemoryDb(Database):
         return self._overloads.get(full_name, [])
 
     def get_children(
-        self, full_name: str, types: None | set[str] = None, *, sort_name: bool = False
+        self, full_name: str, types: set[str] | None = None, *, sort_name: bool = False
     ) -> t.Iterable[ItemData]:
         generator = (
             item
@@ -165,7 +165,7 @@ class InMemoryDb(Database):
         return generator
 
     def get_children_names(
-        self, full_name: str, types: None | set[str] = None, *, sort_name: bool = False
+        self, full_name: str, types: set[str] | None = None, *, sort_name: bool = False
     ) -> t.Iterable[str]:
         generator = (
             item["full_name"]
