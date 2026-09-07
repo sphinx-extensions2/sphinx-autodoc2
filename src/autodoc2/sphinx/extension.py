@@ -100,7 +100,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
     package = config.packages[pkg_index]
 
     # find all the modules to analyse
-    root_path: None | Path = Path(app.srcdir)
+    root_path: Path | None = Path(app.srcdir)
     if package.from_git_clone is not None:
         url, ref = package.from_git_clone
         root_path = get_git_clone(app, url, ref, config)
@@ -238,7 +238,7 @@ def run_autodoc_package(app: Sphinx, config: Config, pkg_index: int) -> str | No
 
 def get_git_clone(
     app: Sphinx, url: str, branch_tag: str, config: Config
-) -> None | Path:
+) -> Path | None:
     """Download a git repository to the given folder."""
     # create a sha of the url and branch
     folder = hashlib.sha256(url.encode("utf8") + branch_tag.encode("utf8")).hexdigest()
