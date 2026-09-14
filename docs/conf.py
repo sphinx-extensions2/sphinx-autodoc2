@@ -94,12 +94,13 @@ nitpick_ignore_regex = [
 
 # --- Additional configuration ----
 
-import typing as t  # noqa: E402
+import typing as t
 
-from autodoc2.config import CONFIG_PREFIX, Config, PackageConfig  # noqa: E402
-from docutils import nodes  # noqa: E402
-from sphinx.application import Sphinx  # noqa: E402
-from sphinx.util.docutils import SphinxDirective  # noqa: E402
+from docutils import nodes
+from sphinx.application import Sphinx
+from sphinx.util.docutils import SphinxDirective
+
+from autodoc2.config import CONFIG_PREFIX, Config, PackageConfig
 
 
 def setup(app: Sphinx) -> None:
@@ -122,7 +123,7 @@ class CreateConfigDirective(SphinxDirective):
         config = Config()
         for name, value, field in config.as_triple():
             text.append(f"``````{{confval}} {CONFIG_PREFIX}{name}")
-            text.append(f'{field.metadata.get("help", "")}')
+            text.append(f"{field.metadata.get('help', '')}")
             text.append("")
             # if "category" in field.metadata:
             #     text.append(f"**category**: { field.metadata['category']}")
@@ -156,7 +157,7 @@ class CreateConfigPkgDirective(SphinxDirective):
         pkg_config = PackageConfig("")
         for name, value, field in pkg_config.as_triple():
             text.append(f"``````{{confval}} {CONFIG_PREFIX}packages[{name}]")
-            text.append(f'{field.metadata.get("help", "")}')
+            text.append(f"{field.metadata.get('help', '')}")
             text.append("")
             type_ = type_to_string(field.type)
             text.append(f"**type**: {type_}")
