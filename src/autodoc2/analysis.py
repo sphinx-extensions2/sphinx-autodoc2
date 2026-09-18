@@ -40,7 +40,7 @@ def analyse_module(
     """
     # TODO expose record_external_imports everywhere analyse_module is used
     
-    AstroidManager().ast_from_file(
+    node = AstroidManager().ast_from_file(
         os.fsdecode(file_path), 
         modname = name
     )
