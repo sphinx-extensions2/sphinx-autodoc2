@@ -39,9 +39,12 @@ def analyse_module(
         you can use this to record them.
     """
     # TODO expose record_external_imports everywhere analyse_module is used
-    node = AstroidBuilder(manager=AstroidManager()).file_build(
-        os.fsdecode(file_path), name
+    
+    AstroidManager().ast_from_file(
+        os.fsdecode(file_path), 
+        modname = name
     )
+    
     yield from walk_node(
         node, State(node.name.split(".", 1)[0], [], exclude_external_imports)
     )
