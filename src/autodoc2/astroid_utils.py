@@ -415,7 +415,11 @@ def is_exception(node: nodes.ClassDef) -> bool:
     if not hasattr(node, "ancestors"):
         return False
 
-    return any(is_exception(parent) for parent in node.ancestors(recurs=True))
+    # Check if ANY ancestor in the fully flattened tree matches an exception type
+    return any(
+        ancestor.name in ("Exception", "BaseException") and ancestor.root().name == "builtins"
+        for ancestor in node.ancestors(recurs=True)
+    )
 
 
 def is_decorated_with_overload(node: nodes.FunctionDef) -> bool:
