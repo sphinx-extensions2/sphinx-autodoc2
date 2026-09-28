@@ -59,7 +59,7 @@ def get_full_import_name(import_from: nodes.ImportFrom, name: str) -> str:
     return f"{module_name}.{partial_basename}"
 
 
-def get_assign_value(node: nodes.NodeNG) -> None | tuple[str, t.Any]:
+def get_assign_value(node: nodes.NodeNG) -> tuple[str, t.Any] | None:
     """Get the name and value of the assignment of the given node.
 
     Assignments to multiple names are ignored, as per PEP 257.
@@ -116,7 +116,7 @@ def get_const_values(node: nodes.NodeNG) -> t.Any:
     return value
 
 
-def get_assign_annotation(node: nodes.Assign) -> None | str:
+def get_assign_annotation(node: nodes.Assign) -> str | None:
     """Get the type annotation of the assignment of the given node.
 
     :returns: The type annotation as a string, or None if one does not exist.
@@ -243,7 +243,7 @@ def resolve_qualname(node: nodes.NodeNG, basename: str) -> str:
     return full_basename
 
 
-def get_module_all(node: nodes.Module) -> None | list[str]:
+def get_module_all(node: nodes.Module) -> list[str] | None:
     """Get the contents of the ``__all__`` variable from a module."""
     all_ = None
 
@@ -447,7 +447,7 @@ def is_overload_decorator(decorator: astroid.Name | astroid.Attribute) -> bool:
     return False
 
 
-def get_func_docstring(node: nodes.FunctionDef) -> tuple[str, None | str]:
+def get_func_docstring(node: nodes.FunctionDef) -> tuple[str, str | None]:
     """Get the docstring of a node, using a parent docstring if needed."""
     doc_node = node.doc_node
 
@@ -470,7 +470,7 @@ def get_func_docstring(node: nodes.FunctionDef) -> tuple[str, None | str]:
     return doc_node.value if doc_node is not None else "", None
 
 
-def get_return_annotation(node: nodes.FunctionDef) -> None | str:
+def get_return_annotation(node: nodes.FunctionDef) -> str | None:
     """Get the return annotation of a node."""
     if node.returns:
         return resolve_annotation(node.returns)
@@ -482,12 +482,12 @@ def get_return_annotation(node: nodes.FunctionDef) -> None | str:
 
 def get_args_info(
     args_node: astroid.Arguments,
-) -> list[tuple[None | str, None | str, None | str, None | str]]:
+) -> list[tuple[str | None, str | None, str | None, str | None]]:
     """Get the arguments of a function.
 
     :returns: a list of (type, name, annotation, default)
     """
-    result: list[tuple[None | str, None | str, None | str, None | str]] = []
+    result: list[tuple[str | None, str | None, str | None, str | None]] = []
     positional_only_defaults = []
     positional_or_keyword_defaults = args_node.defaults
     if args_node.defaults:
@@ -592,7 +592,7 @@ def _iter_args(
     args: list[nodes.NodeNG],
     annotations: list[nodes.NodeNG],
     defaults: list[nodes.NodeNG],
-) -> t.Iterable[tuple[str, None | str, str | None]]:
+) -> t.Iterable[tuple[str, str | None, str | None]]:
     """Iterate over arguments."""
     default_offset = len(args) - len(defaults)
     packed = itertools.zip_longest(args, annotations)

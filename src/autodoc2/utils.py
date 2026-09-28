@@ -28,19 +28,19 @@ class ItemData(t.TypedDict, total=False):
     range: tuple[int, int]
 
     ## module / package
-    file_path: None | str
+    file_path: str | None
     encoding: str
-    all: None | list[str]
+    all: list[str] | None
     imports: list[tuple[str, str | None]]  # path, alias
 
     # assign (data)
-    value: None | str | t.Any  # TODO make value JSON serializable
-    annotation: None | str
+    value: str | t.Any | None  # TODO make value JSON serializable
+    annotation: str | None
 
     # function/method/overload
     properties: list[PROPERTY_TYPE]
     args: ARGS_TYPE
-    return_annotation: None | str
+    return_annotation: str | None
 
     # class
     bases: list[str]
