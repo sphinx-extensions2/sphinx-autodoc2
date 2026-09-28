@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import typing as t
 
-from autodoc2.analysis import analyse_module
 import pytest
+
+from autodoc2.analysis import analyse_module
 
 
 def clean_item(item: dict[str, t.Any]) -> dict[str, t.Any]:
