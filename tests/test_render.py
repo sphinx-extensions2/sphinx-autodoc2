@@ -4,6 +4,10 @@ import io
 from pathlib import Path
 from textwrap import dedent
 
+import pytest
+from sphinx.testing.util import SphinxTestApp
+from sphinx.testing.util import path as sphinx_path
+
 from autodoc2.analysis import analyse_module
 from autodoc2.config import Config
 from autodoc2.db import InMemoryDb
@@ -11,9 +15,6 @@ from autodoc2.render.base import RendererBase
 from autodoc2.render.myst_ import MystRenderer
 from autodoc2.render.rst_ import RstRenderer
 from autodoc2.utils import yield_modules
-import pytest
-from sphinx.testing.util import SphinxTestApp
-from sphinx.testing.util import path as sphinx_path
 
 
 @pytest.mark.parametrize(
