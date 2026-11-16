@@ -77,7 +77,7 @@ class RendererBase(abc.ABC):
     def get_children(
         self,
         item: ItemData,
-        types: None | set[str] = None,
+        types: set[str] | None = None,
         *,
         omit_hidden: bool = True,
     ) -> t.Iterable[ItemData]:
@@ -106,7 +106,7 @@ class RendererBase(abc.ABC):
                     continue
                 resolved_name = resolved[all_name]
 
-                resolved_item: None | ItemData
+                resolved_item: ItemData | None
                 if (
                     types == {"external"}
                     and resolved_name.split(".")[0] != item["full_name"].split(".")[0]
@@ -221,7 +221,7 @@ class RendererBase(abc.ABC):
         self,
         args_info: ARGS_TYPE,
         include_annotations: bool = True,
-        ignore_self: None | str = None,
+        ignore_self: str | None = None,
     ) -> str:
         """Format the arguments of a function or method."""
         result = []
@@ -244,7 +244,7 @@ class RendererBase(abc.ABC):
 
         return ", ".join(result)
 
-    def format_annotation(self, annotation: None | str) -> str:
+    def format_annotation(self, annotation: str | None) -> str:
         """Format a single type annotation."""
         if annotation:
             # TODO can this be optimised?
@@ -255,7 +255,7 @@ class RendererBase(abc.ABC):
                 annotation = annotation.replace(in_, out_)
         return annotation or ""
 
-    def format_base(self, base: None | str) -> str:
+    def format_base(self, base: str | None) -> str:
         """Format a single class base type."""
         if base:
             for in_, out_ in self.config.replace_bases:

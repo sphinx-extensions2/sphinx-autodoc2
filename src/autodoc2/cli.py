@@ -109,7 +109,7 @@ def list_items(
             if not private and data["full_name"].split(".")[-1].startswith("_"):
                 continue
             if one_line:
-                console.print(f'{data["full_name"]} ({data["type"]})')
+                console.print(f"{data['full_name']} ({data['type']})")
             else:
                 console.print(data)
 
