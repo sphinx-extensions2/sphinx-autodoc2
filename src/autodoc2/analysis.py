@@ -70,7 +70,7 @@ def _get_parent_name(name: str) -> str:
     return ".".join(name.split(".")[:-1])
 
 
-def fix_docstring_indent(s: None | str, tabsize: int = 8) -> str:
+def fix_docstring_indent(s: str | None, tabsize: int = 8) -> str:
     """Remove common leading indentation,
     where the indentation of the first line is ignored.
     """

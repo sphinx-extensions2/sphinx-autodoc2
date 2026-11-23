@@ -24,8 +24,8 @@ LOGGER = logging.getLogger("autodoc2")
 def load_config(
     app: Sphinx,
     *,
-    overrides: None | dict[str, t.Any] = None,
-    location: None | Element = None,
+    overrides: dict[str, t.Any] | None = None,
+    location: Element | None = None,
 ) -> Config:
     """Load the configuration."""
     values: dict[str, t.Any] = {}
@@ -53,7 +53,7 @@ def load_config(
 
 
 def warn_sphinx(
-    msg: str, subtype: WarningSubtypes, location: None | Element = None
+    msg: str, subtype: WarningSubtypes, location: Element | None = None
 ) -> None:
     """Log a warning in Sphinx."""
     LOGGER.warning(
